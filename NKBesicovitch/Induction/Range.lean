@@ -7,12 +7,14 @@ module
 
 public import NKBesicovitch.Exponents
 public import NKBesicovitch.Geometry.Disks
+public import NKBesicovitch.Induction.Iteration
 
 /-!
 # The critical range
 
-The unresolved proper-dimensional case requires the selectable projection
-estimate, its mixed-norm X-ray consequence, and the Bourgain–Oberlin induction.
+The selectable projection estimate, its mixed-norm X-ray consequence, and
+the finite plate induction now supply a lower-dimensional deficit below one.
+The proper-dimensional case still requires the Fourier terminal argument.
 -/
 
 public section
@@ -29,6 +31,8 @@ theorem volume_pos_of_criticalExponent {n k : ℕ} (hk : 1 ≤ k) (hkn : k ≤ n
     0 < volume E := by
   obtain rfl | hkn := eq_or_lt_of_le hkn
   · exact volume_pos_of_isBesicovitch_self hB
-  · sorry
+  · obtain ⟨α, p, hα, hα1, hp, hplate⟩ :=
+      exists_hasPlateEstimate_deficit_lt_one hk hkn h
+    sorry
 
 end NKBesicovitch.Induction

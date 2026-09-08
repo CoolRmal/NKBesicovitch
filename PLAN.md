@@ -218,8 +218,8 @@ All induction files belong to `Induction/`:
   frequency separately.
 * `Terminal`: polynomially weighted bandlimited fiber comparison, summable
   dyadic gain, and the local full-plane bound.
-* `Range`: choose all strict margins, iterate from lines to k-planes, and
-  assemble the first requested theorem.
+* `Range`: choose all strict margins, iterate from zero-dimensional disks
+  to `(k-1)`-planes, apply the Fourier lift, and assemble the first theorem.
 
 Current state: `PlateGeometry`, `PlateVolume`, and `PlateIntegral` prove
 the normalized comparison with factor `2^m`, uniform over all positive
@@ -229,9 +229,14 @@ step from input exponent `Q/(β-1)` to every exponent above `Q/β`, retaining
 outer exponent `Q`. `PlatePower` and `XRay/ScaledBound` now increase the
 exponent scales without changing the gain ratio. `DiagonalStep` applies
 output Hölder and the flag argument to compatible diagonal estimates.
-The next steps are to choose a finite sequence of compatible exponents,
-prove the zero-plane seed with its dimension deficit, and iterate the
-deficit recurrence. The Fourier terminal argument remains open.
+`Estimates` records the local diagonal deficit. `Seed` proves the initial
+ambient-dimension loss, `XRayExponents` chooses a compatible scale at every
+fixed subcritical ratio, and `Lift` divides the deficit by that ratio.
+`Iteration` proves the full finite recurrence `c/ρ^j`. The requested strict
+range now supplies a deficit below one in dimension `n-1` at finite input
+exponent at least two. `Range` uses this estimate; its remaining gap is the
+Fourier terminal argument and its required globalization, frequency and
+weighted bandlimited estimates.
 
 ### 7. Independent `(5,2)` seed
 

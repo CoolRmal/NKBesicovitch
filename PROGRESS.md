@@ -5,6 +5,20 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Induction/Estimates` records a local diagonal estimate with deficit `α`:
+  its thickness factor is `δ^(-α/p)`, with a finite constant uniform over
+  inputs in each fixed ball. `Seed` proves deficit `n` at every `p ≥ 1`
+  by Hölder and ball-volume scaling, including the zero-plane seed.
+  `Parameters` and `XRayExponents` choose compatible exponents at every
+  fixed `2 < ρ < criticalExponent`, with displacement/input ratio exactly
+  `ρ` and displacement exponent above any prescribed lower bound.
+* `Induction/Lift` proves that one lift divides the deficit by `ρ`, with
+  the new input exponent at least two. `Iteration` now proves the complete
+  finite induction: in codimension `c > 0`, after `j` lifts the deficit is
+  `c/ρ^j`. Every proper-dimensional case in the requested strict range
+  consequently has a lower-dimensional plate estimate with a positive
+  deficit below one. `Range` now obtains this proved estimate before its
+  remaining Fourier terminal proof gap.
 * `Operators/PlateMeasurability`: lower semicontinuity and Borel measurability
   now hold for every Borel nonnegative input, including infinite values.
   The moving open-plate indicator supplies the semicontinuity; the input
@@ -419,12 +433,15 @@ law has the required Grassmannian pushforward. The uniform normalized
 plate comparison and a one-dimensional induction step using the proved
 X-ray bound are now complete. Power inequalities increase both plate
 exponents and all three X-ray exponents without changing the relevant
-ratios. Output Hölder and flag integration now give a diagonal step with
-explicit exponent compatibility. Choosing a finite sequence of compatible
-exponents, starting from the zero-plane seed, iterating the deficit bounds,
-and establishing the Fourier terminal estimate remain open, as does the
-final assembly with the already proved passage from uniform maximal bounds
-to positive measure.
+ratios. Output Hölder and flag integration give a diagonal step with
+explicit exponent compatibility. The zero-plane seed, compatible exponent
+selection, and finite deficit iteration are now proved. The general target
+range yields a positive deficit below one in dimension `n-1`, with finite
+input exponent at least two. The remaining general-range work is the Fourier
+terminal argument, including extension of local estimates to arbitrary
+inputs, frequency localization, weighted tails and bandlimited comparison,
+followed by the final assembly with the proved passage from uniform maximal
+bounds to positive measure.
 
 The independent (5,2) branch still needs the corrected Guth–Zahl and
 Katz–Rogers proofs, its maximal estimate, and the Fourier terminal argument.
@@ -539,6 +556,10 @@ the proved spherical X-ray estimate at all common larger exponent scales,
 and the compatible diagonal induction step pass the standard-axiom audit
 with no source warnings. The complete build succeeds with 2991 jobs and
 the same five intended holes.
+The ambient-dimension seed, prescribed-ratio X-ray exponent selection,
+unconditional deficit-reducing lift, and complete finite induction to a
+subunit deficit pass the standard-axiom audit with no source warnings.
+The complete build succeeds with 2996 jobs and the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

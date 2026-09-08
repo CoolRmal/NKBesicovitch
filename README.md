@@ -72,9 +72,13 @@ norm are also proved. `Induction/XRayStep.lean` now proves the
 one-dimensional plate induction step, including its volume normalization
 and a constant independent of plate thickness. Power inequalities now
 extend both plate and X-ray estimates to larger exponent scales, and
-`Induction/DiagonalStep` gives the compatible diagonal step. Choosing and
-iterating the exponents, and the final positive-measure proofs, remain
-incomplete.
+`Induction/DiagonalStep` gives the compatible diagonal step. The zero-plane
+seed, exponent selection, and full finite induction are now proved in
+`Induction/Seed`, `XRayExponents`, `Lift`, and `Iteration`. After `j` lifts
+in codimension `c`, the deficit is `c/ρ^j` for any fixed
+`2 < ρ < criticalExponent`. The target range therefore supplies a deficit
+below one in dimension `n-1`. The Fourier terminal argument and the separate
+`(5,2)` proof remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
@@ -116,9 +120,8 @@ Oberlin's [*Two bounds for the X-ray transform*](https://doi.org/10.1007/s00209-
 Theorem 3, relates this question to mixed-norm X-ray estimates. The supplied
 September 2026 projection manuscript proposes the exponent leading to the
 larger ratio above. Its projection estimate, quantitative selection, transfer
-to spherical X-ray estimates, and one-dimensional plate induction step now
-have Lean proofs. Iterating the estimates and completing the terminal argument
-for the requested positive-measure theorem remain open.
+to spherical X-ray estimates, and finite plate induction now have Lean proofs.
+The terminal argument for the requested positive-measure theorem remains open.
 The separate (5,2) route uses the corrected
 [Guth–Zahl estimate](https://arxiv.org/abs/1701.07045),
 [Katz–Rogers concentration theorem](https://arxiv.org/abs/1802.09094),

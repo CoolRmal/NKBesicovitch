@@ -93,7 +93,8 @@ sources:
     type: article
     relationship: adapts
     note: >-
-      The induction and Fourier terminal step remain incomplete. Flag
+      The finite plate induction is proved; the Fourier terminal step
+      remains incomplete. Flag
       integration is now proved in orthogonal frame coordinates, with
       the canonical Grassmannian pushforward. Haar-distributed unit
       directions have normalized Euclidean surface measure. Geometric
@@ -106,8 +107,12 @@ sources:
       exponent above Q/beta, with a thickness-independent extra constant.
       Power inequalities now extend the plate and spherical estimates to
       every common larger exponent scale. Output Holder and flag integration
-      give a diagonal step with explicit compatible exponents. Choosing
-      and iterating those exponents, and the terminal estimate, remain open.
+      give a diagonal step with explicit compatible exponents. The zero-plane
+      seed, exponent selection, and finite deficit iteration are now proved:
+      after j lifts in codimension c the deficit is c/rho^j, for every fixed
+      ratio strictly between 2 and the critical exponent. The strict target
+      range yields a subunit deficit in dimension n-1. The Fourier terminal
+      argument and its required analytic estimates remain open.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -212,7 +217,9 @@ status:
     covariance of plate maximal functions, uniform frame support localization,
     a one-dimensional plate induction step from the proved X-ray bound,
     exponent inflation for plate and spherical X-ray estimates, a compatible
-    diagonal induction step, and
+    diagonal induction step, the ambient-dimension seed, compatible exponent
+    selection at every subcritical ratio, finite deficit iteration to the
+    subunit threshold required by the target range, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

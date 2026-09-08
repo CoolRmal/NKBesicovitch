@@ -238,4 +238,9 @@ import NKBesicovitch.Induction.PlateIntegral
 import NKBesicovitch.Induction.Step
 import NKBesicovitch.Induction.XRayStep
 import NKBesicovitch.Induction.DiagonalStep
+import NKBesicovitch.Induction.Estimates
+import NKBesicovitch.Induction.Seed
+import NKBesicovitch.Induction.XRayExponents
+import NKBesicovitch.Induction.Lift
+import NKBesicovitch.Induction.Iteration
 import NKBesicovitch.FiveTwo.Main
