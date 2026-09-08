@@ -23,6 +23,11 @@ source decomposition. The final theorems are not proved yet.
   open set, and is the unique rotation-invariant probability measure.
 * `Operators`: extended-nonnegative disk and plate averages and a local X-ray
   transform. Disk averages of indicators containing the disk equal one.
+* `Geometry/RigidMotions`, `Operators/Semicontinuity`, `PlateMeasurability`:
+  rigid motions transport disks and plates and preserve volume; Fatou gives
+  lower semicontinuity of nonnegative parameter integrals. The plate maximal
+  operator on any open indicator is lower semicontinuous and hence Borel
+  measurable on directions, even though the supremum ranges over all centers.
 * `Projection`: line-family definitions, essential parallel multiplicity,
   the corner update formula and its fixed-point arithmetic. No geometric
   projection estimate is inferred just from this arithmetic.
@@ -33,8 +38,9 @@ source decomposition. The final theorems are not proved yet.
   positive and finite.
 * `PositiveMeasure/PlateBound`: a uniform delta-plate maximal estimate gives
   `1/C ≤ volume E`. Fatou handles direction-dependent scale thresholds.
-  This implication assumes almost-everywhere measurability of the plate
-  maximal functions and a direction probability measure, both explicit.
+  Measurability of the plate maximal functions is now proved internally.
+  The direction probability measure and uniform analytic estimate remain
+  explicit inputs; the canonical measure meets the probability requirement.
 
 ## Open proof frontier
 
@@ -49,8 +55,8 @@ line and a plane in its orthogonal complement and identify its Grassmannian
 pushforward. The current measure implications accept any explicit probability
 measure, including this canonical one.
 
-Then establish measurability of the plate maximal operator on open indicators,
-and develop the actual uniform analytic estimates supplying those implications.
+The remaining operator work is to develop the actual uniform analytic estimates
+supplying the positive-measure implications.
 The general range needs the selectable corner/projection estimate, the
 mixed-norm transfer and the induction. The (5,2) branch needs the corrected
 Guth–Zahl and Katz–Rogers proofs and the Fourier terminal estimate. All these
@@ -68,6 +74,7 @@ The initial axiom audits of `criticalExponent_bounds` and
 `Induction.exists_projectionExponent_for_dimension` in the second checkpoint.
 `Grassmannian.eq_probability_of_invariant` also passes the standard-axiom
 check, with no source warnings.
+The same audit passes for `measurable_plateMaximal_indicator`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.

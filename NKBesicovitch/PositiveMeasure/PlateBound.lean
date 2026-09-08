@@ -6,6 +6,7 @@ Authors: Yongxi Lin
 module
 
 public import NKBesicovitch.PositiveMeasure.Delta
+public import NKBesicovitch.Operators.PlateMeasurability
 public import Mathlib.MeasureTheory.Measure.Regular
 public import Mathlib.MeasureTheory.Integral.Lebesgue.Add
 public import Mathlib.Analysis.SpecificLimits.Basic
@@ -30,8 +31,6 @@ namespace NKBesicovitch
 /-- Uniform plate maximal estimates on open indicators imply a quantitative volume lower bound. -/
 theorem le_volume_of_plateMaximal_bound {n k : ℕ} (μ : Measure (Grassmannian n k))
     [IsProbabilityMeasure μ] {p : ℝ} (hp : 0 ≤ p) {C : ℝ≥0} (hC : 0 < C)
-    (hmeas : ∀ δ ∈ Ioc (0 : ℝ) 1, ∀ U : Set (Space n), IsOpen U →
-      AEMeasurable (plateMaximal δ (U.indicator (fun _ ↦ (1 : ℝ≥0∞)))) μ)
     (hmax : ∀ δ ∈ Ioc (0 : ℝ) 1, ∀ U : Set (Space n), IsOpen U →
       (∫⁻ V, plateMaximal δ (U.indicator (fun _ ↦ (1 : ℝ≥0∞))) V ^ p ∂μ) ≤ C * volume U)
     {E : Set (Space n)} (hE : IsBesicovitch k E) : (1 : ℝ≥0∞) / C ≤ volume E := by
@@ -50,7 +49,8 @@ theorem le_volume_of_plateMaximal_bound {n k : ℕ} (μ : Measure (Grassmannian 
   let F (j : ℕ) (V : Grassmannian n k) :=
     plateMaximal (δ j) (U.indicator (fun _ ↦ (1 : ℝ≥0∞))) V ^ p
   have hF (j : ℕ) : AEMeasurable (F j) μ :=
-    ENNReal.continuous_rpow_const.measurable.comp_aemeasurable (hmeas _ (hδ j) U hU)
+    (ENNReal.continuous_rpow_const.measurable.comp
+      (measurable_plateMaximal_indicator (δ j) hU)).aemeasurable
   have hlim (V : Grassmannian n k) : 1 ≤ liminf (fun j ↦ F j V) atTop := by
     obtain ⟨δ₀, hδ₀, hs⟩ := exists_scale_one_le_plateMaximal hU hB V
     have hsmall : ∀ᶠ j in atTop, δ j < δ₀ :=

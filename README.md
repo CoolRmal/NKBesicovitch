@@ -36,6 +36,10 @@ measure on the orthogonal group. Lean verifies that it is independent of the
 initial plane and is the unique rotation-invariant probability measure. The
 flag disintegration needed for the induction remains to be proved.
 
+Plate maximal functions on open indicators are proved Borel measurable through
+lower semicontinuity. The delta-to-volume argument therefore needs only its
+uniform analytic estimate and a direction probability measure.
+
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
 

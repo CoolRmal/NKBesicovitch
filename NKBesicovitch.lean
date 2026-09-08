@@ -7,8 +7,11 @@ import NKBesicovitch.Grassmannian.Transitivity
 import NKBesicovitch.Grassmannian.Topology
 import NKBesicovitch.Grassmannian.Measure
 import NKBesicovitch.Geometry.Disks
+import NKBesicovitch.Geometry.RigidMotions
 import NKBesicovitch.Operators.Defs
 import NKBesicovitch.Operators.Disks
+import NKBesicovitch.Operators.Semicontinuity
+import NKBesicovitch.Operators.PlateMeasurability
 import NKBesicovitch.Projection.Defs
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
