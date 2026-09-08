@@ -107,7 +107,7 @@ source decomposition. The final theorems are not proved yet.
 ## Open proof frontier
 
 There are two `sorry` occurrences in the proof development, in
-`Induction/Range.lean` and `FiveTwo/Main.lean`, plus the two deliberate Challenge
+`Induction/Range.lean` and `FiveTwo/Main.lean`, plus the three deliberate Challenge
 holes. These stand for large analytic developments, not two short lemmas.
 
 The canonical Grassmannian probability measure is now implemented. Its orbit
@@ -138,7 +138,7 @@ by the exponent improvement and quantitative height selection.
 ## Verification conventions
 
 `lake build` includes the library, Challenge and Solution as separate targets.
-The only intended build warnings are the four explicit holes. All current
+The only intended build warnings are the five explicit holes. All current
 files are shorter than 1500 lines. Imports use individual tactic modules.
 
 The initial axiom audits of `criticalExponent_bounds` and
@@ -160,6 +160,8 @@ the outer-density deletion bound also pass, using only the three standard axioms
 The measurable companion selection and half-mass slice refinement pass the
 same audit, as do the explicit decimal exponent bounds and the lemma excluding
 `(5,2)` from the general critical-exponent condition.
+`Challenge.lean` now includes the numerical bound as an explicit Comparator
+target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.

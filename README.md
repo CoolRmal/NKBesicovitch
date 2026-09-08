@@ -8,7 +8,7 @@ around the **(n,k)-Besicovitch conjecture**.
 
 Work in progress. Both requested theorems are stated in `Challenge.lean`, but
 their central analytic proofs are incomplete. A successful build currently
-includes two proof gaps, in addition to the two deliberate challenge holes.
+includes two proof gaps, in addition to the three deliberate challenge holes.
 This is **not yet a verified proof or a Palomar submission**.
 
 The target range is
@@ -69,7 +69,7 @@ lake build
 | `NKBesicovitch.lean` | Root module; imports everything below |
 | `Challenge.lean` | Minimal Mathlib-only statement surface |
 | `Solution.lean` | Matching theorem interface, currently with incomplete dependencies |
-| `comparator.json` | Compares both theorems and both custom statement definitions |
+| `comparator.json` | Compares the exponent bounds, both positive-measure targets, and both definitions |
 | `NKBesicovitch/Basic.lean` | Disk property and exact exponent, using Mathlib's Euclidean space directly |
 | `NKBesicovitch/Exponents.lean` | Certified root and projection-exponent arithmetic |
 | `NKBesicovitch/Grassmannian/` | Direction topology, orthogonal action, canonical probability |

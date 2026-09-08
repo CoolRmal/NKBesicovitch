@@ -11,8 +11,9 @@ public import Mathlib.LinearAlgebra.FiniteDimensional.Basic
 /-!
 # Positive measure for (n,k)-Besicovitch sets
 
-The first target uses the unique root `p_c ∈ (2,3)` of `p_c³ - 2p_c² - 2p_c + 2 = 0`.
-The second target is the separate case `(5,2)`, outside that numerical range.
+The general positive-measure target uses the unique root `p_c ∈ (2,3)` of
+`p_c³ - 2p_c² - 2p_c + 2 = 0`. Its numerical bounds are a separate target below.
+The `(5,2)` positive-measure target lies outside the general dimension range.
 `NullMeasurableSet` means measurability in the completion of Lebesgue measure.
 The deliberate `sorry`s specify the challenge; they are not proofs of the claims.
 -/
@@ -31,6 +32,11 @@ def IsBesicovitch {n : ℕ} (k : ℕ) (E : Set (EuclideanSpace ℝ (Fin n))) : P
 /-- The exact critical ratio, specified by the roots of its cubic in `[2,3]`. -/
 noncomputable def criticalExponent : ℝ :=
   sSup {p : ℝ | p ∈ Icc 2 3 ∧ p ^ 3 - 2 * p ^ 2 - 2 * p + 2 = 0}
+
+/-- The exact rational bounds `2.481 < p_c < 2.482`. -/
+theorem criticalExponent_bounds :
+    2.481 < criticalExponent ∧ criticalExponent < 2.482 := by
+  sorry
 
 /-- Besicovitch sets have positive measure when `p_c^(k-1) + k > n`. -/
 theorem volume_pos_of_criticalExponent {n k : ℕ} (hk : 1 ≤ k) (hkn : k ≤ n)

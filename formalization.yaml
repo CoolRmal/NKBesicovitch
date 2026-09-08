@@ -132,7 +132,8 @@ review:
   notes: >-
     Source definitions and the exact exponent were checked against supplied
     notes and Oberlin's statement. Challenge imports only Mathlib. Comparator
-    is configured to compare definitions and both theorems, with no permission
+    is configured to compare definitions, the numerical critical-exponent bounds,
+    and both positive-measure theorems, with no permission
     for sorryAx; full verification cannot pass while the proof gaps remain.
 
 alignment:

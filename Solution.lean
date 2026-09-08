@@ -5,6 +5,7 @@ Authors: Yongxi Lin
 -/
 module
 
+public import NKBesicovitch.Exponents
 public import NKBesicovitch.Induction.Range
 public import NKBesicovitch.FiveTwo.Main
 
@@ -13,6 +14,7 @@ public import NKBesicovitch.FiveTwo.Main
 
 This module deliberately does not import Challenge. The implementation theorems
 still contain explicit proof gaps, so this is not yet a passing Comparator solution.
+The imported `criticalExponent_bounds` is already fully proved in `Exponents`.
 -/
 
 public section
