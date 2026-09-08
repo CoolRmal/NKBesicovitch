@@ -92,7 +92,8 @@ status:
     the full basic pair improvement and its exponent-7/4 consequence,
     exact corner densities, both corner-fiber upper bounds, outer-density
     deletion, initial slice refinement, measurable companions of prescribed
-    fiber mass, exact balanced pair and corner masses, and
+    fiber mass, exact balanced pair and corner masses, restricted corner
+    counts, simultaneous corner-code selection, finite corner witnesses, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic
