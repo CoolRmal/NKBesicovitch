@@ -1,0 +1,139 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+
+project:
+  name: NKBesicovitch
+  description: >-
+    Work in progress toward positive Lebesgue measure for (n,k)-Besicovitch
+    sets when p_c^(k-1)+k>n, and for (5,2), where p_c is the root in (2,3) of
+    p^3-2p^2-2p+2=0. The project specifies the full statements and develops
+    their geometric, arithmetic, and measure-theoretic foundations. The two
+    main analytic proofs remain incomplete.
+  authors:
+    - Yongxi Lin
+  license: Apache-2.0
+  responsible_maintainers:
+    - Yongxi Lin
+
+classification:
+  arxiv: [math.CA]
+  msc2020: [42B25, 28A75]
+
+sources:
+  - title: The projection estimate near 1.675
+    type: supplied manuscript
+    relationship: formalizes
+    note: >-
+      September 2026 pedagogical rewrite supplied by the project owner.
+      Its novel continuous corner and simultaneous-selection assertions are
+      not independently certified by the manuscript. The initial Lean work
+      verifies exponent arithmetic, not those analytic assertions.
+    license: unknown
+  - title: From Projection Inequalities to Mixed-Norm Local X-Ray Estimates
+    type: supplied proof notes
+    relationship: formalizes
+    note: September 2026 notes; proof development has not yet reached this transfer.
+    license: unknown
+  - title: Two bounds for the X-ray transform
+    authors: [Richard Oberlin]
+    id: doi:10.1007/s00209-009-0589-5
+    location: https://doi.org/10.1007/s00209-009-0589-5
+    type: article
+    relationship: adapts
+    note: Theorem 3 is the intended mixed-norm-to-positive-measure reduction.
+    author_endorsement: not-contacted
+  - title: Bounds for Kakeya-type maximal operators associated with k-planes
+    authors: [Richard Oberlin]
+    id: arXiv:math/0512377
+    location: https://arxiv.org/abs/math/0512377
+    type: article
+    relationship: adapts
+    note: Intended induction and Fourier terminal step; not yet formalized.
+    author_endorsement: not-contacted
+  - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
+    authors: [Larry Guth, Joshua Zahl]
+    id: arXiv:1701.07045
+    location: https://arxiv.org/abs/1701.07045
+    type: article
+    relationship: adapts
+    note: Corrected Proposition 2.1 is a planned proof input, not an axiom.
+    author_endorsement: not-contacted
+  - title: On the polynomial Wolff axioms
+    authors: [Nets Hawk Katz, Keith M. Rogers]
+    id: arXiv:1802.09094
+    location: https://arxiv.org/abs/1802.09094
+    type: article
+    relationship: adapts
+    note: Theorem 1.1 is a planned proof input, not an assumption on the target sets.
+    author_endorsement: not-contacted
+  - title: Positive measure for (5,2)-Besicovitch sets
+    type: supplied proof draft
+    relationship: formalizes
+    note: >-
+      September 2026 draft present in the local project research material.
+      The target is its positive-measure conclusion, using the p=4 operator
+      consequence; no priority claim is made.
+    license: unknown
+
+related_formalizations: []
+
+status:
+  scope: >-
+    Initial statement and foundation checkpoint. The exact critical exponent,
+    full-dimensional boundary case, normalized disk averages, and passage from
+    an open-set maximal estimate to a volume lower bound have Lean proofs.
+    Two top-level proof gaps stand for substantial undeveloped analytic
+    dependencies described in PLAN.md. Their count does not measure the size
+    of the remaining work. This snapshot is not ready for Palomar submission.
+  sorry_count: 2
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: autonomous
+      models: [GPT-6]
+      framework: OpenAI Codex
+      tool_setup: Lean language server, Mathlib search, Lean kernel, and Lake builds
+      prompting_notes: >-
+        User requested both full positive-measure results, a minimal faithful
+        challenge, explicit proof gaps during development, source audits,
+        topic-based modules, and regular GitHub pushes.
+  spend_usd: not tracked
+  notes: >-
+    AI-generated Lean development directed by the project owner. Existing
+    supplied research drafts and prose audits are used as references only.
+    No human review of the new Lean statements has been recorded.
+
+fidelity:
+  divergences: >-
+    The statements include the elementary k=n boundary and require 1<=k<=n.
+    The disk property uses closed radius-one disks and has no measurable-center
+    selection hypothesis. Lebesgue measurability uses NullMeasurableSet.
+    The advertised conclusions are incomplete, not replaced by conditional
+    variants. Helper analytic implications explicitly display their assumptions.
+
+review:
+  status: self-assessed, incomplete
+  reviewers: []
+  notes: >-
+    Source definitions and the exact exponent were checked against supplied
+    notes and Oberlin's statement. Challenge imports only Mathlib. Comparator
+    is configured to compare definitions and both theorems, with no permission
+    for sorryAx; full verification cannot pass while the proof gaps remain.
+
+alignment:
+  namespace: NKBesicovitch
+  statements:
+    - source: Supplied projection estimate and Oberlin Theorem 3
+      lean: NKBesicovitch.volume_pos_of_criticalExponent
+      module: Solution
+      status: partial
+      note: The full target is stated; the proper-dimensional analytic case remains open in Lean.
+    - source: Supplied positive-measure (5,2) draft
+      lean: NKBesicovitch.volume_pos_five_two
+      module: Solution
+      status: partial
+      note: The full target is stated; the four-dimensional seed and Fourier argument remain open in Lean.
+
+acknowledgements: Mathlib and Lean contributors; authors of the cited mathematical sources.

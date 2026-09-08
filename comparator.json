@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "NKBesicovitch.volume_pos_of_criticalExponent",
+    "NKBesicovitch.volume_pos_five_two"
+  ],
+  "definition_names": [
+    "NKBesicovitch.Space",
+    "NKBesicovitch.IsBesicovitch",
+    "NKBesicovitch.criticalExponent"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}
