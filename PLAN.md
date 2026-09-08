@@ -133,10 +133,14 @@ All proof files for this input belong to `Projection/`:
   where `S_J` counts nonterminal labeled nodes; selecting the root triple
   adds three. Measurable labeled heights lie in the original time set, and
   selected parameters realize analytic trees using only those heights.
-  Bound the parameter coordinates and final estimate constants uniformly
-  by powers of the time-set measure, and reindex the arrays into the scheme
-  interface. Retain the selected-node data when deriving uniform bounds
-  across the analytic tree. The corner theorem
+  All tree coordinates have the same polynomial bound at every depth.
+  The realization retains uniform geometric and input-estimate control.
+  Inner and outer coefficients are one explicit monomial; their propagation
+  through refinement and the stopping proof yields a polynomial stopping
+  constant uniform over every selected tree with fixed balanced-mass
+  coefficients. Next bound the whole-tree threshold and bounded-size cases
+  using the label count, carry the same constant through normalization,
+  and reindex the arrays into the scheme interface. The corner theorem
   accepts `β = 2`, so iteration can start directly from the two-slice seed;
   separate selectable pair-step closure is not needed for this route.
 * `Estimate`: assemble the selectable estimate for every `β > β_c` below 2.

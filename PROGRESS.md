@@ -314,9 +314,18 @@ root triple adds three. The constants are positive and independent of the
 time set. All labeled output heights are jointly measurable and lie in
 the original time set. Every selected parameter realizes an admissible
 analytic `CornerTree` using only those labeled heights.
-The remaining work is polynomial control of all parameter coordinates and
-of the final analytic estimate constant, then reindexing the finite arrays
-into the scheme interface and iterating the selectable corner improvement.
+All tree coordinates now obey the same bound `C (100/|I|)^(8B)` at every
+depth. Selected analytic patterns retain common separation, label-count,
+input-estimate, and Jacobian bounds. The inner and outer analytic
+coefficients reduce to the same explicit monomial. Prescribed constants
+now pass through child refinement and the stopping-node proof, and the
+resulting stopping constant has a uniform positive integer-power bound
+in `1/|I|`. For fixed balanced-mass coefficients, that bound works at
+every internal node of every selected tree, independently of depth.
+The remaining projection work is to control the whole-tree threshold and
+bounded-size cases using the finite label count, retain the same constant
+through multiplicity normalization, reindex the finite arrays into the
+scheme interface, and iterate the selectable corner improvement.
 
 ## Verification conventions
 
@@ -373,6 +382,9 @@ The volume-preserving tree-coordinate split, joint whole-tree selection,
 full root-and-tree polynomial volume bound, measurable labeled heights,
 and analytic tree realization also pass the standard-axiom audit, with
 no new proof gaps or source warnings.
+The uniform tree-coordinate bound, quantitative control of selected
+patterns, polynomial stopping-coefficient bound, and common stopping
+bound across selected trees also pass the standard-axiom audit.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

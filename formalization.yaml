@@ -38,8 +38,12 @@ sources:
       Borel with a polynomial volume bound including the root triple.
       Measurable labeled heights remain in the original time set, and
       selected parameters realize admissible analytic corner trees using
-      only those heights. Polynomial control of parameter coordinates and
-      the final estimate constant, and selectable iteration, remain incomplete.
+      only those heights. All tree coordinates have a common polynomial
+      bound, and the realization retains uniform geometric and analytic
+      control. The explicit stopping coefficient has a polynomial bound
+      common to every selected node and tree for fixed balanced-mass
+      coefficients. Whole-tree threshold and bounded-size control, final
+      scheme assembly, and selectable iteration remain incomplete.
     license: unknown
   - title: From Projection Inequalities to Mixed-Norm Local X-Ray Estimates
     type: supplied proof notes
@@ -128,7 +132,12 @@ status:
     volume-preserving finite tree-coordinate splitting, jointly Borel
     whole-tree and root-triple selection with polynomial parameter volume,
     measurable labeled heights in the original time set, realization of
-    selected parameters as analytic corner trees using only those heights, and
+    selected parameters as analytic corner trees using only those heights,
+    polynomial bounds on all tree coordinates independent of depth,
+    uniform geometric and analytic control of selected patterns, explicit
+    common inner and outer coefficients, propagation of prescribed constants
+    through refinement and stopping, and a polynomial stopping constant
+    common to all selected trees with fixed balanced-mass coefficients, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

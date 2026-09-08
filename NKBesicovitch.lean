@@ -94,6 +94,12 @@ import NKBesicovitch.Projection.PatternOuter
 import NKBesicovitch.Projection.PatternRefinement
 import NKBesicovitch.Projection.PatternCorners
 import NKBesicovitch.Projection.PatternBound
+import NKBesicovitch.Projection.JacobianBounds
+import NKBesicovitch.Projection.PatternControl
+import NKBesicovitch.Projection.ControlMonomials
+import NKBesicovitch.Projection.ControlledCoefficients
+import NKBesicovitch.Projection.ControlledStopping
+import NKBesicovitch.Projection.ControlPolynomial
 import NKBesicovitch.Projection.CornerTree
 import NKBesicovitch.Projection.TreeStopping
 import NKBesicovitch.Projection.CompanionSystem
@@ -133,6 +139,8 @@ import NKBesicovitch.Projection.Selection.NodeGeometry
 import NKBesicovitch.Projection.Selection.NodeMass
 import NKBesicovitch.Projection.Selection.NodePolynomial
 import NKBesicovitch.Projection.Selection.NodeBounds
+import NKBesicovitch.Projection.Selection.ScaleBounds
+import NKBesicovitch.Projection.Selection.NodeUniformBounds
 import NKBesicovitch.Projection.Selection.NodePattern
 import NKBesicovitch.Projection.Selection.NodePatternLabels
 import NKBesicovitch.Projection.Selection.TreeCoordinates
@@ -142,6 +150,10 @@ import NKBesicovitch.Projection.Selection.RootParameters
 import NKBesicovitch.Projection.Selection.TreeTimes
 import NKBesicovitch.Projection.Selection.TreePatternTimes
 import NKBesicovitch.Projection.Selection.TreeRealization
+import NKBesicovitch.Projection.Selection.NodeControl
+import NKBesicovitch.Projection.Selection.TreeUniformBounds
+import NKBesicovitch.Projection.Selection.TreeControl
+import NKBesicovitch.Projection.Selection.StoppingBounds
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

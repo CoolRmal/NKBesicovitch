@@ -18,7 +18,7 @@ projection estimate give the two inequalities needed for numerical
 amplification, with constants fixed before the line family and level.
 -/
 
-public section
+@[expose] public section
 
 open MeasureTheory Set Bornology
 open scoped ENNReal
@@ -27,8 +27,8 @@ namespace NKBesicovitch.Projection.CornerPattern
 
 variable {m : ℕ} {β : ℝ}
 
-theorem exists_stopping_corner_constants (P : CornerPattern m β) (hβ : 1 < β) (hβ2 : β ≤ 2) :
-    ∃ K C : ℝ, 0 < K ∧ 0 < C ∧
+/-- The two geometric stopping inequalities with prescribed analytic constants. -/
+def StoppingCornerBounds (P : CornerPattern m β) (K C : ℝ) : Prop :=
       ∀ G : Set (Line m), IsBounded G → (parallelMultiplicity G).toReal ≤ 1 →
       ∀ G₀ A B : Set (Line m), MeasurableSet G₀ → MeasurableSet A → MeasurableSet B →
       G₀ ⊆ G → A ⊆ G → B ⊆ G → ∀ η : ℝ≥0∞, 0 < η → η ≠ ∞ →
@@ -53,11 +53,13 @@ theorem exists_stopping_corner_constants (P : CornerPattern m β) (hβ : 1 < β)
         (D / (2 * P.outer.card * N *
           (K * V.toReal * (V.toReal * N ^ (-2 + stoppingRho J i - 200 / J)) ^
             (-(β / (β - 1)))))) ^ (β / (β - 1)) ≤
-          C * (N * (V.toReal * N ^ (-2 + stoppingRho J i))) := by
-  obtain ⟨K, hK, hrefine⟩ := P.exists_refinement_constant hβ hβ2
-  obtain ⟨C, hC, houter⟩ := P.exists_outer_constant hβ hβ2
-  refine ⟨K, C, hK, hC, fun G hGb hM G₀ A B hG₀ hA hB hG₀G hAG hBG η hη hηfin
-    hηₐ hηᵦ V hV₀ hV hWV N hN htimes J i hJ hi hlarge U hU hUP hparent hQ hchild ↦ ?_⟩
+          C * (N * (V.toReal * N ^ (-2 + stoppingRho J i)))
+
+theorem stoppingCornerBounds_of_bounds (P : CornerPattern m β) {K C : ℝ}
+    (hK : 0 < K) (hrefine : P.RefinementBound K) (houter : P.OuterBound C) :
+    P.StoppingCornerBounds K C := by
+  intro G hGb hM G₀ A B hG₀ hA hB hG₀G hAG hBG η hη hηfin
+    hηₐ hηᵦ V hV₀ hV hWV N hN htimes J i hJ hi hlarge U hU hUP hparent hQ hchild
   have hNpos := lt_of_lt_of_le zero_lt_one hN
   have hVreal := ENNReal.toReal_pos hV₀.ne' hV
   obtain ⟨E, hE, _, hloss, himage⟩ := hrefine G hGb hM _
@@ -86,5 +88,11 @@ theorem exists_stopping_corner_constants (P : CornerPattern m β) (hβ : 1 < β)
       _ (by finiteness) (fun p hp ↦ hQ _ (hrestrict p hp).1) himage
     simpa only [ENNReal.toReal_mul, ENNReal.toReal_ofReal hNpos.le,
       ENNReal.toReal_ofReal hR.le, ENNReal.toReal_ofReal (Real.rpow_nonneg hNpos.le _)] using h
+
+theorem exists_stopping_corner_constants (P : CornerPattern m β) (hβ : 1 < β) (hβ2 : β ≤ 2) :
+    ∃ K C : ℝ, 0 < K ∧ 0 < C ∧ P.StoppingCornerBounds K C := by
+  obtain ⟨K, hK, hrefine⟩ := P.exists_refinement_constant hβ hβ2
+  obtain ⟨C, hC, houter⟩ := P.exists_outer_constant hβ hβ2
+  exact ⟨K, C, hK, hC, P.stoppingCornerBounds_of_bounds hK hrefine houter⟩
 
 end NKBesicovitch.Projection.CornerPattern
