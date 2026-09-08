@@ -32,6 +32,12 @@ def codeCoordinates (a b c : ℝ) (p : PairCoordinates m) : Line m × Space m :=
 noncomputable def codeJacobian (m : ℕ) (a b : ℝ) : ℝ≥0∞ :=
   ENNReal.ofReal |((b - a) ^ m)⁻¹|
 
+theorem codeJacobian_ne_top (m : ℕ) (a b : ℝ) : codeJacobian m a b ≠ ∞ :=
+  ENNReal.ofReal_ne_top
+
+theorem codeJacobian_pos {a b : ℝ} (hab : a ≠ b) : 0 < codeJacobian m a b :=
+  ENNReal.ofReal_pos.mpr (abs_pos.mpr (inv_ne_zero (pow_ne_zero _ (sub_ne_zero.mpr hab.symm))))
+
 theorem continuous_codeCoordinates (a b c : ℝ) :
     Continuous (codeCoordinates (m := m) a b c) := by
   unfold codeCoordinates pairCode lineAt atHeight

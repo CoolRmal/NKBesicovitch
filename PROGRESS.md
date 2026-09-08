@@ -57,6 +57,14 @@ source decomposition. The final theorems are not proved yet.
   volume bounds. A half-mass budget retains half the pair mass. For positive
   finite original mass, one code fiber retains half its density and satisfies
   all the selected projection bounds simultaneously.
+* `Projection/CodeSlices`, `CodeBound`: the exact upper bound for code density
+  by parallel multiplicity times one projection size. The proof transports
+  exceptional slopes through an invertible affine map, so it uses the
+  essential supremum faithfully and holds for every code value.
+* `Projection/BoundedFamilies`, `Estimates`, `PairWitness`: bounded line
+  families have finite projection, multiplicity, and pair masses. The uniform
+  projection-estimate predicate has its exponent-two seed, and the selected
+  family satisfies all the finite numerical inequalities for pair amplification.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -90,8 +98,8 @@ inputs require proofs in Lean; none may be installed as axioms.
 
 For the projection estimate, the pair-incidence mass, low-density deletion,
 code-fiber projection bound, and simultaneous fiber-selection steps are now
-proved. The code-density upper bound using parallel multiplicity, the resulting
-pair improvement, and corner improvement are still open.
+proved, including the code-density upper bound using parallel multiplicity.
+The resulting numerical pair improvement and corner improvement are still open.
 
 ## Verification conventions
 
@@ -111,6 +119,7 @@ The pair-mass lower bound, dual-height code identity, and restricted
 double-projection density identity pass the same audit.
 The exact pointwise code marginal and pair-fiber projection bound also pass.
 The simultaneous code-fiber selection theorem passes the same audit.
+The code-density upper bound also passes, with no extra axioms or source warnings.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.

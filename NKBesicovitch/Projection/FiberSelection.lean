@@ -50,6 +50,12 @@ theorem pairFiber_mono (a b c : ℝ) {W₀ W₁ : Set (PairCoordinates m)}
     (hW : W₁ ⊆ W₀) (z : Space m) : pairFiber a b c W₁ z ⊆ pairFiber a b c W₀ z :=
   fun _ hg ↦ hW hg
 
+theorem pairFiber_subset (a b c : ℝ) {G : Set (Line m)} {W : Set (PairCoordinates m)}
+    (hWG : W ⊆ pairFamily a G) (z : Space m) : pairFiber a b c W z ⊆ G := by
+  intro g hg
+  have h := (hWG hg).1
+  rwa [first_pairFromCode] at h
+
 theorem codeDensity_mono (a b c : ℝ) {W₀ W₁ : Set (PairCoordinates m)}
     (hW : W₁ ⊆ W₀) : codeDensity a b c W₁ ≤ codeDensity a b c W₀ := by
   intro z

@@ -28,6 +28,11 @@ import NKBesicovitch.Projection.FiberProjection
 import NKBesicovitch.Projection.FiberSelection
 import NKBesicovitch.Projection.SimultaneousRefinement
 import NKBesicovitch.Projection.PairSelection
+import NKBesicovitch.Projection.CodeSlices
+import NKBesicovitch.Projection.CodeBound
+import NKBesicovitch.Projection.BoundedFamilies
+import NKBesicovitch.Projection.Estimates
+import NKBesicovitch.Projection.PairWitness
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

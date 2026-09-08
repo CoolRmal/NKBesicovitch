@@ -86,7 +86,8 @@ status:
     the exact two-slice projection seed, intrinsic pair-incidence mass,
     dual-height code algebra, double-projection density, low-density deletion,
     the pointwise code marginal, pair-fiber projection bound,
-    simultaneous finite density refinement and code-fiber selection, and
+    simultaneous finite density refinement and code-fiber selection,
+    the code-density bound by essential parallel multiplicity, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

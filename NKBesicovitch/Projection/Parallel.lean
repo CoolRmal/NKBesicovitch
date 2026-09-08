@@ -25,6 +25,10 @@ namespace NKBesicovitch.Projection
 
 variable {m : ℕ}
 
+theorem parallelMultiplicity_mono {F G : Set (Line m)} (hFG : F ⊆ G) :
+    parallelMultiplicity F ≤ parallelMultiplicity G := by
+  exact essSup_mono_ae (ae_of_all _ fun _ ↦ measure_mono fun _ hx ↦ hFG hx)
+
 theorem parallelMultiplicity_le_projection (G : Set (Line m)) (t : ℝ) :
     parallelMultiplicity G ≤ volume (atHeight t '' G) := by
   refine essSup_le_of_ae_le _ ?_

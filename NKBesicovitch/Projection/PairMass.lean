@@ -58,4 +58,12 @@ theorem sq_volume_le_projection_mul_pairMass (a : ℝ) {G : Set (Line m)}
   exact lintegral_sq_le_measure_mul_lintegral_sq (measurable_sliceMultiplicity a hG)
     (support_sliceMultiplicity_subset a G)
 
+theorem volume_pairFamily_pos (a : ℝ) {G : Set (Line m)} (hG : MeasurableSet G)
+    (hpos : 0 < volume G) : 0 < volume (pairFamily a G) := by
+  apply pos_iff_ne_zero.mpr
+  intro hz
+  have h := sq_volume_le_projection_mul_pairMass a hG
+  rw [hz, mul_zero] at h
+  exact (not_le_of_gt (ENNReal.pow_pos hpos 2)) h
+
 end NKBesicovitch.Projection
