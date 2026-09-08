@@ -85,10 +85,12 @@ inverse-radius Fourier weight are now proved. `XRay/AveragedFourier` gives
 the joint `L²` bound with decay `R^(-1/2)` for a Fourier gap of radius `R`,
 with a finite constant. The smoothed `L²` and fixed-support `L∞` endpoints
 are now proved uniformly under normalized kernel dilation. Smooth amplitude
-decomposition also gives the output-tail bound needed for interpolation,
-without leaving the Schwartz domain. Integration of that tail bound,
-weighted bandlimited estimates, the rest of the Fourier terminal argument,
-and the separate `(5,2)` proof remain incomplete.
+decomposition and layer-cake integration prove the full interpolation theorem
+within the Schwartz domain. `XRay/SmoothedDecay` consequently gives the
+uniform frequency gain `a^(-1/p)` for every finite `p ≥ 2` on fixed bounded
+support. The frequency partition, low-frequency and weighted bandlimited
+estimates, the rest of the Fourier terminal argument, and the separate
+`(5,2)` proof remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

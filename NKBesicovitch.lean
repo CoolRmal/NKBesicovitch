@@ -50,6 +50,9 @@ import NKBesicovitch.Operators.Interpolation.NormalizedLevels
 import NKBesicovitch.Operators.Interpolation.InputSeries
 import NKBesicovitch.Operators.Interpolation.SmoothAmplitude
 import NKBesicovitch.Operators.Interpolation.EndpointTail
+import NKBesicovitch.Operators.Interpolation.TailIntegral
+import NKBesicovitch.Operators.Interpolation.TailBound
+import NKBesicovitch.Operators.Interpolation.Schwartz
 import NKBesicovitch.Operators.XRay.Basic
 import NKBesicovitch.Operators.XRay.GoodTimes
 import NKBesicovitch.Operators.XRay.SelectedFamily
@@ -84,6 +87,7 @@ import NKBesicovitch.Operators.XRay.FourierFrame
 import NKBesicovitch.Operators.XRay.AveragedFourier
 import NKBesicovitch.Operators.XRay.ConvolutionBound
 import NKBesicovitch.Operators.XRay.SmoothedBound
+import NKBesicovitch.Operators.XRay.SmoothedDecay
 import NKBesicovitch.Operators.XRay.Spherical
 import NKBesicovitch.Operators.XRay.SphericalBound
 import NKBesicovitch.Operators.XRay.Power

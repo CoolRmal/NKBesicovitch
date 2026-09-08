@@ -16,9 +16,18 @@ source decomposition. The final theorems are not proved yet.
   input at every positive amplitude threshold into two Schwartz functions
   with no increase in spatial support. `EndpointTail` combines this with
   the endpoint bounds and Chebyshev to control output superlevel measure
-  by the squared input tail. The layer-cake integration giving the full
-  intermediate `Lᵖ` bound remains to be proved. This route keeps the endpoint
-  applications inside their proved Schwartz domain.
+  by the squared input tail. `TailIntegral` evaluates that tail by applying
+  layer-cake to the measure weighted by `‖f‖²`. `TailBound` and `Schwartz`
+  now prove the full `Lᵖ` interpolation theorem for `p > 2`, with a finite
+  constant and two-norm dependence `A^(2/p)`. All endpoint applications
+  stay inside their proved Schwartz domain with its support constraint.
+* `XRay/SchwartzLine` now proves integrability on every normal line, and
+  `FourierFrame` bundles signed line integration as a complex linear map.
+  `SmoothedDecay` applies the interpolation theorem to normalized kernel
+  dilations and proves joint `Lᵖ` decay `a^(-1/p)` for every finite `p ≥ 2`.
+  The constant is finite and uniform over all `a > 0` and all Schwartz
+  inputs supported in the fixed ball. The `p = 2` endpoint is included
+  using the averaged Plancherel bound directly.
 * `XRay/FourierSlice` proves the signed Fourier-slice identity for integrable
   complex inputs. `SchwartzLine` proves continuity, Schwartz regularity,
   and fiberwise Plancherel for signed line integrals. `FourierFrame` places
@@ -476,9 +485,11 @@ input exponent at least two. Moving-ball averaging now extends the local
 plate estimates to arbitrary inputs without changing the deficit. The
 signed Fourier-slice identity, Schwartz regularity, and averaged
 Plancherel formula are now proved. A positive Fourier gap gives the joint
-`L²` half-derivative gain with a finite constant. The remaining general-range
-work is smooth frequency localization, the uniform fixed-support `L∞`
-bound, interpolation, low-frequency control, weighted tails and bandlimited comparison,
+`L²` half-derivative gain with a finite constant. The uniform fixed-support
+`L∞` endpoint, normalized kernel dilation, and full Schwartz interpolation
+are now proved. Their application gives the frequency gain `a^(-1/p)`
+for all finite `p ≥ 2`. The remaining general-range work is the smooth
+frequency partition, low-frequency control, weighted tails and bandlimited comparison,
 followed by the final assembly with the proved passage from uniform maximal
 bounds to positive measure.
 
@@ -613,6 +624,11 @@ pass the standard-axiom audit with no source warnings. The numerical
 critical-exponent bound also passes again. The complete build succeeds
 with 3389 jobs and the same five intended holes. All 264 library modules
 remain below the requested file-size limit; the largest has 160 lines.
+Weighted layer-cake integration, the moment and norm interpolation theorems,
+and their application to smoothed X-ray transforms for every finite `p ≥ 2`
+pass the standard-axiom audit with no source warnings. The full build
+succeeds with 3394 jobs and the same five intended holes. The library now
+contains 268 modules, with the largest still 160 lines.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

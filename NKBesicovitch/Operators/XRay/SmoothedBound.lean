@@ -66,6 +66,27 @@ theorem eLpNorm_frameLineIntegral_convolution_top_le
   apply eLpNormEssSup_le_of_ae_enorm_bound
   exact ae_of_all _ fun z ↦ enorm_frameLineIntegral_convolution_le v b f ψ hs z.1 z.2
 
+/-- A pointwise real bound for applying the bounded-input interpolation endpoint. -/
+theorem norm_frameLineIntegral_convolution_le_of_bound
+    (f ψ : 𝓢(EuclideanSpace ℝ (Fin n), ℂ)) {R : ℝ≥0}
+    (hs : Function.support (f : EuclideanSpace ℝ (Fin n) → ℂ) ⊆ closedBall 0 R)
+    {r : ℝ} (hr : 0 ≤ r) (hf : ∀ x, ‖f x‖ ≤ r) (u : Rotations n)
+    (x : EuclideanSpace ℝ (Fin m)) :
+    ‖frameLineIntegral v b (SchwartzMap.convolution (ContinuousLinearMap.lsmul ℂ ℂ) ψ f) u x‖ ≤
+      (2 * (R : ℝ) * (eLpNorm ψ 1 volume).toReal) * r := by
+  have hsup : eLpNorm f ∞ volume ≤ ENNReal.ofReal r := by
+    rw [eLpNorm_exponent_top]
+    exact eLpNormEssSup_le_of_ae_bound (ae_of_all _ hf)
+  have h := (enorm_frameLineIntegral_convolution_le v b f ψ hs u x).trans
+    (mul_le_mul' (mul_le_mul' le_rfl hsup) le_rfl)
+  rw [← ENNReal.ofReal_toReal (ψ.memLp 1 volume).2.ne,
+    ← ENNReal.ofReal_mul (by positivity : 0 ≤ 2 * (R : ℝ)),
+    ← ENNReal.ofReal_mul (by positivity : 0 ≤ 2 * (R : ℝ) * r), ← ofReal_norm] at h
+  have hn := (ENNReal.ofReal_le_ofReal_iff
+    (by positivity : 0 ≤ 2 * (R : ℝ) * r * (eLpNorm ψ 1 volume).toReal)).mp h
+  convert hn using 1
+  ring
+
 variable [Nonempty (Fin m)]
   (w : sphere (0 : EuclideanSpace ℝ (Fin (m + 1))) 1)
   (c : EuclideanSpace ℝ (Fin m) ≃ₗᵢ[ℝ] (ℝ ∙ (w : EuclideanSpace ℝ (Fin (m + 1))))ᗮ)

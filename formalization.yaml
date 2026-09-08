@@ -120,9 +120,12 @@ sources:
       constant. Normalized kernel dilation preserves the one-norm and
       rescales the Fourier transform exactly. Smoothed L2 and fixed-support
       Linfinity endpoints are now uniform under dilation. Smooth amplitude
-      decomposition and Chebyshev give the squared-tail distribution bound
-      within the Schwartz input domain. Layer-cake integration, the frequency
-      partition, weighted bandlimited estimates, and terminal assembly remain open.
+      decomposition, Chebyshev, and weighted layer-cake integration now give
+      full interpolation within the Schwartz input domain. Signed line
+      integration is linear on that domain, and the smoothed transform has
+      joint Lp decay a^(-1/p) for every finite p >= 2 on fixed bounded support,
+      uniformly over a > 0. The frequency partition, low-frequency and
+      weighted bandlimited estimates, and terminal assembly remain open.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -236,8 +239,10 @@ status:
     averaging of hyperplane integrals with inverse-radius weight,
     the joint L2 half-derivative gain with a finite constant, normalized
     smoothing-kernel dilation, uniform smoothed L2 and Linfinity endpoints,
-    and smooth amplitude decomposition with its squared-tail distribution
-    estimate have Lean proofs.
+    smooth amplitude decomposition with its squared-tail distribution
+    estimate, weighted layer-cake integration and Schwartz interpolation,
+    and the uniform smoothed X-ray frequency gain a^(-1/p) for finite p >= 2
+    have Lean proofs.
     The proved foundations also include
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound.

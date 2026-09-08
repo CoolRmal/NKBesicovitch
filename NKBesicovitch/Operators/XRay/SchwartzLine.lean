@@ -41,6 +41,12 @@ theorem norm_schwartz_add_normal_le (hv : ‖v‖ = 1) (f : 𝓢(E, ℂ))
     _ ≤ _ := add_le_add (f.norm_le_seminorm ℝ _)
       ((mul_le_mul_of_nonneg_right hn (norm_nonneg _)).trans (f.norm_pow_mul_le_seminorm ℝ 2 _))
 
+theorem integrable_schwartz_normalLine (hv : ‖v‖ = 1) (f : 𝓢(E, ℂ)) (y : (ℝ ∙ v)ᗮ) :
+    Integrable (fun t : ℝ ↦ f ((y : E) + t • v)) :=
+  (integrable_inv_one_add_sq.const_mul _).mono'
+    (f.continuous.comp (by fun_prop)).aestronglyMeasurable
+    (ae_of_all _ (norm_schwartz_add_normal_le hv f y))
+
 theorem continuous_lineIntegral (hv : ‖v‖ = 1) (f : 𝓢(E, ℂ)) :
     Continuous (fun y : (ℝ ∙ v)ᗮ ↦ ∫ t : ℝ, f ((y : E) + t • v)) := by
   apply continuous_of_dominated

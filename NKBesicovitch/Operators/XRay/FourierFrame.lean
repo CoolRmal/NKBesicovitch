@@ -34,6 +34,33 @@ noncomputable def frameLineIntegral (f : EuclideanSpace ℝ (Fin n) → ℂ) (u 
   ∫ t : ℝ, f (Unitary.linearIsometryEquiv u
     (normalCoordinatesWithBasis (norm_eq_of_mem_sphere v) b (x, t)))
 
+theorem integrable_frameLineIntegrand (f : 𝓢(EuclideanSpace ℝ (Fin n), ℂ))
+    (u : Rotations n) (x : EuclideanSpace ℝ (Fin m)) :
+    Integrable (fun t : ℝ ↦ f (Unitary.linearIsometryEquiv u
+      (normalCoordinatesWithBasis (norm_eq_of_mem_sphere v) b (x, t)))) := by
+  let F := SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+    (Unitary.linearIsometryEquiv u).toContinuousLinearEquiv f
+  simpa only [F, SchwartzMap.compCLMOfContinuousLinearEquiv_apply, Function.comp_apply,
+    LinearIsometryEquiv.coe_coe, normalCoordinatesWithBasis_apply] using
+      integrable_schwartz_normalLine (norm_eq_of_mem_sphere v) F (b x)
+
+/-- Signed line integration is a complex linear map on the Schwartz domain. -/
+noncomputable def frameLineIntegralLinearMap :
+    𝓢(EuclideanSpace ℝ (Fin n), ℂ) →ₗ[ℂ] (Rotations n × EuclideanSpace ℝ (Fin m) → ℂ) where
+  toFun f z := frameLineIntegral v b f z.1 z.2
+  map_add' f g := by
+    funext z
+    simp only [frameLineIntegral, add_apply, Pi.add_apply]
+    exact integral_add (integrable_frameLineIntegrand v b f z.1 z.2)
+      (integrable_frameLineIntegrand v b g z.1 z.2)
+  map_smul' a f := by
+    funext z
+    simp only [frameLineIntegral, smul_apply, Pi.smul_apply, RingHom.id_apply, integral_smul]
+
+@[simp] theorem frameLineIntegralLinearMap_apply (f : 𝓢(EuclideanSpace ℝ (Fin n), ℂ)) :
+    frameLineIntegralLinearMap v b f =
+      fun z : Rotations n × EuclideanSpace ℝ (Fin m) ↦ frameLineIntegral v b f z.1 z.2 := rfl
+
 theorem measurable_frameLineIntegral {f : EuclideanSpace ℝ (Fin n) → ℂ}
     (hf : Measurable f) :
     Measurable (fun z : Rotations n × EuclideanSpace ℝ (Fin m) ↦

@@ -221,9 +221,11 @@ All induction files belong to `Induction/`:
   `Fourier/Convolution` and `Dilation` now give the multiplier bound and
   exact normalized kernel scaling. `XRay/SmoothedBound` proves the uniform
   fixed-support `L∞` endpoint and the `L²` gain for these dilations.
-  `Interpolation/SmoothAmplitude` and `EndpointTail` provide smooth amplitude
-  splitting and the squared-tail distribution estimate. Layer-cake integration,
-  a smooth frequency partition, and separate control of zero frequency remain.
+  Smooth amplitude splitting, the squared-tail distribution estimate, and
+  weighted layer-cake integration now prove full interpolation in
+  `Interpolation/Schwartz`. `XRay/SmoothedDecay` gives the uniform frequency
+  gain `a^(-1/p)` on fixed bounded support for every finite `p ≥ 2`.
+  A smooth frequency partition and separate control of zero frequency remain.
 * `Terminal`: polynomially weighted bandlimited fiber comparison, summable
   dyadic gain, and the local full-plane bound.
 * `Range`: choose all strict margins, iterate from zero-dimensional disks
@@ -249,11 +251,12 @@ factor `3^(n/p)` without changing the deficit. `Range` uses this global
 estimate. The signed Fourier-slice identity and averaged Plancherel estimate
 are now proved, including a finite constant for the half-derivative gain.
 Both smoothed endpoints are uniform under normalized kernel dilation. Smooth
-amplitude splitting now gives the distribution estimate for interpolation
-while preserving the Schwartz input domain and its support constraint.
-The remaining gap includes layer-cake integration of this tail estimate,
-the frequency partition, weighted tails, bandlimited comparison with local
-plate averages, and Fourier terminal assembly.
+amplitude splitting and weighted layer-cake integration now prove interpolation
+while preserving the Schwartz domain and support constraint. Signed integration
+is linear on this domain, and `SmoothedDecay` supplies the uniform gain
+`a^(-1/p)` for every finite `p ≥ 2`. The remaining gap includes the frequency
+partition, low-frequency control, weighted tails, bandlimited comparison
+with local plate averages, and Fourier terminal assembly.
 
 ### 7. Independent `(5,2)` seed
 
