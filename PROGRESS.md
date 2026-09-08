@@ -123,6 +123,20 @@ source decomposition. The final theorems are not proved yet.
   gives the outer-threshold bound from the parent density; the multiplicity
   exponent is exactly two. This remains a conditional step with explicit
   density and deletion-budget hypotheses, not the full corner improvement.
+* `Projection/Concentration`, `FiniteStopping`: the uniform/concentrated
+  alternative and selection of a deepest uniform node in a fixed finite
+  labeled family. Given the root and terminal bounds, every selected child
+  admits a concentrated subset with the stated deletion allowance.
+* `Projection/ChildRefinement`: the common child family, simultaneous density
+  cutoffs, and simultaneous code retention, with a single explicit bound
+  for the total three-stage deletion.
+* `Projection/StoppingParameters`, `StoppingBudget`: the exact `ρᵢ` and `αᵢ`
+  parameters, their level gaps, and the child budget in both real and extended
+  measures. A finite large-projection threshold exists, beyond which the
+  child deletion is at most half the parent quota.
+* `Projection/CornerPreparation`: lifting a parent family and the refined
+  child family to a Borel corner family of positive mass, preserving both
+  restrictions and the quantitative mass lower bound.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -165,10 +179,12 @@ prescribed fiber mass are now proved, as are the exact balanced pair and
 corner masses, restricted parent/inner-pair counts, and simultaneous outer
 fiber selection. Inner-code pruning, its image-size bound, and both uses of
 the input projection estimate are now proved with explicit hypotheses.
-The next corner steps are the finite uniform/concentrated pruning tree and
-the choice of thresholds meeting all the counting and deletion budgets.
-Their exponent amplification, normalization, iteration, and quantitative
-height selection are still open.
+The finite stopping selection, common-child construction, and the concrete
+child deletion budget are now proved, including their lift to positive
+corner mass. The remaining assembly must supply an admissible height tree
+and its root/terminal bounds, choose the outer-density threshold using the
+inner-code image bounds, and derive the final exponent amplification.
+Normalization, iteration, and quantitative height selection are still open.
 
 ## Verification conventions
 
@@ -201,6 +217,8 @@ The restricted corner half-mass bound, simultaneous corner-code selection,
 and finite numerical corner witness pass the same audit.
 The bad-code deletion bound, simultaneous code pruning, retained code-image
 bound, concentrated-image refinement, and corner-threshold bound also pass.
+The finite stopping selection, child refinement with the concrete stopping
+parameters, and positive corner-family construction pass the same audit.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

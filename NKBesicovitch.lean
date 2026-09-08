@@ -31,6 +31,11 @@ import NKBesicovitch.Projection.CodePruning
 import NKBesicovitch.Projection.SimultaneousCodePruning
 import NKBesicovitch.Projection.SimultaneousRefinement
 import NKBesicovitch.Projection.ProjectionImage
+import NKBesicovitch.Projection.Concentration
+import NKBesicovitch.Projection.FiniteStopping
+import NKBesicovitch.Projection.ChildRefinement
+import NKBesicovitch.Projection.StoppingParameters
+import NKBesicovitch.Projection.StoppingBudget
 import NKBesicovitch.Projection.PairSelection
 import NKBesicovitch.Projection.CodeSlices
 import NKBesicovitch.Projection.CodeBound
@@ -65,6 +70,7 @@ import NKBesicovitch.Projection.CornerJunction
 import NKBesicovitch.Projection.ParentCorners
 import NKBesicovitch.Projection.InnerCorners
 import NKBesicovitch.Projection.CornerCounting
+import NKBesicovitch.Projection.CornerPreparation
 import NKBesicovitch.Projection.CornerFiberSelection
 import NKBesicovitch.Projection.SimultaneousCorners
 import NKBesicovitch.Projection.CornerSelection
