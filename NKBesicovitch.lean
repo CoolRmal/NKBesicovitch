@@ -36,6 +36,7 @@ import NKBesicovitch.Projection.FiniteStopping
 import NKBesicovitch.Projection.ChildRefinement
 import NKBesicovitch.Projection.StoppingParameters
 import NKBesicovitch.Projection.StoppingBudget
+import NKBesicovitch.Projection.StoppingBoundary
 import NKBesicovitch.Projection.PairSelection
 import NKBesicovitch.Projection.CodeSlices
 import NKBesicovitch.Projection.CodeBound
@@ -65,6 +66,7 @@ import NKBesicovitch.Projection.FiberCutoff
 import NKBesicovitch.Projection.SliceBallMass
 import NKBesicovitch.Projection.Companions
 import NKBesicovitch.Projection.BalancedPairs
+import NKBesicovitch.Projection.BalancedStopping
 import NKBesicovitch.Projection.BalancedCorners
 import NKBesicovitch.Projection.CornerJunction
 import NKBesicovitch.Projection.ParentCorners
@@ -85,6 +87,13 @@ import NKBesicovitch.Projection.BalancedMassBounds
 import NKBesicovitch.Projection.CornerAmplification
 import NKBesicovitch.Projection.NormalizedAmplification
 import NKBesicovitch.Projection.CornerDepth
+import NKBesicovitch.Projection.CornerPattern
+import NKBesicovitch.Projection.PatternConstants
+import NKBesicovitch.Projection.PatternCodeImages
+import NKBesicovitch.Projection.PatternOuter
+import NKBesicovitch.Projection.PatternRefinement
+import NKBesicovitch.Projection.PatternCorners
+import NKBesicovitch.Projection.PatternBound
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

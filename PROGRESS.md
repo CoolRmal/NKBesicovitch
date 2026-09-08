@@ -151,6 +151,23 @@ source decomposition. The final theorems are not proved yet.
 * `Projection/CornerDepth`: a positive finite depth achieves every exponent
   strictly above the ideal corner update. The geometric height pattern and
   analytic inputs are still needed to apply this numerical choice.
+* `Projection/CornerPattern`, `PatternConstants`: explicit admissible node
+  data, its child labels and complete finite height set, a common input
+  estimate constant, and a common positive inner Jacobian bound.
+* `Projection/PatternCodeImages`, `PatternOuter`, `PatternRefinement`:
+  inner-code image and outer-estimate constants chosen before the line
+  family. Concentrated children give one Borel pair family with all the
+  code-image bounds while losing at most half the parent quota.
+* `Projection/PatternCorners`, `PatternBound`: geometric assembly at a
+  uniform parent with concentrated children, followed by the normalized
+  line-mass bound. Its constant is independent of the line family, stopping
+  level, and depth; the pattern and balanced-mass coefficients are fixed
+  inputs. This does not yet construct a tree or supply such a node.
+* `Projection/StoppingBoundary`, `BalancedStopping`: terminal pair images
+  have measure at most `N²`; a finite large-projection threshold makes every
+  root pair low-density. The actual balanced companion construction gives
+  the coefficients `1/(4r)` and `1/(2r)` for its pair mass, with companion
+  mass `L/(2rN)` and a half-mass center family.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -195,11 +212,12 @@ fiber selection. Inner-code pruning, its image-size bound, and both uses of
 the input projection estimate are now proved with explicit hypotheses.
 The finite stopping selection, common-child construction, and the concrete
 child deletion budget are now proved, including their lift to positive
-corner mass. The remaining assembly must supply an admissible height tree
-and its root/terminal bounds, select common constants for all its input
-projection estimates and Jacobians, and assemble the geometric hypotheses
-of the normalized numerical bound. The outer threshold, exponent
-amplification, and finite-depth choice are now proved. Geometric
+corner mass. The normalized estimate at one fixed admissible node is now
+assembled, and the root/terminal bounds and balanced-mass coefficients are
+proved. The remaining assembly must supply an admissible height tree,
+take common constants across its finitely many patterns, and apply the
+finite stopping selection to its balanced families. The outer threshold,
+exponent amplification, and finite-depth choice are now proved. Geometric
 normalization, iteration of the estimates, and quantitative height selection
 are still open.
 
@@ -239,6 +257,8 @@ parameters, and positive corner-family construction pass the same audit.
 The outer step with its internal threshold, normalized numerical
 amplification, and finite-depth choice also pass, as does the inverse-density
 power identity used to rewrite the inner-code image bound.
+The assembled stopping-node bound, root density threshold, and balanced
+stopping-data construction also pass the standard-axiom audit.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
