@@ -47,6 +47,11 @@ source decomposition. The final theorems are not proved yet.
   mass identities, support and pointwise projection bounds, and the volume
   lost when removing pairs below a density threshold. No Borel assumption is
   imposed on the projection images themselves.
+* `Projection/CodeCoordinates`, `CodeDensity`, `CodeMarginal`, `FiberProjection`:
+  the code change of variables, measurable code density and its total mass,
+  the exact pointwise marginal identity at dual heights, and the pair-fiber
+  projection bound. The latter is proved for every code value with outer
+  measure, in a form that avoids division by the density threshold.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -78,10 +83,10 @@ mixed-norm transfer and the induction. The (5,2) branch needs the corrected
 Guth–Zahl and Katz–Rogers proofs and the Fourier terminal estimate. All these
 inputs require proofs in Lean; none may be installed as axioms.
 
-For the projection estimate, the pair-incidence mass and low-density deletion
-steps are now proved. The code-fiber marginal identity, fiber selection,
-pair improvement, and corner improvement are still open. The pair-code
-algebra alone does not establish these analytic steps.
+For the projection estimate, the pair-incidence mass, low-density deletion,
+and code-fiber projection-bound steps are now proved. Fiber selection,
+the code-density upper bound using parallel multiplicity, pair improvement,
+and corner improvement are still open.
 
 ## Verification conventions
 
@@ -99,6 +104,7 @@ The same audit passes for `measurable_plateMaximal_indicator`.
 It also passes for the exact two-slice projection bound.
 The pair-mass lower bound, dual-height code identity, and restricted
 double-projection density identity pass the same audit.
+The exact pointwise code marginal and pair-fiber projection bound also pass.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.

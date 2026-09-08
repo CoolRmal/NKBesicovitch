@@ -48,6 +48,20 @@ theorem det_twoSlice (s t : ℝ) : LinearMap.det (twoSlice (m := m) s t) = (t - 
     Matrix.det_fromBlocks_one₁₁, one_mul, ← sub_smul]
   simp
 
+theorem measurePreserving_twoSlice {s t : ℝ} (hst : s ≠ t) :
+    MeasurePreserving (twoSlice (m := m) s t) volume
+      (ENNReal.ofReal |((t - s) ^ m)⁻¹| • volume) := by
+  have : Measure.IsAddHaarMeasure (volume : Measure (Line m)) := by
+    change Measure.IsAddHaarMeasure
+      ((volume : Measure (Space m)).prod (volume : Measure (Space m)))
+    infer_instance
+  have hd : LinearMap.det (twoSlice (m := m) s t) ≠ 0 := by
+    rw [det_twoSlice]
+    exact pow_ne_zero _ (sub_ne_zero.mpr hst.symm)
+  refine ⟨(twoSlice s t).continuous_of_finiteDimensional.measurable, ?_⟩
+  simpa only [det_twoSlice] using
+    Measure.map_linearMap_addHaar_eq_smul_addHaar (volume : Measure (Line m)) hd
+
 /-- The seed projection bound, with its exact time-separation constant. -/
 theorem volume_le_two_slice {s t : ℝ} (hst : s ≠ t) (G : Set (Line m)) :
     volume G ≤ ENNReal.ofReal |((t - s) ^ m)⁻¹| *
