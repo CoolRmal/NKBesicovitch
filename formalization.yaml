@@ -104,7 +104,10 @@ sources:
       one-dimensional induction step. At a suitable outer exponent Q,
       the lower-dimensional input exponent Q/(beta-1) becomes any input
       exponent above Q/beta, with a thickness-independent extra constant.
-      Exponent matching, iteration, and the terminal estimate remain open.
+      Power inequalities now extend the plate and spherical estimates to
+      every common larger exponent scale. Output Holder and flag integration
+      give a diagonal step with explicit compatible exponents. Choosing
+      and iterating those exponents, and the terminal estimate, remain open.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -138,7 +141,7 @@ status:
     Partial formalization. The exact critical exponent,
     strict parameter margins, full-dimensional boundary case, normalized disk
     averages, canonical Grassmannian probability and its uniqueness,
-    measurability of plate maximal functions on open indicators,
+    measurability of plate maximal functions on all Borel nonnegative inputs,
     the exact two-slice projection seed, intrinsic pair-incidence mass,
     dual-height code algebra, double-projection density, low-density deletion,
     the pointwise code marginal, pair-fiber projection bound,
@@ -207,7 +210,9 @@ status:
     of geometric X-ray direction norms, their exact frame norm identity,
     plate cylinder containment and uniform volume normalization, rotation
     covariance of plate maximal functions, uniform frame support localization,
-    and a one-dimensional plate induction step from the proved X-ray bound, and
+    a one-dimensional plate induction step from the proved X-ray bound,
+    exponent inflation for plate and spherical X-ray estimates, a compatible
+    diagonal induction step, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

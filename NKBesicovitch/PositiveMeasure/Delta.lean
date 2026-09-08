@@ -5,7 +5,7 @@ Authors: Yongxi Lin
 -/
 module
 
-public import NKBesicovitch.Operators.Disks
+public import NKBesicovitch.Geometry.Plates
 
 /-!
 # Thickened disks inside open sets
@@ -23,17 +23,6 @@ open scoped ENNReal
 namespace NKBesicovitch
 
 variable {n k : ℕ}
-
-theorem volume_plate_pos {δ : ℝ} (hδ : 0 < δ) (V : Submodule ℝ (EuclideanSpace ℝ (Fin n)))
-    (a : EuclideanSpace ℝ (Fin n)) :
-    0 < volume (plate δ V a) := by
-  refine (Metric.measure_ball_pos volume a hδ).trans_le (measure_mono ?_)
-  exact Metric.ball_subset_thickening (by simp [unitDisk] : a ∈ unitDisk V a) δ
-
-theorem volume_plate_lt_top (δ : ℝ) (V : Submodule ℝ (EuclideanSpace ℝ (Fin n)))
-    (a : EuclideanSpace ℝ (Fin n)) :
-    volume (plate δ V a) < ⊤ :=
-  (isCompact_unitDisk V a).isBounded.thickening.measure_lt_top
 
 /-- An open set containing every directional disk has plate maximal value at least one
 at all sufficiently small positive scales, separately in each direction. -/

@@ -226,8 +226,12 @@ the normalized comparison with factor `2^m`, uniform over all positive
 thicknesses. `Step` averages it using the flag law, and `XRayStep` applies
 the proved spherical X-ray estimate. This gives the one-dimensional
 step from input exponent `Q/(β-1)` to every exponent above `Q/β`, retaining
-outer exponent `Q`. Exponent matching across dimensions, the iteration,
-and the Fourier terminal argument still require proofs.
+outer exponent `Q`. `PlatePower` and `XRay/ScaledBound` now increase the
+exponent scales without changing the gain ratio. `DiagonalStep` applies
+output Hölder and the flag argument to compatible diagonal estimates.
+The next steps are to choose a finite sequence of compatible exponents,
+prove the zero-plane seed with its dimension deficit, and iterate the
+deficit recurrence. The Fourier terminal argument remains open.
 
 ### 7. Independent `(5,2)` seed
 

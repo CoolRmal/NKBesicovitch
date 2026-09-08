@@ -5,6 +5,20 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Operators/PlateMeasurability`: lower semicontinuity and Borel measurability
+  now hold for every Borel nonnegative input, including infinite values.
+  The moving open-plate indicator supplies the semicontinuity; the input
+  itself need not be continuous. `Geometry/Plates` contains the shared
+  positive finite volume facts formerly in `PositiveMeasure/Delta`.
+* `Operators/PlatePower`: normalized Hölder gives `(M f)^t ≤ M (f^t)`
+  for every `t ≥ 1`. A local plate estimate at `(p,q)` therefore extends
+  to `(tp,tq)` with the constant raised to `1/t`, preserving the deficit.
+  `XRay/Power` proves the analogous spherical norm inequality using the
+  exact arclength support interval `[-R,R]`. `XRay/ScaledBound` applies
+  it to the proved projection-derived estimate at every common larger
+  exponent scale. `Induction/DiagonalStep` combines the plate extension,
+  output Hölder on direction probability spaces, and flag integration
+  into a diagonal induction step with explicit compatible exponents.
 * `Induction/PlateGeometry`, `PlateVolume`, `PlateIntegral`: projection
   places a lifted plate inside the cylinder over the lower-dimensional
   plate. A half-scale lower plate times a unit-length interval gives
@@ -403,10 +417,14 @@ orbit integral formula and uniqueness. Flag integration is now proved in
 orthogonal frame coordinates: the joint Haar and lower-dimensional plane
 law has the required Grassmannian pushforward. The uniform normalized
 plate comparison and a one-dimensional induction step using the proved
-X-ray bound are now complete. Matching the exponents across successive
-dimensions, iterating the estimates, and establishing the Fourier terminal
-estimate remain open, as does the final assembly with the already proved
-passage from uniform maximal bounds to positive measure.
+X-ray bound are now complete. Power inequalities increase both plate
+exponents and all three X-ray exponents without changing the relevant
+ratios. Output Hölder and flag integration now give a diagonal step with
+explicit exponent compatibility. Choosing a finite sequence of compatible
+exponents, starting from the zero-plane seed, iterating the deficit bounds,
+and establishing the Fourier terminal estimate remain open, as does the
+final assembly with the already proved passage from uniform maximal bounds
+to positive measure.
 
 The independent (5,2) branch still needs the corrected Guth–Zahl and
 Katz–Rogers proofs, its maximal estimate, and the Fourier terminal argument.
@@ -516,6 +534,11 @@ The uniform plate-volume comparison, exact rotation covariance, and assembled
 one-dimensional induction step from the spherical X-ray estimate pass the
 standard-axiom audit with no source warnings. The complete build succeeds
 with 2985 jobs and the same five intended holes.
+General-input plate measurability, exponent inflation of plate estimates,
+the proved spherical X-ray estimate at all common larger exponent scales,
+and the compatible diagonal induction step pass the standard-axiom audit
+with no source warnings. The complete build succeeds with 2991 jobs and
+the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

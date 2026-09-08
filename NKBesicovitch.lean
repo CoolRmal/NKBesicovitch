@@ -9,6 +9,7 @@ import NKBesicovitch.Grassmannian.Measure
 import NKBesicovitch.Grassmannian.NormalLift
 import NKBesicovitch.Grassmannian.FlagMeasure
 import NKBesicovitch.Geometry.Disks
+import NKBesicovitch.Geometry.Plates
 import NKBesicovitch.Geometry.RigidMotions
 import NKBesicovitch.Geometry.NormalCoordinates
 import NKBesicovitch.Geometry.NormalIsometry
@@ -22,12 +23,14 @@ import NKBesicovitch.Operators.Disks
 import NKBesicovitch.Operators.Semicontinuity
 import NKBesicovitch.Operators.PlateMeasurability
 import NKBesicovitch.Operators.PlateRotation
+import NKBesicovitch.Operators.PlatePower
 import NKBesicovitch.Operators.MixedNorm.Basic
 import NKBesicovitch.Operators.MixedNorm.Fibers
 import NKBesicovitch.Operators.MixedNorm.Sums
 import NKBesicovitch.Operators.MixedNorm.VolumeComparison
 import NKBesicovitch.Operators.MixedNorm.FiniteCover
 import NKBesicovitch.Operators.MixedNorm.MapProd
+import NKBesicovitch.Operators.MixedNorm.Powers
 import NKBesicovitch.Operators.Interpolation.Dyadic
 import NKBesicovitch.Operators.Interpolation.BlockBounds
 import NKBesicovitch.Operators.Interpolation.BlockScaling
@@ -66,6 +69,8 @@ import NKBesicovitch.Operators.XRay.DirectionMeasurability
 import NKBesicovitch.Operators.XRay.Frame
 import NKBesicovitch.Operators.XRay.Spherical
 import NKBesicovitch.Operators.XRay.SphericalBound
+import NKBesicovitch.Operators.XRay.Power
+import NKBesicovitch.Operators.XRay.ScaledBound
 import NKBesicovitch.Projection.Defs
 import NKBesicovitch.Projection.TwoSlice
 import NKBesicovitch.Projection.Parallel
@@ -232,4 +237,5 @@ import NKBesicovitch.Induction.PlateVolume
 import NKBesicovitch.Induction.PlateIntegral
 import NKBesicovitch.Induction.Step
 import NKBesicovitch.Induction.XRayStep
+import NKBesicovitch.Induction.DiagonalStep
 import NKBesicovitch.FiveTwo.Main

@@ -70,8 +70,11 @@ sphere measure, and a finite cover by bounded slope caps. Borel measurability
 of the geometric direction norm and its exact conversion to a Haar-frame
 norm are also proved. `Induction/XRayStep.lean` now proves the
 one-dimensional plate induction step, including its volume normalization
-and a constant independent of plate thickness. Exponent matching,
-iteration, and the final positive-measure proofs remain incomplete.
+and a constant independent of plate thickness. Power inequalities now
+extend both plate and X-ray estimates to larger exponent scales, and
+`Induction/DiagonalStep` gives the compatible diagonal step. Choosing and
+iterating the exponents, and the final positive-measure proofs, remain
+incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
