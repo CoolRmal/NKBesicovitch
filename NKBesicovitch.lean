@@ -20,6 +20,9 @@ import NKBesicovitch.Operators.Interpolation.BlockBounds
 import NKBesicovitch.Operators.Interpolation.BlockScaling
 import NKBesicovitch.Operators.Interpolation.GeometricSeries
 import NKBesicovitch.Operators.Interpolation.BlockSummation
+import NKBesicovitch.Operators.Interpolation.InputDyadic
+import NKBesicovitch.Operators.Interpolation.NormalizedLevels
+import NKBesicovitch.Operators.Interpolation.InputSeries
 import NKBesicovitch.Operators.XRay.Basic
 import NKBesicovitch.Operators.XRay.GoodTimes
 import NKBesicovitch.Operators.XRay.SelectedFamily
@@ -34,6 +37,11 @@ import NKBesicovitch.Operators.XRay.ValueDecomposition
 import NKBesicovitch.Operators.XRay.DyadicDecomposition
 import NKBesicovitch.Operators.XRay.InterpolatedFibers
 import NKBesicovitch.Operators.XRay.Indicator
+import NKBesicovitch.Operators.XRay.InputSums
+import NKBesicovitch.Operators.XRay.InputBound
+import NKBesicovitch.Operators.XRay.Normalized
+import NKBesicovitch.Operators.XRay.Scaling
+import NKBesicovitch.Operators.XRay.Strong
 import NKBesicovitch.Projection.Defs
 import NKBesicovitch.Projection.TwoSlice
 import NKBesicovitch.Projection.Parallel

@@ -30,9 +30,9 @@ averages, and the passage from a uniform open-set maximal estimate to a
 quantitative volume lower bound. The delta version is proved using compact
 disks, positive finite plate volumes, and Fatou's lemma with thresholds that
 may vary by direction. Strict-margin selection shows that the target range
-needs only projection estimates above the endpoint. The strong X-ray bound
-for general inputs, chart transfer, induction, and four-dimensional seed
-estimates remain to be developed.
+needs only projection estimates above the endpoint. The local strong X-ray
+bound for general inputs is now proved. The chart transfer, induction, and
+four-dimensional seed estimates remain to be developed.
 
 The Grassmannian now has its natural probability measure, constructed from Haar
 measure on the orthogonal group. Lean verifies that it is independent of the
@@ -56,8 +56,13 @@ comparable parallel-fiber measures. The mixed norm uses Mathlib's `eLpNorm`,
 and its countable triangle inequality is proved. The double dyadic
 decomposition, interpolation, and summation now give the full indicator
 estimate `‖T 1_E‖_(L^Q L^(Q/(β-1))) ≤ C |E|^(βθ/Q)` for every `0 < θ < 1`,
-uniformly on fixed bounded support and slopes. Extension to general input
-functions and the change to spherical directions remain to be proved.
+uniformly on fixed bounded support and slopes. Input superlevel decomposition
+and homogeneity now extend this to the strong estimate
+`‖T f‖_(L^Q L^(Q/(β-1))) ≤ C ‖f‖_p` for every `p > Q/β`.
+`Operators/XRay/Strong.lean` proves it for all Borel nonnegative extended-valued
+inputs supported in a fixed bounded set, with bounded Borel slopes. Zero and
+infinite input norms are included. The change to spherical directions remains
+to be proved.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

@@ -162,8 +162,11 @@ All proof files for this input belong to `Projection/`:
   `XRay/Indicator` now completes the double dyadic decomposition, geometric
   interpolation, and summation. It proves the full indicator estimate with
   input-volume exponent `βθ/Q` for every `0 < θ < 1`, uniformly on fixed
-  bounded support and slopes. The next step is the level-set decomposition
-  for general inputs, then the chart transfer, allowing a small input-exponent loss.
+  bounded support and slopes. `InputBound`, `Normalized`, `Scaling`, and
+  `Strong` now extend this to every Borel nonnegative extended-valued input
+  with `p > Q/β`. The superlevel series treats infinite pointwise values,
+  and homogeneity handles zero and infinite norms. The next step is the
+  transfer to spherical directions and perpendicular intercepts.
 
 Essential fiber bounds must be used almost everywhere or justified by removing
 a null set of directions once. Projection images need not be Borel; use outer

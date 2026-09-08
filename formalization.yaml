@@ -65,8 +65,11 @@ sources:
       with its indicator formula and countable triangle inequality proved.
       The double dyadic decomposition, geometric interpolation, and infinite
       summation now prove the full indicator estimate on fixed bounded
-      support and slopes, with any small input-exponent loss. The extension
-      to general functions and the direction-chart transfer remain incomplete.
+      support and slopes, with any small input-exponent loss. Superlevel
+      decomposition and homogeneity now extend this to the strong bound
+      for all Borel nonnegative extended-valued inputs and every p > Q/beta.
+      Zero and infinite input norms are included. The direction-chart
+      transfer remains incomplete.
     license: unknown
   - title: Two bounds for the X-ray transform
     authors: [Richard Oberlin]
@@ -169,7 +172,10 @@ status:
     bounds on pieces with comparable parallel-fiber measures, the double
     dyadic decomposition with null fibers handled almost everywhere,
     geometric interpolation and summation, the uniform mixed-norm indicator
-    estimate on bounded support and slopes with arbitrarily small exponent loss, and
+    estimate on bounded support and slopes with arbitrarily small exponent loss,
+    input superlevel decomposition including infinite values, normalized
+    input-series estimates, and the full homogeneous strong local X-ray
+    bound for every p > Q/beta, including zero and infinite input norms, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

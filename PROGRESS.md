@@ -5,6 +5,16 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Operators/XRay/Strong`: for every `β_c < β ≤ 2`, there is a finite
+  outer exponent `Q > 2` such that every `p > Q/β` gives
+  `‖T f‖_(L^Q L^(Q/(β-1))) ≤ C ‖f‖_p`, uniformly over Borel nonnegative
+  extended-valued inputs on a fixed bounded support and bounded Borel
+  slope set. `InputDyadic` covers infinite pointwise values by a divergent
+  large-level series. `NormalizedLevels` and `InputSeries` control the
+  superlevel measures using the support and the normalized input norm.
+  `XRay/InputSums`, `InputBound`, and `Normalized` transfer the indicator
+  estimate to general normalized inputs. `Scaling` removes normalization,
+  including zero and infinite norms, by an infimum over strict upper bounds.
 * `Operators/XRay/Indicator`: for every `β_c < β ≤ 2`, there is a finite
   outer exponent `Q > 2` such that, for every `0 < θ < 1`,
   `‖T 1_E‖_(L^Q L^(Q/(β-1))) ≤ C |E|^(βθ/Q)` uniformly over Borel subsets
@@ -321,12 +331,12 @@ support for rich-line families is also proved. Restricting to comparable
 parallel fibers now gives the mixed-norm estimate on each block, uniformly
 in its fiber size. The double dyadic decomposition, geometric interpolation,
 and both infinite sums are now proved, giving the full indicator estimate
-with input-volume exponent `βθ/Q` for any `0 < θ < 1`. Next decompose a
-general input function into level sets, using its `L^(Q/β+ε)` norm to
-control the large levels and the fixed support to control the small levels.
-Then transfer the local chart estimate to spherical directions and
-perpendicular intercepts. The strict dimension margin allows the small
-input-exponent loss.
+with input-volume exponent `βθ/Q` for any `0 < θ < 1`. The general-input
+level decomposition is now proved: the `L^p` norm controls large levels,
+and the fixed support controls small levels. Homogeneity gives the full
+strong local estimate for every `p > Q/β`, including zero and infinite
+norms. Next transfer this estimate to spherical directions and perpendicular
+intercepts. The strict dimension margin allows the small input-exponent loss.
 
 The canonical Grassmannian probability measure is implemented, including its
 orbit integral formula and uniqueness. **Flag disintegration** is still open:
@@ -424,6 +434,9 @@ The full double dyadic decomposition, uniform interpolated series bound,
 and assembled mixed-norm indicator estimate pass the standard-axiom audit
 with no source warnings. The complete build succeeds with 2867 jobs and
 the same five intended holes.
+The input superlevel decomposition and assembled strong local X-ray estimate
+pass the standard-axiom audit with no source warnings. The complete build
+succeeds with 2875 jobs and the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
