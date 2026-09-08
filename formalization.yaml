@@ -82,7 +82,8 @@ status:
     Initial statement and foundation checkpoint. The exact critical exponent,
     strict parameter margins, full-dimensional boundary case, normalized disk
     averages, canonical Grassmannian probability and its uniqueness,
-    measurability of plate maximal functions on open indicators, and
+    measurability of plate maximal functions on open indicators,
+    the exact two-slice projection seed, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

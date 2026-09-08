@@ -40,6 +40,10 @@ Plate maximal functions on open indicators are proved Borel measurable through
 lower semicontinuity. The delta-to-volume argument therefore needs only its
 uniform analytic estimate and a direction probability measure.
 
+The projection development includes the two-slice seed with its exact
+time-separation factor and basic parallel-multiplicity bounds. The pair and
+corner improvements beyond the seed remain unproved.
+
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
 

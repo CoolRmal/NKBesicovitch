@@ -13,6 +13,8 @@ import NKBesicovitch.Operators.Disks
 import NKBesicovitch.Operators.Semicontinuity
 import NKBesicovitch.Operators.PlateMeasurability
 import NKBesicovitch.Projection.Defs
+import NKBesicovitch.Projection.TwoSlice
+import NKBesicovitch.Projection.Parallel
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

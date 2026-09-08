@@ -31,6 +31,11 @@ source decomposition. The final theorems are not proved yet.
 * `Projection`: line-family definitions, essential parallel multiplicity,
   the corner update formula and its fixed-point arithmetic. No geometric
   projection estimate is inferred just from this arithmetic.
+* `Projection/TwoSlice`: the seed estimate with exact factor
+  `|(t-s)^m|⁻¹`, via the two-position map's determinant and outer measure.
+  Projection images need not be Borel sets. `Projection/Parallel` bounds
+  parallel multiplicity by every projection size and identifies zero
+  multiplicity with zero mass for measurable line families.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -75,6 +80,7 @@ The initial axiom audits of `criticalExponent_bounds` and
 `Grassmannian.eq_probability_of_invariant` also passes the standard-axiom
 check, with no source warnings.
 The same audit passes for `measurable_plateMaximal_indicator`.
+It also passes for the exact two-slice projection bound.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.

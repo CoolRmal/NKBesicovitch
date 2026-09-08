@@ -112,8 +112,11 @@ All proof files for this input belong to `Projection/`:
 
 * `Defs`: line families `(x,ξ)`, `π_t(x,ξ)=x+tξ`, Lebesgue family mass,
   essential parallel multiplicity, and quantitative selectable patterns.
+* `TwoSlice`, `Parallel`: the exact determinant-based seed, its outer-measure
+  bound, and multiplicity normalization facts. These initial estimates are
+  now proved; the improvements and selection schemes below remain open.
 * `Pair`: changes of variables, pair incidence density, marginal identities,
-  two-slice seed, and pair improvement.
+  and pair improvement.
 * `Corner`: three-line code, its two fiber bounds, and outer marginal identity.
 * `Stopping`: density balancing, simultaneous child pruning, and the finite
   uniform/concentrated tree. Maintain the distinct original, pruned, and
