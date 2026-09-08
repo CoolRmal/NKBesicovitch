@@ -45,8 +45,11 @@ sources:
       coefficients. The whole-tree threshold and bounded-size coefficient
       now have polynomial bounds. Every selected parameter satisfies the
       full finite-tree projection estimate with a uniform polynomial
-      constant, preserved through multiplicity normalization. Final scheme
-      assembly and selectable iteration remain incomplete.
+      constant, preserved through multiplicity normalization. Finite-vector
+      reindexing preserves volume and coordinate bounds. The selectable
+      corner improvement and iteration are now proved, giving a selectable
+      scheme at every exponent strictly above the critical root. The
+      transfer to mixed-norm X-ray estimates remains incomplete.
     license: unknown
   - title: From Projection Inequalities to Mixed-Norm Local X-Ray Estimates
     type: supplied proof notes
@@ -98,7 +101,7 @@ related_formalizations: []
 
 status:
   scope: >-
-    Initial statement and foundation checkpoint. The exact critical exponent,
+    Partial formalization. The exact critical exponent,
     strict parameter margins, full-dimensional boundary case, normalized disk
     averages, canonical Grassmannian probability and its uniqueness,
     measurability of plate maximal functions on open indicators,
@@ -139,8 +142,13 @@ status:
     polynomial bounds on all tree coordinates independent of depth,
     uniform geometric and analytic control of selected patterns, explicit
     common inner and outer coefficients, propagation of prescribed constants
-    through refinement and stopping, and a polynomial stopping constant
-    common to all selected trees with fixed balanced-mass coefficients, and
+    through refinement and stopping, a polynomial stopping constant
+    common to all selected trees with fixed balanced-mass coefficients,
+    polynomial whole-tree thresholds and bounded-size coefficients,
+    uniform full projection estimates for all selected parameters,
+    volume-preserving reindexing into finite vectors, the selectable
+    corner improvement, selectable schemes at every exponent strictly
+    above the critical root, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

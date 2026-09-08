@@ -5,6 +5,17 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Projection/Selection/Main`: every exponent strictly above
+  `projectionExponent ≈ 1.675130871` admits a selectable projection scheme
+  in every positive slope dimension. The scheme works in every
+  positive-measure Borel subset of `[0,1]`, with joint measurability and
+  polynomial bounds on parameter volume, coordinates, and the full
+  projection constant. `RootCoordinates` and `FiniteTreeParameters`
+  reindex the root and tree into finite vectors while preserving volume
+  and bounds; `TreeScheme` assembles the selectable corner improvement.
+  `IterationPrinciple` supplies the common numerical approximation
+  argument for both selectable schemes and finite-height estimates.
+
 * `Projection/Selection/Scheme`, `SeedScheme`, `SchemeBounds`: a finite-coordinate
   scheme interface records measurable labeled heights, joint selection,
   polynomial parameter volume, coordinate bounds, and an explicit uniform
@@ -260,81 +271,28 @@ There are two `sorry` occurrences in the proof development, in
 `Induction/Range.lean` and `FiveTwo/Main.lean`, plus the three deliberate Challenge
 holes. These stand for large analytic developments, not two short lemmas.
 
-The canonical Grassmannian probability measure is now implemented. Its orbit
-integral formula and uniqueness can be used to identify distributions in the
-induction. **Flag disintegration** is still open: construct the joint law of a
-line and a plane in its orthogonal complement and identify its Grassmannian
-pushforward. The current measure implications accept any explicit probability
-measure, including this canonical one.
+The projection estimate, including its quantitative selectable form, is now
+proved at every strict exponent above the critical root. The next step is
+its transfer to mixed-norm X-ray bounds. For a rich line family, remove the
+few times with excessively large spatial slices, use joint selection and
+Tonelli to find one common parameter for many lines, and apply the selectable
+projection estimate. This yields the restricted mixed-norm estimate.
+Dyadic decomposition and strongification then give the actual X-ray bound,
+with the small input-exponent loss allowed by the strict dimension margin.
 
-The remaining operator work is to develop the actual uniform analytic estimates
-supplying the positive-measure implications.
-The general range needs the selectable corner/projection estimate, the
-mixed-norm transfer and the induction. The (5,2) branch needs the corrected
-Guth–Zahl and Katz–Rogers proofs and the Fourier terminal estimate. All these
-inputs require proofs in Lean; none may be installed as axioms.
+The canonical Grassmannian probability measure is implemented, including its
+orbit integral formula and uniqueness. **Flag disintegration** is still open:
+construct the joint law of a line and a plane in its orthogonal complement
+and identify its Grassmannian pushforward. This supports the Bourgain–Oberlin
+induction, followed by the Fourier terminal estimate and the already proved
+passage from uniform maximal bounds to positive measure.
 
-For the projection estimate, the pair-incidence mass, low-density deletion,
-code-fiber projection bound, and simultaneous fiber-selection steps are now
-proved, including the code-density upper bound using parallel multiplicity.
-The basic pair improvement, full corner improvement, and existence of a
-finite-height estimate at every exponent strictly above the critical root
-are proved. The selectable version inside a prescribed positive-measure
-time set still needs uniform polynomial control of the final estimate constant.
-The exact corner identities, both fiber upper bounds, outer-density deletion,
-initial slice refinement, and measurable selection of companions with exactly
-prescribed fiber mass are now proved, as are the exact balanced pair and
-corner masses, restricted parent/inner-pair counts, and simultaneous outer
-fiber selection. Inner-code pruning, its image-size bound, and both uses of
-the input projection estimate are now proved with explicit hypotheses.
-The finite stopping selection, common-child construction, and the concrete
-child deletion budget are now proved, including their lift to positive
-corner mass. The finite-tree assembly is now complete: admissible heights
-and trees are constructed from the input projection estimate, common
-constants are chosen across all nodes, and the root, terminal, and finite
-stopping arguments provide the needed families. Spatial dilation restores
-the general multiplicity factor, and the approximation argument reaches
-every strict exponent above the critical root. The remaining projection
-work is quantitative height selection: Borel parameter families of
-polynomially controlled volume and estimate constants inside arbitrary
-positive-measure time sets. The current finite-height existence theorem
-does not supply that stronger selection rule.
-The selectable two-slice seed, quantitative dual-pair reservoir, common
-outer-scalar reservoir, and separated root and child triples are now proved.
-The finite-coordinate scheme interface and its seed, one-node joint
-selection, polynomial parameter measure, and uniform input constants are
-also proved. The existing corner theorem accepts the seed exponent `2`, so
-the planned iteration can start there directly. A separate selectable pair
-step is not required for this route.
-Whole-tree coordinates now split into root and child product coordinates
-by a volume-preserving measurable equivalence. The recursive selection is
-jointly Borel. If `S_J` is the number of nonterminal labeled nodes, its
-parameter-volume exponent is `(4 + (8 + 6L)A) S_J`; selecting the separated
-root triple adds three. The constants are positive and independent of the
-time set. All labeled output heights are jointly measurable and lie in
-the original time set. Every selected parameter realizes an admissible
-analytic `CornerTree` using only those labeled heights.
-All tree coordinates now obey the same bound `C (100/|I|)^(8B)` at every
-depth. Selected analytic patterns retain common separation, label-count,
-input-estimate, and Jacobian bounds. The inner and outer analytic
-coefficients reduce to the same explicit monomial. Prescribed constants
-now pass through child refinement and the stopping-node proof, and the
-resulting stopping constant has a uniform positive integer-power bound
-in `1/|I|`. For fixed balanced-mass coefficients, that bound works at
-every internal node of every selected tree, independently of depth.
-The finite label count now gives fixed lower balanced-mass coefficients
-and a pair-mass upper coefficient independent of the numerical height set.
-`ControlledThreshold` bounds all root and pruning thresholds by a polynomial
-in `1/|I|`. `TreeUniformBound` and `TreeControlledBound` retain a prescribed
-stopping coefficient and combine the large-size case with an explicit
-two-slice bound. `TreePolynomialBound` bounds the resulting constant by a
-single positive integer power of `1/|I|`.
-`Selection/TreeEstimate` applies this estimate to every selected parameter.
-Both the normalized estimate and the full parallel-multiplicity estimate
-have constants depending only on the input scheme and fixed depth, with
-the stated polynomial dependence on time-set measure. The remaining
-projection work is to reindex the finite arrays into the scheme interface
-and iterate the selectable corner improvement.
+The independent (5,2) branch still needs the corrected Guth–Zahl and
+Katz–Rogers proofs, its maximal estimate, and the Fourier terminal argument.
+All these inputs require proofs in Lean; none may be installed as axioms.
+The remaining work includes the final source-fidelity audit, Comparator and
+kernel verification, Palomar-ready metadata, and the requested README
+history and novelty discussion after the two full theorems are proved.
 
 ## Verification conventions
 
@@ -398,8 +356,12 @@ The common companion bounds, polynomial stopping threshold, full polynomial
 normalized tree estimate, and full estimate for every selected tree parameter
 also pass the standard-axiom audit with no source warnings. The refactored
 multiplicity-normalization theorem and existing strictly supercritical
-finite-height theorem pass again. The complete build succeeds with 2838
+finite-height theorem pass again. The complete build succeeds with 2843
 jobs and only the five intended challenge and final-theorem holes.
+The root-vector volume equivalence, assembled selectable corner improvement,
+and selectable projection theorem at every strictly supercritical exponent
+pass the standard-axiom audit with no source warnings. The finite-height
+theorem also passes after sharing the numerical iteration principle.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

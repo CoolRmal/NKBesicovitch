@@ -120,6 +120,7 @@ import NKBesicovitch.Projection.Dilation
 import NKBesicovitch.Projection.Normalization
 import NKBesicovitch.Projection.CornerImprovement
 import NKBesicovitch.Projection.IterationBounds
+import NKBesicovitch.Projection.IterationPrinciple
 import NKBesicovitch.Projection.Main
 import NKBesicovitch.Projection.Selection.SeparatedPairs
 import NKBesicovitch.Projection.Selection.TwoSlice
@@ -160,6 +161,10 @@ import NKBesicovitch.Projection.Selection.TreeUniformBounds
 import NKBesicovitch.Projection.Selection.TreeControl
 import NKBesicovitch.Projection.Selection.StoppingBounds
 import NKBesicovitch.Projection.Selection.TreeEstimate
+import NKBesicovitch.Projection.Selection.RootCoordinates
+import NKBesicovitch.Projection.Selection.FiniteTreeParameters
+import NKBesicovitch.Projection.Selection.TreeScheme
+import NKBesicovitch.Projection.Selection.Main
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

@@ -30,8 +30,8 @@ averages, and the passage from a uniform open-set maximal estimate to a
 quantitative volume lower bound. The delta version is proved using compact
 disks, positive finite plate volumes, and Fatou's lemma with thresholds that
 may vary by direction. Strict-margin selection shows that the target range
-needs only projection estimates above the endpoint. The projection,
-mixed-norm induction, and four-dimensional seed estimates remain to be developed.
+needs only projection estimates above the endpoint. The mixed-norm transfer,
+induction, and four-dimensional seed estimates remain to be developed.
 
 The Grassmannian now has its natural probability measure, constructed from Haar
 measure on the orthogonal group. Lean verifies that it is independent of the
@@ -42,12 +42,13 @@ Plate maximal functions on open indicators are proved Borel measurable through
 lower semicontinuity. The delta-to-volume argument therefore needs only its
 uniform analytic estimate and a direction probability measure.
 
-The projection development includes the two-slice seed with its exact
-time-separation factor, parallel-multiplicity bounds, and the full basic pair
-improvement, giving exponent `7/4` on five heights. The exact corner densities,
-both corner-fiber upper bounds, outer-density deletion, and measurable
-companions of prescribed fiber mass are also proved. The stronger corner
-improvement near `1.675` and the finite pruning argument remain open.
+The projection development proves the two-slice seed, pair and corner
+improvements, finite stopping argument, and projection estimates at every
+exponent strictly above `1.675130871…`. The stronger selectable form is also
+proved: in every positive-measure Borel subset of `[0,1]`, a jointly measurable
+family of finite time patterns has polynomially controlled parameter volume,
+coordinates, and projection constants. `Projection/Selection/Main.lean`
+assembles this result. Transferring it to mixed-norm X-ray estimates is next.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
@@ -75,7 +76,7 @@ lake build
 | `NKBesicovitch/Grassmannian/` | Direction topology, orthogonal action, canonical probability |
 | `NKBesicovitch/Geometry/` | Disks and the full-dimensional case |
 | `NKBesicovitch/Operators/` | Nonnegative disk, plate, and local X-ray operators |
-| `NKBesicovitch/Projection/` | Pair improvement, corner densities, fiber balancing, and iteration arithmetic |
+| `NKBesicovitch/Projection/` | Pair/corner estimates, finite stopping, and selectable projection schemes |
 | `NKBesicovitch/PositiveMeasure/` | Passage from maximal estimates to measure |
 | `NKBesicovitch/Induction/` | General-range proof frontier |
 | `NKBesicovitch/FiveTwo/` | Separate (5,2) proof frontier |
@@ -88,7 +89,9 @@ The conjecture asks for positive measure whenever \(2\le k<n\).
 Oberlin's [*Two bounds for the X-ray transform*](https://doi.org/10.1007/s00209-009-0589-5),
 Theorem 3, relates this question to mixed-norm X-ray estimates. The supplied
 September 2026 projection manuscript proposes the exponent leading to the
-larger ratio above; that new analytic argument still requires formal proof.
+larger ratio above. Its projection estimate and quantitative selection now
+have Lean proofs; the transfer and induction needed for the requested
+positive-measure theorem remain incomplete.
 The separate (5,2) route uses the corrected
 [Guth–Zahl estimate](https://arxiv.org/abs/1701.07045),
 [Katz–Rogers concentration theorem](https://arxiv.org/abs/1802.09094),

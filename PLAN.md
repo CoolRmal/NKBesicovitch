@@ -115,7 +115,7 @@ All proof files for this input belong to `Projection/`:
 * `TwoSlice`, `Parallel`: the exact determinant-based seed, its outer-measure
   bound, and multiplicity normalization facts. These estimates, both
   improvements, and finite-height existence at every strict exponent above
-  the critical root are now proved. Full quantitative selection remains open.
+  the critical root are now proved, including full quantitative selection.
 * `Pair`: changes of variables, pair incidence density, marginal identities,
   and pair improvement.
 * `Corner`: three-line code, its two fiber bounds, and outer marginal identity.
@@ -142,11 +142,15 @@ All proof files for this input belong to `Projection/`:
   coefficients, a polynomial stopping threshold, and an explicit bound
   covering both large and bounded projection sizes. The full selected-tree
   estimate has a uniform polynomial constant, preserved when restoring
-  parallel multiplicity. Next reindex the arrays into the scheme interface
-  and iterate the selectable improvement. The corner theorem
-  accepts `β = 2`, so iteration can start directly from the two-slice seed;
-  separate selectable pair-step closure is not needed for this route.
-* `Estimate`: assemble the selectable estimate for every `β > β_c` below 2.
+  parallel multiplicity. The arrays are now reindexed into finite vectors
+  by a volume-preserving measurable equivalence. `TreeScheme` assembles
+  the selectable corner improvement, starting directly at the two-slice
+  seed exponent `2`. `Selection/Main` proves existence of a selectable
+  scheme at every `β > β_c` by the same numerical iteration principle
+  used for finite-height estimates. No endpoint estimate is asserted.
+* The next analytic step is the simultaneous selection of one common
+  parameter for a positive proportion of an X-ray superlevel family,
+  followed by the restricted-to-strong mixed-norm argument.
 
 Essential fiber bounds must be used almost everywhere or justified by removing
 a null set of directions once. Projection images need not be Borel; use outer

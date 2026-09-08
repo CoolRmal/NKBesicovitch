@@ -58,9 +58,9 @@ theorem exists_tree_normalized_constants (hβ : 1 < β) (hβ2 : β ≤ 2) (hJ : 
   exact hbound _ hx hx₁ T (Nat.cast_le.mpr hcard) hcontrol G hG hGb hM N hN
     (fun t ht ↦ hπ t (htimes ht))
 
-theorem exists_tree_projection_constants (hβ : 1 < β) (hβ2 : β ≤ 2) (hJ : 0 < J) :
-    let q := β / (β - 1)
-    let γ := (2 * q + 3 * q ^ 2 - 2 + (200 * q ^ 2 + 2 * q) / J) / (q + 2 * q ^ 2 - 2)
+theorem exists_tree_projection_constants_of_le (hβ : 1 < β) (hβ2 : β ≤ 2) (hJ : 0 < J)
+    {γ : ℝ} (hγ : let q := β / (β - 1)
+      (2 * q + 3 * q ^ 2 - 2 + (200 * q ^ 2 + 2 * q) / J) / (q + 2 * q ^ 2 - 2) ≤ γ) :
     ∃ C : ℝ, 0 < C ∧ ∃ B : ℕ, 0 < B ∧
       ∀ I : Set ℝ, MeasurableSet I → I ⊆ Icc 0 1 → 0 < volume I →
         ∀ q₀, q₀ ∈ separatedTriples I ((volume I).toReal / 100) →
@@ -73,7 +73,22 @@ theorem exists_tree_projection_constants (hβ : 1 < β) (hβ2 : β ≤ 2) (hJ : 
   refine ⟨C, hC, B, hB, fun I hI hIunit hIpos q₀ hq σ hσ G hG hGb ↦ ?_⟩
   have htimes : (S.treeTimes J q₀ σ).Nonempty :=
     Finset.univ_nonempty.image (S.treeTime J q₀ σ)
-  exact volume_le_of_normalized htimes (by positivity)
-    (hbound I hI hIunit hIpos q₀ hq σ hσ) hG hGb
+  apply volume_le_of_normalized htimes (by positivity) _ hG hGb
+  intro F hF hFb hM N hN hπ
+  exact (hbound I hI hIunit hIpos q₀ hq σ hσ F hF hFb hM N hN hπ).trans
+    (mul_le_mul_of_nonneg_left (Real.rpow_le_rpow_of_exponent_le hN hγ) (by positivity))
+
+theorem exists_tree_projection_constants (hβ : 1 < β) (hβ2 : β ≤ 2) (hJ : 0 < J) :
+    let q := β / (β - 1)
+    let γ := (2 * q + 3 * q ^ 2 - 2 + (200 * q ^ 2 + 2 * q) / J) / (q + 2 * q ^ 2 - 2)
+    ∃ C : ℝ, 0 < C ∧ ∃ B : ℕ, 0 < B ∧
+      ∀ I : Set ℝ, MeasurableSet I → I ⊆ Icc 0 1 → 0 < volume I →
+        ∀ q₀, q₀ ∈ separatedTriples I ((volume I).toReal / 100) →
+          ∀ σ ∈ S.treeParameters I J q₀,
+            ∀ G : Set (Line m), MeasurableSet G → IsBounded G →
+              (volume G).toReal ≤ (C * (volume I).toReal⁻¹ ^ B) *
+                (parallelMultiplicity G).toReal ^ (2 - γ) *
+                  (sliceSize (S.treeTimes J q₀ σ) G).toReal ^ γ :=
+  S.exists_tree_projection_constants_of_le hβ hβ2 hJ le_rfl
 
 end NKBesicovitch.Projection.Selection.SelectableProjectionScheme
