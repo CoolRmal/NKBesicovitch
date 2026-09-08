@@ -234,9 +234,12 @@ ambient-dimension loss, `XRayExponents` chooses a compatible scale at every
 fixed subcritical ratio, and `Lift` divides the deficit by that ratio.
 `Iteration` proves the full finite recurrence `c/ρ^j`. The requested strict
 range now supplies a deficit below one in dimension `n-1` at finite input
-exponent at least two. `Range` uses this estimate; its remaining gap is the
-Fourier terminal argument and its required globalization, frequency and
-weighted bandlimited estimates.
+exponent at least two. `Globalization` now extends every such local estimate
+to arbitrary Borel nonnegative inputs for `0 < δ ≤ 1`. Translation covariance,
+joint measurability of moving-ball maxima, and Tonelli give the explicit
+factor `3^(n/p)` without changing the deficit. `Range` uses this global
+estimate; its remaining gap is the Fourier terminal argument and its
+required frequency and weighted bandlimited estimates.
 
 ### 7. Independent `(5,2)` seed
 

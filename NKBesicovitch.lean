@@ -24,6 +24,10 @@ import NKBesicovitch.Operators.Semicontinuity
 import NKBesicovitch.Operators.PlateMeasurability
 import NKBesicovitch.Operators.PlateRotation
 import NKBesicovitch.Operators.PlatePower
+import NKBesicovitch.Operators.PlateTranslation
+import NKBesicovitch.Operators.PlateLocalizationMeasurability
+import NKBesicovitch.Operators.PlateLocalization
+import NKBesicovitch.Operators.BallLocalization
 import NKBesicovitch.Operators.MixedNorm.Basic
 import NKBesicovitch.Operators.MixedNorm.Fibers
 import NKBesicovitch.Operators.MixedNorm.Sums
@@ -243,4 +247,5 @@ import NKBesicovitch.Induction.Seed
 import NKBesicovitch.Induction.XRayExponents
 import NKBesicovitch.Induction.Lift
 import NKBesicovitch.Induction.Iteration
+import NKBesicovitch.Induction.Globalization
 import NKBesicovitch.FiveTwo.Main

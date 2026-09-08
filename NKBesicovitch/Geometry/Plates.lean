@@ -34,4 +34,11 @@ theorem volume_plate_lt_top (δ : ℝ) (V : Submodule ℝ (EuclideanSpace ℝ (F
     volume (plate δ V a) < ⊤ :=
   (isCompact_unitDisk V a).isBounded.thickening.measure_lt_top
 
+theorem plate_subset_ball (δ : ℝ) (V : Submodule ℝ (EuclideanSpace ℝ (Fin n)))
+    (a : EuclideanSpace ℝ (Fin n)) : plate δ V a ⊆ Metric.ball a (δ + 1) := by
+  intro x hx
+  obtain ⟨z, hz, hxz⟩ := Metric.mem_thickening_iff.mp hx
+  have hza : dist z a ≤ 1 := by simpa only [dist_eq_norm] using hz.2
+  exact (dist_triangle x z a).trans_lt (add_lt_add_of_lt_of_le hxz hza)
+
 end NKBesicovitch

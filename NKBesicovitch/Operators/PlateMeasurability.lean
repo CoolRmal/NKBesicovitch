@@ -26,22 +26,17 @@ namespace NKBesicovitch
 
 variable {n k : ℕ}
 
-private theorem lowerSemicontinuous_plate_indicator_orbit (δ : ℝ)
-    (a x : EuclideanSpace ℝ (Fin n)) (V : Grassmannian n k) (c : ℝ≥0∞) :
-    LowerSemicontinuous (fun u : Rotations n ↦
-      (plate δ (Grassmannian.rotate u V).val a).indicator (fun _ ↦ c) x) := by
-  have heq (u : Rotations n) :
-      (plate δ (Grassmannian.rotate u V).val a).indicator (fun _ ↦ c) x =
-        (plate δ V.val 0).indicator (fun _ ↦ c) ((rigidMotion u a).symm x) := by
-    have hm : (rigidMotion u a).symm x ∈ plate δ V.val 0 ↔
-        x ∈ plate δ (Grassmannian.rotate u V).val a := by
-      rw [← preimage_plate_rigidMotion u a V δ]
-      simp only [mem_preimage, IsometryEquiv.apply_symm_apply]
-    by_cases hx : x ∈ plate δ (Grassmannian.rotate u V).val a
-    · rw [indicator_of_mem hx, indicator_of_mem (hm.mpr hx)]
-    · rw [indicator_of_notMem hx, indicator_of_notMem (mt hm.mp hx)]
-  simp_rw [heq]
-  apply (Metric.isOpen_thickening.lowerSemicontinuous_indicator bot_le).comp
+/-- Membership of a fixed point in a rotated open plate is an open condition. -/
+theorem isOpen_setOf_mem_plate_rotate (δ : ℝ) (a x : EuclideanSpace ℝ (Fin n))
+    (V : Grassmannian n k) :
+    IsOpen {u : Rotations n | x ∈ plate δ (Grassmannian.rotate u V).val a} := by
+  have heq : {u : Rotations n | x ∈ plate δ (Grassmannian.rotate u V).val a} =
+      (fun u : Rotations n ↦ (rigidMotion u a).symm x) ⁻¹' plate δ V.val 0 := by
+    ext u
+    rw [← preimage_plate_rigidMotion u a V δ]
+    simp only [mem_ofPred_eq, mem_preimage, IsometryEquiv.apply_symm_apply]
+  rw [heq]
+  apply Metric.isOpen_thickening.preimage
   change Continuous (fun u : Rotations n ↦
     ((star u : Rotations n) : EuclideanSpace ℝ (Fin n) →L[ℝ]
       EuclideanSpace ℝ (Fin n)) (x - a))
@@ -63,7 +58,10 @@ theorem lowerSemicontinuous_plate_average_orbit (δ : ℝ) (a : EuclideanSpace �
     exact ((hf.mul measurable_const).indicator
       Metric.isOpen_thickening.measurableSet).aemeasurable
   · intro x
-    exact lowerSemicontinuous_plate_indicator_orbit δ a x V _
+    change LowerSemicontinuous
+      ({u : Rotations n | x ∈ plate δ (Grassmannian.rotate u V).val a}.indicator
+        (fun _ ↦ f x * (volume (plate δ V.val 0))⁻¹))
+    exact (isOpen_setOf_mem_plate_rotate δ a x V).lowerSemicontinuous_indicator bot_le
 
 /-- The plate maximal operator is lower semicontinuous for every Borel nonnegative input. -/
 theorem lowerSemicontinuous_plateMaximal (δ : ℝ)

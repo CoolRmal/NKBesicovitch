@@ -77,8 +77,10 @@ seed, exponent selection, and full finite induction are now proved in
 `Induction/Seed`, `XRayExponents`, `Lift`, and `Iteration`. After `j` lifts
 in codimension `c`, the deficit is `c/ρ^j` for any fixed
 `2 < ρ < criticalExponent`. The target range therefore supplies a deficit
-below one in dimension `n-1`. The Fourier terminal argument and the separate
-`(5,2)` proof remain incomplete.
+below one in dimension `n-1`. `Induction/Globalization` extends these local
+plate estimates to all Borel nonnegative inputs for `0 < δ ≤ 1`, with the
+same deficit and only an extra factor `3^(n/p)`. The Fourier terminal
+argument and the separate `(5,2)` proof remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

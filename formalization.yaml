@@ -111,8 +111,11 @@ sources:
       seed, exponent selection, and finite deficit iteration are now proved:
       after j lifts in codimension c the deficit is c/rho^j, for every fixed
       ratio strictly between 2 and the critical exponent. The strict target
-      range yields a subunit deficit in dimension n-1. The Fourier terminal
-      argument and its required analytic estimates remain open.
+      range yields a subunit deficit in dimension n-1. Moving-ball averaging
+      now globalizes the plate estimate to all Borel nonnegative inputs for
+      thickness at most one, preserving the deficit with the extra factor
+      3^(n/p). The Fourier terminal argument and its required frequency and
+      weighted bandlimited estimates remain open.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -219,7 +222,9 @@ status:
     exponent inflation for plate and spherical X-ray estimates, a compatible
     diagonal induction step, the ambient-dimension seed, compatible exponent
     selection at every subcritical ratio, finite deficit iteration to the
-    subunit threshold required by the target range, and
+    subunit threshold required by the target range, translation covariance,
+    joint measurability and exact norm identities for moving-ball localization,
+    globalization of local plate estimates with unchanged deficit, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

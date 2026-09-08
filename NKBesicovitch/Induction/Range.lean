@@ -8,12 +8,14 @@ module
 public import NKBesicovitch.Exponents
 public import NKBesicovitch.Geometry.Disks
 public import NKBesicovitch.Induction.Iteration
+public import NKBesicovitch.Induction.Globalization
 
 /-!
 # The critical range
 
 The selectable projection estimate, its mixed-norm X-ray consequence, and
 the finite plate induction now supply a lower-dimensional deficit below one.
+The plate estimate is globalized without changing this deficit.
 The proper-dimensional case still requires the Fourier terminal argument.
 -/
 
@@ -33,6 +35,7 @@ theorem volume_pos_of_criticalExponent {n k : ℕ} (hk : 1 ≤ k) (hkn : k ≤ n
   · exact volume_pos_of_isBesicovitch_self hB
   · obtain ⟨α, p, hα, hα1, hp, hplate⟩ :=
       exists_hasPlateEstimate_deficit_lt_one hk hkn h
+    obtain ⟨C, hC⟩ := hplate.global_bound (by linarith)
     sorry
 
 end NKBesicovitch.Induction

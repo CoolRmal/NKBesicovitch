@@ -5,6 +5,14 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Induction/Globalization` extends a local diagonal plate estimate to all
+  Borel nonnegative inputs, including unbounded support and infinite values,
+  for `0 < δ ≤ 1`. Its extra factor is `3^(n/p)`, with no change to the
+  thickness deficit. `PlateTranslation` proves exact covariance;
+  `PlateLocalizationMeasurability` proves joint measurability in a Haar frame
+  and ball center. `PlateLocalization` averages the localized maxima, and
+  `BallLocalization` proves the exact Tonelli identity for the input norms.
+  `Range` now obtains the global estimate before the Fourier terminal gap.
 * `Induction/Estimates` records a local diagonal estimate with deficit `α`:
   its thickness factor is `δ^(-α/p)`, with a finite constant uniform over
   inputs in each fixed ball. `Seed` proves deficit `n` at every `p ≥ 1`
@@ -437,9 +445,10 @@ ratios. Output Hölder and flag integration give a diagonal step with
 explicit exponent compatibility. The zero-plane seed, compatible exponent
 selection, and finite deficit iteration are now proved. The general target
 range yields a positive deficit below one in dimension `n-1`, with finite
-input exponent at least two. The remaining general-range work is the Fourier
-terminal argument, including extension of local estimates to arbitrary
-inputs, frequency localization, weighted tails and bandlimited comparison,
+input exponent at least two. Moving-ball averaging now extends the local
+plate estimates to arbitrary inputs without changing the deficit. The
+remaining general-range work is the Fourier terminal argument, including
+frequency localization, weighted tails and bandlimited comparison,
 followed by the final assembly with the proved passage from uniform maximal
 bounds to positive measure.
 
@@ -560,6 +569,10 @@ The ambient-dimension seed, prescribed-ratio X-ray exponent selection,
 unconditional deficit-reducing lift, and complete finite induction to a
 subunit deficit pass the standard-axiom audit with no source warnings.
 The complete build succeeds with 2996 jobs and the same five intended holes.
+Translation covariance, joint measurability of moving-ball plate maxima,
+the exact averaged input-norm identity, and globalization with unchanged
+deficit pass the standard-axiom audit with no source warnings. The complete
+build succeeds with 3001 jobs and the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
