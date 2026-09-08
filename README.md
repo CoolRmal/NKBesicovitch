@@ -93,9 +93,13 @@ the spatial tails. `XRay/WeightedDecay` retains the same frequency gain after
 multiplication by any polynomial weight `(1 + ‖x‖²)^A`, for `a ≥ 1`.
 `XRay/LowFrequency` proves the corresponding weighted bound for every fixed
 Schwartz kernel and finite `p ≥ 1`, without a Fourier-gap hypothesis.
-The frequency partition, bandlimited comparison with local plate averages,
-the rest of the Fourier terminal argument, and the separate `(5,2)` proof
-remain incomplete.
+The smooth low-frequency kernel and its annular differences are now constructed.
+Their finite dyadic sums telescope exactly, and the smoothed approximations
+converge uniformly to every Schwartz input, with Fourier error tending to zero
+in `L¹`. Polynomial weights preserve closed Fourier support, including on each
+X-ray fiber. Passing to integrals over entire unbounded planes, the bandlimited
+comparison with local plate averages, the rest of the terminal argument, and
+the separate `(5,2)` proof remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

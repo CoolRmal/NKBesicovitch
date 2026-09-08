@@ -5,6 +5,23 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Fourier/PolynomialSupport` proves that coordinate multiplication, and
+  hence every weight `(1 + ‖x‖²)^A`, preserves closed Fourier support.
+  The proof uses Mathlib's Fourier differentiation identity, support
+  locality of derivatives, and an orthonormal expansion of the squared norm.
+  `XRay/Bandlimited` gives a weighted Schwartz representative on each
+  transverse fiber with the original ambient frequency radius.
+* `Fourier/FrequencyKernels` constructs a Schwartz kernel whose Fourier
+  transform equals one on the unit ball, vanishes outside radius two, and
+  has norm at most one. Its annular difference has a unit Fourier gap and
+  vanishes at norm at least four. Dilation gives the corresponding support
+  radii at every positive frequency scale.
+* `Fourier/DyadicDecomposition` proves exact finite telescoping for the
+  kernels and their convolutions. `DyadicConvergence` proves eventual
+  equality at each fixed Fourier frequency, convergence of the Fourier
+  error in the one-norm, and uniform convergence of the approximations on
+  the whole ambient space. Convergence through unbounded plane integrals
+  is not inferred from uniform convergence and remains a separate obligation.
 * `XRay/FrameDilation` gives exact line-integral scaling. `KernelDecay`
   separates integrable line-parameter decay from arbitrary transverse
   decay, uniformly over rotations. `KernelTranslation` and `KernelTail`
@@ -507,10 +524,12 @@ Plancherel formula are now proved. A positive Fourier gap gives the joint
 are now proved. Their application gives the frequency gain `a^(-1/p)`
 for all finite `p ≥ 2`, now also with polynomial transverse weights when
 `a ≥ 1`. Rapid tail control and the weighted fixed-kernel low-frequency
-estimate are proved. The remaining general-range work is the smooth frequency
-partition, preservation of Fourier support under polynomial weights, and
-bandlimited comparison with local plate averages, followed by the final
-assembly with the proved passage from uniform maximal bounds to positive measure.
+estimate are proved. The smooth dyadic kernels, finite telescoping identities,
+uniform approximation, and preservation of Fourier support under polynomial
+weights are also proved. The remaining general-range work includes convergence
+through full-plane integration, bandlimited comparison with local plate
+averages, signed full-plane flag Fubini, and final assembly with the proved
+passage from uniform maximal bounds to positive measure.
 
 The independent (5,2) branch still needs the corrected Guth–Zahl and
 Katz–Rogers proofs, its maximal estimate, and the Fourier terminal argument.
@@ -654,6 +673,13 @@ bound pass the standard-axiom audit with no source warnings. The complete
 build succeeds with 3404 jobs and the same five intended holes. All 278
 library modules satisfy the file-size limit; the largest has 160 lines.
 The changed Lean files satisfy the 100-character line limit.
+Preservation of Fourier support under polynomial weights, weighted bandlimited
+X-ray fibers, the low-frequency kernel construction, finite dyadic convolution
+identities, and uniform convergence of the dyadic approximations pass the
+standard-axiom audit without source warnings. The full build succeeds with
+3409 jobs and the same five intended holes. All 283 library modules remain
+within the file-size limit, with a maximum of 160 lines. The metadata continues
+to validate against the upstream schema.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

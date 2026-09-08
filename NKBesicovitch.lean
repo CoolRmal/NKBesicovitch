@@ -34,6 +34,10 @@ import NKBesicovitch.Operators.PolynomialWeight
 import NKBesicovitch.Operators.Fourier.Plancherel
 import NKBesicovitch.Operators.Fourier.Convolution
 import NKBesicovitch.Operators.Fourier.Dilation
+import NKBesicovitch.Operators.Fourier.PolynomialSupport
+import NKBesicovitch.Operators.Fourier.FrequencyKernels
+import NKBesicovitch.Operators.Fourier.DyadicDecomposition
+import NKBesicovitch.Operators.Fourier.DyadicConvergence
 import NKBesicovitch.Operators.MixedNorm.Basic
 import NKBesicovitch.Operators.MixedNorm.Fibers
 import NKBesicovitch.Operators.MixedNorm.Sums
@@ -98,6 +102,7 @@ import NKBesicovitch.Operators.XRay.WeightedTail
 import NKBesicovitch.Operators.XRay.WeightedNorm
 import NKBesicovitch.Operators.XRay.WeightedDecay
 import NKBesicovitch.Operators.XRay.LowFrequency
+import NKBesicovitch.Operators.XRay.Bandlimited
 import NKBesicovitch.Operators.XRay.Spherical
 import NKBesicovitch.Operators.XRay.SphericalBound
 import NKBesicovitch.Operators.XRay.Power

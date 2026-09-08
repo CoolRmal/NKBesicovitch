@@ -38,6 +38,17 @@ variable {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
   ext x
   simp only [normalizedDilation_apply, one_pow, one_smul]
 
+@[simp] theorem normalizedDilation_sub (a : ℝ) (ha : 0 < a) (f g : 𝓢(E, ℂ)) :
+    normalizedDilation a ha (f - g) = normalizedDilation a ha f - normalizedDilation a ha g := by
+  ext x
+  simp only [normalizedDilation_apply, sub_apply, smul_sub]
+
+theorem normalizedDilation_mul (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (f : 𝓢(E, ℂ)) :
+    normalizedDilation a ha (normalizedDilation b hb f) =
+      normalizedDilation (a * b) (mul_pos ha hb) f := by
+  ext x
+  simp only [normalizedDilation_apply, smul_smul, mul_pow, mul_comm]
+
 variable [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E]
 
 theorem eLpNorm_normalizedDilation_one (a : ℝ) (ha : 0 < a) (f : 𝓢(E, ℂ)) :

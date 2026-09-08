@@ -129,8 +129,13 @@ sources:
       Polynomial transverse weights retain the a^(-1/p) gain for a >= 1.
       The weighted low-frequency bound holds for every fixed Schwartz
       kernel and finite p >= 1 without a Fourier-gap hypothesis.
-      The frequency partition, preservation of Fourier support under
-      polynomial weights, bandlimited comparison, and terminal assembly remain open.
+      Smooth low-frequency and annular kernels now have verified cutoff
+      and support properties. Finite dyadic sums telescope, the Fourier
+      errors converge in L1, and the approximations converge uniformly.
+      Polynomial weights preserve closed Fourier support, including on
+      each transverse Schwartz fiber. Convergence through full-plane
+      integration, bandlimited comparison, signed full-plane flag Fubini,
+      and terminal assembly remain open.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -249,8 +254,12 @@ status:
     the uniform smoothed X-ray frequency gain a^(-1/p) for finite p >= 2,
     exact projected-kernel dilation, rapid spatial and frequency tails
     under bounded translations, convolution transfer of those tails,
-    polynomially weighted frequency decay, and weighted low-frequency
-    bounds for every fixed Schwartz kernel at finite p >= 1
+    polynomially weighted frequency decay, weighted low-frequency
+    bounds for every fixed Schwartz kernel at finite p >= 1,
+    preservation of closed Fourier support under polynomial weights,
+    bandlimited weighted Schwartz fibers, construction of smooth cutoff
+    and annular kernels, finite dyadic telescoping, Fourier-error convergence
+    in L1, and uniform convergence of the dyadic approximations
     have Lean proofs.
     The proved foundations also include
     passage from uniform disk or delta-plate maximal estimates
