@@ -155,8 +155,12 @@ All proof files for this input belong to `Projection/`:
   `Operators/XRay/Restricted` assembles the bound
   `r^K |F| ≤ C M(F)^(2-β) |E|^β`, with `K > 2` and uniform constants.
   `Localization` bounds intercepts uniformly for fixed support and slopes.
-  The next step is the double dyadic decomposition and the strong mixed-norm
-  estimate, allowing a small input-exponent loss.
+  `FiberBlocks` and `UniformFibers` now give the mixed-norm bound on every
+  piece with comparable parallel-fiber sizes, independently of that size.
+  `Operators/MixedNorm/` proves the indicator formula, both fiber-size
+  bounds, and the countable triangle inequality using Mathlib's `eLpNorm`.
+  The next step is the double dyadic decomposition, geometric interpolation
+  and summation, and the strong estimate with a small input-exponent loss.
 
 Essential fiber bounds must be used almost everywhere or justified by removing
 a null set of directions once. Projection images need not be Borel; use outer

@@ -12,6 +12,9 @@ import NKBesicovitch.Operators.Defs
 import NKBesicovitch.Operators.Disks
 import NKBesicovitch.Operators.Semicontinuity
 import NKBesicovitch.Operators.PlateMeasurability
+import NKBesicovitch.Operators.MixedNorm.Basic
+import NKBesicovitch.Operators.MixedNorm.Fibers
+import NKBesicovitch.Operators.MixedNorm.Sums
 import NKBesicovitch.Operators.XRay.Basic
 import NKBesicovitch.Operators.XRay.GoodTimes
 import NKBesicovitch.Operators.XRay.SelectedFamily
@@ -19,6 +22,8 @@ import NKBesicovitch.Operators.XRay.RestrictedSelection
 import NKBesicovitch.Operators.XRay.SelectionLosses
 import NKBesicovitch.Operators.XRay.Restricted
 import NKBesicovitch.Operators.XRay.Localization
+import NKBesicovitch.Operators.XRay.FiberBlocks
+import NKBesicovitch.Operators.XRay.UniformFibers
 import NKBesicovitch.Projection.Defs
 import NKBesicovitch.Projection.TwoSlice
 import NKBesicovitch.Projection.Parallel

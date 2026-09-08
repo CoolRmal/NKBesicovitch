@@ -5,6 +5,17 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Operators/MixedNorm/Basic`, `Fibers`, `Sums`: mixed norms are defined by
+  iterating Mathlib's `eLpNorm`, first in intercepts and then in directions.
+  Fiber norms are measurable; the indicator formula, lower-gap and upper
+  fiber-size estimates, finite triangle inequality, monotone convergence,
+  and countable triangle inequality are proved. Infinite norms are allowed.
+* `Operators/XRay/FiberBlocks`, `UniformFibers`: restricting to directions
+  with fiber measure in `(a/2,a]` gives a Borel family with multiplicity at
+  most `a` and an explicit gap for every nonzero fiber. The restricted
+  estimate gives a mixed-norm bound uniform over all `a > 0`, with outer
+  exponent `K > 2` and inner exponent `K/(β-1)`. Fiber-size powers cancel
+  exactly; zero-volume families are included.
 * `Projection/Selection/ParameterBox`, `CommonParameters`: all time-set
   selections with measure at least `r` lie in a common finite box of known
   volume. Tonelli and averaging produce one parameter retaining at least
@@ -297,9 +308,12 @@ The projection estimate, including its quantitative selectable form, is now
 proved at every strict exponent above the critical root. Joint good-time
 selection and Tonelli now give the restricted X-ray bound in terms of
 line-family volume and essential parallel multiplicity. Uniform bounded
-support for rich-line families is also proved. Next decompose both the
-transform values and the measures of the parallel fibers to obtain the
-mixed-norm indicator estimate. Strongification then gives the X-ray bound,
+support for rich-line families is also proved. Restricting to comparable
+parallel fibers now gives the mixed-norm estimate on each block, uniformly
+in its fiber size. The countable mixed-norm triangle inequality is proved.
+Next decompose the transform values and the parallel-fiber measures,
+interpolate each block with the elementary estimate, and sum the resulting
+geometric series. Strongification then gives the X-ray bound,
 with the small input-exponent loss allowed by the strict dimension margin.
 
 The canonical Grassmannian probability measure is implemented, including its
@@ -390,6 +404,10 @@ The polynomial common-parameter theorem, full restricted X-ray bound, and
 uniform intercept localization pass the standard-axiom audit with no source
 warnings. The complete build succeeds with 2852 jobs and the same five
 intended holes.
+The indicator mixed-norm formula, countable mixed-norm triangle inequality,
+and restricted mixed-norm estimate uniform over parallel-fiber scales pass
+the same standard-axiom audit with no source warnings. The complete build
+succeeds with 2857 jobs and the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

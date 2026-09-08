@@ -50,8 +50,11 @@ family of finite time patterns has polynomially controlled parameter volume,
 coordinates, and projection constants. `Projection/Selection/Main.lean`
 assembles this result. Common good-time selection now gives the restricted
 X-ray estimate `r^K |F| ≤ C M(F)^(2-β) |E|^β` for `β_c < β ≤ 2` and some
-integer `K > 2`. Bounded support and slopes also give uniform intercept
-bounds. The dyadic argument yielding strong mixed norms remains to be proved.
+integer `K > 2`. This gives the mixed-norm bound for each piece with
+comparable parallel-fiber measures. The mixed norm uses Mathlib's `eLpNorm`,
+and its countable triangle inequality is proved. Bounded support and slopes
+give uniform intercept bounds. The dyadic summation and strongification
+remain to be proved.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
