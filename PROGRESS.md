@@ -15,6 +15,12 @@ source decomposition. The final theorems are not proved yet.
   containment; compactness of disks; positive volume in full dimension.
 * `Grassmannian/Basic`: k-dimensional subspaces and the topology induced by
   their orthogonal projection operators; projection injectivity.
+* `Grassmannian/Rotations`, `Action`, `Transitivity`, `Topology`, `Measure`:
+  compact orthogonal group and normalized Haar measure; continuous and
+  transitive action on directions; compact, Hausdorff, second-countable
+  Grassmannian; canonical probability measure for `k ≤ n`. The measure is
+  independent of the initial plane, gives positive mass to every nonempty
+  open set, and is the unique rotation-invariant probability measure.
 * `Operators`: extended-nonnegative disk and plate averages and a local X-ray
   transform. Disk averages of indicators containing the disk equal one.
 * `Projection`: line-family definitions, essential parallel multiplicity,
@@ -36,11 +42,12 @@ There are two `sorry` occurrences in the proof development, in
 `Induction/Range.lean` and `FiveTwo/Main.lean`, plus the two deliberate Challenge
 holes. These stand for large analytic developments, not two short lemmas.
 
-The next shared foundation is the **canonical Grassmannian probability measure**:
-construct Haar measure on rotations, prove the orbit map to the projection
-topology is measurable, push it forward, and prove invariance and flag
-disintegration. No canonical direction measure has been implemented yet.
-The current measure implications work with an explicit probability measure.
+The canonical Grassmannian probability measure is now implemented. Its orbit
+integral formula and uniqueness can be used to identify distributions in the
+induction. **Flag disintegration** is still open: construct the joint law of a
+line and a plane in its orthogonal complement and identify its Grassmannian
+pushforward. The current measure implications accept any explicit probability
+measure, including this canonical one.
 
 Then establish measurability of the plate maximal operator on open indicators,
 and develop the actual uniform analytic estimates supplying those implications.
@@ -59,6 +66,8 @@ The initial axiom audits of `criticalExponent_bounds` and
 `le_volume_of_diskMaximal_bound` used only `propext`, `Classical.choice` and
 `Quot.sound`. The same check passed for `le_volume_of_plateMaximal_bound` and
 `Induction.exists_projectionExponent_for_dimension` in the second checkpoint.
+`Grassmannian.eq_probability_of_invariant` also passes the standard-axiom
+check, with no source warnings.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.

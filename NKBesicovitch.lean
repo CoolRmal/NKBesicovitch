@@ -1,6 +1,11 @@
 import NKBesicovitch.Basic
 import NKBesicovitch.Exponents
 import NKBesicovitch.Grassmannian.Basic
+import NKBesicovitch.Grassmannian.Rotations
+import NKBesicovitch.Grassmannian.Action
+import NKBesicovitch.Grassmannian.Transitivity
+import NKBesicovitch.Grassmannian.Topology
+import NKBesicovitch.Grassmannian.Measure
 import NKBesicovitch.Geometry.Disks
 import NKBesicovitch.Operators.Defs
 import NKBesicovitch.Operators.Disks

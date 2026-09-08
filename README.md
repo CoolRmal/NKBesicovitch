@@ -31,6 +31,11 @@ may vary by direction. Strict-margin selection shows that the target range
 needs only projection estimates above the endpoint. The projection,
 mixed-norm induction, and four-dimensional seed estimates remain to be developed.
 
+The Grassmannian now has its natural probability measure, constructed from Haar
+measure on the orthogonal group. Lean verifies that it is independent of the
+initial plane and is the unique rotation-invariant probability measure. The
+flag disintegration needed for the induction remains to be proved.
+
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
 
@@ -54,7 +59,7 @@ lake build
 | `comparator.json` | Compares both theorems and all three custom statement definitions |
 | `NKBesicovitch/Basic.lean` | Euclidean space, disk property, exact exponent |
 | `NKBesicovitch/Exponents.lean` | Certified root and projection-exponent arithmetic |
-| `NKBesicovitch/Grassmannian/` | Directions and their projection-operator topology |
+| `NKBesicovitch/Grassmannian/` | Direction topology, orthogonal action, canonical probability |
 | `NKBesicovitch/Geometry/` | Disks and the full-dimensional case |
 | `NKBesicovitch/Operators/` | Nonnegative disk, plate, and local X-ray operators |
 | `NKBesicovitch/Projection/` | Line-family definitions and corner iteration arithmetic |
