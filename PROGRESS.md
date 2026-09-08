@@ -71,6 +71,19 @@ source decomposition. The final theorems are not proved yet.
   all finite-mass checks. In particular, the exponent `7/4` holds on the five
   heights `{0, 1, 2, 3, 3/2}`. This does not yet establish the target exponent
   near `1.675`, which requires the stronger corner improvement.
+* `Projection/CornerCoordinates`, `CornerCode`, `CornerInverse`, `CornerMeasure`:
+  intrinsic three-line corner coordinates, the exact outer/inner code
+  decomposition, the inverse reconstruction, and the two-factor Jacobian.
+* `Projection/CornerDensity`, `CornerFiberBound`, `CornerParent`, `CornerParentBound`:
+  measurable corner-code density with the correct total mass, a Borel positive
+  first-line family, and both corner-fiber upper bounds. The first uses the
+  measure of that Borel family; the second uses a parent-pair density bound
+  assumed only on pairs occurring in the corner family. Both bounds use the
+  essential parallel multiplicity and hold at every code value.
+* `Projection/CornerOuter`, `CornerProjection`, `CornerOuterMeasure`, `CornerRefinement`:
+  the pointwise outer marginal, corner-fiber projection bounds, total and
+  restricted outer-density mass identities, and low-density deletion bounds.
+  Projection and outer-data image sizes remain outer measures throughout.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -107,6 +120,10 @@ code-fiber projection bound, and simultaneous fiber-selection steps are now
 proved, including the code-density upper bound using parallel multiplicity.
 The basic pair improvement is proved. The stronger corner improvement and
 quantitative selection of its height patterns are still open.
+The exact corner identities, both fiber upper bounds, and outer-density
+deletion estimate are now proved. The next corner step is the balanced
+companion construction and the finite pruning/selection argument, followed
+by the exponent improvement and quantitative height selection.
 
 ## Verification conventions
 
@@ -128,6 +145,8 @@ The exact pointwise code marginal and pair-fiber projection bound also pass.
 The simultaneous code-fiber selection theorem passes the same audit.
 The code-density upper bound also passes, with no extra axioms or source warnings.
 The full basic pair-improvement theorem and its `7/4` consequence pass the same audit.
+The corner-fiber projection bound, the upper bound from parent density, and
+the outer-density deletion bound also pass, using only the three standard axioms.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.

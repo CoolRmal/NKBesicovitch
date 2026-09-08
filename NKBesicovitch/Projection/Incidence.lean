@@ -48,6 +48,11 @@ theorem lineCoordinates_apply (a : ℝ) (p : Line m) :
     lineCoordinates a p = lineAt a p.1 p.2 := by
   simp [lineCoordinates, lineAt, sub_eq_add_neg]
 
+theorem lineCoordinates_symm_apply (a : ℝ) (g : Line m) :
+    (lineCoordinates a).symm g = (atHeight a g, g.2) := by
+  apply (lineCoordinates a).injective
+  rw [ContinuousLinearEquiv.apply_symm_apply, lineCoordinates_apply, lineAt_atHeight]
+
 theorem measurePreserving_lineCoordinates (a : ℝ) :
     MeasurePreserving (lineCoordinates (m := m) a) volume volume := by
   change MeasurePreserving (fun p : Line m ↦ (p.1 + (-a) • p.2, p.2))
@@ -59,6 +64,26 @@ theorem measurePreserving_lineCoordinates (a : ℝ) :
       (ae_of_all _ fun ξ ↦ map_add_right_eq_self volume ((-a) • ξ))
   simpa [Function.comp_def] using
     Measure.measurePreserving_swap.comp (hs.comp Measure.measurePreserving_swap)
+
+theorem quasiMeasurePreserving_atHeight (a : ℝ) :
+    Measure.QuasiMeasurePreserving (atHeight (m := m) a) volume volume := by
+  have h : MeasurePreserving (lineCoordinates (m := m) a).symm volume volume :=
+    (measurePreserving_lineCoordinates a).symm (lineCoordinates a).toHomeomorph.toMeasurableEquiv
+  change Measure.QuasiMeasurePreserving (fun g : Line m ↦ atHeight a g) _ _
+  simpa [Function.comp_def, lineCoordinates_symm_apply, Measure.volume_eq_prod] using
+    (Measure.quasiMeasurePreserving_fst (μ := (volume : Measure (Space m)))
+      (ν := (volume : Measure (Space m)))).comp h.quasiMeasurePreserving
+
+theorem lintegral_lineAt (a : ℝ) {f : Line m → ℝ≥0∞} (hf : Measurable f) :
+    (∫⁻ y, ∫⁻ ξ, f (lineAt a y ξ)) = ∫⁻ g, f g := by
+  calc
+    _ = ∫⁻ p, f (lineCoordinates a p) := by
+      have hm : Measurable (fun p : Line m ↦ f (lineCoordinates a p)) :=
+        hf.comp (lineCoordinates a).continuous.measurable
+      simpa only [Measure.volume_eq_prod, lineCoordinates_apply] using
+        (lintegral_prod (μ := (volume : Measure (Space m))) (ν := volume)
+          (fun p : Line m ↦ f (lineCoordinates a p)) hm.aemeasurable).symm
+    _ = _ := (measurePreserving_lineCoordinates a).lintegral_comp hf
 
 /-- Mass of the lines in a family passing through a specified point of a slice. -/
 noncomputable def sliceMultiplicity (a : ℝ) (G : Set (Line m)) (w : Space m) : ℝ≥0∞ :=
