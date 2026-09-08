@@ -83,7 +83,8 @@ status:
     strict parameter margins, full-dimensional boundary case, normalized disk
     averages, canonical Grassmannian probability and its uniqueness,
     measurability of plate maximal functions on open indicators,
-    the exact two-slice projection seed, and
+    the exact two-slice projection seed, intrinsic pair-incidence mass,
+    dual-height code algebra, double-projection density and low-density deletion, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

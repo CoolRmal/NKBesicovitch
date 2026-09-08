@@ -15,6 +15,12 @@ import NKBesicovitch.Operators.PlateMeasurability
 import NKBesicovitch.Projection.Defs
 import NKBesicovitch.Projection.TwoSlice
 import NKBesicovitch.Projection.Parallel
+import NKBesicovitch.Projection.Incidence
+import NKBesicovitch.Projection.PairMass
+import NKBesicovitch.Projection.PairCode
+import NKBesicovitch.Projection.PairData
+import NKBesicovitch.Projection.PairDensity
+import NKBesicovitch.Projection.PairRefinement
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

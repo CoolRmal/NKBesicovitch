@@ -36,6 +36,17 @@ source decomposition. The final theorems are not proved yet.
   Projection images need not be Borel sets. `Projection/Parallel` bounds
   parallel multiplicity by every projection size and identifies zero
   multiplicity with zero mass for measurable line families.
+* `Projection/Incidence`, `PairMass`: intrinsic coordinates for pairs of lines
+  meeting at a fixed height; the slice-multiplicity integral and exact pair-mass
+  identity; the Cauchy–Schwarz lower bound for pair mass. Its division-free
+  statement includes zero and infinite measures.
+* `Projection/PairCode`: the dual-height code identity and explicit inverse
+  parametrization of each first-line fiber, with nonzero denominators stated.
+* `Projection/PairData`, `PairDensity`, `PairRefinement`: the exact Jacobian of
+  the double-projection coordinates, measurable density, total and restricted
+  mass identities, support and pointwise projection bounds, and the volume
+  lost when removing pairs below a density threshold. No Borel assumption is
+  imposed on the projection images themselves.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -67,6 +78,11 @@ mixed-norm transfer and the induction. The (5,2) branch needs the corrected
 Guth–Zahl and Katz–Rogers proofs and the Fourier terminal estimate. All these
 inputs require proofs in Lean; none may be installed as axioms.
 
+For the projection estimate, the pair-incidence mass and low-density deletion
+steps are now proved. The code-fiber marginal identity, fiber selection,
+pair improvement, and corner improvement are still open. The pair-code
+algebra alone does not establish these analytic steps.
+
 ## Verification conventions
 
 `lake build` includes the library, Challenge and Solution as separate targets.
@@ -81,6 +97,8 @@ The initial axiom audits of `criticalExponent_bounds` and
 check, with no source warnings.
 The same audit passes for `measurable_plateMaximal_indicator`.
 It also passes for the exact two-slice projection bound.
+The pair-mass lower bound, dual-height code identity, and restricted
+double-projection density identity pass the same audit.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.
