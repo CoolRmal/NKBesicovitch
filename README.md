@@ -61,8 +61,10 @@ and homogeneity now extend this to the strong estimate
 `‖T f‖_(L^Q L^(Q/(β-1))) ≤ C ‖f‖_p` for every `p > Q/β`.
 `Operators/XRay/Strong.lean` proves it for all Borel nonnegative extended-valued
 inputs supported in a fixed bounded set, with bounded Borel slopes. Zero and
-infinite input norms are included. The change to spherical directions remains
-to be proved.
+infinite input norms are included. `FullLineBound.lean` extends this to the
+full line integral with the same exponents. The transverse-to-perpendicular
+displacement comparison and arclength factor are also proved. The direction
+measure comparison and assembly over spherical charts remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

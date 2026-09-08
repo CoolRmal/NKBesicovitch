@@ -68,8 +68,11 @@ sources:
       support and slopes, with any small input-exponent loss. Superlevel
       decomposition and homogeneity now extend this to the strong bound
       for all Borel nonnegative extended-valued inputs and every p > Q/beta.
-      Zero and infinite input norms are included. The direction-chart
-      transfer remains incomplete.
+      Zero and infinite input norms are included. Finite interval covering
+      and translation now give the full-line bound on bounded support.
+      Transverse projection gives the perpendicular-displacement norm
+      comparison, and direction normalization gives the arclength factor.
+      The direction-measure comparison and chart assembly remain incomplete.
     license: unknown
   - title: Two bounds for the X-ray transform
     authors: [Richard Oberlin]
@@ -175,7 +178,10 @@ status:
     estimate on bounded support and slopes with arbitrarily small exponent loss,
     input superlevel decomposition including infinite values, normalized
     input-series estimates, and the full homogeneous strong local X-ray
-    bound for every p > Q/beta, including zero and infinite input norms, and
+    bound for every p > Q/beta, including zero and infinite input norms,
+    the full-line extension on bounded support, invertible transverse
+    projection and its volume and Lp norm comparisons, the exact arclength
+    factor under direction normalization, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

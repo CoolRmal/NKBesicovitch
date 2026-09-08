@@ -165,8 +165,13 @@ All proof files for this input belong to `Projection/`:
   bounded support and slopes. `InputBound`, `Normalized`, `Scaling`, and
   `Strong` now extend this to every Borel nonnegative extended-valued input
   with `p > Q/β`. The superlevel series treats infinite pointwise values,
-  and homogeneity handles zero and infinite norms. The next step is the
-  transfer to spherical directions and perpendicular intercepts.
+  and homogeneity handles zero and infinite norms. `FullLineBound` now
+  extends this to the full line integral on bounded support using unit
+  interval translations and a finite cover. `TransverseMeasure` controls
+  the perpendicular-displacement norm by the transverse intercept norm;
+  `Arclength` supplies the exact factor from normalizing the direction.
+  Still needed are the Euclidean coordinate identification, the direction
+  measure comparison, joint geometric measurability, and a finite sphere cover.
 
 Essential fiber bounds must be used almost everywhere or justified by removing
 a null set of directions once. Projection images need not be Borel; use outer

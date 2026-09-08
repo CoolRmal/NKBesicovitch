@@ -15,6 +15,7 @@ import NKBesicovitch.Operators.PlateMeasurability
 import NKBesicovitch.Operators.MixedNorm.Basic
 import NKBesicovitch.Operators.MixedNorm.Fibers
 import NKBesicovitch.Operators.MixedNorm.Sums
+import NKBesicovitch.Operators.MixedNorm.VolumeComparison
 import NKBesicovitch.Operators.Interpolation.Dyadic
 import NKBesicovitch.Operators.Interpolation.BlockBounds
 import NKBesicovitch.Operators.Interpolation.BlockScaling
@@ -42,6 +43,12 @@ import NKBesicovitch.Operators.XRay.InputBound
 import NKBesicovitch.Operators.XRay.Normalized
 import NKBesicovitch.Operators.XRay.Scaling
 import NKBesicovitch.Operators.XRay.Strong
+import NKBesicovitch.Operators.XRay.TimeTranslation
+import NKBesicovitch.Operators.XRay.FullLine
+import NKBesicovitch.Operators.XRay.FullLineBound
+import NKBesicovitch.Operators.XRay.Transverse
+import NKBesicovitch.Operators.XRay.TransverseMeasure
+import NKBesicovitch.Operators.XRay.Arclength
 import NKBesicovitch.Projection.Defs
 import NKBesicovitch.Projection.TwoSlice
 import NKBesicovitch.Projection.Parallel

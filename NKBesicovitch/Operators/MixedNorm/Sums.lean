@@ -73,4 +73,18 @@ theorem mixedNorm_tsum_le [SFinite μ] {f : ι → X × Y → ℝ≥0∞}
     _ ≤ _ := eLpNorm_tsum_le (fun i ↦ measurable_eLpNorm_fiber (hf i)
       (zero_lt_one.trans_le hr).ne' hrfin) hq hqfin
 
+omit [Countable ι] in
+theorem mixedNorm_sum_le [SFinite μ] {f : ι → X × Y → ℝ≥0∞} (s : Finset ι)
+    (hf : ∀ i ∈ s, Measurable (f i)) (hq : 1 ≤ q) (hr : 1 ≤ r)
+    (hqfin : q ≠ ∞) (hrfin : r ≠ ∞) :
+    mixedNorm (fun p ↦ ∑ i ∈ s, f i p) q r μ ν ≤ ∑ i ∈ s, mixedNorm (f i) q r μ ν := by
+  classical
+  have hinner (p : X × Y) : (∑ i : s, f i p) = ∑ i ∈ s, f i p :=
+    Finset.sum_coe_sort s (fun i ↦ f i p)
+  have houter : (∑ i : s, mixedNorm (f i) q r μ ν) = ∑ i ∈ s, mixedNorm (f i) q r μ ν :=
+    Finset.sum_coe_sort s (fun i ↦ mixedNorm (f i) q r μ ν)
+  simpa only [tsum_fintype, hinner, houter] using
+    mixedNorm_tsum_le (μ := μ) (ν := ν) (f := fun i : s ↦ f i)
+      (fun i : s ↦ hf i i.2) hq hr hqfin hrfin
+
 end NKBesicovitch

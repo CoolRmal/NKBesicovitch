@@ -5,6 +5,20 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Operators/XRay/FullLineBound`: the strong mixed-norm bound now holds
+  for the full line integral `chartXRay`, with the same exponents, on any
+  fixed bounded support and bounded Borel slope set. `TimeTranslation`
+  preserves the input and output norms when moving a unit interval;
+  `FullLine` obtains a finite interval cover of the vertical support.
+* `Operators/XRay/Transverse`, `TransverseMeasure`: when the normal vectors
+  have nonzero inner product, projection between their normal hyperplanes
+  is an invertible contraction and preserves each geometric line.
+  `MixedNorm/VolumeComparison` uses Haar uniqueness and equal unit-ball
+  volumes to prove that any linear contraction between isomorphic finite
+  inner product spaces does not increase image volume. Consequently the
+  perpendicular-displacement `L^r` norm is bounded by the transverse norm.
+  `Arclength` proves the exact norm factor when normalizing a nonzero
+  direction; nonnegative integrals may be infinite.
 * `Operators/XRay/Strong`: for every `β_c < β ≤ 2`, there is a finite
   outer exponent `Q > 2` such that every `p > Q/β` gives
   `‖T f‖_(L^Q L^(Q/(β-1))) ≤ C ‖f‖_p`, uniformly over Borel nonnegative
@@ -335,8 +349,13 @@ with input-volume exponent `βθ/Q` for any `0 < θ < 1`. The general-input
 level decomposition is now proved: the `L^p` norm controls large levels,
 and the fixed support controls small levels. Homogeneity gives the full
 strong local estimate for every `p > Q/β`, including zero and infinite
-norms. Next transfer this estimate to spherical directions and perpendicular
-intercepts. The strict dimension margin allows the small input-exponent loss.
+norms. The estimate now extends to full lines on bounded support.
+Transverse projection controls the perpendicular-displacement norm, and
+direction normalization gives the arclength factor. The remaining chart
+work is the identification of Euclidean coordinates, the direction-measure
+comparison, joint measurability in geometric coordinates, and a finite
+covering of directions. The strict dimension margin allows the small
+input-exponent loss.
 
 The canonical Grassmannian probability measure is implemented, including its
 orbit integral formula and uniqueness. **Flag disintegration** is still open:
@@ -437,6 +456,9 @@ the same five intended holes.
 The input superlevel decomposition and assembled strong local X-ray estimate
 pass the standard-axiom audit with no source warnings. The complete build
 succeeds with 2875 jobs and the same five intended holes.
+The full-line strong estimate, perpendicular-displacement norm comparison,
+and arclength identity pass the standard-axiom audit with no source warnings.
+The complete build succeeds with 2896 jobs and the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
