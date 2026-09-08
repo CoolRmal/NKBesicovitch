@@ -26,7 +26,11 @@ import NKBesicovitch.Projection.CodeDensity
 import NKBesicovitch.Projection.CodeMarginal
 import NKBesicovitch.Projection.FiberProjection
 import NKBesicovitch.Projection.FiberSelection
+import NKBesicovitch.Projection.CodeRestriction
+import NKBesicovitch.Projection.CodePruning
+import NKBesicovitch.Projection.SimultaneousCodePruning
 import NKBesicovitch.Projection.SimultaneousRefinement
+import NKBesicovitch.Projection.ProjectionImage
 import NKBesicovitch.Projection.PairSelection
 import NKBesicovitch.Projection.CodeSlices
 import NKBesicovitch.Projection.CodeBound
@@ -37,6 +41,8 @@ import NKBesicovitch.Projection.PairAlgebra
 import NKBesicovitch.Projection.PairStep
 import NKBesicovitch.Projection.PairParameters
 import NKBesicovitch.Projection.PairImprovement
+import NKBesicovitch.Projection.InnerCodeBound
+import NKBesicovitch.Projection.CodeImage
 import NKBesicovitch.Projection.CornerCoordinates
 import NKBesicovitch.Projection.CornerCode
 import NKBesicovitch.Projection.CornerInverse
@@ -63,6 +69,8 @@ import NKBesicovitch.Projection.CornerFiberSelection
 import NKBesicovitch.Projection.SimultaneousCorners
 import NKBesicovitch.Projection.CornerSelection
 import NKBesicovitch.Projection.CornerWitness
+import NKBesicovitch.Projection.CornerAlgebra
+import NKBesicovitch.Projection.CornerStep
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

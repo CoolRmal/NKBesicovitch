@@ -93,7 +93,9 @@ status:
     exact corner densities, both corner-fiber upper bounds, outer-density
     deletion, initial slice refinement, measurable companions of prescribed
     fiber mass, exact balanced pair and corner masses, restricted corner
-    counts, simultaneous corner-code selection, finite corner witnesses, and
+    counts, simultaneous corner-code selection, finite corner witnesses,
+    inner-code pruning, concentrated projection-image refinement, both
+    conditional uses of the input projection estimate on code fibers, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

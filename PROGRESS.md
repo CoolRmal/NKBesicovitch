@@ -106,6 +106,23 @@ source decomposition. The final theorems are not proved yet.
   bounds on a positive corner-code fiber, and a Borel first-line family
   satisfying both numerical density upper bounds. All conversions to real
   measures have explicit finiteness proofs.
+* `Projection/CodeRestriction`, `CodePruning`, `SimultaneousCodePruning`:
+  restricted code-mass identities and pointwise additivity under deletion.
+  Poor density retention costs at most twice the deleted pair mass for one
+  code, and simultaneous pruning costs at most `1 + 2|I|` times that mass.
+  Zero original density contributes no original pair mass.
+* `Projection/ProjectionImage`: concentration bounds double-projection image
+  size, and the later finite density cutoffs use these smaller image sizes
+  in their deletion budget.
+* `Projection/InnerCodeBound`, `CodeImage`: the first use of the input
+  projection estimate on each retained inner-code fiber. It gives a uniform
+  density lower bound and hence a finite outer-measure bound on the retained
+  code image, without assuming that image is measurable.
+* `Projection/CornerAlgebra`, `CornerStep`: the second use of the input
+  projection estimate on the selected corner fiber. Eliminating its density
+  gives the outer-threshold bound from the parent density; the multiplicity
+  exponent is exactly two. This remains a conditional step with explicit
+  density and deletion-budget hypotheses, not the full corner improvement.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -146,10 +163,12 @@ The exact corner identities, both fiber upper bounds, outer-density deletion,
 initial slice refinement, and measurable selection of companions with exactly
 prescribed fiber mass are now proved, as are the exact balanced pair and
 corner masses, restricted parent/inner-pair counts, and simultaneous outer
-fiber selection. The next corner steps are the finite uniform/concentrated
-pruning tree, the inner-code refinement and image-size bound, and their
-combination with the selected-fiber inequalities for exponent improvement.
-Quantitative height selection is also still open.
+fiber selection. Inner-code pruning, its image-size bound, and both uses of
+the input projection estimate are now proved with explicit hypotheses.
+The next corner steps are the finite uniform/concentrated pruning tree and
+the choice of thresholds meeting all the counting and deletion budgets.
+Their exponent amplification, normalization, iteration, and quantitative
+height selection are still open.
 
 ## Verification conventions
 
@@ -180,6 +199,8 @@ The simultaneous balanced-pair construction and exact balanced-corner mass
 also pass this audit.
 The restricted corner half-mass bound, simultaneous corner-code selection,
 and finite numerical corner witness pass the same audit.
+The bad-code deletion bound, simultaneous code pruning, retained code-image
+bound, concentrated-image refinement, and corner-threshold bound also pass.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

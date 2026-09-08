@@ -22,6 +22,13 @@ public section
 
 namespace NKBesicovitch.Projection
 
+theorem lower_bound_of_density_power {β A T H : ℝ} (hβ : 1 < β) (hA : 0 < A)
+    (hT : 0 ≤ T) (hH : 0 ≤ H) (hpower : T ≤ A * H ^ (β - 1)) :
+    (T / A) ^ (1 / (β - 1)) ≤ H := by
+  rw [one_div]
+  apply (Real.rpow_inv_le_iff_of_pos (div_nonneg hT hA.le) hH (sub_pos.mpr hβ)).mpr
+  exact (div_le_iff₀ hA).mpr (by simpa only [mul_comm] using hpower)
+
 theorem pair_threshold_bound {β A M H q ℓ : ℝ} (hH : 0 < H) (hq : 0 < q) (hℓ : 0 < ℓ)
     (hseed : H ≤ A * M ^ (2 - β) * (H / (q * ℓ)) ^ β) :
     (q * ℓ) ^ β ≤ A * M ^ (2 - β) * H ^ (β - 1) := by
