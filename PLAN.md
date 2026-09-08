@@ -159,8 +159,11 @@ All proof files for this input belong to `Projection/`:
   piece with comparable parallel-fiber sizes, independently of that size.
   `Operators/MixedNorm/` proves the indicator formula, both fiber-size
   bounds, and the countable triangle inequality using Mathlib's `eLpNorm`.
-  The next step is the double dyadic decomposition, geometric interpolation
-  and summation, and the strong estimate with a small input-exponent loss.
+  `XRay/Indicator` now completes the double dyadic decomposition, geometric
+  interpolation, and summation. It proves the full indicator estimate with
+  input-volume exponent `βθ/Q` for every `0 < θ < 1`, uniformly on fixed
+  bounded support and slopes. The next step is the level-set decomposition
+  for general inputs, then the chart transfer, allowing a small input-exponent loss.
 
 Essential fiber bounds must be used almost everywhere or justified by removing
 a null set of directions once. Projection images need not be Borel; use outer

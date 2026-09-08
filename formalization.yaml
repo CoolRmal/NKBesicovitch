@@ -63,7 +63,10 @@ sources:
       also proved, as is the mixed-norm bound on pieces with comparable
       parallel-fiber measures. The norm uses iterated Mathlib eLpNorm,
       with its indicator formula and countable triangle inequality proved.
-      Dyadic interpolation, summation, and strongification remain incomplete.
+      The double dyadic decomposition, geometric interpolation, and infinite
+      summation now prove the full indicator estimate on fixed bounded
+      support and slopes, with any small input-exponent loss. The extension
+      to general functions and the direction-chart transfer remain incomplete.
     license: unknown
   - title: Two bounds for the X-ray transform
     authors: [Richard Oberlin]
@@ -163,7 +166,10 @@ status:
     polynomial fraction of the line mass, the uniform restricted X-ray
     bound, uniform rich-line intercept localization, the iterated eLpNorm
     mixed-norm API and countable triangle inequality, uniform mixed-norm
-    bounds on pieces with comparable parallel-fiber measures, and
+    bounds on pieces with comparable parallel-fiber measures, the double
+    dyadic decomposition with null fibers handled almost everywhere,
+    geometric interpolation and summation, the uniform mixed-norm indicator
+    estimate on bounded support and slopes with arbitrarily small exponent loss, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

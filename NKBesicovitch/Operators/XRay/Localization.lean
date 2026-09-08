@@ -84,4 +84,26 @@ theorem isBounded_richLines {E : Set (EuclideanSpace ℝ (Fin m) × ℝ)}
     (r := R)).prod hΞ).subset
     (hR E hE Subset.rfl r hr)
 
+/-- Every positive superlevel fiber has one common finite measure bound. -/
+theorem exists_uniform_fiber_bound {K : Set (EuclideanSpace ℝ (Fin m) × ℝ)}
+    (hK : IsBounded K) {Ξ : Set (EuclideanSpace ℝ (Fin m))} (hΞ : IsBounded Ξ) :
+    ∃ B : ℝ, 0 < B ∧ ∀ E : Set (EuclideanSpace ℝ (Fin m) × ℝ), MeasurableSet E → E ⊆ K →
+      ∀ r : ℝ, 0 < r → ∀ ξ : EuclideanSpace ℝ (Fin m),
+        volume ((fun x ↦ (x, ξ)) ⁻¹' richLines E Ξ r) ≤ ENNReal.ofReal B := by
+  obtain ⟨R, _, hR⟩ := exists_uniform_intercept_bound hK hΞ
+  have hfin : volume (Metric.closedBall (0 : EuclideanSpace ℝ (Fin m)) R) ≠ ∞ :=
+    Metric.isBounded_closedBall.measure_lt_top.ne
+  refine ⟨(volume (Metric.closedBall (0 : EuclideanSpace ℝ (Fin m)) R)).toReal + 1,
+    by positivity, ?_⟩
+  intro E hE hEK r hr ξ
+  have hsub : (fun x ↦ (x, ξ)) ⁻¹' richLines E Ξ r ⊆
+      Metric.closedBall (0 : EuclideanSpace ℝ (Fin m)) R :=
+    fun _ hx ↦ (hR E hE hEK r hr hx).1
+  calc
+    _ ≤ volume (Metric.closedBall (0 : EuclideanSpace ℝ (Fin m)) R) :=
+      measure_mono hsub
+    _ ≤ _ := by
+      conv_lhs => rw [← ENNReal.ofReal_toReal hfin]
+      exact ENNReal.ofReal_le_ofReal (by linarith)
+
 end NKBesicovitch.XRay

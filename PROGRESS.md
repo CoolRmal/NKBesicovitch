@@ -5,6 +5,15 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Operators/XRay/Indicator`: for every `β_c < β ≤ 2`, there is a finite
+  outer exponent `Q > 2` such that, for every `0 < θ < 1`,
+  `‖T 1_E‖_(L^Q L^(Q/(β-1))) ≤ C |E|^(βθ/Q)` uniformly over Borel subsets
+  of a fixed bounded support and a fixed bounded Borel slope set.
+  `ValueDecomposition`, `FiberDecomposition`, and `DyadicDecomposition`
+  reduce the transform to two countable halving scales, handling null
+  fibers almost everywhere. `InterpolatedFibers` and `Interpolation/`
+  introduce positive powers of both scales and sum the geometric series.
+  The conclusion has no remaining restriction on the fiber measures.
 * `Operators/MixedNorm/Basic`, `Fibers`, `Sums`: mixed norms are defined by
   iterating Mathlib's `eLpNorm`, first in intercepts and then in directions.
   Fiber norms are measurable; the indicator formula, lower-gap and upper
@@ -310,11 +319,14 @@ selection and Tonelli now give the restricted X-ray bound in terms of
 line-family volume and essential parallel multiplicity. Uniform bounded
 support for rich-line families is also proved. Restricting to comparable
 parallel fibers now gives the mixed-norm estimate on each block, uniformly
-in its fiber size. The countable mixed-norm triangle inequality is proved.
-Next decompose the transform values and the parallel-fiber measures,
-interpolate each block with the elementary estimate, and sum the resulting
-geometric series. Strongification then gives the X-ray bound,
-with the small input-exponent loss allowed by the strict dimension margin.
+in its fiber size. The double dyadic decomposition, geometric interpolation,
+and both infinite sums are now proved, giving the full indicator estimate
+with input-volume exponent `βθ/Q` for any `0 < θ < 1`. Next decompose a
+general input function into level sets, using its `L^(Q/β+ε)` norm to
+control the large levels and the fixed support to control the small levels.
+Then transfer the local chart estimate to spherical directions and
+perpendicular intercepts. The strict dimension margin allows the small
+input-exponent loss.
 
 The canonical Grassmannian probability measure is implemented, including its
 orbit integral formula and uniqueness. **Flag disintegration** is still open:
@@ -408,6 +420,10 @@ The indicator mixed-norm formula, countable mixed-norm triangle inequality,
 and restricted mixed-norm estimate uniform over parallel-fiber scales pass
 the same standard-axiom audit with no source warnings. The complete build
 succeeds with 2857 jobs and the same five intended holes.
+The full double dyadic decomposition, uniform interpolated series bound,
+and assembled mixed-norm indicator estimate pass the standard-axiom audit
+with no source warnings. The complete build succeeds with 2867 jobs and
+the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

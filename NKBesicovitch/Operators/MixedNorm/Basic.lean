@@ -7,6 +7,7 @@ module
 
 public import Mathlib.MeasureTheory.Function.LpSeminorm.Indicator
 public import Mathlib.MeasureTheory.Function.LpSeminorm.TriangleInequality
+public import Mathlib.MeasureTheory.Function.LpSeminorm.Monotonicity
 public import Mathlib.MeasureTheory.Measure.Prod
 
 /-!
@@ -20,7 +21,7 @@ Both norms use Mathlib's extended-valued `eLpNorm`.
 @[expose] public section
 
 open MeasureTheory Set
-open scoped ENNReal
+open scoped ENNReal NNReal
 
 namespace NKBesicovitch
 
@@ -37,6 +38,26 @@ theorem mixedNorm_mono (h : f ≤ g) : mixedNorm f q r μ ν ≤ mixedNorm g q r
   intro y
   simp only [enorm_eq_self]
   exact eLpNorm_mono_enorm (fun x ↦ by simpa only [enorm_eq_self] using h (x, y))
+
+theorem mixedNorm_mono_fiber_ae (h : ∀ᵐ y ∂ν, ∀ᵐ x ∂μ, f (x, y) ≤ g (x, y)) :
+    mixedNorm f q r μ ν ≤ mixedNorm g q r μ ν := by
+  apply eLpNorm_mono_enorm_ae
+  filter_upwards [h] with y hy
+  simp only [enorm_eq_self]
+  exact eLpNorm_mono_enorm_ae (by simpa only [enorm_eq_self] using hy)
+
+theorem mixedNorm_le_const_mul_of_fiber_ae {c : ℝ≥0}
+    (h : ∀ᵐ y ∂ν, ∀ᵐ x ∂μ, f (x, y) ≤ c * g (x, y)) :
+    mixedNorm f q r μ ν ≤ c * mixedNorm g q r μ ν := by
+  apply eLpNorm_le_mul_eLpNorm_of_ae_le_mul'
+  filter_upwards [h] with y hy
+  simp only [enorm_eq_self]
+  exact eLpNorm_le_mul_eLpNorm_of_ae_le_mul'
+    (by simpa only [enorm_eq_self] using hy) r
+
+theorem mixedNorm_const_mul_le (c : ℝ≥0) (f : X × Y → ℝ≥0∞) :
+    mixedNorm (fun p ↦ c * f p) q r μ ν ≤ c * mixedNorm f q r μ ν :=
+  mixedNorm_le_const_mul_of_fiber_ae (ae_of_all _ fun _ ↦ ae_of_all _ fun _ ↦ le_rfl)
 
 theorem measurable_eLpNorm_fiber [SFinite μ] (hf : Measurable f) (hr : r ≠ 0)
     (hrfin : r ≠ ∞) : Measurable (fun y ↦ eLpNorm (fun x ↦ f (x, y)) r μ) := by
