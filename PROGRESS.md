@@ -5,6 +5,22 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Projection/Selection/SeparatedTriples`: triples with every pair separated
+  by `|I|/100` have measure at least `|I|³/4`. Their selection is jointly
+  Borel. An admissible inner time and its dual, together with the base
+  height, form another such triple in the same original time set.
+* `Projection/Selection/CornerScalar`, `CornerRelation`, `CornerRelationMass`:
+  the inner-to-outer scalar conversion has the exact measure factor
+  `|(u-a)/(u-c)|`, bounded below by `|I|/100` on separated outer times.
+  Integrating the available inner scalar-set measure gives at least
+  `δ|I|⁴/80000` of compatible outer time-scalar measure.
+* `Projection/Selection/CornerOuterTimes`, `CornerReservoir`: selecting
+  outer scalars with time fibers of measure at least
+  `δ|I|⁷/320000000000` leaves a scalar set of measure at least
+  `δ|I|³/160000`. The scalar absolute values lie between
+  `δ(|I|/100)²` and `(100/|I|)³`; each outer time supplies an inner time
+  fiber of measure at least `δ|I|⁵/8000000`. The scalar selection and
+  outer and inner time relations are jointly Borel.
 * `Projection/Selection/SeparatedPairs`, `SeparatedTimes`, `TwoSlice`:
   removing finitely many neighborhoods preserves an explicit amount of
   time measure. Pairs separated by `|I|/100` have measure at least `|I|²/2`
@@ -267,10 +283,11 @@ work is quantitative height selection: Borel parameter families of
 polynomially controlled volume and estimate constants inside arbitrary
 positive-measure time sets. The current finite-height existence theorem
 does not supply that stronger selection rule.
-The selectable two-slice seed and quantitative dual-pair reservoir are now
-proved. The remaining selection steps are closure under the pair step,
-the common outer scalar for corner patterns, and selection of whole finite
-trees with polynomial bounds on both parameter measure and estimate constants.
+The selectable two-slice seed, quantitative dual-pair reservoir, common
+outer-scalar reservoir, and separated root and child triples are now proved.
+The remaining selection steps are closure under the pair step and selection
+of whole finite trees with polynomial bounds on both parameter measure and
+estimate constants.
 
 ## Verification conventions
 
@@ -317,6 +334,9 @@ strictly supercritical exponent pass the standard-axiom audit as well.
 The selectable two-slice seed, complete quantitative dual-pair reservoir,
 and joint measurability of the reservoir selection pass the same audit,
 with no source warnings or additional proof holes.
+The common outer-scalar reservoir and its joint measurability, the root
+triple measure bound, and preservation of child-triple separation also pass
+the standard-axiom audit with no source warnings.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

@@ -124,9 +124,10 @@ All proof files for this input belong to `Projection/`:
   tested fiber sets throughout the proof.
 * `Selection`: separated-time reservoirs, dual pairs, a common outer scalar,
   and polynomial lower bounds on the measure of admissible parameter tuples.
-  The jointly Borel two-slice seed and dual-pair reservoir are proved with
-  explicit constants. Pair-step closure, the common outer scalar, and whole
-  tree selection with polynomially bounded estimate constants remain open.
+  The jointly Borel two-slice seed, dual-pair reservoir, common outer-scalar
+  reservoir, and separated root and child triples are proved with explicit
+  constants. Pair-step closure and whole tree selection with polynomially
+  bounded estimate constants remain open.
 * `Estimate`: assemble the selectable estimate for every `β > β_c` below 2.
 
 Essential fiber bounds must be used almost everywhere or justified by removing

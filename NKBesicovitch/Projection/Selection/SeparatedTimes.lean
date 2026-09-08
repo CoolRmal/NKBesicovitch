@@ -69,4 +69,14 @@ theorem volume_separatedTimes_lower (I : Set ℝ) (a : ι → ℝ) (F : Finset �
   rw [separatedTimes_eq_sdiff]
   exact (sub_le_sub_left hbadReal _).trans (le_measureReal_sdiff hfin)
 
+/-- Avoiding two base times by `|I|/100` preserves at least half of the time-set measure. -/
+theorem half_volume_le_separatedTimes_pair {I : Set ℝ} (a c : ℝ) :
+    ENNReal.ofReal ((volume I).toReal / 2) ≤
+      volume (separatedTimes I ![a, c] Finset.univ ((volume I).toReal / 100)) := by
+  apply ENNReal.ofReal_le_of_le_toReal
+  have h := volume_separatedTimes_lower I ![a, c] Finset.univ
+    (by positivity : 0 ≤ (volume I).toReal / 100)
+  norm_num only [Finset.card_univ, Fintype.card_fin] at h
+  linarith [ENNReal.toReal_nonneg (a := volume I)]
+
 end NKBesicovitch.Projection.Selection

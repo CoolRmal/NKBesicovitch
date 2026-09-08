@@ -6,6 +6,7 @@ Authors: Yongxi Lin
 module
 
 public import NKBesicovitch.Projection.Selection.DualRelation
+public import NKBesicovitch.Projection.Selection.SeparatedTriples
 
 /-!
 # Admissible times for each dual scalar
@@ -37,6 +38,14 @@ theorem dualTimes_spec {I : Set ℝ} {a b c t : ℝ} (ht : t ∈ dualTimes I a b
 
 theorem dualTimes_subset (I : Set ℝ) (a b c : ℝ) : dualTimes I a b c ⊆ I :=
   fun _ ht ↦ (dualPairParameters_spec ht.2).1
+
+/-- The base, inner time, and its dual form an admissible triple for the next corner node. -/
+theorem dualTimes_mem_separatedTriples {I : Set ℝ} {a b c t : ℝ} (ha : a ∈ I)
+    (ht : t ∈ dualTimes I a b c) :
+    ((a, t), dualTime a b c t) ∈ separatedTriples I ((volume I).toReal / 100) := by
+  obtain ⟨_, htI, hdualI, hta, _, hdual_a, _, htdual⟩ := dualTimes_spec ht
+  exact mem_separatedTriples.mpr ⟨ha, htI, hdualI,
+    by simpa only [dist_comm] using hta, by simpa only [dist_comm] using hdual_a, htdual⟩
 
 theorem measurableSet_dualTimes {I : Set ℝ} (hI : MeasurableSet I) (a b c : ℝ) :
     MeasurableSet (dualTimes I a b c) :=
