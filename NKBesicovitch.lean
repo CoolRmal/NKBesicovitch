@@ -53,6 +53,9 @@ import NKBesicovitch.Projection.SliceRefinement
 import NKBesicovitch.Projection.FiberCutoff
 import NKBesicovitch.Projection.SliceBallMass
 import NKBesicovitch.Projection.Companions
+import NKBesicovitch.Projection.BalancedPairs
+import NKBesicovitch.Projection.BalancedCorners
+import NKBesicovitch.Projection.CornerJunction
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

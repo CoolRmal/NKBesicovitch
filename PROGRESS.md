@@ -93,6 +93,10 @@ source decomposition. The final theorems are not proved yet.
   slope balls, and Borel companions with exactly the prescribed mass on
   every sufficiently large original slice fiber. Positive slope dimension is
   explicit; null sphere boundaries justify the continuity step.
+* `Projection/BalancedPairs`, `BalancedCorners`, `CornerJunction`: simultaneous
+  companions over a half-mass center family, the exact pair mass `|G₀|η`,
+  the exact corner mass `|G₀|η²`, and volume-preserving coordinates consisting
+  of a parent pair and the last-line slope.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -131,8 +135,9 @@ The basic pair improvement is proved. The stronger corner improvement and
 quantitative selection of its height patterns are still open.
 The exact corner identities, both fiber upper bounds, outer-density deletion,
 initial slice refinement, and measurable selection of companions with exactly
-prescribed fiber mass are now proved. The next corner step is the balanced
-pair/corner counting and finite pruning/selection argument, followed
+prescribed fiber mass are now proved, as are the exact balanced pair and
+corner masses. The next corner step is the restricted parent/child counting
+needed for the finite pruning/selection argument, followed
 by the exponent improvement and quantitative height selection.
 
 ## Verification conventions
@@ -160,6 +165,8 @@ the outer-density deletion bound also pass, using only the three standard axioms
 The measurable companion selection and half-mass slice refinement pass the
 same audit, as do the explicit decimal exponent bounds and the lemma excluding
 `(5,2)` from the general critical-exponent condition.
+The simultaneous balanced-pair construction and exact balanced-corner mass
+also pass this audit.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
