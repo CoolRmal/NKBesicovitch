@@ -92,7 +92,13 @@ sources:
     location: https://arxiv.org/abs/math/0512377
     type: article
     relationship: adapts
-    note: Intended induction and Fourier terminal step; not yet formalized.
+    note: >-
+      The induction and Fourier terminal step remain incomplete. Flag
+      integration is now proved in orthogonal frame coordinates, with
+      the canonical Grassmannian pushforward. Haar-distributed unit
+      directions have normalized Euclidean surface measure. Geometric
+      X-ray direction norms are Borel measurable at finite positive
+      displacement exponents and have the exact normalized frame identity.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -189,7 +195,10 @@ status:
     normal coordinates, hemisphere charts, the spherical direction-measure
     comparison, a finite bounded-slope cap cover, the finite-cover norm
     inequality without measurability assumptions, the full spherical
-    mixed-norm X-ray estimate on bounded support, and
+    mixed-norm X-ray estimate on bounded support, continuous normal-plane
+    lifts, flag integration in orthogonal frame coordinates, the normalized
+    spherical law of a Haar orbit, rotation covariance and Borel measurability
+    of geometric X-ray direction norms, their exact frame norm identity, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

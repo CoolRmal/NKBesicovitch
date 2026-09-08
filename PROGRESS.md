@@ -5,6 +5,19 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Grassmannian/NormalLift`, `FlagMeasure`: adjoining a unit normal line
+  to a transverse plane preserves the required dimension and is continuous.
+  An independent Haar rotation and lower-dimensional Grassmannian plane
+  give the canonical higher-dimensional plane probability. The resulting
+  iterated integral identity supplies flag integration in frame coordinates.
+* `Geometry/SphereRotations`, `SphereMeasure`: the orthogonal action on
+  unit directions is continuous and transitive. The cone formula proves
+  invariance of sphere measure, and uniqueness identifies a Haar orbit
+  with normalized Euclidean surface measure. `NormalIsometry` transports
+  perpendicular displacement spaces. `XRay/DirectionMeasurability` proves
+  rotation covariance and Borel measurability of the direction norm for
+  finite positive displacement exponents, then identifies its Haar-frame
+  norm with the spherical norm, including the surface-area factor.
 * `Operators/XRay/SphericalBound`: the strong bound is now proved for the
   geometric X-ray transform, with arclength along lines, Lebesgue measure
   on perpendicular displacement hyperplanes, and Euclidean surface
@@ -364,17 +377,20 @@ norms. The estimate now extends to full lines on bounded support.
 Transverse projection controls the perpendicular-displacement norm, and
 direction normalization gives the arclength factor. Volume-preserving
 Euclidean coordinates, the direction-measure comparison, and a finite
-cap cover now give the full spherical mixed-norm bound. This inequality
-does not require joint measurability of the geometric displacement norm;
-any such measurability needed for later disintegration still requires a
-proof. The strict dimension margin allows the small input-exponent loss.
+cap cover now give the full spherical mixed-norm bound. The geometric
+displacement norm is now Borel measurable for finite positive exponents,
+and its Haar-frame norm equals the spherical norm with the exact
+surface-area normalization. The strict dimension margin allows the small
+input-exponent loss.
 
 The canonical Grassmannian probability measure is implemented, including its
-orbit integral formula and uniqueness. **Flag disintegration** is still open:
-construct the joint law of a line and a plane in its orthogonal complement
-and identify its Grassmannian pushforward. This supports the Bourgain–Oberlin
-induction, followed by the Fourier terminal estimate and the already proved
-passage from uniform maximal bounds to positive measure.
+orbit integral formula and uniqueness. Flag integration is now proved in
+orthogonal frame coordinates: the joint Haar and lower-dimensional plane
+law has the required Grassmannian pushforward. The next step is the plate
+comparison in these coordinates, Hölder on the lower-dimensional plane
+probability, and the exponent recurrence for the Bourgain–Oberlin induction.
+The Fourier terminal estimate and assembly with the already proved passage
+from uniform maximal bounds to positive measure remain open.
 
 The independent (5,2) branch still needs the corrected Guth–Zahl and
 Katz–Rogers proofs, its maximal estimate, and the Fourier terminal argument.
@@ -476,6 +492,10 @@ norm inequality, perpendicular chart comparison, and full spherical X-ray
 estimate pass the standard-axiom audit with no source warnings. The numerical
 critical-exponent bound also passes again. The complete build succeeds with
 2970 jobs and the same five intended holes.
+The continuous normal-plane lift, flag probability pushforward, normalized
+sphere law of a Haar orbit, and exact Haar-frame X-ray norm identity pass
+the standard-axiom audit with no source warnings. The complete build
+succeeds with 2977 jobs and the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

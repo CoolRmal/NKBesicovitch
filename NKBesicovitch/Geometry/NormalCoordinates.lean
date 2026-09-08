@@ -75,6 +75,19 @@ theorem normalCoordinatesWithBasis_apply {m : ℕ} (hv : ‖v‖ = 1)
     normalCoordinatesWithBasis hv b (x, t) = (b x : E) + t • v :=
   normalCoordinates_apply hv (b x) t
 
+theorem inner_normalCoordinatesWithBasis {m : ℕ} (hv : ‖v‖ = 1)
+    (b : EuclideanSpace ℝ (Fin m) ≃ₗᵢ[ℝ] (ℝ ∙ v)ᗮ)
+    (x y : EuclideanSpace ℝ (Fin m)) (t s : ℝ) :
+    ⟪normalCoordinatesWithBasis hv b (x, t), normalCoordinatesWithBasis hv b (y, s)⟫_ℝ =
+      ⟪x, y⟫_ℝ + t * s := by
+  simp only [normalCoordinatesWithBasis_apply, inner_add_left, inner_add_right,
+    inner_smul_left, inner_smul_right, conj_trivial,
+    mem_orthogonal_singleton_iff_inner_left.mp (b x).2,
+    mem_orthogonal_singleton_iff_inner_right.mp (b y).2,
+    real_inner_self_eq_norm_sq, hv, one_pow, mul_one, mul_zero, zero_add, add_zero]
+  change ⟪b x, b y⟫_ℝ + s * t = ⟪x, y⟫_ℝ + t * s
+  rw [b.inner_map_map, mul_comm s t]
+
 variable [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E]
 
 theorem measurePreserving_normalCoordinates (hv : ‖v‖ = 1) :

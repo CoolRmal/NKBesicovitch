@@ -30,14 +30,14 @@ averages, and the passage from a uniform open-set maximal estimate to a
 quantitative volume lower bound. The delta version is proved using compact
 disks, positive finite plate volumes, and Fatou's lemma with thresholds that
 may vary by direction. Strict-margin selection shows that the target range
-needs only projection estimates above the endpoint. The local strong X-ray
-bound for general inputs is now proved. The chart transfer, induction, and
+needs only projection estimates above the endpoint. The strong geometric
+X-ray bound for general inputs is now proved. The induction and
 four-dimensional seed estimates remain to be developed.
 
 The Grassmannian now has its natural probability measure, constructed from Haar
 measure on the orthogonal group. Lean verifies that it is independent of the
 initial plane and is the unique rotation-invariant probability measure. The
-flag disintegration needed for the induction remains to be proved.
+flag integration identity is now proved in orthogonal frame coordinates.
 
 Plate maximal functions on open indicators are proved Borel measurable through
 lower semicontinuity. The delta-to-volume argument therefore needs only its
@@ -66,8 +66,10 @@ full line integral with the same exponents. The transverse-to-perpendicular
 displacement comparison and arclength factor are also proved.
 `SphericalBound.lean` now proves the full geometric estimate with the same
 exponents, using volume-preserving coordinates, the cone formula for
-sphere measure, and a finite cover by bounded slope caps. The Grassmannian
-disintegration, induction, and final positive-measure proofs remain incomplete.
+sphere measure, and a finite cover by bounded slope caps. Borel measurability
+of the geometric direction norm and its exact conversion to a Haar-frame
+norm are also proved. The induction and final positive-measure proofs
+remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

@@ -6,9 +6,14 @@ import NKBesicovitch.Grassmannian.Action
 import NKBesicovitch.Grassmannian.Transitivity
 import NKBesicovitch.Grassmannian.Topology
 import NKBesicovitch.Grassmannian.Measure
+import NKBesicovitch.Grassmannian.NormalLift
+import NKBesicovitch.Grassmannian.FlagMeasure
 import NKBesicovitch.Geometry.Disks
 import NKBesicovitch.Geometry.RigidMotions
 import NKBesicovitch.Geometry.NormalCoordinates
+import NKBesicovitch.Geometry.NormalIsometry
+import NKBesicovitch.Geometry.SphereRotations
+import NKBesicovitch.Geometry.SphereMeasure
 import NKBesicovitch.Geometry.DirectionChart
 import NKBesicovitch.Geometry.DirectionMeasure
 import NKBesicovitch.Geometry.DirectionCover
@@ -55,6 +60,7 @@ import NKBesicovitch.Operators.XRay.Transverse
 import NKBesicovitch.Operators.XRay.TransverseMeasure
 import NKBesicovitch.Operators.XRay.Arclength
 import NKBesicovitch.Operators.XRay.DirectionNorm
+import NKBesicovitch.Operators.XRay.DirectionMeasurability
 import NKBesicovitch.Operators.XRay.Spherical
 import NKBesicovitch.Operators.XRay.SphericalBound
 import NKBesicovitch.Projection.Defs

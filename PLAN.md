@@ -87,8 +87,11 @@ Reuse Mathlib finite-dimensional subspaces, projections, and isometries.
 `Grassmannian/Measure.lean`: normalized Haar measure on the orthogonal group,
 pushforward through a fixed k-plane; prove independence of the plane, rotation
 invariance, probability mass, and uniqueness. Construction must assume `k ≤ n`.
-`Grassmannian/Flags.lean`: disintegrate along a line and a plane in its orthogonal
-complement; prove pushforward to the invariant Grassmannian probability.
+`Grassmannian/NormalLift.lean` and `FlagMeasure.lean`: adjoin a normal line
+to a transverse plane and average in orthogonal frame coordinates. The
+canonical Grassmannian pushforward and iterated integral identity are now
+proved. `Geometry/SphereMeasure.lean` identifies the line marginal with
+normalized Euclidean surface measure.
 Check every `Measure.map` has a measurable map; its fallback value must never
 supply an apparent estimate. Coordinate charts must have the right Jacobians.
 
@@ -175,8 +178,10 @@ All proof files for this input belong to `Projection/`:
   through the cone formula, and `DirectionCover` supplies a finite cap cover.
   `DirectionNorm`, `Spherical`, and `SphericalBound` now assemble the full
   spherical estimate with the same exponents. The finite-cover norm
-  inequality needs no joint measurability hypothesis; measurability required
-  in the later Grassmannian disintegration remains to be established.
+  inequality needs no joint measurability hypothesis. `DirectionMeasurability`
+  now proves Borel measurability for finite positive displacement exponents
+  by descent from the orthogonal group, and identifies the frame norm with
+  the spherical norm including the exact surface-area normalization.
 
 Essential fiber bounds must be used almost everywhere or justified by removing
 a null set of directions once. Projection images need not be Borel; use outer
