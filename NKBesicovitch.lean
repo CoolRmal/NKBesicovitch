@@ -30,6 +30,7 @@ import NKBesicovitch.Operators.PlateTranslation
 import NKBesicovitch.Operators.PlateLocalizationMeasurability
 import NKBesicovitch.Operators.PlateLocalization
 import NKBesicovitch.Operators.BallLocalization
+import NKBesicovitch.Operators.PolynomialWeight
 import NKBesicovitch.Operators.Fourier.Plancherel
 import NKBesicovitch.Operators.Fourier.Convolution
 import NKBesicovitch.Operators.Fourier.Dilation
@@ -88,6 +89,15 @@ import NKBesicovitch.Operators.XRay.AveragedFourier
 import NKBesicovitch.Operators.XRay.ConvolutionBound
 import NKBesicovitch.Operators.XRay.SmoothedBound
 import NKBesicovitch.Operators.XRay.SmoothedDecay
+import NKBesicovitch.Operators.XRay.FrameDilation
+import NKBesicovitch.Operators.XRay.KernelDecay
+import NKBesicovitch.Operators.XRay.KernelTranslation
+import NKBesicovitch.Operators.XRay.KernelTail
+import NKBesicovitch.Operators.XRay.SmoothedTail
+import NKBesicovitch.Operators.XRay.WeightedTail
+import NKBesicovitch.Operators.XRay.WeightedNorm
+import NKBesicovitch.Operators.XRay.WeightedDecay
+import NKBesicovitch.Operators.XRay.LowFrequency
 import NKBesicovitch.Operators.XRay.Spherical
 import NKBesicovitch.Operators.XRay.SphericalBound
 import NKBesicovitch.Operators.XRay.Power

@@ -8,6 +8,7 @@ module
 public import NKBesicovitch.Geometry.NormalCoordinates
 public import Mathlib.Analysis.LConvolution
 public import Mathlib.Analysis.Convolution
+public import Mathlib.MeasureTheory.Measure.Haar.Unique
 
 /-!
 # Uniform bounds for smoothed line integrals
@@ -51,6 +52,39 @@ theorem lintegral_line_le_of_support_bound {f : E → ℝ≥0∞} {R : ℝ}
   ring
 
 variable [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E]
+
+/-- Tonelli bounds an integrated convolution by the absolute kernel integrated along the curve. -/
+theorem enorm_integral_convolution_le {f g : E → ℂ} {γ : ℝ → E}
+    (hf : Measurable f) (hg : Measurable g) (hγ : Measurable γ) :
+    ‖∫ t : ℝ, (g ⋆[ContinuousLinearMap.lsmul ℂ ℂ] f) (γ t)‖ₑ ≤
+      ∫⁻ z, ‖f z‖ₑ * ∫⁻ t : ℝ, ‖g (γ t - z)‖ₑ := by
+  have hb (t : ℝ) : ‖(g ⋆[ContinuousLinearMap.lsmul ℂ ℂ] f) (γ t)‖ₑ ≤
+      ∫⁻ z, ‖g (γ t - z)‖ₑ * ‖f z‖ₑ := by
+    rw [convolution_lsmul_swap]
+    simpa only [smul_eq_mul, enorm_mul] using
+      enorm_integral_le_lintegral_enorm (fun z ↦ g (γ t - z) * f z)
+  refine (enorm_integral_le_lintegral_enorm _).trans ((lintegral_mono hb).trans_eq ?_)
+  rw [lintegral_lintegral_swap (by fun_prop)]
+  apply lintegral_congr
+  intro z
+  rw [lintegral_mul_const (‖f z‖ₑ) (f := fun t : ℝ ↦ ‖g (γ t - z)‖ₑ) (by fun_prop), mul_comm]
+
+/-- A uniform absolute-kernel bound on the input support controls the integrated convolution. -/
+theorem enorm_integral_convolution_le_of_support {f g : E → ℂ} {γ : ℝ → E}
+    (hf : Measurable f) (hg : Measurable g) (hγ : Measurable γ) {K : ℝ≥0∞}
+    (hK : ∀ z ∈ Function.support f, (∫⁻ t : ℝ, ‖g (γ t - z)‖ₑ) ≤ K) :
+    ‖∫ t : ℝ, (g ⋆[ContinuousLinearMap.lsmul ℂ ℂ] f) (γ t)‖ₑ ≤ K * eLpNorm f 1 volume := by
+  apply (enorm_integral_convolution_le hf hg hγ).trans
+  calc
+    _ ≤ ∫⁻ z, ‖f z‖ₑ * K := by
+      apply lintegral_mono
+      intro z
+      by_cases hz : f z = 0
+      · simp [hz]
+      · exact mul_le_mul' le_rfl (hK z hz)
+    _ = _ := by
+      rw [lintegral_mul_const _ hf.enorm, eLpNorm_one_eq_lintegral_enorm]
+      exact mul_comm _ _
 
 /-- Smoothing costs only the kernel mass in the uniform line-integral bound. -/
 theorem lintegral_line_lconvolution_le {f g : E → ℝ≥0∞} (hf : Measurable f) (hg : Measurable g)

@@ -5,6 +5,23 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `XRay/FrameDilation` gives exact line-integral scaling. `KernelDecay`
+  separates integrable line-parameter decay from arbitrary transverse
+  decay, uniformly over rotations. `KernelTranslation` and `KernelTail`
+  control bounded ambient translations and retain arbitrary frequency
+  decay at distant transverse points. `ConvolutionBound` and `SmoothedTail`
+  transfer these estimates to the signed smoothed transform, with the
+  input entering through its one-norm.
+* `PolynomialWeight` proves integrability of the spatial decay profiles.
+  `XRay/WeightedTail` gives a global majorant for the polynomially weighted
+  transform; `WeightedNorm` integrates it to an unweighted norm plus a
+  rapidly decaying one-norm term. `WeightedDecay` combines this with
+  interpolation and support-restricted Holder to retain `a^(-1/p)` for
+  every weight `(1 + ‖x‖²)^A`, finite `p ≥ 2`, and `a ≥ 1`.
+* `XRay/LowFrequency` proves a joint `L¹`-to-`Lᵖ` bound for fixed smoothing
+  on bounded support and the polynomially weighted `Lᵖ` bound for every
+  finite `p ≥ 1`. No Fourier-gap assumption is used, so this supplies the
+  low-frequency estimate needed by the terminal argument.
 * `Fourier/Convolution` proves the `L²` multiplier bound for Schwartz
   convolution. `Dilation` proves that normalized kernel dilation preserves
   the one-norm and rescales the Fourier transform by the reciprocal factor.
@@ -488,10 +505,12 @@ Plancherel formula are now proved. A positive Fourier gap gives the joint
 `L²` half-derivative gain with a finite constant. The uniform fixed-support
 `L∞` endpoint, normalized kernel dilation, and full Schwartz interpolation
 are now proved. Their application gives the frequency gain `a^(-1/p)`
-for all finite `p ≥ 2`. The remaining general-range work is the smooth
-frequency partition, low-frequency control, weighted tails and bandlimited comparison,
-followed by the final assembly with the proved passage from uniform maximal
-bounds to positive measure.
+for all finite `p ≥ 2`, now also with polynomial transverse weights when
+`a ≥ 1`. Rapid tail control and the weighted fixed-kernel low-frequency
+estimate are proved. The remaining general-range work is the smooth frequency
+partition, preservation of Fourier support under polynomial weights, and
+bandlimited comparison with local plate averages, followed by the final
+assembly with the proved passage from uniform maximal bounds to positive measure.
 
 The independent (5,2) branch still needs the corrected Guth–Zahl and
 Katz–Rogers proofs, its maximal estimate, and the Fourier terminal argument.
@@ -629,6 +648,12 @@ and their application to smoothed X-ray transforms for every finite `p ≥ 2`
 pass the standard-axiom audit with no source warnings. The full build
 succeeds with 3394 jobs and the same five intended holes. The library now
 contains 268 modules, with the largest still 160 lines.
+Projected-kernel dilation and decay, translation control, smoothed tails,
+the polynomially weighted frequency gain, and the weighted low-frequency
+bound pass the standard-axiom audit with no source warnings. The complete
+build succeeds with 3404 jobs and the same five intended holes. All 278
+library modules satisfy the file-size limit; the largest has 160 lines.
+The changed Lean files satisfy the 100-character line limit.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

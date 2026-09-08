@@ -124,8 +124,13 @@ sources:
       full interpolation within the Schwartz input domain. Signed line
       integration is linear on that domain, and the smoothed transform has
       joint Lp decay a^(-1/p) for every finite p >= 2 on fixed bounded support,
-      uniformly over a > 0. The frequency partition, low-frequency and
-      weighted bandlimited estimates, and terminal assembly remain open.
+      uniformly over a > 0. Projected-kernel decay, bounded translations,
+      and convolution transfer now give rapid spatial and frequency tails.
+      Polynomial transverse weights retain the a^(-1/p) gain for a >= 1.
+      The weighted low-frequency bound holds for every fixed Schwartz
+      kernel and finite p >= 1 without a Fourier-gap hypothesis.
+      The frequency partition, preservation of Fourier support under
+      polynomial weights, bandlimited comparison, and terminal assembly remain open.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -241,7 +246,11 @@ status:
     smoothing-kernel dilation, uniform smoothed L2 and Linfinity endpoints,
     smooth amplitude decomposition with its squared-tail distribution
     estimate, weighted layer-cake integration and Schwartz interpolation,
-    and the uniform smoothed X-ray frequency gain a^(-1/p) for finite p >= 2
+    the uniform smoothed X-ray frequency gain a^(-1/p) for finite p >= 2,
+    exact projected-kernel dilation, rapid spatial and frequency tails
+    under bounded translations, convolution transfer of those tails,
+    polynomially weighted frequency decay, and weighted low-frequency
+    bounds for every fixed Schwartz kernel at finite p >= 1
     have Lean proofs.
     The proved foundations also include
     passage from uniform disk or delta-plate maximal estimates

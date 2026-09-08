@@ -88,9 +88,14 @@ are now proved uniformly under normalized kernel dilation. Smooth amplitude
 decomposition and layer-cake integration prove the full interpolation theorem
 within the Schwartz domain. `XRay/SmoothedDecay` consequently gives the
 uniform frequency gain `a^(-1/p)` for every finite `p ≥ 2` on fixed bounded
-support. The frequency partition, low-frequency and weighted bandlimited
-estimates, the rest of the Fourier terminal argument, and the separate
-`(5,2)` proof remain incomplete.
+support. Projected-kernel decay and bounded-translation estimates now control
+the spatial tails. `XRay/WeightedDecay` retains the same frequency gain after
+multiplication by any polynomial weight `(1 + ‖x‖²)^A`, for `a ≥ 1`.
+`XRay/LowFrequency` proves the corresponding weighted bound for every fixed
+Schwartz kernel and finite `p ≥ 1`, without a Fourier-gap hypothesis.
+The frequency partition, bandlimited comparison with local plate averages,
+the rest of the Fourier terminal argument, and the separate `(5,2)` proof
+remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

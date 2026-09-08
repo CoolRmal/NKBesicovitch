@@ -34,6 +34,10 @@ variable {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
 @[simp] theorem normalizedDilation_apply (a : ℝ) (ha : 0 < a) (f : 𝓢(E, ℂ)) (x : E) :
     normalizedDilation a ha f x = (a ^ Module.finrank ℝ E) • f (a • x) := rfl
 
+@[simp] theorem normalizedDilation_one (f : 𝓢(E, ℂ)) : normalizedDilation 1 zero_lt_one f = f := by
+  ext x
+  simp only [normalizedDilation_apply, one_pow, one_smul]
+
 variable [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E]
 
 theorem eLpNorm_normalizedDilation_one (a : ℝ) (ha : 0 < a) (f : 𝓢(E, ℂ)) :

@@ -225,7 +225,11 @@ All induction files belong to `Induction/`:
   weighted layer-cake integration now prove full interpolation in
   `Interpolation/Schwartz`. `XRay/SmoothedDecay` gives the uniform frequency
   gain `a^(-1/p)` on fixed bounded support for every finite `p ≥ 2`.
-  A smooth frequency partition and separate control of zero frequency remain.
+  Projected-kernel decay, bounded translations, and convolution transfer now
+  prove rapid spatial tails. `XRay/WeightedDecay` retains this gain with
+  every polynomial weight `(1 + |x|²)^A` for `a ≥ 1`. `LowFrequency` proves
+  the weighted fixed-kernel bound for finite `p ≥ 1` without a Fourier gap.
+  A smooth frequency partition remains to be constructed.
 * `Terminal`: polynomially weighted bandlimited fiber comparison, summable
   dyadic gain, and the local full-plane bound.
 * `Range`: choose all strict margins, iterate from zero-dimensional disks
@@ -254,9 +258,15 @@ Both smoothed endpoints are uniform under normalized kernel dilation. Smooth
 amplitude splitting and weighted layer-cake integration now prove interpolation
 while preserving the Schwartz domain and support constraint. Signed integration
 is linear on this domain, and `SmoothedDecay` supplies the uniform gain
-`a^(-1/p)` for every finite `p ≥ 2`. The remaining gap includes the frequency
-partition, low-frequency control, weighted tails, bandlimited comparison
-with local plate averages, and Fourier terminal assembly.
+`a^(-1/p)` for every finite `p ≥ 2`. Normalized dilation and bounded
+translations preserve uniform projected-kernel decay. Absolute convolution
+bounds transfer it to the smoothed input, giving arbitrarily rapid frequency
+and spatial tails outside the support ball. The weighted joint norm now
+retains `a^(-1/p)` for every polynomial transverse weight. A fixed smoothing
+kernel also has a weighted bound at every finite `p ≥ 1`, covering the
+low-frequency piece without a gap at the origin. The remaining gap includes
+the frequency partition, preservation of Fourier support under polynomial
+weights, bandlimited comparison with local plate averages, and terminal assembly.
 
 ### 7. Independent `(5,2)` seed
 
