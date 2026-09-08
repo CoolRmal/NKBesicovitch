@@ -213,9 +213,13 @@ All induction files belong to `Induction/`:
   a small exponent loss.
 * `Step`: flag Fubini, Hölder on perpendicular fibers, and the exact recurrence
   for the plate loss and input/output exponents.
-* `Fourier`: Plancherel, line-transform Fourier identity with weight `|ξ|⁻¹`,
-  frequency localization and fixed-support interpolation. Handle the zero
-  frequency separately.
+* `Fourier`: Plancherel and the line-transform Fourier identity with weight
+  `|ξ|⁻¹` are proved in `XRay/FourierSlice`, `SchwartzLine`, `FourierFrame`,
+  and `AveragedFourier`, using `Geometry/PolarIntegral` and
+  `RotatedHyperplaneIntegral`. The joint `L²` estimate has the finite
+  constant and decay `R^(-1/2)` for a Fourier gap of radius `R > 0`.
+  Smooth frequency localization, the uniform fixed-support `L∞` bound,
+  interpolation, and separate control of the zero frequency remain.
 * `Terminal`: polynomially weighted bandlimited fiber comparison, summable
   dyadic gain, and the local full-plane bound.
 * `Range`: choose all strict margins, iterate from zero-dimensional disks
@@ -238,8 +242,11 @@ exponent at least two. `Globalization` now extends every such local estimate
 to arbitrary Borel nonnegative inputs for `0 < δ ≤ 1`. Translation covariance,
 joint measurability of moving-ball maxima, and Tonelli give the explicit
 factor `3^(n/p)` without changing the deficit. `Range` uses this global
-estimate; its remaining gap is the Fourier terminal argument and its
-required frequency and weighted bandlimited estimates.
+estimate. The signed Fourier-slice identity and averaged Plancherel estimate
+are now proved, including a finite constant for the half-derivative gain.
+The remaining gap is the Fourier terminal assembly, smooth frequency
+localization, fixed-support interpolation, weighted tails, and bandlimited
+comparison with local plate averages.
 
 ### 7. Independent `(5,2)` seed
 

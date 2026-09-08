@@ -15,6 +15,8 @@ import NKBesicovitch.Geometry.NormalCoordinates
 import NKBesicovitch.Geometry.NormalIsometry
 import NKBesicovitch.Geometry.SphereRotations
 import NKBesicovitch.Geometry.SphereMeasure
+import NKBesicovitch.Geometry.PolarIntegral
+import NKBesicovitch.Geometry.RotatedHyperplaneIntegral
 import NKBesicovitch.Geometry.DirectionChart
 import NKBesicovitch.Geometry.DirectionMeasure
 import NKBesicovitch.Geometry.DirectionCover
@@ -28,6 +30,7 @@ import NKBesicovitch.Operators.PlateTranslation
 import NKBesicovitch.Operators.PlateLocalizationMeasurability
 import NKBesicovitch.Operators.PlateLocalization
 import NKBesicovitch.Operators.BallLocalization
+import NKBesicovitch.Operators.Fourier.Plancherel
 import NKBesicovitch.Operators.MixedNorm.Basic
 import NKBesicovitch.Operators.MixedNorm.Fibers
 import NKBesicovitch.Operators.MixedNorm.Sums
@@ -71,6 +74,10 @@ import NKBesicovitch.Operators.XRay.Arclength
 import NKBesicovitch.Operators.XRay.DirectionNorm
 import NKBesicovitch.Operators.XRay.DirectionMeasurability
 import NKBesicovitch.Operators.XRay.Frame
+import NKBesicovitch.Operators.XRay.FourierSlice
+import NKBesicovitch.Operators.XRay.SchwartzLine
+import NKBesicovitch.Operators.XRay.FourierFrame
+import NKBesicovitch.Operators.XRay.AveragedFourier
 import NKBesicovitch.Operators.XRay.Spherical
 import NKBesicovitch.Operators.XRay.SphericalBound
 import NKBesicovitch.Operators.XRay.Power

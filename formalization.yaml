@@ -114,8 +114,11 @@ sources:
       range yields a subunit deficit in dimension n-1. Moving-ball averaging
       now globalizes the plate estimate to all Borel nonnegative inputs for
       thickness at most one, preserving the deficit with the extra factor
-      3^(n/p). The Fourier terminal argument and its required frequency and
-      weighted bandlimited estimates remain open.
+      3^(n/p). Signed Fourier slicing, Schwartz regularity of line integrals,
+      and the exact Haar-averaged inverse-radius Fourier weight are now proved.
+      A Fourier gap of radius R gives joint L2 decay R^(-1/2) with a finite
+      constant. Smooth frequency localization, fixed-support interpolation,
+      weighted bandlimited estimates, and terminal assembly remain open.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -224,9 +227,13 @@ status:
     selection at every subcritical ratio, finite deficit iteration to the
     subunit threshold required by the target range, translation covariance,
     joint measurability and exact norm identities for moving-ball localization,
-    globalization of local plate estimates with unchanged deficit, and
+    globalization of local plate estimates with unchanged deficit,
+    signed Fourier slicing, Schwartz regularity of line integrals, polar
+    averaging of hyperplane integrals with inverse-radius weight, and
+    the joint L2 half-derivative gain with a finite constant have Lean proofs.
+    The proved foundations also include
     passage from uniform disk or delta-plate maximal estimates
-    on open indicators to a volume lower bound have Lean proofs.
+    on open indicators to a volume lower bound.
     Two top-level proof gaps stand for substantial undeveloped analytic
     dependencies described in PLAN.md. Their count does not measure the size
     of the remaining work. This snapshot is not ready for Palomar submission.

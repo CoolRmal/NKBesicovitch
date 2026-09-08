@@ -5,6 +5,19 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `XRay/FourierSlice` proves the signed Fourier-slice identity for integrable
+  complex inputs. `SchwartzLine` proves continuity, Schwartz regularity,
+  and fiberwise Plancherel for signed line integrals. `FourierFrame` places
+  them on one fixed displacement space and proves joint measurability.
+* `Geometry/PolarIntegral` supplies nonnegative polar integration and the
+  exact change in radial density under a one-dimensional drop.
+  `RotatedHyperplaneIntegral` proves that Haar-averaged hyperplane volume
+  is ambient volume weighted by inverse radius, with the ratio of sphere
+  areas. Positive hyperplane dimension excludes the atomic zero-dimensional
+  exception. `XRay/AveragedFourier` combines this with Plancherel and proves
+  joint `L²` decay `R^(-1/2)` for Schwartz inputs whose Fourier transform
+  vanishes on the radius-`R` ball. The constant is finite and independent
+  of `R > 0`. Absolute values are taken after the signed line integral.
 * `Induction/Globalization` extends a local diagonal plate estimate to all
   Borel nonnegative inputs, including unbounded support and infinite values,
   for `0 < δ ≤ 1`. Its extra factor is `3^(n/p)`, with no change to the
@@ -447,8 +460,11 @@ selection, and finite deficit iteration are now proved. The general target
 range yields a positive deficit below one in dimension `n-1`, with finite
 input exponent at least two. Moving-ball averaging now extends the local
 plate estimates to arbitrary inputs without changing the deficit. The
-remaining general-range work is the Fourier terminal argument, including
-frequency localization, weighted tails and bandlimited comparison,
+signed Fourier-slice identity, Schwartz regularity, and averaged
+Plancherel formula are now proved. A positive Fourier gap gives the joint
+`L²` half-derivative gain with a finite constant. The remaining general-range
+work is smooth frequency localization, the uniform fixed-support `L∞`
+bound, interpolation, low-frequency control, weighted tails and bandlimited comparison,
 followed by the final assembly with the proved passage from uniform maximal
 bounds to positive measure.
 
@@ -573,6 +589,10 @@ Translation covariance, joint measurability of moving-ball plate maxima,
 the exact averaged input-norm identity, and globalization with unchanged
 deficit pass the standard-axiom audit with no source warnings. The complete
 build succeeds with 3001 jobs and the same five intended holes.
+Signed Fourier slicing, Schwartz regularity of line integrals, the exact
+rotated-hyperplane measure identity, averaged Plancherel, and the finite
+half-derivative bound pass the standard-axiom audit with no source warnings.
+The complete build succeeds with 3382 jobs and the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

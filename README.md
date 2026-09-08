@@ -79,8 +79,13 @@ in codimension `c`, the deficit is `c/ρ^j` for any fixed
 `2 < ρ < criticalExponent`. The target range therefore supplies a deficit
 below one in dimension `n-1`. `Induction/Globalization` extends these local
 plate estimates to all Borel nonnegative inputs for `0 < δ ≤ 1`, with the
-same deficit and only an extra factor `3^(n/p)`. The Fourier terminal
-argument and the separate `(5,2)` proof remain incomplete.
+same deficit and only an extra factor `3^(n/p)`. The signed Fourier-slice
+identity, Schwartz regularity of line integrals, and exact averaged
+inverse-radius Fourier weight are now proved. `XRay/AveragedFourier` gives
+the joint `L²` bound with decay `R^(-1/2)` for a Fourier gap of radius `R`,
+with a finite constant. Interpolation, weighted bandlimited estimates,
+the rest of the Fourier terminal argument, and the separate `(5,2)` proof
+remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
