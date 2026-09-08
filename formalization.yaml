@@ -49,7 +49,8 @@ sources:
       reindexing preserves volume and coordinate bounds. The selectable
       corner improvement and iteration are now proved, giving a selectable
       scheme at every exponent strictly above the critical root. The
-      transfer to mixed-norm X-ray estimates remains incomplete.
+      transfer now gives strong mixed-norm X-ray estimates in slope
+      coordinates and over the full sphere on bounded support.
     license: unknown
   - title: From Projection Inequalities to Mixed-Norm Local X-Ray Estimates
     type: supplied proof notes
@@ -72,7 +73,10 @@ sources:
       and translation now give the full-line bound on bounded support.
       Transverse projection gives the perpendicular-displacement norm
       comparison, and direction normalization gives the arclength factor.
-      The direction-measure comparison and chart assembly remain incomplete.
+      Volume-preserving normal coordinates, the cone formula for direction
+      measure, and a finite cover by bounded slope caps now give the full
+      spherical mixed-norm estimate with the same exponents. Its constant
+      is uniform over all Borel inputs on fixed bounded support.
     license: unknown
   - title: Two bounds for the X-ray transform
     authors: [Richard Oberlin]
@@ -181,7 +185,11 @@ status:
     bound for every p > Q/beta, including zero and infinite input norms,
     the full-line extension on bounded support, invertible transverse
     projection and its volume and Lp norm comparisons, the exact arclength
-    factor under direction normalization, and
+    factor under direction normalization, volume-preserving orthonormal
+    normal coordinates, hemisphere charts, the spherical direction-measure
+    comparison, a finite bounded-slope cap cover, the finite-cover norm
+    inequality without measurability assumptions, the full spherical
+    mixed-norm X-ray estimate on bounded support, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

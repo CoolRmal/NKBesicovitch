@@ -170,8 +170,13 @@ All proof files for this input belong to `Projection/`:
   interval translations and a finite cover. `TransverseMeasure` controls
   the perpendicular-displacement norm by the transverse intercept norm;
   `Arclength` supplies the exact factor from normalizing the direction.
-  Still needed are the Euclidean coordinate identification, the direction
-  measure comparison, joint geometric measurability, and a finite sphere cover.
+  `NormalCoordinates` now identifies Euclidean coordinates while preserving
+  volume. `DirectionMeasure` compares sphere measure with slope volume
+  through the cone formula, and `DirectionCover` supplies a finite cap cover.
+  `DirectionNorm`, `Spherical`, and `SphericalBound` now assemble the full
+  spherical estimate with the same exponents. The finite-cover norm
+  inequality needs no joint measurability hypothesis; measurability required
+  in the later Grassmannian disintegration remains to be established.
 
 Essential fiber bounds must be used almost everywhere or justified by removing
 a null set of directions once. Projection images need not be Borel; use outer

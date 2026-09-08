@@ -63,8 +63,11 @@ and homogeneity now extend this to the strong estimate
 inputs supported in a fixed bounded set, with bounded Borel slopes. Zero and
 infinite input norms are included. `FullLineBound.lean` extends this to the
 full line integral with the same exponents. The transverse-to-perpendicular
-displacement comparison and arclength factor are also proved. The direction
-measure comparison and assembly over spherical charts remain incomplete.
+displacement comparison and arclength factor are also proved.
+`SphericalBound.lean` now proves the full geometric estimate with the same
+exponents, using volume-preserving coordinates, the cone formula for
+sphere measure, and a finite cover by bounded slope caps. The Grassmannian
+disintegration, induction, and final positive-measure proofs remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

@@ -33,6 +33,19 @@ noncomputable def mixedNorm (f : X × Y → ℝ≥0∞) (q r : ℝ≥0∞)
     (μ : Measure X) (ν : Measure Y) : ℝ≥0∞ :=
   eLpNorm (fun y ↦ eLpNorm (fun x ↦ f (x, y)) r μ) q ν
 
+theorem mixedNorm_indicator_snd {A : Set Y} (hA : MeasurableSet A) :
+    mixedNorm ((Prod.snd ⁻¹' A).indicator f) q r μ ν =
+      mixedNorm f q r μ (ν.restrict A) := by
+  unfold mixedNorm
+  rw [← eLpNorm_indicator_eq_eLpNorm_restrict hA]
+  congr 1
+  funext y
+  by_cases hy : y ∈ A
+  · simp only [indicator_of_mem hy, mem_preimage, hy, indicator_of_mem]
+  · have hx (x : X) : (x, y) ∉ Prod.snd ⁻¹' A := hy
+    simp only [indicator_of_notMem hy, indicator_of_notMem (hx _)]
+    exact eLpNorm_zero
+
 theorem mixedNorm_mono (h : f ≤ g) : mixedNorm f q r μ ν ≤ mixedNorm g q r μ ν := by
   apply eLpNorm_mono_enorm
   intro y

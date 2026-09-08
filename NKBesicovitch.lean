@@ -8,6 +8,10 @@ import NKBesicovitch.Grassmannian.Topology
 import NKBesicovitch.Grassmannian.Measure
 import NKBesicovitch.Geometry.Disks
 import NKBesicovitch.Geometry.RigidMotions
+import NKBesicovitch.Geometry.NormalCoordinates
+import NKBesicovitch.Geometry.DirectionChart
+import NKBesicovitch.Geometry.DirectionMeasure
+import NKBesicovitch.Geometry.DirectionCover
 import NKBesicovitch.Operators.Defs
 import NKBesicovitch.Operators.Disks
 import NKBesicovitch.Operators.Semicontinuity
@@ -16,6 +20,7 @@ import NKBesicovitch.Operators.MixedNorm.Basic
 import NKBesicovitch.Operators.MixedNorm.Fibers
 import NKBesicovitch.Operators.MixedNorm.Sums
 import NKBesicovitch.Operators.MixedNorm.VolumeComparison
+import NKBesicovitch.Operators.MixedNorm.FiniteCover
 import NKBesicovitch.Operators.Interpolation.Dyadic
 import NKBesicovitch.Operators.Interpolation.BlockBounds
 import NKBesicovitch.Operators.Interpolation.BlockScaling
@@ -49,6 +54,9 @@ import NKBesicovitch.Operators.XRay.FullLineBound
 import NKBesicovitch.Operators.XRay.Transverse
 import NKBesicovitch.Operators.XRay.TransverseMeasure
 import NKBesicovitch.Operators.XRay.Arclength
+import NKBesicovitch.Operators.XRay.DirectionNorm
+import NKBesicovitch.Operators.XRay.Spherical
+import NKBesicovitch.Operators.XRay.SphericalBound
 import NKBesicovitch.Projection.Defs
 import NKBesicovitch.Projection.TwoSlice
 import NKBesicovitch.Projection.Parallel

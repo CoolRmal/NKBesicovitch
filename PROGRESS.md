@@ -5,6 +5,17 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Operators/XRay/SphericalBound`: the strong bound is now proved for the
+  geometric X-ray transform, with arclength along lines, Lebesgue measure
+  on perpendicular displacement hyperplanes, and Euclidean surface
+  measure on the sphere. It has the same exponents as the model estimate
+  and a constant uniform over all Borel inputs on fixed bounded support.
+  `Geometry/NormalCoordinates` supplies volume-preserving orthonormal
+  coordinates. `DirectionChart`, `DirectionMeasure`, and `DirectionCover`
+  give hemisphere parametrizations, the sphere-measure comparison via
+  cones, and a finite cover by caps with bounded slopes. `DirectionNorm`
+  and `Spherical` assemble the local comparisons. `MixedNorm/FiniteCover`
+  sums the cap norms without an extra joint measurability assumption.
 * `Operators/XRay/FullLineBound`: the strong mixed-norm bound now holds
   for the full line integral `chartXRay`, with the same exponents, on any
   fixed bounded support and bounded Borel slope set. `TimeTranslation`
@@ -351,11 +362,12 @@ and the fixed support controls small levels. Homogeneity gives the full
 strong local estimate for every `p > Q/β`, including zero and infinite
 norms. The estimate now extends to full lines on bounded support.
 Transverse projection controls the perpendicular-displacement norm, and
-direction normalization gives the arclength factor. The remaining chart
-work is the identification of Euclidean coordinates, the direction-measure
-comparison, joint measurability in geometric coordinates, and a finite
-covering of directions. The strict dimension margin allows the small
-input-exponent loss.
+direction normalization gives the arclength factor. Volume-preserving
+Euclidean coordinates, the direction-measure comparison, and a finite
+cap cover now give the full spherical mixed-norm bound. This inequality
+does not require joint measurability of the geometric displacement norm;
+any such measurability needed for later disintegration still requires a
+proof. The strict dimension margin allows the small input-exponent loss.
 
 The canonical Grassmannian probability measure is implemented, including its
 orbit integral formula and uniqueness. **Flag disintegration** is still open:
@@ -459,6 +471,11 @@ succeeds with 2875 jobs and the same five intended holes.
 The full-line strong estimate, perpendicular-displacement norm comparison,
 and arclength identity pass the standard-axiom audit with no source warnings.
 The complete build succeeds with 2896 jobs and the same five intended holes.
+The sphere-measure norm comparison, finite bounded-slope cover, finite-cover
+norm inequality, perpendicular chart comparison, and full spherical X-ray
+estimate pass the standard-axiom audit with no source warnings. The numerical
+critical-exponent bound also passes again. The complete build succeeds with
+2970 jobs and the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
