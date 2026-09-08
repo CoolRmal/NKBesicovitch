@@ -28,7 +28,8 @@ sources:
       Its novel continuous corner and simultaneous-selection assertions are
       not independently certified by the manuscript. Lean now verifies the
       basic pair improvement and exact corner density and fiber identities;
-      the full corner improvement remains incomplete.
+      the normalized corner improvement is now proved. Dilation and
+      quantitative height selection remain incomplete.
     license: unknown
   - title: From Projection Inequalities to Mixed-Norm Local X-Ray Estimates
     type: supplied proof notes
@@ -102,7 +103,9 @@ status:
     budgeted outer threshold, the normalized numerical exponent
     amplification, the finite-depth choice, common constants for each fixed
     corner pattern, the assembled conditional stopping-node estimate,
-    root and terminal projection bounds, balanced stopping masses, and
+    root and terminal projection bounds, balanced stopping masses,
+    the normalized corner improvement with internally constructed height
+    patterns and finite trees, uniform constants, and stopping families, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

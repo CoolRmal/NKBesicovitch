@@ -94,6 +94,17 @@ import NKBesicovitch.Projection.PatternOuter
 import NKBesicovitch.Projection.PatternRefinement
 import NKBesicovitch.Projection.PatternCorners
 import NKBesicovitch.Projection.PatternBound
+import NKBesicovitch.Projection.CornerTree
+import NKBesicovitch.Projection.TreeStopping
+import NKBesicovitch.Projection.CompanionSystem
+import NKBesicovitch.Projection.TreeFamilies
+import NKBesicovitch.Projection.TreeThreshold
+import NKBesicovitch.Projection.TreeBound
+import NKBesicovitch.Projection.TreeNormalized
+import NKBesicovitch.Projection.TreeConstruction
+import NKBesicovitch.Projection.TimeTranslation
+import NKBesicovitch.Projection.PatternExistence
+import NKBesicovitch.Projection.CornerNormalizedImprovement
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta
