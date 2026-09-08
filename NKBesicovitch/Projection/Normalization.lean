@@ -38,13 +38,15 @@ theorem restore_multiplicity {L M N C β : ℝ} (hM : 0 < M) (hN : 0 ≤ N)
       rw [Real.div_rpow hN hM.le, Real.rpow_sub hM, Real.rpow_two]
       ring
 
-theorem hasProjectionEstimate_of_normalized [Nonempty (Fin m)] {β C : ℝ}
-    {Γ : Finset ℝ} (hΓ : Γ.Nonempty) (hC : 0 < C)
+theorem volume_le_of_normalized [Nonempty (Fin m)] {β C : ℝ}
+    {Γ : Finset ℝ} (hΓ : Γ.Nonempty) (hC : 0 ≤ C)
     (hbound : ∀ G : Set (Line m), MeasurableSet G → IsBounded G →
       (parallelMultiplicity G).toReal ≤ 1 →
       ∀ N : ℝ, 1 ≤ N → (∀ t ∈ Γ, volume (atHeight t '' G) ≤ ENNReal.ofReal N) →
-      (volume G).toReal ≤ C * N ^ β) : HasProjectionEstimate m β Γ := by
-  refine ⟨C, hC, fun G hG hGb ↦ ?_⟩
+      (volume G).toReal ≤ C * N ^ β)
+    {G : Set (Line m)} (hG : MeasurableSet G) (hGb : IsBounded G) :
+    (volume G).toReal ≤ C * (parallelMultiplicity G).toReal ^ (2 - β) *
+      (sliceSize Γ G).toReal ^ β := by
   by_cases hzero : volume G = 0
   · rw [hzero, ENNReal.toReal_zero]
     positivity
@@ -83,5 +85,13 @@ theorem hasProjectionEstimate_of_normalized [Nonempty (Fin m)] {β C : ℝ}
   rw [volume_lineFamily_smul hr.le, ENNReal.toReal_mul, hrm,
     ENNReal.toReal_ofReal (sq_nonneg _)] at h
   exact restore_multiplicity hM hN h
+
+theorem hasProjectionEstimate_of_normalized [Nonempty (Fin m)] {β C : ℝ}
+    {Γ : Finset ℝ} (hΓ : Γ.Nonempty) (hC : 0 < C)
+    (hbound : ∀ G : Set (Line m), MeasurableSet G → IsBounded G →
+      (parallelMultiplicity G).toReal ≤ 1 →
+      ∀ N : ℝ, 1 ≤ N → (∀ t ∈ Γ, volume (atHeight t '' G) ≤ ENNReal.ofReal N) →
+      (volume G).toReal ≤ C * N ^ β) : HasProjectionEstimate m β Γ :=
+  ⟨C, hC, fun _ hG hGb ↦ volume_le_of_normalized hΓ hC.le hbound hG hGb⟩
 
 end NKBesicovitch.Projection

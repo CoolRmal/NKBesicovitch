@@ -40,6 +40,8 @@ def TreeTimeLabel.base (L : ℕ) : (J : ℕ) → Fin 3 → TreeTimeLabel L J
   | 0 => fun i ↦ i
   | _ + 1 => fun i ↦ Sum.inl (Sum.inl i)
 
+instance (L J : ℕ) : Nonempty (TreeTimeLabel L J) := ⟨TreeTimeLabel.base L J 0⟩
+
 namespace SelectableProjectionScheme
 
 variable {m D L : ℕ} {β : ℝ} (S : SelectableProjectionScheme m β D L)

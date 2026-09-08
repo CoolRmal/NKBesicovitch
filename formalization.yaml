@@ -42,8 +42,11 @@ sources:
       bound, and the realization retains uniform geometric and analytic
       control. The explicit stopping coefficient has a polynomial bound
       common to every selected node and tree for fixed balanced-mass
-      coefficients. Whole-tree threshold and bounded-size control, final
-      scheme assembly, and selectable iteration remain incomplete.
+      coefficients. The whole-tree threshold and bounded-size coefficient
+      now have polynomial bounds. Every selected parameter satisfies the
+      full finite-tree projection estimate with a uniform polynomial
+      constant, preserved through multiplicity normalization. Final scheme
+      assembly and selectable iteration remain incomplete.
     license: unknown
   - title: From Projection Inequalities to Mixed-Norm Local X-Ray Estimates
     type: supplied proof notes

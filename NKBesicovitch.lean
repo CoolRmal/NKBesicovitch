@@ -103,8 +103,13 @@ import NKBesicovitch.Projection.ControlPolynomial
 import NKBesicovitch.Projection.CornerTree
 import NKBesicovitch.Projection.TreeStopping
 import NKBesicovitch.Projection.CompanionSystem
+import NKBesicovitch.Projection.CompanionBounds
 import NKBesicovitch.Projection.TreeFamilies
 import NKBesicovitch.Projection.TreeThreshold
+import NKBesicovitch.Projection.ControlledThreshold
+import NKBesicovitch.Projection.TreeUniformBound
+import NKBesicovitch.Projection.TreeControlledBound
+import NKBesicovitch.Projection.TreePolynomialBound
 import NKBesicovitch.Projection.TreeBound
 import NKBesicovitch.Projection.TreeNormalized
 import NKBesicovitch.Projection.TreeConstruction
@@ -154,6 +159,7 @@ import NKBesicovitch.Projection.Selection.NodeControl
 import NKBesicovitch.Projection.Selection.TreeUniformBounds
 import NKBesicovitch.Projection.Selection.TreeControl
 import NKBesicovitch.Projection.Selection.StoppingBounds
+import NKBesicovitch.Projection.Selection.TreeEstimate
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

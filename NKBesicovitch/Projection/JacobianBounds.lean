@@ -6,6 +6,7 @@ Authors: Yongxi Lin
 module
 
 public import NKBesicovitch.Projection.CodeCoordinates
+public import NKBesicovitch.Projection.TwoSlice
 public import Mathlib.Tactic.Positivity
 
 /-!
@@ -28,6 +29,22 @@ theorem codeJacobian_toReal_le_of_separated (m : ℕ) {a b r : ℝ} (hr : 0 < r)
     ← Real.dist_eq b a, dist_comm b a, ← inv_pow]
   exact pow_le_pow_left₀ (inv_nonneg.mpr dist_nonneg)
     ((inv_le_inv₀ (hr.trans_le hab) hr).mpr hab) m
+
+theorem volume_toReal_le_two_slice_of_separated {m : ℕ} {a b r N : ℝ}
+    (hr : 0 < r) (hab : r ≤ dist a b) (hN : 0 ≤ N) (G : Set (Line m))
+    (ha : volume (atHeight a '' G) ≤ ENNReal.ofReal N)
+    (hb : volume (atHeight b '' G) ≤ ENNReal.ofReal N) :
+    (volume G).toReal ≤ r⁻¹ ^ m * N ^ 2 := by
+  have hne : a ≠ b := dist_pos.mp (hr.trans_le hab)
+  have hmass : volume G ≤ codeJacobian m a b * (ENNReal.ofReal N * ENNReal.ofReal N) :=
+    (volume_le_two_slice hne G).trans
+      (mul_le_mul le_rfl (mul_le_mul ha hb bot_le bot_le) bot_le bot_le)
+  have h := ENNReal.toReal_mono
+    (ENNReal.mul_ne_top (codeJacobian_ne_top m a b)
+      (ENNReal.mul_ne_top ENNReal.ofReal_ne_top ENNReal.ofReal_ne_top)) hmass
+  rw [ENNReal.toReal_mul, ENNReal.toReal_mul, ENNReal.toReal_ofReal hN] at h
+  simpa only [pow_two] using h.trans (mul_le_mul_of_nonneg_right
+    (codeJacobian_toReal_le_of_separated m hr hab) (mul_self_nonneg N))
 
 theorem pairJacobian_toReal_le_of_separated (m : ℕ) {a b c r : ℝ} (hr : 0 < r)
     (hab : r ≤ dist a b) (hac : r ≤ dist a c) :

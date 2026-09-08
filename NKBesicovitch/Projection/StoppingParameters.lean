@@ -111,18 +111,24 @@ theorem child_pruning_budget {N V r k : ℝ} (hN : 1 ≤ N) (hV : 0 ≤ V)
     _ = V * (N ^ (-stoppingAlpha J (i + 1)) * N ^ (1 / (J : ℝ) ^ 2)) / 2 := by ring
     _ = _ := by rw [stopping_loss_gap hNpos]
 
-theorem exists_child_pruning_threshold (r k : ℝ) {J : ℕ} (hJ : 0 < J) :
-    ∃ N₀ : ℝ, 1 ≤ N₀ ∧ ∀ N, N₀ ≤ N →
-      4 * (1 + 2 * k) * r ≤ N ^ (1 / (J : ℝ) ^ 2) := by
+theorem child_pruning_threshold {r k N : ℝ} {J : ℕ} (hJ : 0 < J)
+    (hN : (max 1 (4 * (1 + 2 * k) * r)) ^ (J : ℝ) ^ 2 ≤ N) :
+    4 * (1 + 2 * k) * r ≤ N ^ (1 / (J : ℝ) ^ 2) := by
   let B := max 1 (4 * (1 + 2 * k) * r)
   have hB : 1 ≤ B := le_max_left _ _
   have hBpos : 0 < B := lt_of_lt_of_le zero_lt_one hB
   have hJpos : (0 : ℝ) < (J : ℝ) ^ 2 := sq_pos_of_pos (Nat.cast_pos.mpr hJ)
-  refine ⟨B ^ (J : ℝ) ^ 2, Real.one_le_rpow hB hJpos.le, fun N hN ↦ ?_⟩
   have hpow := Real.rpow_le_rpow (Real.rpow_nonneg hBpos.le _) hN
     (div_nonneg zero_le_one hJpos.le)
   rw [one_div, Real.rpow_rpow_inv hBpos.le hJpos.ne'] at hpow
   have hLB : 4 * (1 + 2 * k) * r ≤ B := le_max_right _ _
   simpa only [one_div] using hLB.trans hpow
+
+theorem exists_child_pruning_threshold (r k : ℝ) {J : ℕ} (hJ : 0 < J) :
+    ∃ N₀ : ℝ, 1 ≤ N₀ ∧ ∀ N, N₀ ≤ N →
+      4 * (1 + 2 * k) * r ≤ N ^ (1 / (J : ℝ) ^ 2) :=
+  ⟨(max 1 (4 * (1 + 2 * k) * r)) ^ (J : ℝ) ^ 2,
+    Real.one_le_rpow (le_max_left _ _) (sq_nonneg _), fun _ hN ↦
+      child_pruning_threshold hJ hN⟩
 
 end NKBesicovitch.Projection

@@ -322,10 +322,19 @@ now pass through child refinement and the stopping-node proof, and the
 resulting stopping constant has a uniform positive integer-power bound
 in `1/|I|`. For fixed balanced-mass coefficients, that bound works at
 every internal node of every selected tree, independently of depth.
-The remaining projection work is to control the whole-tree threshold and
-bounded-size cases using the finite label count, retain the same constant
-through multiplicity normalization, reindex the finite arrays into the
-scheme interface, and iterate the selectable corner improvement.
+The finite label count now gives fixed lower balanced-mass coefficients
+and a pair-mass upper coefficient independent of the numerical height set.
+`ControlledThreshold` bounds all root and pruning thresholds by a polynomial
+in `1/|I|`. `TreeUniformBound` and `TreeControlledBound` retain a prescribed
+stopping coefficient and combine the large-size case with an explicit
+two-slice bound. `TreePolynomialBound` bounds the resulting constant by a
+single positive integer power of `1/|I|`.
+`Selection/TreeEstimate` applies this estimate to every selected parameter.
+Both the normalized estimate and the full parallel-multiplicity estimate
+have constants depending only on the input scheme and fixed depth, with
+the stated polynomial dependence on time-set measure. The remaining
+projection work is to reindex the finite arrays into the scheme interface
+and iterate the selectable corner improvement.
 
 ## Verification conventions
 
@@ -385,6 +394,12 @@ no new proof gaps or source warnings.
 The uniform tree-coordinate bound, quantitative control of selected
 patterns, polynomial stopping-coefficient bound, and common stopping
 bound across selected trees also pass the standard-axiom audit.
+The common companion bounds, polynomial stopping threshold, full polynomial
+normalized tree estimate, and full estimate for every selected tree parameter
+also pass the standard-axiom audit with no source warnings. The refactored
+multiplicity-normalization theorem and existing strictly supercritical
+finite-height theorem pass again. The complete build succeeds with 2838
+jobs and only the five intended challenge and final-theorem holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

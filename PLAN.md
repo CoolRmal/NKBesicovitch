@@ -138,9 +138,12 @@ All proof files for this input belong to `Projection/`:
   Inner and outer coefficients are one explicit monomial; their propagation
   through refinement and the stopping proof yields a polynomial stopping
   constant uniform over every selected tree with fixed balanced-mass
-  coefficients. Next bound the whole-tree threshold and bounded-size cases
-  using the label count, carry the same constant through normalization,
-  and reindex the arrays into the scheme interface. The corner theorem
+  coefficients. The finite label count now gives common balanced-mass
+  coefficients, a polynomial stopping threshold, and an explicit bound
+  covering both large and bounded projection sizes. The full selected-tree
+  estimate has a uniform polynomial constant, preserved when restoring
+  parallel multiplicity. Next reindex the arrays into the scheme interface
+  and iterate the selectable improvement. The corner theorem
   accepts `β = 2`, so iteration can start directly from the two-slice seed;
   separate selectable pair-step closure is not needed for this route.
 * `Estimate`: assemble the selectable estimate for every `β > β_c` below 2.

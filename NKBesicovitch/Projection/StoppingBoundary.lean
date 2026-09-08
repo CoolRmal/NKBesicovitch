@@ -64,16 +64,19 @@ theorem root_density_threshold {c j L N V : ℝ} (hc : 0 ≤ c) (hL : 1 ≤ L) (
       rw [mul_assoc, ← Real.rpow_add hN]; norm_num
     _ ≤ V * N ^ (98 : ℝ) := mul_le_mul_of_nonneg_right hV (Real.rpow_nonneg hN.le _)
 
-theorem exists_root_threshold {c : ℝ} (hc : 0 < c) (j : ℝ) :
-    ∃ N₀ : ℝ, 1 ≤ N₀ ∧ ∀ N, N₀ ≤ N → j < c * N ^ (96 : ℝ) := by
-  refine ⟨max 1 ((j + 1) / c), le_max_left _ _, fun N hN ↦ ?_⟩
-  have hN₁ := (le_max_left _ _).trans hN
-  have hj : j + 1 ≤ c * N := by
-    simpa only [mul_comm] using (div_le_iff₀ hc).mp ((le_max_right _ _).trans hN)
+theorem root_threshold {c j N : ℝ} (hc : 0 < c) (hN : 1 ≤ N)
+    (hj : (j + 1) / c ≤ N) : j < c * N ^ (96 : ℝ) := by
+  have hj' : j + 1 ≤ c * N := by
+    simpa only [mul_comm] using (div_le_iff₀ hc).mp hj
   have hpow : N ≤ N ^ (96 : ℝ) := by
-    simpa only [Real.rpow_one] using Real.rpow_le_rpow_of_exponent_le hN₁
+    simpa only [Real.rpow_one] using Real.rpow_le_rpow_of_exponent_le hN
       (by norm_num : (1 : ℝ) ≤ 96)
   exact (by linarith : j < c * N).trans_le (mul_le_mul_of_nonneg_left hpow hc.le)
+
+theorem exists_root_threshold {c : ℝ} (hc : 0 < c) (j : ℝ) :
+    ∃ N₀ : ℝ, 1 ≤ N₀ ∧ ∀ N, N₀ ≤ N → j < c * N ^ (96 : ℝ) :=
+  ⟨max 1 ((j + 1) / c), le_max_left _ _, fun _ hN ↦
+    root_threshold hc ((le_max_left _ _).trans hN) ((le_max_right _ _).trans hN)⟩
 
 theorem root_lowPairs_eq {a s t c L N : ℝ} (hc : 0 ≤ c) (hL : 1 ≤ L) (hN : 1 ≤ N)
     {G : Set (Line m)} {W : Set (PairCoordinates m)} (hWG : W ⊆ pairFamily a G)
