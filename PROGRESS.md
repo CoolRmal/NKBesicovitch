@@ -65,6 +65,12 @@ source decomposition. The final theorems are not proved yet.
   families have finite projection, multiplicity, and pair masses. The uniform
   projection-estimate predicate has its exponent-two seed, and the selected
   family satisfies all the finite numerical inequalities for pair amplification.
+* `Projection/PairAlgebra`, `PairParameters`, `PairStep`, `PairImprovement`:
+  the full basic pair improvement `β ↦ 2 - 1/(2β)` for bounded Borel families,
+  including the uniform constant, positive threshold, zero-mass case, and
+  all finite-mass checks. In particular, the exponent `7/4` holds on the five
+  heights `{0, 1, 2, 3, 3/2}`. This does not yet establish the target exponent
+  near `1.675`, which requires the stronger corner improvement.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -99,7 +105,8 @@ inputs require proofs in Lean; none may be installed as axioms.
 For the projection estimate, the pair-incidence mass, low-density deletion,
 code-fiber projection bound, and simultaneous fiber-selection steps are now
 proved, including the code-density upper bound using parallel multiplicity.
-The resulting numerical pair improvement and corner improvement are still open.
+The basic pair improvement is proved. The stronger corner improvement and
+quantitative selection of its height patterns are still open.
 
 ## Verification conventions
 
@@ -120,6 +127,7 @@ double-projection density identity pass the same audit.
 The exact pointwise code marginal and pair-fiber projection bound also pass.
 The simultaneous code-fiber selection theorem passes the same audit.
 The code-density upper bound also passes, with no extra axioms or source warnings.
+The full basic pair-improvement theorem and its `7/4` consequence pass the same audit.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.

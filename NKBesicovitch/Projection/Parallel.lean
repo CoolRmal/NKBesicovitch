@@ -46,4 +46,8 @@ theorem parallelMultiplicity_eq_zero_iff {G : Set (Line m)} (hG : MeasurableSet 
     Measure.prod_apply_symm hG, lintegral_eq_zero_iff (measurable_measure_prodMk_right hG)]
   rfl
 
+theorem parallelMultiplicity_pos {G : Set (Line m)} (hG : MeasurableSet G)
+    (hpos : 0 < volume G) : 0 < parallelMultiplicity G := by
+  exact pos_iff_ne_zero.mpr fun hz ↦ hpos.ne' ((parallelMultiplicity_eq_zero_iff hG).mp hz)
+
 end NKBesicovitch.Projection

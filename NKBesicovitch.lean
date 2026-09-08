@@ -33,6 +33,10 @@ import NKBesicovitch.Projection.CodeBound
 import NKBesicovitch.Projection.BoundedFamilies
 import NKBesicovitch.Projection.Estimates
 import NKBesicovitch.Projection.PairWitness
+import NKBesicovitch.Projection.PairAlgebra
+import NKBesicovitch.Projection.PairStep
+import NKBesicovitch.Projection.PairParameters
+import NKBesicovitch.Projection.PairImprovement
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

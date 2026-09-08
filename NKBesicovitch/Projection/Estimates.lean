@@ -50,6 +50,15 @@ theorem sliceSize_mono {Γ Δ : Finset ℝ} (hΓ : Γ ⊆ Δ) {F G : Set (Line m
   refine iSup_le fun t ↦ iSup_le fun ht ↦ ?_
   exact (measure_mono (image_mono hF)).trans (volume_projection_le_sliceSize (hΓ ht) G)
 
+theorem sliceSize_toReal_le {Γ : Finset ℝ} {G : Set (Line m)} (hG : IsBounded G)
+    {C : ℝ} (hC : 0 ≤ C) (hΓ : ∀ t ∈ Γ, (volume (atHeight t '' G)).toReal ≤ C) :
+    (sliceSize Γ G).toReal ≤ C := by
+  have h : sliceSize Γ G ≤ ENNReal.ofReal C := by
+    refine iSup_le fun t ↦ iSup_le fun ht ↦ ?_
+    rw [← ENNReal.ofReal_toReal (volume_projection_ne_top t hG)]
+    exact ENNReal.ofReal_le_ofReal (hΓ t ht)
+  simpa only [ENNReal.toReal_ofReal hC] using ENNReal.toReal_mono ENNReal.ofReal_ne_top h
+
 theorem mem_pairTimes_base_left (a b c : ℝ) (Γ : Finset ℝ) : a ∈ pairTimes a b c Γ := by
   simp [pairTimes]
 
