@@ -110,6 +110,15 @@ import NKBesicovitch.Projection.Normalization
 import NKBesicovitch.Projection.CornerImprovement
 import NKBesicovitch.Projection.IterationBounds
 import NKBesicovitch.Projection.Main
+import NKBesicovitch.Projection.Selection.SeparatedPairs
+import NKBesicovitch.Projection.Selection.TwoSlice
+import NKBesicovitch.Projection.Selection.SeparatedTimes
+import NKBesicovitch.Projection.Selection.DualPairs
+import NKBesicovitch.Projection.Selection.DualScalar
+import NKBesicovitch.Projection.Selection.DualScalarBounds
+import NKBesicovitch.Projection.Selection.DualRelation
+import NKBesicovitch.Projection.Selection.DualTimes
+import NKBesicovitch.Projection.Selection.DualReservoir
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

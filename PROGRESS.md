@@ -5,6 +5,21 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Projection/Selection/SeparatedPairs`, `SeparatedTimes`, `TwoSlice`:
+  removing finitely many neighborhoods preserves an explicit amount of
+  time measure. Pairs separated by `|I|/100` have measure at least `|I|²/2`
+  and two-slice constant at most `(100/|I|)^m`. These selections are jointly
+  Borel in measurable families of time sets and base heights.
+* `Projection/Selection/DualPairs`, `DualScalar`, `DualScalarBounds`:
+  the five required time separations preserve at least `|I|²/2` of pair
+  measure. The second-time-to-scalar map has an explicit inverse and
+  change-of-variables formula. Its absolute value lies between `δ|I|/100`
+  and `(100/|I|)²`, and its absolute Jacobian is at least `δ|I|/100`.
+* `Projection/Selection/DualRelation`, `DualTimes`, `DualReservoir`:
+  Tonelli gives at least `δ|I|³/200` of admissible time-scalar measure.
+  Removing scalars with time fibers smaller than `δ|I|⁵/8000000` leaves
+  at least `δ|I|³/400` of that measure and a scalar set of measure at least
+  `δ|I|²/400`. The retained scalar set and its time fibers are jointly Borel.
 * `Exponents`: existence and uniqueness of the cubic root defining `p_c`;
   exact rational enclosure `2.481 < p_c < 2.482`; the projection exponent
   `β_c = p_c/(p_c-1)` and its cubic equation.
@@ -252,6 +267,10 @@ work is quantitative height selection: Borel parameter families of
 polynomially controlled volume and estimate constants inside arbitrary
 positive-measure time sets. The current finite-height existence theorem
 does not supply that stronger selection rule.
+The selectable two-slice seed and quantitative dual-pair reservoir are now
+proved. The remaining selection steps are closure under the pair step,
+the common outer scalar for corner patterns, and selection of whole finite
+trees with polynomial bounds on both parameter measure and estimate constants.
 
 ## Verification conventions
 
@@ -295,6 +314,9 @@ The full normalized corner-improvement theorem and finite-tree construction
 pass the same audit, with no source warnings.
 The full corner improvement and the projection-estimate theorem at every
 strictly supercritical exponent pass the standard-axiom audit as well.
+The selectable two-slice seed, complete quantitative dual-pair reservoir,
+and joint measurability of the reservoir selection pass the same audit,
+with no source warnings or additional proof holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

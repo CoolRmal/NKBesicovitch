@@ -30,7 +30,9 @@ sources:
       basic pair improvement and exact corner density and fiber identities;
       the full corner improvement and finite-height projection estimates
       at every strictly supercritical exponent are now proved.
-      Quantitative height selection remains incomplete.
+      The jointly Borel two-slice selection and quantitative dual-pair
+      reservoir are proved with explicit polynomial bounds. Full
+      quantitative height selection remains incomplete.
     license: unknown
   - title: From Projection Inequalities to Mixed-Norm Local X-Ray Estimates
     type: supplied proof notes
@@ -109,7 +111,9 @@ status:
     patterns and finite trees, uniform constants, and stopping families,
     dilation restoring the general multiplicity factor, the full corner
     improvement, finite-height projection estimates at every exponent
-    strictly above the critical root, and
+    strictly above the critical root, the jointly Borel selectable
+    two-slice seed and dual-pair reservoir with explicit polynomial
+    bounds on parameter measure and time-fiber measure, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

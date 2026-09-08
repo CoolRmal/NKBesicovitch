@@ -113,8 +113,9 @@ All proof files for this input belong to `Projection/`:
 * `Defs`: line families `(x,ξ)`, `π_t(x,ξ)=x+tξ`, Lebesgue family mass,
   essential parallel multiplicity, and quantitative selectable patterns.
 * `TwoSlice`, `Parallel`: the exact determinant-based seed, its outer-measure
-  bound, and multiplicity normalization facts. These initial estimates are
-  now proved; the improvements and selection schemes below remain open.
+  bound, and multiplicity normalization facts. These estimates, both
+  improvements, and finite-height existence at every strict exponent above
+  the critical root are now proved. Full quantitative selection remains open.
 * `Pair`: changes of variables, pair incidence density, marginal identities,
   and pair improvement.
 * `Corner`: three-line code, its two fiber bounds, and outer marginal identity.
@@ -123,6 +124,9 @@ All proof files for this input belong to `Projection/`:
   tested fiber sets throughout the proof.
 * `Selection`: separated-time reservoirs, dual pairs, a common outer scalar,
   and polynomial lower bounds on the measure of admissible parameter tuples.
+  The jointly Borel two-slice seed and dual-pair reservoir are proved with
+  explicit constants. Pair-step closure, the common outer scalar, and whole
+  tree selection with polynomially bounded estimate constants remain open.
 * `Estimate`: assemble the selectable estimate for every `β > β_c` below 2.
 
 Essential fiber bounds must be used almost everywhere or justified by removing
