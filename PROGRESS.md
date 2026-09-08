@@ -5,6 +5,22 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Projection/Selection/Scheme`, `SeedScheme`, `SchemeBounds`: a finite-coordinate
+  scheme interface records measurable labeled heights, joint selection,
+  polynomial parameter volume, coordinate bounds, and an explicit uniform
+  projection constant. The two-slice scheme is constructed in every positive
+  slope dimension. The bounds can be applied using any positive lower bound
+  on the time-set measure.
+* `Projection/Selection/NodeParameters`, `NodeGeometry`: the jointly Borel
+  parameter set for one corner node contains a common scalar, one outer
+  scheme parameter, and one inner scheme parameter for each outer label.
+  Every labeled child triple remains separated in the original time set,
+  including when distinct labels have the same numerical height.
+* `Projection/Selection/NodeMass`, `NodePolynomial`, `NodeBounds`: finite
+  product measure and Tonelli give a uniform parameter-volume lower bound
+  with exponent `4 + (8 + 6L)A` for one node, where `L` is the input label
+  count and `A` its selection-volume exponent. Outer and inner coordinate
+  and input-estimate constants have explicit polynomial upper bounds.
 * `Projection/Selection/SeparatedTriples`: triples with every pair separated
   by `|I|/100` have measure at least `|I|³/4`. Their selection is jointly
   Borel. An admissible inner time and its dual, together with the base
@@ -285,9 +301,13 @@ positive-measure time sets. The current finite-height existence theorem
 does not supply that stronger selection rule.
 The selectable two-slice seed, quantitative dual-pair reservoir, common
 outer-scalar reservoir, and separated root and child triples are now proved.
-The remaining selection steps are closure under the pair step and selection
-of whole finite trees with polynomial bounds on both parameter measure and
-estimate constants.
+The finite-coordinate scheme interface and its seed, one-node joint
+selection, polynomial parameter measure, and uniform input constants are
+also proved. The existing corner theorem accepts the seed exponent `2`, so
+the planned iteration can start there directly. A separate selectable pair
+step is not required for this route. The remaining work is whole-tree
+parameter selection, its connection to the existing finite-tree estimate,
+and a polynomial bound on that estimate's final constant before iteration.
 
 ## Verification conventions
 
@@ -337,6 +357,9 @@ with no source warnings or additional proof holes.
 The common outer-scalar reservoir and its joint measurability, the root
 triple measure bound, and preservation of child-triple separation also pass
 the standard-axiom audit with no source warnings.
+The constructed finite-coordinate seed scheme, joint one-node selection,
+one-node polynomial measure bound, and uniform inner input estimate pass
+the same audit with no source warnings.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

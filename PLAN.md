@@ -126,8 +126,12 @@ All proof files for this input belong to `Projection/`:
   and polynomial lower bounds on the measure of admissible parameter tuples.
   The jointly Borel two-slice seed, dual-pair reservoir, common outer-scalar
   reservoir, and separated root and child triples are proved with explicit
-  constants. Pair-step closure and whole tree selection with polynomially
-  bounded estimate constants remain open.
+  constants. The finite-coordinate scheme and its two-slice seed, joint
+  one-node parameters, parameter-volume exponent `4 + (8 + 6L)A`, and
+  uniform outer and inner input constants are proved. Assemble whole trees
+  and control their final estimate constants next. The corner theorem
+  accepts `β = 2`, so iteration can start directly from the two-slice seed;
+  separate selectable pair-step closure is not needed for this route.
 * `Estimate`: assemble the selectable estimate for every `β > β_c` below 2.
 
 Essential fiber bounds must be used almost everywhere or justified by removing

@@ -125,6 +125,14 @@ import NKBesicovitch.Projection.Selection.CornerRelation
 import NKBesicovitch.Projection.Selection.CornerRelationMass
 import NKBesicovitch.Projection.Selection.CornerOuterTimes
 import NKBesicovitch.Projection.Selection.CornerReservoir
+import NKBesicovitch.Projection.Selection.Scheme
+import NKBesicovitch.Projection.Selection.SeedScheme
+import NKBesicovitch.Projection.Selection.SchemeBounds
+import NKBesicovitch.Projection.Selection.NodeParameters
+import NKBesicovitch.Projection.Selection.NodeGeometry
+import NKBesicovitch.Projection.Selection.NodeMass
+import NKBesicovitch.Projection.Selection.NodePolynomial
+import NKBesicovitch.Projection.Selection.NodeBounds
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta
