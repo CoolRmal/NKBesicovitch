@@ -79,6 +79,22 @@ theorem pattern_times_subset (T : CornerTree m β J) (v : T.Node) (h : T.level v
   exact Finset.mem_biUnion.mpr ⟨v, Finset.mem_univ _,
     Finset.mem_union_right _ (by simpa only [dite_eq_left h] using ht)⟩
 
+theorem times_subset (T : CornerTree m β J) {I : Set ℝ}
+    (ha : ∀ v, T.a v ∈ I) (hb : ∀ v, T.b v ∈ I) (hc : ∀ v, T.c v ∈ I)
+    (hP : ∀ v h, ∀ t ∈ (T.pattern v h).times, t ∈ I) : ∀ t ∈ T.times, t ∈ I := by
+  classical
+  intro t ht
+  obtain ⟨v, _, ht⟩ := Finset.mem_biUnion.mp ht
+  rcases Finset.mem_union.mp ht with ht | ht
+  · simp only [Finset.mem_insert, Finset.mem_singleton] at ht
+    rcases ht with rfl | rfl | rfl
+    · exact ha v
+    · exact hb v
+    · exact hc v
+  · split_ifs at ht with h
+    · exact hP v h t ht
+    · exact (Finset.notMem_empty t ht).elim
+
 end CornerTree
 
 end NKBesicovitch.Projection

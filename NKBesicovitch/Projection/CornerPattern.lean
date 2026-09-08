@@ -100,6 +100,24 @@ theorem dual_mem_times (P : CornerPattern m β) {u t : ℝ} (h : (u, t) ∈ P.ch
   apply Finset.mem_insert_of_mem
   exact Finset.mem_union_right _ (Finset.mem_biUnion.mpr ⟨(u, t), h, by simp⟩)
 
+theorem times_subset (P : CornerPattern m β) {I : Set ℝ}
+    (ha : P.a ∈ I) (hb : P.b ∈ I) (hc : P.c ∈ I)
+    (houter : ∀ u ∈ P.outer, u ∈ I)
+    (hinner : ∀ u ∈ P.outer, ∀ t ∈ P.inner u, t ∈ I)
+    (hdual : ∀ u ∈ P.outer, ∀ t ∈ P.inner u,
+      dualTime P.b P.a (cornerInnerCoefficient P.a P.c P.κ u) t ∈ I) :
+    ∀ t ∈ P.times, t ∈ I := by
+  intro t ht
+  simp only [times, Finset.mem_insert, Finset.mem_union, Finset.mem_biUnion,
+    Finset.mem_singleton] at ht
+  rcases ht with rfl | rfl | rfl | ht | ⟨p, hp, rfl | rfl⟩
+  · exact ha
+  · exact hb
+  · exact hc
+  · exact houter _ ht
+  · exact hinner _ (mem_children.mp hp).1 _ (mem_children.mp hp).2
+  · exact hdual _ (mem_children.mp hp).1 _ (mem_children.mp hp).2
+
 end CornerPattern
 
 end NKBesicovitch.Projection

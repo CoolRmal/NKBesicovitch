@@ -279,8 +279,8 @@ code-fiber projection bound, and simultaneous fiber-selection steps are now
 proved, including the code-density upper bound using parallel multiplicity.
 The basic pair improvement, full corner improvement, and existence of a
 finite-height estimate at every exponent strictly above the critical root
-are proved. Quantitative selection of the height patterns inside a
-prescribed positive-measure time set is still open.
+are proved. The selectable version inside a prescribed positive-measure
+time set still needs uniform polynomial control of the final estimate constant.
 The exact corner identities, both fiber upper bounds, outer-density deletion,
 initial slice refinement, and measurable selection of companions with exactly
 prescribed fiber mass are now proved, as are the exact balanced pair and
@@ -305,9 +305,18 @@ The finite-coordinate scheme interface and its seed, one-node joint
 selection, polynomial parameter measure, and uniform input constants are
 also proved. The existing corner theorem accepts the seed exponent `2`, so
 the planned iteration can start there directly. A separate selectable pair
-step is not required for this route. The remaining work is whole-tree
-parameter selection, its connection to the existing finite-tree estimate,
-and a polynomial bound on that estimate's final constant before iteration.
+step is not required for this route.
+Whole-tree coordinates now split into root and child product coordinates
+by a volume-preserving measurable equivalence. The recursive selection is
+jointly Borel. If `S_J` is the number of nonterminal labeled nodes, its
+parameter-volume exponent is `(4 + (8 + 6L)A) S_J`; selecting the separated
+root triple adds three. The constants are positive and independent of the
+time set. All labeled output heights are jointly measurable and lie in
+the original time set. Every selected parameter realizes an admissible
+analytic `CornerTree` using only those labeled heights.
+The remaining work is polynomial control of all parameter coordinates and
+of the final analytic estimate constant, then reindexing the finite arrays
+into the scheme interface and iterating the selectable corner improvement.
 
 ## Verification conventions
 
@@ -360,6 +369,10 @@ the standard-axiom audit with no source warnings.
 The constructed finite-coordinate seed scheme, joint one-node selection,
 one-node polynomial measure bound, and uniform inner input estimate pass
 the same audit with no source warnings.
+The volume-preserving tree-coordinate split, joint whole-tree selection,
+full root-and-tree polynomial volume bound, measurable labeled heights,
+and analytic tree realization also pass the standard-axiom audit, with
+no new proof gaps or source warnings.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

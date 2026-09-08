@@ -34,8 +34,12 @@ sources:
       common outer-scalar reservoirs, and separated root and child triples
       are proved with explicit polynomial bounds. The finite-coordinate
       seed scheme and joint one-node selection have polynomial parameter
-      volume and uniform input constants. Whole-tree quantitative height
-      selection remains incomplete.
+      volume and uniform input constants. Whole-tree selection is jointly
+      Borel with a polynomial volume bound including the root triple.
+      Measurable labeled heights remain in the original time set, and
+      selected parameters realize admissible analytic corner trees using
+      only those heights. Polynomial control of parameter coordinates and
+      the final estimate constant, and selectable iteration, remain incomplete.
     license: unknown
   - title: From Projection Inequalities to Mixed-Norm Local X-Ray Estimates
     type: supplied proof notes
@@ -120,7 +124,11 @@ status:
     measure, separated root triples and preservation of child-triple
     separation, the finite-coordinate selectable scheme interface and
     its two-slice seed, jointly Borel labeled one-node parameters with
-    polynomial parameter volume and uniform input-estimate constants, and
+    polynomial parameter volume and uniform input-estimate constants,
+    volume-preserving finite tree-coordinate splitting, jointly Borel
+    whole-tree and root-triple selection with polynomial parameter volume,
+    measurable labeled heights in the original time set, realization of
+    selected parameters as analytic corner trees using only those heights, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

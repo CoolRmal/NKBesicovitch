@@ -128,8 +128,15 @@ All proof files for this input belong to `Projection/`:
   reservoir, and separated root and child triples are proved with explicit
   constants. The finite-coordinate scheme and its two-slice seed, joint
   one-node parameters, parameter-volume exponent `4 + (8 + 6L)A`, and
-  uniform outer and inner input constants are proved. Assemble whole trees
-  and control their final estimate constants next. The corner theorem
+  uniform outer and inner input constants are proved. Whole-tree selection
+  is jointly Borel with parameter-volume exponent `(4 + (8 + 6L)A) S_J`,
+  where `S_J` counts nonterminal labeled nodes; selecting the root triple
+  adds three. Measurable labeled heights lie in the original time set, and
+  selected parameters realize analytic trees using only those heights.
+  Bound the parameter coordinates and final estimate constants uniformly
+  by powers of the time-set measure, and reindex the arrays into the scheme
+  interface. Retain the selected-node data when deriving uniform bounds
+  across the analytic tree. The corner theorem
   accepts `β = 2`, so iteration can start directly from the two-slice seed;
   separate selectable pair-step closure is not needed for this route.
 * `Estimate`: assemble the selectable estimate for every `β > β_c` below 2.

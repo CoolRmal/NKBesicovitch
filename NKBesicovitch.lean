@@ -133,6 +133,15 @@ import NKBesicovitch.Projection.Selection.NodeGeometry
 import NKBesicovitch.Projection.Selection.NodeMass
 import NKBesicovitch.Projection.Selection.NodePolynomial
 import NKBesicovitch.Projection.Selection.NodeBounds
+import NKBesicovitch.Projection.Selection.NodePattern
+import NKBesicovitch.Projection.Selection.NodePatternLabels
+import NKBesicovitch.Projection.Selection.TreeCoordinates
+import NKBesicovitch.Projection.Selection.TreeParameters
+import NKBesicovitch.Projection.Selection.TreeMass
+import NKBesicovitch.Projection.Selection.RootParameters
+import NKBesicovitch.Projection.Selection.TreeTimes
+import NKBesicovitch.Projection.Selection.TreePatternTimes
+import NKBesicovitch.Projection.Selection.TreeRealization
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta
