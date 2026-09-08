@@ -21,13 +21,10 @@ open MeasureTheory Set
 
 namespace NKBesicovitch
 
-/-- Euclidean n-space with its canonical Lebesgue measure. -/
-abbrev Space (n : ℕ) := EuclideanSpace ℝ (Fin n)
-
 /-- A set containing a translate of the closed unit disk in every k-dimensional direction. -/
-def IsBesicovitch {n : ℕ} (k : ℕ) (E : Set (Space n)) : Prop :=
-  ∀ V : Submodule ℝ (Space n), Module.finrank ℝ V = k →
-    ∃ a : Space n, ∀ v ∈ V, ‖v‖ ≤ 1 → a + v ∈ E
+def IsBesicovitch {n : ℕ} (k : ℕ) (E : Set (EuclideanSpace ℝ (Fin n))) : Prop :=
+  ∀ V : Submodule ℝ (EuclideanSpace ℝ (Fin n)), Module.finrank ℝ V = k →
+    ∃ a : EuclideanSpace ℝ (Fin n), ∀ v ∈ V, ‖v‖ ≤ 1 → a + v ∈ E
 
 /-- The exact critical ratio, specified by the roots of its cubic in `[2,3]`. -/
 noncomputable def criticalExponent : ℝ :=

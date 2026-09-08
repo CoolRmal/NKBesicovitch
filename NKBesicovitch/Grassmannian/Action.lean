@@ -22,26 +22,27 @@ variable {n k : ℕ}
 
 /-- The image of a direction under an orthogonal operator. -/
 noncomputable def rotate (u : Rotations n) (V : Grassmannian n k) : Grassmannian n k :=
-  ⟨V.submodule.map (Unitary.linearIsometryEquiv u).toLinearEquiv.toLinearMap,
-    ((Unitary.linearIsometryEquiv u).toLinearEquiv.finrank_map_eq V.submodule).trans V.property⟩
+  ⟨V.val.map (Unitary.linearIsometryEquiv u).toLinearEquiv.toLinearMap,
+    ((Unitary.linearIsometryEquiv u).toLinearEquiv.finrank_map_eq V.val).trans V.property⟩
 
 theorem rotate_one (V : Grassmannian n k) : rotate 1 V = V := by
   apply Subtype.ext
-  exact Submodule.map_id V.submodule
+  exact Submodule.map_id V.val
 
 theorem rotate_mul (u v : Rotations n) (V : Grassmannian n k) :
     rotate (u * v) V = rotate u (rotate v V) := by
   apply Subtype.ext
-  change V.submodule.map _ = (V.submodule.map _).map _
+  change V.val.map _ = (V.val.map _).map _
   rw [← Submodule.map_comp]
   rfl
 
 theorem projection_rotate (u : Rotations n) (V : Grassmannian n k) :
     (rotate u V).projection =
-      (u : Space n →L[ℝ] Space n) * V.projection * (star u : Rotations n) := by
+      (u : EuclideanSpace ℝ (Fin n) →L[ℝ] EuclideanSpace ℝ (Fin n)) * V.projection *
+        (star u : Rotations n) := by
   apply ContinuousLinearMap.ext
   intro x
-  exact Submodule.starProjection_map_apply (Unitary.linearIsometryEquiv u) V.submodule x
+  exact Submodule.starProjection_map_apply (Unitary.linearIsometryEquiv u) V.val x
 
 theorem continuous_projection : Continuous (projection (n := n) (k := k)) :=
   continuous_induced_dom

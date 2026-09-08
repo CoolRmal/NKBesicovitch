@@ -28,18 +28,23 @@ theorem measurePreserving_swap_middle :
     MeasurePreserving (fun p : CornerCoordinates m ↦ ((p.1.1, p.2.1), (p.1.2, p.2.2)))
       volume volume := by
   have h₃ : MeasurePreserving
-      (MeasurableEquiv.prodAssoc : (Space m × Space m) × Space m ≃ᵐ Space m × (Space m × Space m))
+      (MeasurableEquiv.prodAssoc : (EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m)) ×
+        EuclideanSpace ℝ (Fin m) ≃ᵐ EuclideanSpace ℝ (Fin m) ×
+        (EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m)))
       volume volume := volume_preserving_prodAssoc
-  have hswap := Measure.measurePreserving_swap (μ := (volume : Measure (Space m)))
-    (ν := (volume : Measure (Space m)))
-  have hp := h₃.comp ((hswap.prod (MeasurePreserving.id (volume : Measure (Space m)))).comp
-    (h₃.symm MeasurableEquiv.prodAssoc))
+  have hswap := Measure.measurePreserving_swap (μ := (volume : Measure (EuclideanSpace ℝ (Fin m))))
+    (ν := (volume : Measure (EuclideanSpace ℝ (Fin m))))
+  have hp := h₃.comp
+    ((hswap.prod (MeasurePreserving.id (volume : Measure (EuclideanSpace ℝ (Fin m))))).comp
+      (h₃.symm MeasurableEquiv.prodAssoc))
   have h₄ : MeasurePreserving
-      (MeasurableEquiv.prodAssoc : (Space m × Space m) × (Space m × Space m) ≃ᵐ
-        Space m × (Space m × (Space m × Space m))) volume volume := volume_preserving_prodAssoc
+      (MeasurableEquiv.prodAssoc : (EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m)) ×
+        (EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m)) ≃ᵐ
+        EuclideanSpace ℝ (Fin m) × (EuclideanSpace ℝ (Fin m) × (EuclideanSpace ℝ (Fin m) ×
+          EuclideanSpace ℝ (Fin m)))) volume volume := volume_preserving_prodAssoc
   simpa [Function.comp_def, Prod.map_def, MeasurableEquiv.prodAssoc, Measure.volume_eq_prod] using
     (h₄.symm MeasurableEquiv.prodAssoc).comp
-      (((MeasurePreserving.id (volume : Measure (Space m))).prod hp).comp h₄)
+      (((MeasurePreserving.id (volume : Measure (EuclideanSpace ℝ (Fin m)))).prod hp).comp h₄)
 
 /-- First line and the remaining two slopes of a corner. -/
 def cornerToFirst (a : ℝ) (p : CornerCoordinates m) : CornerCoordinates m :=
@@ -60,22 +65,23 @@ theorem measurePreserving_cornerToFirst (a : ℝ) :
 theorem codeJacobian_comm (a b : ℝ) : codeJacobian m a b = codeJacobian m b a := by
   simp [codeJacobian, abs_sub_comm]
 
-theorem measurePreserving_cornerFiber {a b : ℝ} (hab : a ≠ b) (v w : Space m) :
+theorem measurePreserving_cornerFiber {a b : ℝ} (hab : a ≠ b) (v w : EuclideanSpace ℝ (Fin m)) :
     MeasurePreserving (fun p : Line m ↦
       (v + (b - a) • p.1 - b • p.2, w + (a - b) • p.2)) volume
       (codeJacobian m a b ^ 2 • volume) := by
-  have hscale : MeasurePreserving (fun ξ : Space m ↦ (b - a) • ξ) volume
+  have hscale : MeasurePreserving (fun ξ : EuclideanSpace ℝ (Fin m) ↦ (b - a) • ξ) volume
       (codeJacobian m a b • volume) := by
     refine ⟨by fun_prop, ?_⟩
     simpa [codeJacobian] using
-      Measure.map_addHaar_smul (volume : Measure (Space m)) (sub_ne_zero.mpr hab.symm)
-  have hscale' : MeasurePreserving (fun ξ : Space m ↦ (a - b) • ξ) volume
+      Measure.map_addHaar_smul (volume : Measure (EuclideanSpace ℝ (Fin m)))
+        (sub_ne_zero.mpr hab.symm)
+  have hscale' : MeasurePreserving (fun ξ : EuclideanSpace ℝ (Fin m) ↦ (a - b) • ξ) volume
       (codeJacobian m a b • volume) := by
     refine ⟨by fun_prop, ?_⟩
     simpa [codeJacobian, abs_sub_comm] using
-      Measure.map_addHaar_smul (volume : Measure (Space m)) (sub_ne_zero.mpr hab)
-  have hfirst := (MeasurePreserving.id (volume : Measure (Space m))).skew_product
-    (g := fun ξ (x : Space m) ↦ (v - b • ξ) + (b - a) • x)
+      Measure.map_addHaar_smul (volume : Measure (EuclideanSpace ℝ (Fin m))) (sub_ne_zero.mpr hab)
+  have hfirst := (MeasurePreserving.id (volume : Measure (EuclideanSpace ℝ (Fin m)))).skew_product
+    (g := fun ξ (x : EuclideanSpace ℝ (Fin m)) ↦ (v - b • ξ) + (b - a) • x)
     (by fun_prop) (ae_of_all _ fun ξ ↦ (hscale.add_left _ (v - b • ξ)).map_eq)
   have hs : MeasurePreserving (fun p : Line m ↦ (v + (b - a) • p.1 - b • p.2, p.2))
       volume (codeJacobian m a b • volume) := by
@@ -85,7 +91,8 @@ theorem measurePreserving_cornerFiber {a b : ℝ} (hab : a ≠ b) (v w : Space m
   have hlast : MeasurePreserving (fun p : Line m ↦ (p.1, w + (a - b) • p.2))
       volume (codeJacobian m a b • volume) := by
     simpa [Prod.map_def, Measure.prod_smul_right, Measure.volume_eq_prod] using
-      (MeasurePreserving.id (volume : Measure (Space m))).prod (hscale'.add_left _ w)
+      (MeasurePreserving.id (volume : Measure (EuclideanSpace ℝ (Fin m)))).prod
+        (hscale'.add_left _ w)
   simpa [Function.comp_def, smul_smul, pow_two] using (hlast.smul_measure _).comp hs
 
 /-- First line, last-line intercept, and corner code. -/
@@ -128,7 +135,8 @@ theorem measurePreserving_cornerCodeCoordinates_assoc {a b : ℝ} (hab : a ≠ b
       ((cornerFirst a p, (cornerLast b p).1), cornerCode a b c κ p)) volume
       (codeJacobian m a b ^ 2 • volume) := by
   have ha : MeasurePreserving (MeasurableEquiv.prodAssoc :
-      (Line m × Space m) × Space m ≃ᵐ Line m × (Space m × Space m)) volume volume :=
+      (Line m × EuclideanSpace ℝ (Fin m)) × EuclideanSpace ℝ (Fin m) ≃ᵐ Line m ×
+        (EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m))) volume volume :=
     volume_preserving_prodAssoc
   simpa [Function.comp_def, MeasurableEquiv.prodAssoc, cornerCodeCoordinates] using
     ((ha.symm MeasurableEquiv.prodAssoc).smul_measure (codeJacobian m a b ^ 2)).comp

@@ -77,20 +77,21 @@ theorem measurePreserving_pairData {a s t : ℝ} (hs : s ≠ a) (ht : t ≠ a) :
   change MeasurePreserving (fun p : PairCoordinates m ↦
     (p.1, (p.1 + (s - a) • p.2.1, p.1 + (t - a) • p.2.2))) _ _
   have hscale (r : ℝ) (hr : r ≠ 0) :
-      MeasurePreserving (fun ξ : Space m ↦ r • ξ) volume
+      MeasurePreserving (fun ξ : EuclideanSpace ℝ (Fin m) ↦ r • ξ) volume
         (ENNReal.ofReal |(r ^ m)⁻¹| • volume) := by
     refine ⟨by fun_prop, ?_⟩
-    simpa using Measure.map_addHaar_smul (volume : Measure (Space m)) hr
-  have hfiber (w : Space m) :
-      MeasurePreserving (fun p : Space m × Space m ↦
+    simpa using Measure.map_addHaar_smul (volume : Measure (EuclideanSpace ℝ (Fin m))) hr
+  have hfiber (w : EuclideanSpace ℝ (Fin m)) :
+      MeasurePreserving (fun p : EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m) ↦
         (w + (s - a) • p.1, w + (t - a) • p.2)) volume
         (pairJacobian m a s t • volume) := by
     have hp := ((hscale (s - a) (sub_ne_zero.mpr hs)).add_left _ w).prod
       ((hscale (t - a) (sub_ne_zero.mpr ht)).add_left _ w)
     simpa [pairJacobian, Measure.prod_smul_left, Measure.prod_smul_right, smul_smul,
       Measure.volume_eq_prod, mul_comm, Prod.map_def] using hp
-  have h := (MeasurePreserving.id (volume : Measure (Space m))).skew_product
-    (g := fun w (p : Space m × Space m) ↦ (w + (s - a) • p.1, w + (t - a) • p.2))
+  have h := (MeasurePreserving.id (volume : Measure (EuclideanSpace ℝ (Fin m)))).skew_product
+    (g := fun w (p : EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m)) ↦ (w + (s - a) • p.1,
+      w + (t - a) • p.2))
     (by fun_prop) (ae_of_all _ fun w ↦ (hfiber w).map_eq)
   simpa [Measure.prod_smul_right, Measure.volume_eq_prod] using h
 

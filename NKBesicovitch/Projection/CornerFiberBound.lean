@@ -27,33 +27,34 @@ variable {m : ℕ}
 
 theorem cornerFirstDensity_le_parallelFiber {a b : ℝ} (hab : a ≠ b) (c κ : ℝ)
     {G : Set (Line m)} {D : Set (CornerCoordinates m)} (hDG : D ⊆ cornerFamily a b G)
-    (z : Space m) (g : Line m) :
+    (z : EuclideanSpace ℝ (Fin m)) (g : Line m) :
     cornerFirstDensity a b c κ D z g ≤
-      volume {x : Space m | (x, (a - b)⁻¹ • (z - κ • atHeight c g)) ∈ G} := by
+      volume {x : EuclideanSpace ℝ (Fin m) | (x, (a - b)⁻¹ • (z - κ • atHeight c g)) ∈ G} := by
   refine (lintegral_mono (fun x ↦ ?_)).trans (lintegral_indicator_one_le _)
   dsimp only
   by_cases hx : cornerFromCode a b c κ g x z ∈ D
   · have h := (hDG hx).2.2
     rw [last_cornerFromCode hab] at h
     rw [Set.indicator_of_mem hx, Set.indicator_of_mem
-      (show x ∈ {x : Space m | (x, (a - b)⁻¹ • (z - κ • atHeight c g)) ∈ G} from h)]
+      (show x ∈ {x : EuclideanSpace ℝ (Fin m) | (x,
+        (a - b)⁻¹ • (z - κ • atHeight c g)) ∈ G} from h)]
     exact le_rfl
   · simp [Set.indicator_of_notMem hx]
 
 theorem cornerFirstDensity_ae_le_parallelMultiplicity {a b κ : ℝ} (hab : a ≠ b)
     (hκ : κ ≠ 0) (c : ℝ) {G : Set (Line m)} {D : Set (CornerCoordinates m)}
-    (hDG : D ⊆ cornerFamily a b G) (z : Space m) :
+    (hDG : D ⊆ cornerFamily a b G) (z : EuclideanSpace ℝ (Fin m)) :
     ∀ᵐ g, cornerFirstDensity a b c κ D z g ≤ parallelMultiplicity G := by
   have h := ((quasiMeasurePreserving_codeSlope hab.symm hκ z).comp
     (quasiMeasurePreserving_atHeight c)).ae
-      (ENNReal.ae_le_essSup (μ := (volume : Measure (Space m)))
-        (fun ξ : Space m ↦ volume {x : Space m | (x, ξ) ∈ G}))
+      (ENNReal.ae_le_essSup (μ := (volume : Measure (EuclideanSpace ℝ (Fin m))))
+        (fun ξ : EuclideanSpace ℝ (Fin m) ↦ volume {x : EuclideanSpace ℝ (Fin m) | (x, ξ) ∈ G}))
   exact h.mono fun g hg ↦ (cornerFirstDensity_le_parallelFiber hab c κ hDG z g).trans hg
 
 /-- The corner density controls the size of a Borel first-line family on each code fiber. -/
 theorem cornerDensity_le_positiveCornerFiber {a b κ : ℝ} (hab : a ≠ b) (hκ : κ ≠ 0) (c : ℝ)
     {G : Set (Line m)} {D : Set (CornerCoordinates m)} (hD : MeasurableSet D)
-    (hDG : D ⊆ cornerFamily a b G) (z : Space m) :
+    (hDG : D ⊆ cornerFamily a b G) (z : EuclideanSpace ℝ (Fin m)) :
     cornerDensity a b c κ D z ≤ codeJacobian m a b ^ 2 *
       (parallelMultiplicity G * volume (positiveCornerFiber a b c κ D z)) := by
   rw [cornerDensity_eq_lintegral a b c κ hD]
@@ -62,7 +63,7 @@ theorem cornerDensity_le_positiveCornerFiber {a b κ : ℝ} (hab : a ≠ b) (hκ
 
 theorem cornerDensity_le_cornerFiber {a b κ : ℝ} (hab : a ≠ b) (hκ : κ ≠ 0) (c : ℝ)
     {G : Set (Line m)} {D : Set (CornerCoordinates m)} (hD : MeasurableSet D)
-    (hDG : D ⊆ cornerFamily a b G) (z : Space m) :
+    (hDG : D ⊆ cornerFamily a b G) (z : EuclideanSpace ℝ (Fin m)) :
     cornerDensity a b c κ D z ≤ codeJacobian m a b ^ 2 *
       (parallelMultiplicity G * volume (cornerFiber a b c κ D z)) := by
   exact (cornerDensity_le_positiveCornerFiber hab hκ c hD hDG z).trans

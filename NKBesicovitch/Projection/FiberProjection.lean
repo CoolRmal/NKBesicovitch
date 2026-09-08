@@ -30,10 +30,10 @@ theorem mul_volume_projection_pairFiber_le {a b c t : ℝ} (hab : a ≠ b) (hc :
     (hta : t ≠ a) (htb : t ≠ b) {W₀ W₁ : Set (PairCoordinates m)}
     (hW₀ : MeasurableSet W₀) (ℓ : ℝ≥0∞)
     (hℓ : ∀ p ∈ W₁, ℓ ≤ pairDensity a t (dualTime a b c t) W₀
-      (pairProjections a t (dualTime a b c t) p)) (z : Space m) :
+      (pairProjections a t (dualTime a b c t) p)) (z : EuclideanSpace ℝ (Fin m)) :
     (ENNReal.ofReal |(((b - a) / (dualTime a b c t - a)) ^ m)⁻¹| * ℓ) *
       volume (atHeight t '' pairFiber a b c W₁ z) ≤ codeDensity a b c W₀ z := by
-  let f : Space m → ℝ≥0∞ := fun y ↦ pairDensity a t (dualTime a b c t) W₀
+  let f : EuclideanSpace ℝ (Fin m) → ℝ≥0∞ := fun y ↦ pairDensity a t (dualTime a b c t) W₀
     (y, ((b - a) / (dualTime a b c t - a))⁻¹ •
       (z - (c * (b - a) / (t - a)) • y))
   have hf : Measurable f :=

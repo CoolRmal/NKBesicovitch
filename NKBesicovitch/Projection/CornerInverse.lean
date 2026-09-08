@@ -22,18 +22,18 @@ namespace NKBesicovitch.Projection
 variable {m : ℕ}
 
 /-- Recover a corner from its first line, last intercept, and code. -/
-noncomputable def cornerFromCode (a b c κ : ℝ) (g : Line m) (x z : Space m) :
+noncomputable def cornerFromCode (a b c κ : ℝ) (g : Line m) (x z : EuclideanSpace ℝ (Fin m)) :
     CornerCoordinates m :=
   let ξ₃ := (a - b)⁻¹ • (z - κ • atHeight c g)
   let ξ₂ := (b - a)⁻¹ • (x + b • ξ₃ - atHeight a g)
   (lineAt a (atHeight a g) ξ₂, (g.2, ξ₃))
 
-theorem first_cornerFromCode (a b c κ : ℝ) (g : Line m) (x z : Space m) :
+theorem first_cornerFromCode (a b c κ : ℝ) (g : Line m) (x z : EuclideanSpace ℝ (Fin m)) :
     cornerFirst a (cornerFromCode a b c κ g x z) = g := by
   simp [cornerFirst, cornerFromCode, atHeight_lineAt, lineAt_atHeight]
 
 theorem last_cornerFromCode {a b : ℝ} (hab : a ≠ b) (c κ : ℝ)
-    (g : Line m) (x z : Space m) :
+    (g : Line m) (x z : EuclideanSpace ℝ (Fin m)) :
     cornerLast b (cornerFromCode a b c κ g x z) =
       (x, (a - b)⁻¹ • (z - κ • atHeight c g)) := by
   dsimp only [cornerLast, cornerFromCode]
@@ -41,7 +41,8 @@ theorem last_cornerFromCode {a b : ℝ} (hab : a ≠ b) (c κ : ℝ)
   simp [lineAt]
 
 theorem cornerCode_cornerFromCode {a b : ℝ} (hab : a ≠ b) (c κ : ℝ)
-    (g : Line m) (x z : Space m) : cornerCode a b c κ (cornerFromCode a b c κ g x z) = z := by
+    (g : Line m) (x z : EuclideanSpace ℝ (Fin m)) : cornerCode a b c κ
+      (cornerFromCode a b c κ g x z) = z := by
   rw [cornerCode, first_cornerFromCode]
   change κ • atHeight c g + (a - b) • ((a - b)⁻¹ • (z - κ • atHeight c g)) = z
   rw [smul_smul, mul_inv_cancel₀ (sub_ne_zero.mpr hab), one_smul]
@@ -64,7 +65,8 @@ theorem cornerFromCode_cornerCode {a b : ℝ} (hab : a ≠ b) (c κ : ℝ)
   rfl
 
 theorem continuous_cornerFromCode (a b c κ : ℝ) :
-    Continuous (fun p : Line m × (Space m × Space m) ↦ cornerFromCode a b c κ p.1 p.2.1 p.2.2) := by
+    Continuous (fun p : Line m × (EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m)) ↦
+      cornerFromCode a b c κ p.1 p.2.1 p.2.2) := by
   unfold cornerFromCode lineAt atHeight
   fun_prop
 

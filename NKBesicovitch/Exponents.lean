@@ -62,9 +62,10 @@ theorem criticalExponent_cubic :
     criticalExponent ^ 3 - 2 * criticalExponent ^ 2 - 2 * criticalExponent + 2 = 0 :=
   criticalExponent_mem_aux.2
 
-/-- Rational bounds identify the critical exponent without relying on floating-point arithmetic. -/
+/-- The exact rational bounds `2.481 < p_c < 2.482`.
+Decimal literals here denote exact rationals, not floating-point values. -/
 theorem criticalExponent_bounds :
-    2481 / 1000 < criticalExponent ∧ criticalExponent < 1241 / 500 := by
+    2.481 < criticalExponent ∧ criticalExponent < 2.482 := by
   have hp := criticalExponent_mem_aux
   constructor
   · by_contra! h
@@ -73,6 +74,12 @@ theorem criticalExponent_bounds :
   · by_contra! h
     have hm := strictMonoOn_cubic_aux.monotoneOn (by norm_num) hp.1 h
     norm_num [hp.2] at hm
+
+/-- The general critical-exponent dimension condition excludes `(n,k) = (5,2)`. -/
+theorem five_two_not_in_criticalExponent_range :
+    ¬ (5 : ℝ) < criticalExponent ^ (2 - 1 : ℕ) + (2 : ℝ) := by
+  norm_num
+  linarith [criticalExponent_bounds.2]
 
 /-- The critical exponent is the unique root of this cubic between two and three. -/
 theorem criticalExponent_unique {p : ℝ} (hp : p ∈ Icc 2 3)

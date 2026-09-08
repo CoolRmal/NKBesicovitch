@@ -29,8 +29,9 @@ variable {m : ℕ}
 
 theorem isBounded_projection (t : ℝ) {G : Set (Line m)} (hG : IsBounded G) :
     IsBounded (atHeight t '' G) := by
-  let f : Line m →L[ℝ] Space m := ContinuousLinearMap.fst ℝ (Space m) (Space m) +
-    t • ContinuousLinearMap.snd ℝ (Space m) (Space m)
+  let f : Line m →L[ℝ] EuclideanSpace ℝ (Fin m) := ContinuousLinearMap.fst ℝ
+    (EuclideanSpace ℝ (Fin m)) (EuclideanSpace ℝ (Fin m)) +
+    t • ContinuousLinearMap.snd ℝ (EuclideanSpace ℝ (Fin m)) (EuclideanSpace ℝ (Fin m))
   exact f.lipschitz.isBounded_image hG
 
 theorem isBounded_pairFamily (a : ℝ) {G : Set (Line m)} (hG : IsBounded G) :

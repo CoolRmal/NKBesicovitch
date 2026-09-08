@@ -28,26 +28,30 @@ namespace NKBesicovitch
 variable {n k : ℕ}
 
 /-- The open delta-neighborhood of a radius-one disk. -/
-def plate (δ : ℝ) (V : Submodule ℝ (Space n)) (a : Space n) : Set (Space n) :=
+def plate (δ : ℝ) (V : Submodule ℝ (EuclideanSpace ℝ (Fin n))) (a : EuclideanSpace ℝ (Fin n)) :
+    Set (EuclideanSpace ℝ (Fin n)) :=
   Metric.thickening δ (unitDisk V a)
 
 /-- The average of a nonnegative function over a unit disk in its intrinsic volume. -/
-noncomputable def diskAverage (f : Space n → ℝ≥0∞) (V : Grassmannian n k) (a : Space n) :
+noncomputable def diskAverage (f : EuclideanSpace ℝ (Fin n) → ℝ≥0∞) (V : Grassmannian n k)
+    (a : EuclideanSpace ℝ (Fin n)) :
     ℝ≥0∞ :=
-  (∫⁻ v in Metric.closedBall (0 : V.submodule) 1, f (a + v)) /
-    volume (Metric.closedBall (0 : V.submodule) 1)
+  (∫⁻ v in Metric.closedBall (0 : V.val) 1, f (a + v)) /
+    volume (Metric.closedBall (0 : V.val) 1)
 
 /-- The supremum of the normalized unit-disk integrals in a fixed direction. -/
-noncomputable def diskMaximal (f : Space n → ℝ≥0∞) (V : Grassmannian n k) : ℝ≥0∞ :=
-  ⨆ a : Space n, diskAverage f V a
+noncomputable def diskMaximal (f : EuclideanSpace ℝ (Fin n) → ℝ≥0∞) (V : Grassmannian n k) : ℝ≥0∞ :=
+  ⨆ a : EuclideanSpace ℝ (Fin n), diskAverage f V a
 
 /-- The supremum of averages over thickened unit disks in a fixed direction. -/
-noncomputable def plateMaximal (δ : ℝ) (f : Space n → ℝ≥0∞) (V : Grassmannian n k) :
+noncomputable def plateMaximal (δ : ℝ) (f : EuclideanSpace ℝ (Fin n) → ℝ≥0∞)
+    (V : Grassmannian n k) :
     ℝ≥0∞ :=
-  ⨆ a : Space n, (∫⁻ x in plate δ V.submodule a, f x) / volume (plate δ V.submodule a)
+  ⨆ a : EuclideanSpace ℝ (Fin n), (∫⁻ x in plate δ V.val a, f x) / volume (plate δ V.val a)
 
 /-- The nonnegative local X-ray transform in slope-intercept coordinates. -/
-noncomputable def localXRay (f : Space n × ℝ → ℝ≥0∞) (ξ x : Space n) : ℝ≥0∞ :=
+noncomputable def localXRay (f : EuclideanSpace ℝ (Fin n) × ℝ → ℝ≥0∞)
+    (ξ x : EuclideanSpace ℝ (Fin n)) : ℝ≥0∞ :=
   ∫⁻ t in Icc (0 : ℝ) 1, f (x + t • ξ, t)
 
 end NKBesicovitch

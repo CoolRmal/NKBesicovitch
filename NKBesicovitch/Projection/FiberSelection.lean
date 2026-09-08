@@ -47,11 +47,11 @@ theorem exists_pos_le_mul_of_lintegral_le {X : Type*} [MeasurableSpace X]
   exact (not_lt_of_ge havg) hi
 
 theorem pairFiber_mono (a b c : ℝ) {W₀ W₁ : Set (PairCoordinates m)}
-    (hW : W₁ ⊆ W₀) (z : Space m) : pairFiber a b c W₁ z ⊆ pairFiber a b c W₀ z :=
+    (hW : W₁ ⊆ W₀) (z : EuclideanSpace ℝ (Fin m)) : pairFiber a b c W₁ z ⊆ pairFiber a b c W₀ z :=
   fun _ hg ↦ hW hg
 
 theorem pairFiber_subset (a b c : ℝ) {G : Set (Line m)} {W : Set (PairCoordinates m)}
-    (hWG : W ⊆ pairFamily a G) (z : Space m) : pairFiber a b c W z ⊆ G := by
+    (hWG : W ⊆ pairFamily a G) (z : EuclideanSpace ℝ (Fin m)) : pairFiber a b c W z ⊆ G := by
   intro g hg
   have h := (hWG hg).1
   rwa [first_pairFromCode] at h

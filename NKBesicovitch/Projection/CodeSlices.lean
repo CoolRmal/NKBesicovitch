@@ -25,15 +25,15 @@ variable {m : ℕ}
 
 /-- The common-position mass with the first line's second-base position fixed. -/
 noncomputable def codeSliceMass (a b c : ℝ) (W : Set (PairCoordinates m))
-    (z y : Space m) : ℝ≥0∞ :=
+    (z y : EuclideanSpace ℝ (Fin m)) : ℝ≥0∞ :=
   ∫⁻ w, W.indicator 1 (pairFromCode a b c (lineAt a w ((b - a)⁻¹ • (y - w))) z)
 
-theorem atHeight_lineAt_of_positions {a b : ℝ} (hab : a ≠ b) (w y : Space m) :
+theorem atHeight_lineAt_of_positions {a b : ℝ} (hab : a ≠ b) (w y : EuclideanSpace ℝ (Fin m)) :
     atHeight b (lineAt a w ((b - a)⁻¹ • (y - w))) = y := by
   simp [atHeight_lineAt, smul_smul, mul_inv_cancel₀ (sub_ne_zero.mpr hab.symm)]
 
 theorem second_pairFromCode_of_positions {a b : ℝ} (hab : a ≠ b) (c : ℝ)
-    (w y z : Space m) :
+    (w y z : EuclideanSpace ℝ (Fin m)) :
     let p := pairFromCode a b c (lineAt a w ((b - a)⁻¹ • (y - w))) z
     lineAt a p.1 p.2.2 = lineAt a w ((b - a)⁻¹ • (z - c • y)) := by
   dsimp only [pairFromCode]
@@ -41,7 +41,8 @@ theorem second_pairFromCode_of_positions {a b : ℝ} (hab : a ≠ b) (c : ℝ)
   simp [atHeight_lineAt]
 
 theorem measurable_codeSliceMass (a b c : ℝ) {W : Set (PairCoordinates m)}
-    (hW : MeasurableSet W) (z : Space m) : Measurable (codeSliceMass a b c W z) := by
+    (hW : MeasurableSet W) (z : EuclideanSpace ℝ (Fin m)) : Measurable
+      (codeSliceMass a b c W z) := by
   have hF : Continuous (fun p : Line m ↦
       pairFromCode a b c (lineAt a p.1 ((b - a)⁻¹ • (p.2 - p.1))) z) := by
     unfold pairFromCode lineAt atHeight
@@ -49,17 +50,18 @@ theorem measurable_codeSliceMass (a b c : ℝ) {W : Set (PairCoordinates m)}
   exact ((measurable_const.indicator hW).comp hF.measurable).lintegral_prod_left'
 
 theorem codeDensity_eq_lintegral_codeSliceMass {a b : ℝ} (hab : a ≠ b) (c : ℝ)
-    {W : Set (PairCoordinates m)} (hW : MeasurableSet W) (z : Space m) :
+    {W : Set (PairCoordinates m)} (hW : MeasurableSet W) (z : EuclideanSpace ℝ (Fin m)) :
     codeDensity a b c W z = codeJacobian m a b ^ 2 * ∫⁻ y, codeSliceMass a b c W z y := by
   simpa only [pow_two, codeJacobian, codeSliceMass] using
     codeDensity_eq_twoSlice_lintegral hab.symm c hW z
 
 theorem codeSliceMass_le_parallelFiber {a b : ℝ} (hab : a ≠ b) (c : ℝ)
     {G : Set (Line m)} {W : Set (PairCoordinates m)} (hWG : W ⊆ pairFamily a G)
-    (z y : Space m) :
-    codeSliceMass a b c W z y ≤ volume {x : Space m | (x, (b - a)⁻¹ • (z - c • y)) ∈ G} := by
+    (z y : EuclideanSpace ℝ (Fin m)) :
+    codeSliceMass a b c W z y ≤ volume {x : EuclideanSpace ℝ (Fin m) | (x,
+      (b - a)⁻¹ • (z - c • y)) ∈ G} := by
   let ξ := (b - a)⁻¹ • (z - c • y)
-  let S : Set (Space m) := {w | lineAt a w ξ ∈ G}
+  let S : Set (EuclideanSpace ℝ (Fin m)) := {w | lineAt a w ξ ∈ G}
   calc
     _ ≤ ∫⁻ w, S.indicator 1 w := by
       apply lintegral_mono
@@ -73,15 +75,17 @@ theorem codeSliceMass_le_parallelFiber {a b : ℝ} (hab : a ≠ b) (c : ℝ)
       · simp [Set.indicator_of_notMem hp]
     _ ≤ volume S := lintegral_indicator_one_le S
     _ = _ := by
-      change volume ((fun w : Space m ↦ w + -(a • ξ)) ⁻¹' {x | (x, ξ) ∈ G}) = _
+      change volume ((fun w : EuclideanSpace ℝ (Fin m) ↦ w + -(a • ξ)) ⁻¹' {x | (x, ξ) ∈ G}) = _
       exact measure_preimage_add_right volume (-(a • ξ)) _
 
 theorem support_codeSliceMass_subset {a b : ℝ} (hab : a ≠ b) (c : ℝ)
     {G : Set (Line m)} {W : Set (PairCoordinates m)} (hWG : W ⊆ pairFamily a G)
-    (z : Space m) : Function.support (codeSliceMass a b c W z) ⊆ atHeight b '' G := by
+    (z : EuclideanSpace ℝ (Fin m)) : Function.support
+      (codeSliceMass a b c W z) ⊆ atHeight b '' G := by
   intro y hy
   by_contra h
-  have hz (w : Space m) : pairFromCode a b c (lineAt a w ((b - a)⁻¹ • (y - w))) z ∉ W := by
+  have hz (w : EuclideanSpace ℝ (Fin m)) : pairFromCode a b c
+    (lineAt a w ((b - a)⁻¹ • (y - w))) z ∉ W := by
     intro hp
     have hg := (hWG hp).1
     rw [first_pairFromCode] at hg

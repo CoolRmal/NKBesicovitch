@@ -24,10 +24,10 @@ namespace NKBesicovitch
 
 variable {n k : ℕ}
 
-theorem diskAverage_indicator_eq_one (V : Grassmannian n k) (a : Space n)
-    {E : Set (Space n)} (h : unitDisk V.submodule a ⊆ E) :
+theorem diskAverage_indicator_eq_one (V : Grassmannian n k) (a : EuclideanSpace ℝ (Fin n))
+    {E : Set (EuclideanSpace ℝ (Fin n))} (h : unitDisk V.val a ⊆ E) :
     diskAverage (E.indicator (fun _ ↦ (1 : ℝ≥0∞))) V a = 1 := by
-  have he : ∀ v ∈ Metric.closedBall (0 : V.submodule) 1,
+  have he : ∀ v ∈ Metric.closedBall (0 : V.val) 1,
       E.indicator (fun _ ↦ (1 : ℝ≥0∞)) (a + v) = 1 := by
     intro v hv
     apply Set.indicator_of_mem
@@ -40,9 +40,9 @@ theorem diskAverage_indicator_eq_one (V : Grassmannian n k) (a : Space n)
     measure_closedBall_lt_top.ne
 
 /-- The disk maximal function of a Besicovitch-set indicator is at least one in every direction. -/
-theorem one_le_diskMaximal_indicator {E : Set (Space n)} (h : IsBesicovitch k E)
+theorem one_le_diskMaximal_indicator {E : Set (EuclideanSpace ℝ (Fin n))} (h : IsBesicovitch k E)
     (V : Grassmannian n k) : 1 ≤ diskMaximal (E.indicator (fun _ ↦ (1 : ℝ≥0∞))) V := by
-  obtain ⟨a, ha⟩ := isBesicovitch_iff_unitDisk_subset.mp h V.submodule V.property
+  obtain ⟨a, ha⟩ := isBesicovitch_iff_unitDisk_subset.mp h V.val V.property
   rw [diskMaximal]
   exact (diskAverage_indicator_eq_one V a ha).symm.le.trans (le_iSup _ a)
 

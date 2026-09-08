@@ -21,8 +21,11 @@ open MeasureTheory Set
 
 namespace NKBesicovitch.FiveTwo
 
-/-- Every Lebesgue measurable `(5,2)`-Besicovitch set has positive volume. -/
-theorem volume_pos {E : Set (Space 5)} (hE : NullMeasurableSet E volume)
+/-- Every Lebesgue measurable `(5,2)`-Besicovitch set has positive volume.
+
+The general critical-exponent theorem requires `n < p_c + 2` when `k = 2`.
+Since `p_c + 2 < 4.482 < 5`, this case needs a separate proof. -/
+theorem volume_pos {E : Set (EuclideanSpace ℝ (Fin 5))} (hE : NullMeasurableSet E volume)
     (hB : IsBesicovitch 2 E) : 0 < volume E := by
   sorry
 

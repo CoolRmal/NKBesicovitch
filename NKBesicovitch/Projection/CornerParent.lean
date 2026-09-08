@@ -27,12 +27,12 @@ variable {m : ℕ}
 
 /-- Common-position mass with first-line position, last intercept, and corner code fixed. -/
 noncomputable def cornerParentSliceMass (a b c κ : ℝ) (D : Set (CornerCoordinates m))
-    (z y x : Space m) : ℝ≥0∞ :=
+    (z y x : EuclideanSpace ℝ (Fin m)) : ℝ≥0∞ :=
   ∫⁻ w, D.indicator 1
     (cornerFromCode a b c κ (lineAt a w ((c - a)⁻¹ • (y - w))) x z)
 
 theorem cornerParent_cornerFromCode_positions {a c : ℝ} (hca : c ≠ a) (b κ : ℝ)
-    (w y x z : Space m) :
+    (w y x z : EuclideanSpace ℝ (Fin m)) :
     cornerParent a (cornerFromCode a b c κ (lineAt a w ((c - a)⁻¹ • (y - w))) x z) =
       pairFromData a b c (w, (x + b • ((a - b)⁻¹ • (z - κ • y)), y)) := by
   dsimp only [cornerParent, cornerFromCode]
@@ -40,7 +40,7 @@ theorem cornerParent_cornerFromCode_positions {a c : ℝ} (hca : c ≠ a) (b κ 
   simp [atHeight, pairFromData, lineAt]
 
 theorem cornerDensity_eq_parentSlices {a c : ℝ} (hca : c ≠ a) (b κ : ℝ)
-    {D : Set (CornerCoordinates m)} (hD : MeasurableSet D) (z : Space m) :
+    {D : Set (CornerCoordinates m)} (hD : MeasurableSet D) (z : EuclideanSpace ℝ (Fin m)) :
     cornerDensity a b c κ D z = codeJacobian m a b *
       ∫⁻ y, ∫⁻ x, pairJacobian m a b c * cornerParentSliceMass a b c κ D z y x := by
   let f : Line m → ℝ≥0∞ := fun p ↦
@@ -58,7 +58,7 @@ theorem cornerDensity_eq_parentSlices {a c : ℝ} (hca : c ≠ a) (b κ : ℝ)
       _ = ∫⁻ p, f p ∂(codeJacobian m a c • volume) :=
         (measurePreserving_twoSlice hca.symm).lintegral_comp hf
       _ = _ := by rw [lintegral_smul_measure, smul_eq_mul]
-  have hswap (y : Space m) : (∫⁻ w, f (w, y)) =
+  have hswap (y : EuclideanSpace ℝ (Fin m)) : (∫⁻ w, f (w, y)) =
       ∫⁻ x, cornerParentSliceMass a b c κ D z y x := by
     have hm : Measurable (fun p : Line m ↦ D.indicator (1 : CornerCoordinates m → ℝ≥0∞)
         (cornerFromCode a b c κ (lineAt a p.1 ((c - a)⁻¹ • (y - p.1))) p.2 z)) :=

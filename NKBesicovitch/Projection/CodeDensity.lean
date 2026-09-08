@@ -24,11 +24,12 @@ namespace NKBesicovitch.Projection
 variable {m : ℕ}
 
 /-- Pair-code density, normalized by the exact second-slope Jacobian. -/
-noncomputable def codeDensity (a b c : ℝ) (W : Set (PairCoordinates m)) (z : Space m) : ℝ≥0∞ :=
+noncomputable def codeDensity (a b c : ℝ) (W : Set (PairCoordinates m))
+    (z : EuclideanSpace ℝ (Fin m)) : ℝ≥0∞ :=
   codeJacobian m a b * volume (pairFiber a b c W z)
 
 theorem codeDensity_eq_lintegral (a b c : ℝ) {W : Set (PairCoordinates m)}
-    (hW : MeasurableSet W) (z : Space m) :
+    (hW : MeasurableSet W) (z : EuclideanSpace ℝ (Fin m)) :
     codeDensity a b c W z = codeJacobian m a b *
       ∫⁻ g, W.indicator 1 (pairFromCode a b c g z) := by
   unfold codeDensity
@@ -41,7 +42,7 @@ theorem codeDensity_eq_lintegral (a b c : ℝ) {W : Set (PairCoordinates m)}
 
 theorem measurable_codeDensity (a b c : ℝ) {W : Set (PairCoordinates m)}
     (hW : MeasurableSet W) : Measurable (codeDensity a b c W) := by
-  have hf : Measurable (fun p : Line m × Space m ↦
+  have hf : Measurable (fun p : Line m × EuclideanSpace ℝ (Fin m) ↦
       W.indicator (1 : PairCoordinates m → ℝ≥0∞) (pairFromCode a b c p.1 p.2)) :=
     (measurable_const.indicator hW).comp (continuous_pairFromCode a b c).measurable
   have he : codeDensity a b c W = fun z ↦
@@ -53,7 +54,7 @@ theorem measurable_codeDensity (a b c : ℝ) {W : Set (PairCoordinates m)}
 theorem lintegral_codeDensity {a b : ℝ} (hab : a ≠ b) (c : ℝ)
     {W : Set (PairCoordinates m)} (hW : MeasurableSet W) :
     (∫⁻ z, codeDensity a b c W z) = volume W := by
-  let f : Line m × Space m → ℝ≥0∞ := fun p ↦
+  let f : Line m × EuclideanSpace ℝ (Fin m) → ℝ≥0∞ := fun p ↦
     W.indicator 1 (pairFromCode a b c p.1 p.2)
   have hf : Measurable f :=
     (measurable_const.indicator hW).comp (continuous_pairFromCode a b c).measurable
@@ -66,7 +67,7 @@ theorem lintegral_codeDensity {a b : ℝ} (hab : a ≠ b) (c : ℝ)
       congr 1
       simpa only [Measure.volume_eq_prod] using
         (lintegral_prod_symm' (μ := (volume : Measure (Line m)))
-          (ν := (volume : Measure (Space m))) f hf).symm
+          (ν := (volume : Measure (EuclideanSpace ℝ (Fin m)))) f hf).symm
     _ = ∫⁻ p, f p ∂(codeJacobian m a b • volume) := by
       rw [lintegral_smul_measure, smul_eq_mul]
     _ = ∫⁻ p, W.indicator 1 p := by

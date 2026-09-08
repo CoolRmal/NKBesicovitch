@@ -49,7 +49,7 @@ theorem lintegral_pairDensity {a s t : ℝ} (hs : s ≠ a) (ht : t ≠ a)
     _ = pairJacobian m a s t * ∫⁻ p, f p := by
       congr 1
       simpa only [Measure.volume_eq_prod] using
-        (lintegral_prod_symm' (μ := (volume : Measure (Space m)))
+        (lintegral_prod_symm' (μ := (volume : Measure (EuclideanSpace ℝ (Fin m))))
           (ν := (volume : Measure (Line m))) f hf).symm
     _ = ∫⁻ p, f p ∂(pairJacobian m a s t • volume) := by
       rw [lintegral_smul_measure, smul_eq_mul]
@@ -76,7 +76,7 @@ theorem pairDensity_inter_preimage {a s t : ℝ} (hs : s ≠ a) (ht : t ≠ a)
       rw [Set.indicator_of_mem hp, Set.indicator_of_mem hw]
     · rw [Set.indicator_of_notMem (fun h ↦ hw h.1), Set.indicator_of_notMem hw]
   · simp only [Set.indicator_of_notMem hB, pairDensity]
-    have hz : ∀ w : Space m,
+    have hz : ∀ w : EuclideanSpace ℝ (Fin m),
         (W ∩ pairProjections a s t ⁻¹' B).indicator
           (1 : PairCoordinates m → ℝ≥0∞) (pairFromData a s t (w, yz)) = 0 := by
       intro w
@@ -118,7 +118,7 @@ theorem support_pairDensity_subset {a s t : ℝ} (hs : s ≠ a) (ht : t ≠ a)
     Function.support (pairDensity a s t W) ⊆ (atHeight s '' G) ×ˢ (atHeight t '' G) := by
   intro yz hyz
   by_contra h
-  have hz (w : Space m) : pairFromData a s t (w, yz) ∉ W := by
+  have hz (w : EuclideanSpace ℝ (Fin m)) : pairFromData a s t (w, yz) ∉ W := by
     intro hw
     have hp := pairProjections_mem_prod a s t hWG hw
     rw [pairProjections_pairFromData hs ht] at hp

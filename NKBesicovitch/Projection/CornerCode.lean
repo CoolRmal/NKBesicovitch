@@ -21,7 +21,7 @@ namespace NKBesicovitch.Projection
 variable {m : ℕ}
 
 /-- The corner code using the first line's position at `c` and the last line's slope. -/
-def cornerCode (a b c κ : ℝ) (p : CornerCoordinates m) : Space m :=
+def cornerCode (a b c κ : ℝ) (p : CornerCoordinates m) : EuclideanSpace ℝ (Fin m) :=
   κ • atHeight c (cornerFirst a p) + (a - b) • p.2.2
 
 /-- The coefficient of the outer first-line position. -/

@@ -25,7 +25,7 @@ namespace NKBesicovitch.Projection
 variable {m : ℕ}
 
 /-- Middle-line intercept and slope, followed by the first and last slopes. -/
-abbrev CornerCoordinates (m : ℕ) := Line m × (Space m × Space m)
+abbrev CornerCoordinates (m : ℕ) := Line m × (EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m))
 
 /-- First line of a corner, recovered from its first junction. -/
 def cornerFirst (a : ℝ) (p : CornerCoordinates m) : Line m :=

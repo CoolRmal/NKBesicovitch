@@ -24,12 +24,16 @@ namespace NKBesicovitch
 /-- Besicovitch sets have positive measure when `p_c^(k-1) + k > n`. -/
 theorem volume_pos_of_criticalExponent {n k : ℕ} (hk : 1 ≤ k) (hkn : k ≤ n)
     (h : (n : ℝ) < criticalExponent ^ (k - 1) + (k : ℝ))
-    {E : Set (Space n)} (hE : NullMeasurableSet E volume) (hB : IsBesicovitch k E) :
+    {E : Set (EuclideanSpace ℝ (Fin n))} (hE : NullMeasurableSet E volume)
+    (hB : IsBesicovitch k E) :
     0 < volume E :=
   Induction.volume_pos_of_criticalExponent hk hkn h hE hB
 
-/-- Every Lebesgue measurable `(5,2)`-Besicovitch set has positive measure. -/
-theorem volume_pos_five_two {E : Set (Space 5)} (hE : NullMeasurableSet E volume)
+/-- Every Lebesgue measurable `(5,2)`-Besicovitch set has positive measure.
+
+This is not implied by `volume_pos_of_criticalExponent`: for `k = 2`, that theorem
+requires `n < p_c + 2`, while `p_c + 2 < 4.482 < 5`. -/
+theorem volume_pos_five_two {E : Set (EuclideanSpace ℝ (Fin 5))} (hE : NullMeasurableSet E volume)
     (hB : IsBesicovitch 2 E) : 0 < volume E := FiveTwo.volume_pos hE hB
 
 end NKBesicovitch

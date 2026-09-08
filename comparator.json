@@ -6,7 +6,6 @@
     "NKBesicovitch.volume_pos_five_two"
   ],
   "definition_names": [
-    "NKBesicovitch.Space",
     "NKBesicovitch.IsBesicovitch",
     "NKBesicovitch.criticalExponent"
   ],

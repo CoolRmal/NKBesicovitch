@@ -33,7 +33,7 @@ theorem lineAt_twoSlice {a t : ℝ} (hta : t ≠ a) (g : Line m) :
   rw [h, smul_smul, inv_mul_cancel₀ (sub_ne_zero.mpr hta), one_smul, lineAt_atHeight]
 
 theorem pairCode_pairFromData_dual {a b c t : ℝ} (hab : a ≠ b) (hc : c ≠ 0)
-    (hta : t ≠ a) (htb : t ≠ b) (w y z : Space m) :
+    (hta : t ≠ a) (htb : t ≠ b) (w y z : EuclideanSpace ℝ (Fin m)) :
     pairCode a b c (pairFromData a t (dualTime a b c t)
       (w, (y, ((b - a) / (dualTime a b c t - a))⁻¹ •
         (z - (c * (b - a) / (t - a)) • y)))) = z := by
@@ -52,7 +52,7 @@ theorem pairCode_pairFromData_dual {a b c t : ℝ} (hab : a ≠ b) (hc : c ≠ 0
   module
 
 theorem pairFromData_dual_eq_pairFromCode {a b c t : ℝ} (hab : a ≠ b) (hc : c ≠ 0)
-    (hta : t ≠ a) (htb : t ≠ b) (w y z : Space m) :
+    (hta : t ≠ a) (htb : t ≠ b) (w y z : EuclideanSpace ℝ (Fin m)) :
     pairFromData a t (dualTime a b c t)
       (w, (y, ((b - a) / (dualTime a b c t - a))⁻¹ •
         (z - (c * (b - a) / (t - a)) • y))) =
@@ -65,7 +65,7 @@ theorem pairFromData_dual_eq_pairFromCode {a b c t : ℝ} (hab : a ≠ b) (hc : 
   exact h.symm
 
 theorem pairProjections_pairFromCode_dual {a b c t : ℝ} (hab : a ≠ b) (hc : c ≠ 0)
-    (hta : t ≠ a) (htb : t ≠ b) (g : Line m) (z : Space m) :
+    (hta : t ≠ a) (htb : t ≠ b) (g : Line m) (z : EuclideanSpace ℝ (Fin m)) :
     pairProjections a t (dualTime a b c t) (pairFromCode a b c g z) =
       (atHeight t g, ((b - a) / (dualTime a b c t - a))⁻¹ •
         (z - (c * (b - a) / (t - a)) • atHeight t g)) := by
@@ -83,7 +83,7 @@ theorem codeJacobian_dual {a b c t : ℝ} (hab : a ≠ b) (hc : c ≠ 0)
   rfl
 
 theorem codeDensity_eq_twoSlice_lintegral {a b t : ℝ} (hta : t ≠ a)
-    (c : ℝ) {W : Set (PairCoordinates m)} (hW : MeasurableSet W) (z : Space m) :
+    (c : ℝ) {W : Set (PairCoordinates m)} (hW : MeasurableSet W) (z : EuclideanSpace ℝ (Fin m)) :
     codeDensity a b c W z =
       (codeJacobian m a b * ENNReal.ofReal |((t - a) ^ m)⁻¹|) *
         ∫⁻ y, ∫⁻ w, W.indicator 1
@@ -109,12 +109,12 @@ theorem codeDensity_eq_twoSlice_lintegral {a b t : ℝ} (hta : t ≠ a)
   rw [codeDensity_eq_lintegral a b c hW, hi, ← mul_assoc]
   congr 1
   simpa only [Measure.volume_eq_prod] using
-    (lintegral_prod_symm' (μ := (volume : Measure (Space m))) (ν := volume) f hf)
+    (lintegral_prod_symm' (μ := (volume : Measure (EuclideanSpace ℝ (Fin m)))) (ν := volume) f hf)
 
 /-- The exact marginal formula for the explicit density representatives, at every code value. -/
 theorem codeDensity_eq_marginal {a b c t : ℝ} (hab : a ≠ b) (hc : c ≠ 0)
     (hta : t ≠ a) (htb : t ≠ b) {W : Set (PairCoordinates m)} (hW : MeasurableSet W)
-    (z : Space m) :
+    (z : EuclideanSpace ℝ (Fin m)) :
     codeDensity a b c W z =
       ENNReal.ofReal |(((b - a) / (dualTime a b c t - a)) ^ m)⁻¹| *
         ∫⁻ y, pairDensity a t (dualTime a b c t) W

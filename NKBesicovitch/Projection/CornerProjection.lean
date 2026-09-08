@@ -29,9 +29,10 @@ variable {m : ℕ}
 theorem mul_volume_projection_cornerFiber_le {a b c κ u : ℝ} (hab : a ≠ b)
     (hua : u ≠ a) {D₀ D₁ : Set (CornerCoordinates m)} (hD₀ : MeasurableSet D₀)
     (τ : ℝ≥0∞) (hτ : ∀ p ∈ D₁,
-      τ ≤ cornerOuterDensity a b c κ u D₀ (cornerOuterData a b c κ u p)) (z : Space m) :
+      τ ≤ cornerOuterDensity a b c κ u D₀ (cornerOuterData a b c κ u p))
+    (z : EuclideanSpace ℝ (Fin m)) :
     τ * volume (atHeight u '' cornerFiber a b c κ D₁ z) ≤ cornerDensity a b c κ D₀ z := by
-  let f : Space m → ℝ≥0∞ := fun y ↦
+  let f : EuclideanSpace ℝ (Fin m) → ℝ≥0∞ := fun y ↦
     cornerOuterDensity a b c κ u D₀ (y, z - cornerOuterCoefficient a c κ u • y)
   have hf : Measurable f :=
     (measurable_cornerOuterDensity a b c κ u hD₀).comp (by fun_prop)
@@ -48,7 +49,8 @@ theorem mul_volume_projection_cornerFiber_le {a b c κ u : ℝ} (hab : a ≠ b)
 theorem mul_volume_projection_positiveCornerFiber_le {a b c κ u : ℝ} (hab : a ≠ b)
     (hua : u ≠ a) {D₀ D₁ : Set (CornerCoordinates m)} (hD₀ : MeasurableSet D₀)
     (τ : ℝ≥0∞) (hτ : ∀ p ∈ D₁,
-      τ ≤ cornerOuterDensity a b c κ u D₀ (cornerOuterData a b c κ u p)) (z : Space m) :
+      τ ≤ cornerOuterDensity a b c κ u D₀ (cornerOuterData a b c κ u p))
+    (z : EuclideanSpace ℝ (Fin m)) :
     τ * volume (atHeight u '' positiveCornerFiber a b c κ D₁ z) ≤
       cornerDensity a b c κ D₀ z := by
   exact (mul_le_mul le_rfl (measure_mono

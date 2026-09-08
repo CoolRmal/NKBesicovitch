@@ -35,8 +35,8 @@ theorem measurePreserving_cornerOuterPermutation (u : ℝ) :
     (measurePreserving_lineCoordinates u).symm
       (lineCoordinates u).toHomeomorph.toMeasurableEquiv
   have hi := MeasurePreserving.id (volume : Measure (Line m))
-  have hswap := Measure.measurePreserving_swap (μ := (volume : Measure (Space m)))
-    (ν := (volume : Measure (Space m)))
+  have hswap := Measure.measurePreserving_swap (μ := (volume : Measure (EuclideanSpace ℝ (Fin m))))
+    (ν := (volume : Measure (EuclideanSpace ℝ (Fin m))))
   simpa [Function.comp_def, Prod.map_def, lineCoordinates_symm_apply,
     Measure.volume_eq_prod] using
     measurePreserving_swap_middle.comp ((hi.prod hswap).comp (hinv.prod hi))
@@ -44,8 +44,8 @@ theorem measurePreserving_cornerOuterPermutation (u : ℝ) :
 theorem measurePreserving_sub_smul_second (A : ℝ) :
     MeasurePreserving (fun p : Line m ↦ (p.1, p.2 - A • p.1)) volume volume := by
   change MeasurePreserving _ (volume.prod volume) (volume.prod volume)
-  refine (MeasurePreserving.id (volume : Measure (Space m))).skew_product
-    (g := fun y (z : Space m) ↦ z - A • y)
+  refine (MeasurePreserving.id (volume : Measure (EuclideanSpace ℝ (Fin m)))).skew_product
+    (g := fun y (z : EuclideanSpace ℝ (Fin m)) ↦ z - A • y)
     (by fun_prop) (ae_of_all _ fun y ↦ ?_)
   simpa [sub_eq_add_neg] using map_add_right_eq_self volume (-(A • y))
 

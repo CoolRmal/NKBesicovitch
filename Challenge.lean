@@ -23,13 +23,10 @@ open MeasureTheory Set
 
 namespace NKBesicovitch
 
-/-- Euclidean n-space with its canonical Lebesgue measure. -/
-abbrev Space (n : ℕ) := EuclideanSpace ℝ (Fin n)
-
 /-- A set containing a translate of the closed unit disk in every k-dimensional direction. -/
-def IsBesicovitch {n : ℕ} (k : ℕ) (E : Set (Space n)) : Prop :=
-  ∀ V : Submodule ℝ (Space n), Module.finrank ℝ V = k →
-    ∃ a : Space n, ∀ v ∈ V, ‖v‖ ≤ 1 → a + v ∈ E
+def IsBesicovitch {n : ℕ} (k : ℕ) (E : Set (EuclideanSpace ℝ (Fin n))) : Prop :=
+  ∀ V : Submodule ℝ (EuclideanSpace ℝ (Fin n)), Module.finrank ℝ V = k →
+    ∃ a : EuclideanSpace ℝ (Fin n), ∀ v ∈ V, ‖v‖ ≤ 1 → a + v ∈ E
 
 /-- The exact critical ratio, specified by the roots of its cubic in `[2,3]`. -/
 noncomputable def criticalExponent : ℝ :=
@@ -38,12 +35,16 @@ noncomputable def criticalExponent : ℝ :=
 /-- Besicovitch sets have positive measure when `p_c^(k-1) + k > n`. -/
 theorem volume_pos_of_criticalExponent {n k : ℕ} (hk : 1 ≤ k) (hkn : k ≤ n)
     (h : (n : ℝ) < criticalExponent ^ (k - 1) + (k : ℝ))
-    {E : Set (Space n)} (hE : NullMeasurableSet E volume) (hB : IsBesicovitch k E) :
+    {E : Set (EuclideanSpace ℝ (Fin n))} (hE : NullMeasurableSet E volume)
+    (hB : IsBesicovitch k E) :
     0 < volume E := by
   sorry
 
-/-- Every Lebesgue measurable `(5,2)`-Besicovitch set has positive measure. -/
-theorem volume_pos_five_two {E : Set (Space 5)} (hE : NullMeasurableSet E volume)
+/-- Every Lebesgue measurable `(5,2)`-Besicovitch set has positive measure.
+
+This is not implied by `volume_pos_of_criticalExponent`: for `k = 2`, that theorem
+requires `n < p_c + 2`, while `p_c + 2 < 4.482 < 5`. -/
+theorem volume_pos_five_two {E : Set (EuclideanSpace ℝ (Fin 5))} (hE : NullMeasurableSet E volume)
     (hB : IsBesicovitch 2 E) : 0 < volume E := by
   sorry
 

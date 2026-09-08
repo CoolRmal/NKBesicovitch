@@ -26,7 +26,7 @@ namespace NKBesicovitch.Projection
 variable {m : ℕ}
 
 /-- The code of two lines sharing a point at height `a`. -/
-def pairCode (a b c : ℝ) (p : PairCoordinates m) : Space m :=
+def pairCode (a b c : ℝ) (p : PairCoordinates m) : EuclideanSpace ℝ (Fin m) :=
   c • atHeight b (lineAt a p.1 p.2.1) + (b - a) • p.2.2
 
 /-- The second slice height dual to `t` for this pair code. -/
@@ -72,14 +72,16 @@ theorem pairCode_eq_dual_projections {a b c t : ℝ} (hab : a ≠ b) (hc : c ≠
     _ = _ := by module
 
 /-- Recover a pair from its first line and code value. -/
-noncomputable def pairFromCode (a b c : ℝ) (g : Line m) (z : Space m) : PairCoordinates m :=
+noncomputable def pairFromCode (a b c : ℝ) (g : Line m) (z : EuclideanSpace ℝ (Fin m)) :
+    PairCoordinates m :=
   (atHeight a g, (g.2, (b - a)⁻¹ • (z - c • atHeight b g)))
 
-theorem first_pairFromCode (a b c : ℝ) (g : Line m) (z : Space m) :
+theorem first_pairFromCode (a b c : ℝ) (g : Line m) (z : EuclideanSpace ℝ (Fin m)) :
     lineAt a (pairFromCode a b c g z).1 (pairFromCode a b c g z).2.1 = g :=
   lineAt_atHeight a g
 
-theorem pairCode_pairFromCode {a b : ℝ} (hab : a ≠ b) (c : ℝ) (g : Line m) (z : Space m) :
+theorem pairCode_pairFromCode {a b : ℝ} (hab : a ≠ b) (c : ℝ) (g : Line m)
+    (z : EuclideanSpace ℝ (Fin m)) :
     pairCode a b c (pairFromCode a b c g z) = z := by
   change c • atHeight b (lineAt a (atHeight a g) g.2) +
     (b - a) • ((b - a)⁻¹ • (z - c • atHeight b g)) = z
@@ -96,18 +98,20 @@ theorem pairFromCode_pairCode {a b : ℝ} (hab : a ≠ b) (c : ℝ) (p : PairCoo
     inv_mul_cancel₀ (sub_ne_zero.mpr hab.symm)]
 
 /-- The first-line family on a specified code fiber, expressed without an existential projection. -/
-def pairFiber (a b c : ℝ) (W : Set (PairCoordinates m)) (z : Space m) : Set (Line m) :=
+def pairFiber (a b c : ℝ) (W : Set (PairCoordinates m)) (z : EuclideanSpace ℝ (Fin m)) : Set
+    (Line m) :=
   {g | pairFromCode a b c g z ∈ W}
 
 theorem measurableSet_pairFiber (a b c : ℝ) {W : Set (PairCoordinates m)}
-    (hW : MeasurableSet W) (z : Space m) : MeasurableSet (pairFiber a b c W z) := by
+    (hW : MeasurableSet W) (z : EuclideanSpace ℝ (Fin m)) : MeasurableSet
+      (pairFiber a b c W z) := by
   have hm : Continuous (fun g : Line m ↦ pairFromCode a b c g z) := by
     unfold pairFromCode atHeight
     fun_prop
   exact hW.preimage hm.measurable
 
 theorem mem_pairFiber_iff {a b : ℝ} (hab : a ≠ b) (c : ℝ) (W : Set (PairCoordinates m))
-    (g : Line m) (z : Space m) :
+    (g : Line m) (z : EuclideanSpace ℝ (Fin m)) :
     g ∈ pairFiber a b c W z ↔ ∃ p ∈ W, lineAt a p.1 p.2.1 = g ∧ pairCode a b c p = z := by
   constructor
   · intro hg

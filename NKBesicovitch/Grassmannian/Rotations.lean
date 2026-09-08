@@ -24,7 +24,8 @@ open MeasureTheory Set TopologicalSpace
 namespace NKBesicovitch
 
 /-- The full orthogonal group of Euclidean n-space, including reflections. -/
-noncomputable abbrev Rotations (n : ℕ) := unitary (Space n →L[ℝ] Space n)
+noncomputable abbrev Rotations (n : ℕ) :=
+  unitary (EuclideanSpace ℝ (Fin n) →L[ℝ] EuclideanSpace ℝ (Fin n))
 
 namespace Rotations
 
@@ -32,7 +33,8 @@ variable {n : ℕ}
 
 instance : CompactSpace (Rotations n) := by
   apply isCompact_iff_compactSpace.mp
-  refine (isCompact_closedBall (0 : Space n →L[ℝ] Space n) 1).of_isClosed_subset
+  refine (isCompact_closedBall (0 : EuclideanSpace ℝ (Fin n) →L[ℝ]
+    EuclideanSpace ℝ (Fin n)) 1).of_isClosed_subset
     isClosed_unitary ?_
   intro u hu
   simp only [Metric.mem_closedBall, dist_zero_right]

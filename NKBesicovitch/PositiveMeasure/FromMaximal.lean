@@ -27,9 +27,9 @@ namespace NKBesicovitch
 /-- A uniform disk maximal estimate for open indicators gives a quantitative volume lower bound. -/
 theorem le_volume_of_diskMaximal_bound {n k : ℕ} (μ : Measure (Grassmannian n k))
     [IsProbabilityMeasure μ] {p : ℝ} (hp : 0 ≤ p) {C : ℝ≥0} (hC : 0 < C)
-    (hmax : ∀ U : Set (Space n), IsOpen U →
+    (hmax : ∀ U : Set (EuclideanSpace ℝ (Fin n)), IsOpen U →
       (∫⁻ V, diskMaximal (U.indicator (fun _ ↦ (1 : ℝ≥0∞))) V ^ p ∂μ) ≤ C * volume U)
-    {E : Set (Space n)} (hE : IsBesicovitch k E) : (1 : ℝ≥0∞) / C ≤ volume E := by
+    {E : Set (EuclideanSpace ℝ (Fin n))} (hE : IsBesicovitch k E) : (1 : ℝ≥0∞) / C ≤ volume E := by
   rw [E.measure_eq_iInf_isOpen volume]
   refine le_iInf fun U ↦ le_iInf fun hEU ↦ le_iInf fun hU ↦ ?_
   have hB : IsBesicovitch k U := by

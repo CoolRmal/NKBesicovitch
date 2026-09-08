@@ -35,8 +35,8 @@ theorem parallelMultiplicity_le_projection (G : Set (Line m)) (t : ℝ) :
   apply ae_of_all
   intro ξ
   calc
-    volume {x : Space m | (x, ξ) ∈ G} ≤
-        volume ((fun x : Space m ↦ x + t • ξ) ⁻¹' (atHeight t '' G)) :=
+    volume {x : EuclideanSpace ℝ (Fin m) | (x, ξ) ∈ G} ≤
+        volume ((fun x : EuclideanSpace ℝ (Fin m) ↦ x + t • ξ) ⁻¹' (atHeight t '' G)) :=
       measure_mono fun x hx ↦ ⟨(x, ξ), hx, rfl⟩
     _ = volume (atHeight t '' G) := measure_preimage_add_right volume (t • ξ) _
 

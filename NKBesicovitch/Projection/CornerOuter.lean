@@ -42,7 +42,7 @@ theorem cornerOuterData_eq {a b c κ u : ℝ} (hua : u ≠ a) (p : CornerCoordin
     module
 
 theorem cornerOuterData_cornerFromCode {a b c κ u : ℝ} (hab : a ≠ b) (hua : u ≠ a)
-    (g : Line m) (x z : Space m) :
+    (g : Line m) (x z : EuclideanSpace ℝ (Fin m)) :
     cornerOuterData a b c κ u (cornerFromCode a b c κ g x z) =
       (atHeight u g, z - cornerOuterCoefficient a c κ u • atHeight u g) := by
   rw [cornerOuterData_eq hua, first_cornerFromCode, cornerCode_cornerFromCode hab]
@@ -63,7 +63,7 @@ theorem measurable_cornerOuterDensity (a b c κ u : ℝ) {D : Set (CornerCoordin
   exact measurable_const.mul hf.lintegral_prod_right'
 
 theorem cornerOuterDensity_at_code (a b c κ u : ℝ) {D : Set (CornerCoordinates m)}
-    (hD : MeasurableSet D) (y z : Space m) :
+    (hD : MeasurableSet D) (y z : EuclideanSpace ℝ (Fin m)) :
     cornerOuterDensity a b c κ u D (y, z - cornerOuterCoefficient a c κ u • y) =
       codeJacobian m a b ^ 2 * ∫⁻ ξ, cornerFirstDensity a b c κ D z (lineAt u y ξ) := by
   have hf : Measurable (fun p : Line m ↦ D.indicator (1 : CornerCoordinates m → ℝ≥0∞)
@@ -75,7 +75,7 @@ theorem cornerOuterDensity_at_code (a b c κ u : ℝ) {D : Set (CornerCoordinate
 
 /-- The exact outer marginal identity, at every corner-code value. -/
 theorem lintegral_cornerOuterDensity_at_code (a b c κ u : ℝ) {D : Set (CornerCoordinates m)}
-    (hD : MeasurableSet D) (z : Space m) :
+    (hD : MeasurableSet D) (z : EuclideanSpace ℝ (Fin m)) :
     (∫⁻ y, cornerOuterDensity a b c κ u D
       (y, z - cornerOuterCoefficient a c κ u • y)) = cornerDensity a b c κ D z := by
   simp_rw [cornerOuterDensity_at_code a b c κ u hD]

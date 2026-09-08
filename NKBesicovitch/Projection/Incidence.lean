@@ -28,9 +28,9 @@ namespace NKBesicovitch.Projection
 variable {m : ℕ}
 
 /-- The line at position `w` at height `a`, with slope `ξ`. -/
-def lineAt (a : ℝ) (w ξ : Space m) : Line m := (w - a • ξ, ξ)
+def lineAt (a : ℝ) (w ξ : EuclideanSpace ℝ (Fin m)) : Line m := (w - a • ξ, ξ)
 
-theorem atHeight_lineAt (a t : ℝ) (w ξ : Space m) :
+theorem atHeight_lineAt (a t : ℝ) (w ξ : EuclideanSpace ℝ (Fin m)) :
     atHeight t (lineAt a w ξ) = w + (t - a) • ξ := by
   simp [atHeight, lineAt, sub_smul, sub_add_eq_add_sub, add_sub_assoc]
 
@@ -39,10 +39,11 @@ theorem lineAt_atHeight (a : ℝ) (g : Line m) : lineAt a (atHeight a g) g.2 = g
 
 /-- The volume-preserving change from position-slope coordinates to intercept-slope coordinates. -/
 noncomputable def lineCoordinates (a : ℝ) : Line m ≃L[ℝ] Line m :=
-  (ContinuousLinearEquiv.prodComm ℝ (Space m) (Space m)).trans
-    (((ContinuousLinearEquiv.refl ℝ (Space m)).skewProd
-      (ContinuousLinearEquiv.refl ℝ (Space m)) (-a • ContinuousLinearMap.id ℝ (Space m))).trans
-        (ContinuousLinearEquiv.prodComm ℝ (Space m) (Space m)))
+  (ContinuousLinearEquiv.prodComm ℝ (EuclideanSpace ℝ (Fin m)) (EuclideanSpace ℝ (Fin m))).trans
+    (((ContinuousLinearEquiv.refl ℝ (EuclideanSpace ℝ (Fin m))).skewProd
+      (ContinuousLinearEquiv.refl ℝ (EuclideanSpace ℝ (Fin m)))
+        (-a • ContinuousLinearMap.id ℝ (EuclideanSpace ℝ (Fin m)))).trans
+        (ContinuousLinearEquiv.prodComm ℝ (EuclideanSpace ℝ (Fin m)) (EuclideanSpace ℝ (Fin m))))
 
 theorem lineCoordinates_apply (a : ℝ) (p : Line m) :
     lineCoordinates a p = lineAt a p.1 p.2 := by
@@ -59,7 +60,7 @@ theorem measurePreserving_lineCoordinates (a : ℝ) :
     (volume.prod volume) (volume.prod volume)
   have hs : MeasurePreserving (fun p : Line m ↦ (p.1, p.2 + (-a) • p.1))
       (volume.prod volume) (volume.prod volume) :=
-    (MeasurePreserving.id (volume : Measure (Space m))).skew_product
+    (MeasurePreserving.id (volume : Measure (EuclideanSpace ℝ (Fin m)))).skew_product
       (by fun_prop)
       (ae_of_all _ fun ξ ↦ map_add_right_eq_self volume ((-a) • ξ))
   simpa [Function.comp_def] using
@@ -71,8 +72,8 @@ theorem quasiMeasurePreserving_atHeight (a : ℝ) :
     (measurePreserving_lineCoordinates a).symm (lineCoordinates a).toHomeomorph.toMeasurableEquiv
   change Measure.QuasiMeasurePreserving (fun g : Line m ↦ atHeight a g) _ _
   simpa [Function.comp_def, lineCoordinates_symm_apply, Measure.volume_eq_prod] using
-    (Measure.quasiMeasurePreserving_fst (μ := (volume : Measure (Space m)))
-      (ν := (volume : Measure (Space m)))).comp h.quasiMeasurePreserving
+    (Measure.quasiMeasurePreserving_fst (μ := (volume : Measure (EuclideanSpace ℝ (Fin m))))
+      (ν := (volume : Measure (EuclideanSpace ℝ (Fin m))))).comp h.quasiMeasurePreserving
 
 theorem lintegral_lineAt (a : ℝ) {f : Line m → ℝ≥0∞} (hf : Measurable f) :
     (∫⁻ y, ∫⁻ ξ, f (lineAt a y ξ)) = ∫⁻ g, f g := by
@@ -81,19 +82,20 @@ theorem lintegral_lineAt (a : ℝ) {f : Line m → ℝ≥0∞} (hf : Measurable 
       have hm : Measurable (fun p : Line m ↦ f (lineCoordinates a p)) :=
         hf.comp (lineCoordinates a).continuous.measurable
       simpa only [Measure.volume_eq_prod, lineCoordinates_apply] using
-        (lintegral_prod (μ := (volume : Measure (Space m))) (ν := volume)
+        (lintegral_prod (μ := (volume : Measure (EuclideanSpace ℝ (Fin m)))) (ν := volume)
           (fun p : Line m ↦ f (lineCoordinates a p)) hm.aemeasurable).symm
     _ = _ := (measurePreserving_lineCoordinates a).lintegral_comp hf
 
 /-- Mass of the lines in a family passing through a specified point of a slice. -/
-noncomputable def sliceMultiplicity (a : ℝ) (G : Set (Line m)) (w : Space m) : ℝ≥0∞ :=
+noncomputable def sliceMultiplicity (a : ℝ) (G : Set (Line m)) (w : EuclideanSpace ℝ (Fin m)) :
+    ℝ≥0∞ :=
   volume ((lineAt a w) ⁻¹' G)
 
 theorem measurable_sliceMultiplicity (a : ℝ) {G : Set (Line m)} (hG : MeasurableSet G) :
     Measurable (sliceMultiplicity a G) := by
-  change Measurable (fun w : Space m ↦ volume ((lineAt a w) ⁻¹' G))
+  change Measurable (fun w : EuclideanSpace ℝ (Fin m) ↦ volume ((lineAt a w) ⁻¹' G))
   have hm := measurable_measure_prodMk_left
-    (ν := (volume : Measure (Space m)))
+    (ν := (volume : Measure (EuclideanSpace ℝ (Fin m))))
     (hG.preimage (lineCoordinates a).continuous.measurable)
   have hc : ⇑(lineCoordinates (m := m) a) = fun p ↦ lineAt a p.1 p.2 :=
     funext (lineCoordinates_apply a)
@@ -101,7 +103,7 @@ theorem measurable_sliceMultiplicity (a : ℝ) {G : Set (Line m)} (hG : Measurab
 
 theorem lintegral_sliceMultiplicity (a : ℝ) {G : Set (Line m)} (hG : MeasurableSet G) :
     (∫⁻ w, sliceMultiplicity a G w) = volume G := by
-  have he := Measure.prod_apply (μ := (volume : Measure (Space m))) (ν := volume)
+  have he := Measure.prod_apply (μ := (volume : Measure (EuclideanSpace ℝ (Fin m)))) (ν := volume)
     (hG.preimage (lineCoordinates a).continuous.measurable)
   have hc : ⇑(lineCoordinates (m := m) a) = fun p ↦ lineAt a p.1 p.2 :=
     funext (lineCoordinates_apply a)
@@ -112,7 +114,8 @@ theorem lintegral_sliceMultiplicity (a : ℝ) {G : Set (Line m)} (hG : Measurabl
     _ = volume G := (measurePreserving_lineCoordinates a).measure_preimage hG.nullMeasurableSet
 
 /-- Coordinates of two lines sharing a point at one height. -/
-abbrev PairCoordinates (m : ℕ) := Space m × (Space m × Space m)
+abbrev PairCoordinates (m : ℕ) := EuclideanSpace ℝ (Fin m) ×
+    (EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m))
 
 /-- The intrinsic incidence family of ordered pairs from `G` meeting at height `a`. -/
 def pairFamily (a : ℝ) (G : Set (Line m)) : Set (PairCoordinates m) :=

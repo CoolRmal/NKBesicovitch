@@ -52,7 +52,7 @@ theorem volume_low_cornerOuterDensity_le {a b c κ u : ℝ} (hab : a ≠ b) (hua
 /-- A product bound using the first-line projection and the allowed inner-pair codes. -/
 theorem volume_low_cornerOuterDensity_le_mul {a b c κ u : ℝ} (hab : a ≠ b) (hua : u ≠ a)
     {D : Set (CornerCoordinates m)} (hD : MeasurableSet D) {G : Set (Line m)}
-    (hDG : D ⊆ cornerFamily a b G) {B : Set (Space m)}
+    (hDG : D ⊆ cornerFamily a b G) {B : Set (EuclideanSpace ℝ (Fin m))}
     (hB : ∀ p ∈ D, pairCode b a (cornerInnerCoefficient a c κ u) (cornerInner b p) ∈ B)
     (τ : ℝ≥0∞) :
     volume (D ∩ {p | cornerOuterDensity a b c κ u D (cornerOuterData a b c κ u p) < τ}) ≤

@@ -24,14 +24,15 @@ open scoped ENNReal
 namespace NKBesicovitch.Projection
 
 /-- Nonhorizontal lines in one higher dimension, represented by intercept and slope. -/
-abbrev Line (m : ℕ) := Space m × Space m
+abbrev Line (m : ℕ) := EuclideanSpace ℝ (Fin m) × EuclideanSpace ℝ (Fin m)
 
 /-- Horizontal position at height t. -/
-def atHeight {m : ℕ} (t : ℝ) (g : Line m) : Space m := g.1 + t • g.2
+def atHeight {m : ℕ} (t : ℝ) (g : Line m) : EuclideanSpace ℝ (Fin m) := g.1 + t • g.2
 
 /-- Essential supremum of the measures of parallel subfamilies. -/
 noncomputable def parallelMultiplicity {m : ℕ} (G : Set (Line m)) : ℝ≥0∞ :=
-  essSup (fun ξ : Space m ↦ volume {x : Space m | (x, ξ) ∈ G}) volume
+  essSup (fun ξ : EuclideanSpace ℝ (Fin m) ↦ volume {x : EuclideanSpace ℝ (Fin m) | (x,
+    ξ) ∈ G}) volume
 
 /-- Largest outer measure of a projection onto the selected finite set of heights. -/
 noncomputable def sliceSize {m : ℕ} (Γ : Finset ℝ) (G : Set (Line m)) : ℝ≥0∞ :=
