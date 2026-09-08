@@ -20,7 +20,9 @@ The target range is
 and the separate pair \((n,k)=(5,2)\). Here a Besicovitch set contains a
 translate of the closed unit disk in every k-dimensional direction.
 The exact constant is approximately 2.481194304; its existence, uniqueness,
-and rational bounds have been proved in Lean. The corresponding projection
+and the strict bounds `2.481 < criticalExponent < 2.482` have been proved in Lean.
+For `k = 2`, the general theorem requires `n < p_c + 2 < 4.482`, so the `(5,2)`
+result needs a separate proof. The corresponding projection
 exponent is approximately 1.675130871.
 
 Also proved are the full-dimensional boundary case, normalization of disk
@@ -41,8 +43,11 @@ lower semicontinuity. The delta-to-volume argument therefore needs only its
 uniform analytic estimate and a direction probability measure.
 
 The projection development includes the two-slice seed with its exact
-time-separation factor and basic parallel-multiplicity bounds. The pair and
-corner improvements beyond the seed remain unproved.
+time-separation factor, parallel-multiplicity bounds, and the full basic pair
+improvement, giving exponent `7/4` on five heights. The exact corner densities,
+both corner-fiber upper bounds, outer-density deletion, and measurable
+companions of prescribed fiber mass are also proved. The stronger corner
+improvement near `1.675` and the finite pruning argument remain open.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
@@ -64,13 +69,13 @@ lake build
 | `NKBesicovitch.lean` | Root module; imports everything below |
 | `Challenge.lean` | Minimal Mathlib-only statement surface |
 | `Solution.lean` | Matching theorem interface, currently with incomplete dependencies |
-| `comparator.json` | Compares both theorems and all three custom statement definitions |
-| `NKBesicovitch/Basic.lean` | Euclidean space, disk property, exact exponent |
+| `comparator.json` | Compares both theorems and both custom statement definitions |
+| `NKBesicovitch/Basic.lean` | Disk property and exact exponent, using Mathlib's Euclidean space directly |
 | `NKBesicovitch/Exponents.lean` | Certified root and projection-exponent arithmetic |
 | `NKBesicovitch/Grassmannian/` | Direction topology, orthogonal action, canonical probability |
 | `NKBesicovitch/Geometry/` | Disks and the full-dimensional case |
 | `NKBesicovitch/Operators/` | Nonnegative disk, plate, and local X-ray operators |
-| `NKBesicovitch/Projection/` | Line-family definitions and corner iteration arithmetic |
+| `NKBesicovitch/Projection/` | Pair improvement, corner densities, fiber balancing, and iteration arithmetic |
 | `NKBesicovitch/PositiveMeasure/` | Passage from maximal estimates to measure |
 | `NKBesicovitch/Induction/` | General-range proof frontier |
 | `NKBesicovitch/FiveTwo/` | Separate (5,2) proof frontier |

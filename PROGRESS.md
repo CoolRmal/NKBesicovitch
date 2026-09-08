@@ -84,6 +84,15 @@ source decomposition. The final theorems are not proved yet.
   the pointwise outer marginal, corner-fiber projection bounds, total and
   restricted outer-density mass identities, and low-density deletion bounds.
   Projection and outer-data image sizes remain outer measures throughout.
+* `Projection/SliceRefinement`: the restricted slice-multiplicity identity
+  and simultaneous removal of lines through small original slice fibers.
+  The refined Borel line family retains half the original volume whenever
+  the finite sum of deletion bounds is at most half that volume.
+* `Projection/FiberCutoff`, `SliceBallMass`, `Companions`: a measurable cutoff
+  for monotone continuous fiber masses, continuity of slice mass in expanding
+  slope balls, and Borel companions with exactly the prescribed mass on
+  every sufficiently large original slice fiber. Positive slope dimension is
+  explicit; null sphere boundaries justify the continuity step.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -120,9 +129,10 @@ code-fiber projection bound, and simultaneous fiber-selection steps are now
 proved, including the code-density upper bound using parallel multiplicity.
 The basic pair improvement is proved. The stronger corner improvement and
 quantitative selection of its height patterns are still open.
-The exact corner identities, both fiber upper bounds, and outer-density
-deletion estimate are now proved. The next corner step is the balanced
-companion construction and the finite pruning/selection argument, followed
+The exact corner identities, both fiber upper bounds, outer-density deletion,
+initial slice refinement, and measurable selection of companions with exactly
+prescribed fiber mass are now proved. The next corner step is the balanced
+pair/corner counting and finite pruning/selection argument, followed
 by the exponent improvement and quantitative height selection.
 
 ## Verification conventions
@@ -147,6 +157,9 @@ The code-density upper bound also passes, with no extra axioms or source warning
 The full basic pair-improvement theorem and its `7/4` consequence pass the same audit.
 The corner-fiber projection bound, the upper bound from parent density, and
 the outer-density deletion bound also pass, using only the three standard axioms.
+The measurable companion selection and half-mass slice refinement pass the
+same audit, as do the explicit decimal exponent bounds and the lemma excluding
+`(5,2)` from the general critical-exponent condition.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.

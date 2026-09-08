@@ -49,6 +49,10 @@ import NKBesicovitch.Projection.CornerOuterMeasure
 import NKBesicovitch.Projection.CornerRefinement
 import NKBesicovitch.Projection.CornerParent
 import NKBesicovitch.Projection.CornerParentBound
+import NKBesicovitch.Projection.SliceRefinement
+import NKBesicovitch.Projection.FiberCutoff
+import NKBesicovitch.Projection.SliceBallMass
+import NKBesicovitch.Projection.Companions
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta
