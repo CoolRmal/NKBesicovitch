@@ -80,8 +80,9 @@ related_formalizations: []
 status:
   scope: >-
     Initial statement and foundation checkpoint. The exact critical exponent,
-    full-dimensional boundary case, normalized disk averages, and passage from
-    an open-set maximal estimate to a volume lower bound have Lean proofs.
+    strict parameter margins, full-dimensional boundary case, normalized disk
+    averages, and passage from uniform disk or delta-plate maximal estimates
+    on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic
     dependencies described in PLAN.md. Their count does not measure the size
     of the remaining work. This snapshot is not ready for Palomar submission.

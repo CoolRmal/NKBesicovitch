@@ -25,8 +25,11 @@ exponent is approximately 1.675130871.
 
 Also proved are the full-dimensional boundary case, normalization of disk
 averages, and the passage from a uniform open-set maximal estimate to a
-quantitative volume lower bound. The projection, mixed-norm induction, and
-four-dimensional seed estimates remain to be developed.
+quantitative volume lower bound. The delta version is proved using compact
+disks, positive finite plate volumes, and Fatou's lemma with thresholds that
+may vary by direction. Strict-margin selection shows that the target range
+needs only projection estimates above the endpoint. The projection,
+mixed-norm induction, and four-dimensional seed estimates remain to be developed.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

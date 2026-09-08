@@ -8,7 +8,11 @@ module
 public import NKBesicovitch.Basic
 public import Mathlib.Topology.Order.IntermediateValue
 public import Mathlib.Topology.Order.Compact
-public import Mathlib.Tactic
+public import Mathlib.Tactic.ByContra
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.FunProp
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.NormNum
 
 /-!
 # The exact critical exponent
@@ -17,7 +21,7 @@ The supremum in the definition is over a singleton. Its element is the root near
 2.481194304, and its conjugate ratio is the projection exponent near 1.675130871.
 -/
 
-public section
+@[expose] public section
 
 open Set
 

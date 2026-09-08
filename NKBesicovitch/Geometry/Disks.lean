@@ -7,7 +7,7 @@ module
 
 public import NKBesicovitch.Basic
 public import Mathlib.MeasureTheory.Measure.OpenPos
-public import Mathlib.Tactic
+public import Mathlib.Tactic.NormNum
 
 /-!
 # Disks and the full-dimensional boundary case
@@ -24,6 +24,21 @@ variable {n k : ℕ}
 /-- The radius-one disk with center a and direction V, as an ambient set. -/
 def unitDisk (V : Submodule ℝ (Space n)) (a : Space n) : Set (Space n) :=
   {x | x - a ∈ V ∧ ‖x - a‖ ≤ 1}
+
+theorem unitDisk_eq_image (V : Submodule ℝ (Space n)) (a : Space n) :
+    unitDisk V a = (fun v : V ↦ a + v) '' Metric.closedBall (0 : V) 1 := by
+  ext x
+  constructor
+  · intro hx
+    refine ⟨⟨x - a, hx.1⟩, ?_, by simp⟩
+    simpa [Metric.mem_closedBall, dist_zero_right] using hx.2
+  · rintro ⟨v, hv, rfl⟩
+    simpa [unitDisk, Metric.mem_closedBall, dist_zero_right] using And.intro v.property hv
+
+theorem isCompact_unitDisk (V : Submodule ℝ (Space n)) (a : Space n) :
+    IsCompact (unitDisk V a) := by
+  rw [unitDisk_eq_image]
+  exact (isCompact_closedBall (0 : V) 1).image (continuous_const.add continuous_subtype_val)
 
 theorem isBesicovitch_iff_unitDisk_subset {E : Set (Space n)} :
     IsBesicovitch k E ↔ ∀ V : Submodule ℝ (Space n), Module.finrank ℝ V = k →

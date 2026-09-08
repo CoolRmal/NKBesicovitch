@@ -6,6 +6,7 @@ Authors: Yongxi Lin
 module
 
 public import NKBesicovitch.Exponents
+public import Mathlib.Tactic.Ring
 
 /-!
 # Arithmetic of the corner iteration

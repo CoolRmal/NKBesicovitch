@@ -7,5 +7,8 @@ import NKBesicovitch.Operators.Disks
 import NKBesicovitch.Projection.Defs
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
+import NKBesicovitch.PositiveMeasure.Delta
+import NKBesicovitch.PositiveMeasure.PlateBound
 import NKBesicovitch.Induction.Range
+import NKBesicovitch.Induction.Parameters
 import NKBesicovitch.FiveTwo.Main

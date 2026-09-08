@@ -6,7 +6,7 @@ Authors: Yongxi Lin
 module
 
 public import NKBesicovitch.Operators.Defs
-public import Mathlib.Tactic
+public import Mathlib.Tactic.NormNum
 
 /-!
 # Disk averages on sets containing disks
