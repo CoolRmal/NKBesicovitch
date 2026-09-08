@@ -21,11 +21,13 @@ import NKBesicovitch.Operators.Defs
 import NKBesicovitch.Operators.Disks
 import NKBesicovitch.Operators.Semicontinuity
 import NKBesicovitch.Operators.PlateMeasurability
+import NKBesicovitch.Operators.PlateRotation
 import NKBesicovitch.Operators.MixedNorm.Basic
 import NKBesicovitch.Operators.MixedNorm.Fibers
 import NKBesicovitch.Operators.MixedNorm.Sums
 import NKBesicovitch.Operators.MixedNorm.VolumeComparison
 import NKBesicovitch.Operators.MixedNorm.FiniteCover
+import NKBesicovitch.Operators.MixedNorm.MapProd
 import NKBesicovitch.Operators.Interpolation.Dyadic
 import NKBesicovitch.Operators.Interpolation.BlockBounds
 import NKBesicovitch.Operators.Interpolation.BlockScaling
@@ -61,6 +63,7 @@ import NKBesicovitch.Operators.XRay.TransverseMeasure
 import NKBesicovitch.Operators.XRay.Arclength
 import NKBesicovitch.Operators.XRay.DirectionNorm
 import NKBesicovitch.Operators.XRay.DirectionMeasurability
+import NKBesicovitch.Operators.XRay.Frame
 import NKBesicovitch.Operators.XRay.Spherical
 import NKBesicovitch.Operators.XRay.SphericalBound
 import NKBesicovitch.Projection.Defs
@@ -224,4 +227,9 @@ import NKBesicovitch.PositiveMeasure.Delta
 import NKBesicovitch.PositiveMeasure.PlateBound
 import NKBesicovitch.Induction.Range
 import NKBesicovitch.Induction.Parameters
+import NKBesicovitch.Induction.PlateGeometry
+import NKBesicovitch.Induction.PlateVolume
+import NKBesicovitch.Induction.PlateIntegral
+import NKBesicovitch.Induction.Step
+import NKBesicovitch.Induction.XRayStep
 import NKBesicovitch.FiveTwo.Main

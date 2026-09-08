@@ -68,8 +68,10 @@ displacement comparison and arclength factor are also proved.
 exponents, using volume-preserving coordinates, the cone formula for
 sphere measure, and a finite cover by bounded slope caps. Borel measurability
 of the geometric direction norm and its exact conversion to a Haar-frame
-norm are also proved. The induction and final positive-measure proofs
-remain incomplete.
+norm are also proved. `Induction/XRayStep.lean` now proves the
+one-dimensional plate induction step, including its volume normalization
+and a constant independent of plate thickness. Exponent matching,
+iteration, and the final positive-measure proofs remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
@@ -110,9 +112,10 @@ The conjecture asks for positive measure whenever \(2\le k<n\).
 Oberlin's [*Two bounds for the X-ray transform*](https://doi.org/10.1007/s00209-009-0589-5),
 Theorem 3, relates this question to mixed-norm X-ray estimates. The supplied
 September 2026 projection manuscript proposes the exponent leading to the
-larger ratio above. Its projection estimate and quantitative selection now
-have Lean proofs; the transfer and induction needed for the requested
-positive-measure theorem remain incomplete.
+larger ratio above. Its projection estimate, quantitative selection, transfer
+to spherical X-ray estimates, and one-dimensional plate induction step now
+have Lean proofs. Iterating the estimates and completing the terminal argument
+for the requested positive-measure theorem remain open.
 The separate (5,2) route uses the corrected
 [Guth–Zahl estimate](https://arxiv.org/abs/1701.07045),
 [Katz–Rogers concentration theorem](https://arxiv.org/abs/1802.09094),

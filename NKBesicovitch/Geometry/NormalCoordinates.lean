@@ -88,6 +88,23 @@ theorem inner_normalCoordinatesWithBasis {m : ℕ} (hv : ‖v‖ = 1)
   change ⟪b x, b y⟫_ℝ + s * t = ⟪x, y⟫_ℝ + t * s
   rw [b.inner_map_map, mul_comm s t]
 
+theorem norm_normalCoordinatesWithBasis_symm_fst_le {m : ℕ} (hv : ‖v‖ = 1)
+    (b : EuclideanSpace ℝ (Fin m) ≃ₗᵢ[ℝ] (ℝ ∙ v)ᗮ) (z : E) :
+    ‖((normalCoordinatesWithBasis hv b).symm z).1‖ ≤ ‖z‖ := by
+  obtain ⟨⟨x, t⟩, rfl⟩ := (normalCoordinatesWithBasis hv b).surjective z
+  rw [ContinuousLinearEquiv.symm_apply_apply]
+  have h := inner_normalCoordinatesWithBasis hv b x x t t
+  rw [real_inner_self_eq_norm_sq, real_inner_self_eq_norm_sq] at h
+  nlinarith [sq_nonneg t, norm_nonneg (normalCoordinatesWithBasis hv b (x, t))]
+
+theorem lipschitz_normalCoordinatesWithBasis_symm_fst {m : ℕ} (hv : ‖v‖ = 1)
+    (b : EuclideanSpace ℝ (Fin m) ≃ₗᵢ[ℝ] (ℝ ∙ v)ᗮ) :
+    LipschitzWith 1 (fun z ↦ ((normalCoordinatesWithBasis hv b).symm z).1) := by
+  apply LipschitzWith.of_dist_le_mul
+  intro x y
+  simpa only [dist_eq_norm, NNReal.coe_one, one_mul, map_sub, Prod.fst_sub] using
+    norm_normalCoordinatesWithBasis_symm_fst_le hv b (x - y)
+
 variable [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E]
 
 theorem measurePreserving_normalCoordinates (hv : ‖v‖ = 1) :

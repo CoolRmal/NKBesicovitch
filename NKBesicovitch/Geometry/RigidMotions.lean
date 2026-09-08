@@ -73,4 +73,31 @@ theorem volume_plate_rotate (u : Rotations n) (a : EuclideanSpace ℝ (Fin n))
   exact ((measurePreserving_rigidMotion u a).measure_preimage
     Metric.isOpen_thickening.measurableSet.nullMeasurableSet).symm
 
+theorem preimage_unitDisk_rotate (u : Rotations n) (a : EuclideanSpace ℝ (Fin n))
+    (V : Grassmannian n k) :
+    Unitary.linearIsometryEquiv u ⁻¹' unitDisk (Grassmannian.rotate u V).val
+      (Unitary.linearIsometryEquiv u a) = unitDisk V.val a := by
+  ext x
+  simp only [Set.mem_preimage, unitDisk, Set.mem_ofPred_eq, ← map_sub,
+    LinearIsometryEquiv.norm_map]
+  apply and_congr_left
+  intro _
+  change Unitary.linearIsometryEquiv u (x - a) ∈
+    Unitary.linearIsometryEquiv u '' (V.val : Set (EuclideanSpace ℝ (Fin n))) ↔
+      x - a ∈ (V.val : Set (EuclideanSpace ℝ (Fin n)))
+  simp only [Set.mem_image, (Unitary.linearIsometryEquiv u).injective.eq_iff, exists_eq_right]
+
+theorem preimage_plate_rotate (u : Rotations n) (a : EuclideanSpace ℝ (Fin n))
+    (V : Grassmannian n k) (δ : ℝ) :
+    Unitary.linearIsometryEquiv u ⁻¹' plate δ (Grassmannian.rotate u V).val
+      (Unitary.linearIsometryEquiv u a) = plate δ V.val a := by
+  have himage : Unitary.linearIsometryEquiv u '' unitDisk V.val a =
+      unitDisk (Grassmannian.rotate u V).val (Unitary.linearIsometryEquiv u a) := by
+    rw [← preimage_unitDisk_rotate]
+    exact (Unitary.linearIsometryEquiv u).surjective.image_preimage _
+  rw [plate, ← himage]
+  ext x
+  simp only [Set.mem_preimage, plate, Metric.mem_thickening_iff_infEDist_lt,
+    Metric.infEDist_image (Unitary.linearIsometryEquiv u).isometry]
+
 end NKBesicovitch

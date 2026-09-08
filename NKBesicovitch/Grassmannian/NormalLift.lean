@@ -53,6 +53,18 @@ theorem mem_normalLift_iff (hv : ‖v‖ = 1)
   · rintro ⟨x, hx, t, h⟩
     exact ⟨(⟨x, hx⟩, t), h⟩
 
+theorem normalCoordinates_mem_normalLift_iff (hv : ‖v‖ = 1)
+    (b : EuclideanSpace ℝ (Fin m) ≃ₗᵢ[ℝ] (ℝ ∙ v)ᗮ) (V : Grassmannian m k)
+    (x : EuclideanSpace ℝ (Fin m)) (t : ℝ) :
+    normalCoordinatesWithBasis hv b (x, t) ∈ (normalLift hv b V).val ↔ x ∈ V.val := by
+  rw [mem_normalLift_iff]
+  constructor
+  · rintro ⟨y, hy, s, h⟩
+    have hxy : y = x := congrArg Prod.fst ((normalCoordinatesWithBasis hv b).injective h)
+    exact hxy ▸ hy
+  · intro hx
+    exact ⟨x, hx, t, rfl⟩
+
 theorem projection_normalLift_apply (hv : ‖v‖ = 1)
     (b : EuclideanSpace ℝ (Fin m) ≃ₗᵢ[ℝ] (ℝ ∙ v)ᗮ) (V : Grassmannian m k)
     (x : EuclideanSpace ℝ (Fin m)) (t : ℝ) :

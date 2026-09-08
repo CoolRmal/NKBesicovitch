@@ -5,6 +5,21 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Induction/PlateGeometry`, `PlateVolume`, `PlateIntegral`: projection
+  places a lifted plate inside the cylinder over the lower-dimensional
+  plate. A half-scale lower plate times a unit-length interval gives
+  the uniform volume comparison. The resulting normalized maximal
+  comparison has factor `2^m`, independent of the plane, centers, and
+  positive thickness. `Operators/PlateRotation` proves exact covariance.
+* `Operators/XRay/Frame`: frame transforms are Borel and preserve the
+  fixed-radius support ball uniformly over rotations. Their displacement
+  norms equal the geometric X-ray norms. `MixedNorm/MapProd` supplies the
+  upper norm inequalities without measurability assumptions on plate
+  suprema. `Induction/Step` combines the lower-dimensional bound with flag
+  integration. `XRayStep` now proves a one-dimensional induction step:
+  for a suitable `Q > 2`, input exponent `Q/(β-1)` in the lower dimension
+  becomes any exponent above `Q/β` in the higher dimension, with outer
+  exponent `Q` and only a thickness-independent change in the constant.
 * `Grassmannian/NormalLift`, `FlagMeasure`: adjoining a unit normal line
   to a transverse plane preserves the required dimension and is continuous.
   An independent Haar rotation and lower-dimensional Grassmannian plane
@@ -386,11 +401,12 @@ input-exponent loss.
 The canonical Grassmannian probability measure is implemented, including its
 orbit integral formula and uniqueness. Flag integration is now proved in
 orthogonal frame coordinates: the joint Haar and lower-dimensional plane
-law has the required Grassmannian pushforward. The next step is the plate
-comparison in these coordinates, Hölder on the lower-dimensional plane
-probability, and the exponent recurrence for the Bourgain–Oberlin induction.
-The Fourier terminal estimate and assembly with the already proved passage
-from uniform maximal bounds to positive measure remain open.
+law has the required Grassmannian pushforward. The uniform normalized
+plate comparison and a one-dimensional induction step using the proved
+X-ray bound are now complete. Matching the exponents across successive
+dimensions, iterating the estimates, and establishing the Fourier terminal
+estimate remain open, as does the final assembly with the already proved
+passage from uniform maximal bounds to positive measure.
 
 The independent (5,2) branch still needs the corrected Guth–Zahl and
 Katz–Rogers proofs, its maximal estimate, and the Fourier terminal argument.
@@ -496,6 +512,10 @@ The continuous normal-plane lift, flag probability pushforward, normalized
 sphere law of a Haar orbit, and exact Haar-frame X-ray norm identity pass
 the standard-axiom audit with no source warnings. The complete build
 succeeds with 2977 jobs and the same five intended holes.
+The uniform plate-volume comparison, exact rotation covariance, and assembled
+one-dimensional induction step from the spherical X-ray estimate pass the
+standard-axiom audit with no source warnings. The complete build succeeds
+with 2985 jobs and the same five intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

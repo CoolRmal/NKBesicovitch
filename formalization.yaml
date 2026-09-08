@@ -99,6 +99,12 @@ sources:
       directions have normalized Euclidean surface measure. Geometric
       X-ray direction norms are Borel measurable at finite positive
       displacement exponents and have the exact normalized frame identity.
+      The plate cylinder containment, uniform volume normalization,
+      rotation covariance, and frame support bound now give a proved
+      one-dimensional induction step. At a suitable outer exponent Q,
+      the lower-dimensional input exponent Q/(beta-1) becomes any input
+      exponent above Q/beta, with a thickness-independent extra constant.
+      Exponent matching, iteration, and the terminal estimate remain open.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -198,7 +204,10 @@ status:
     mixed-norm X-ray estimate on bounded support, continuous normal-plane
     lifts, flag integration in orthogonal frame coordinates, the normalized
     spherical law of a Haar orbit, rotation covariance and Borel measurability
-    of geometric X-ray direction norms, their exact frame norm identity, and
+    of geometric X-ray direction norms, their exact frame norm identity,
+    plate cylinder containment and uniform volume normalization, rotation
+    covariance of plate maximal functions, uniform frame support localization,
+    and a one-dimensional plate induction step from the proved X-ray bound, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

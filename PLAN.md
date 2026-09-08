@@ -221,6 +221,14 @@ All induction files belong to `Induction/`:
 * `Range`: choose all strict margins, iterate from lines to k-planes, and
   assemble the first requested theorem.
 
+Current state: `PlateGeometry`, `PlateVolume`, and `PlateIntegral` prove
+the normalized comparison with factor `2^m`, uniform over all positive
+thicknesses. `Step` averages it using the flag law, and `XRayStep` applies
+the proved spherical X-ray estimate. This gives the one-dimensional
+step from input exponent `Q/(β-1)` to every exponent above `Q/β`, retaining
+outer exponent `Q`. Exponent matching across dimensions, the iteration,
+and the Fourier terminal argument still require proofs.
+
 ### 7. Independent `(5,2)` seed
 
 `FiveTwo/PolynomialConcentration.lean`: formalize the needed Katz–Rogers result.
