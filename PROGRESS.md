@@ -5,6 +5,20 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Projection/Selection/ParameterBox`, `CommonParameters`: all time-set
+  selections with measure at least `r` lie in a common finite box of known
+  volume. Tonelli and averaging produce one parameter retaining at least
+  `(c/(2C)^D) r^(A+BD)` of the line-family volume. The result also covers
+  families of volume zero.
+* `Operators/XRay/SelectedFamily`, `RestrictedSelection`, `SelectionLosses`,
+  `Restricted`: common good-time selection gives the full restricted bound
+  `r^K |F| ≤ C M(F)^(2-β) |E|^β` for every `β_c < β ≤ 2`, some integer
+  `K > 2`, every finite-volume Borel spatial set, and every bounded Borel
+  family of lines with transform at least `0 < r ≤ 1`. The constants are
+  independent of both sets and `r`; no positive-volume assumption is used.
+* `Operators/XRay/Localization`: rich-line sets are Borel, and bounded
+  support and slopes force their intercepts into one fixed ball uniformly
+  over every Borel subset of the support and every positive threshold.
 * `Operators/XRay/Basic`, `GoodTimes`: the local indicator transform equals
   the measure of its jointly Borel line-time set. Removing spatial slices
   larger than `2|E|/r` leaves at least `r/2` good times on every line with
@@ -280,13 +294,12 @@ There are two `sorry` occurrences in the proof development, in
 holes. These stand for large analytic developments, not two short lemmas.
 
 The projection estimate, including its quantitative selectable form, is now
-proved at every strict exponent above the critical root. The transfer to
-mixed-norm X-ray bounds has started: line-time measurability and the removal
-of excessively large spatial slices are proved, leaving at least half the
-good times on every rich line. Next use joint selection and Tonelli to find
-one common parameter for many lines and apply the selectable projection
-estimate. This yields the restricted mixed-norm estimate.
-Dyadic decomposition and strongification then give the actual X-ray bound,
+proved at every strict exponent above the critical root. Joint good-time
+selection and Tonelli now give the restricted X-ray bound in terms of
+line-family volume and essential parallel multiplicity. Uniform bounded
+support for rich-line families is also proved. Next decompose both the
+transform values and the measures of the parallel fibers to obtain the
+mixed-norm indicator estimate. Strongification then gives the X-ray bound,
 with the small input-exponent loss allowed by the strict dimension margin.
 
 The canonical Grassmannian probability measure is implemented, including its
@@ -373,6 +386,10 @@ pass the standard-axiom audit with no source warnings. The finite-height
 theorem also passes after sharing the numerical iteration principle.
 The local indicator-transform identity and half-measure good-time theorem
 also pass this audit, including the zero-volume case, with no source warnings.
+The polynomial common-parameter theorem, full restricted X-ray bound, and
+uniform intercept localization pass the standard-axiom audit with no source
+warnings. The complete build succeeds with 2852 jobs and the same five
+intended holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

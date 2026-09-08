@@ -14,6 +14,11 @@ import NKBesicovitch.Operators.Semicontinuity
 import NKBesicovitch.Operators.PlateMeasurability
 import NKBesicovitch.Operators.XRay.Basic
 import NKBesicovitch.Operators.XRay.GoodTimes
+import NKBesicovitch.Operators.XRay.SelectedFamily
+import NKBesicovitch.Operators.XRay.RestrictedSelection
+import NKBesicovitch.Operators.XRay.SelectionLosses
+import NKBesicovitch.Operators.XRay.Restricted
+import NKBesicovitch.Operators.XRay.Localization
 import NKBesicovitch.Projection.Defs
 import NKBesicovitch.Projection.TwoSlice
 import NKBesicovitch.Projection.Parallel
@@ -142,6 +147,8 @@ import NKBesicovitch.Projection.Selection.CornerReservoir
 import NKBesicovitch.Projection.Selection.Scheme
 import NKBesicovitch.Projection.Selection.SeedScheme
 import NKBesicovitch.Projection.Selection.SchemeBounds
+import NKBesicovitch.Projection.Selection.ParameterBox
+import NKBesicovitch.Projection.Selection.CommonParameters
 import NKBesicovitch.Projection.Selection.NodeParameters
 import NKBesicovitch.Projection.Selection.NodeGeometry
 import NKBesicovitch.Projection.Selection.NodeMass

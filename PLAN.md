@@ -103,7 +103,7 @@ volume must first be proved positive and finite.
 `Operators/Interpolation.lean`: only the restricted-to-strong and mixed-norm
 interpolation required by the two routes. Reuse Mathlib `eLpNorm`, layer-cake,
 Tonelli, Hölder, and geometric series. State both exponent order and positivity.
-`Operators/XRay.lean`: the local chart transform, measurability, localization,
+`Operators/XRay/`: the local chart transform, measurability, localization,
 and change to spherical directions and perpendicular intercepts.
 
 ### 4. Projection estimate near 1.675
@@ -148,12 +148,15 @@ All proof files for this input belong to `Projection/`:
   seed exponent `2`. `Selection/Main` proves existence of a selectable
   scheme at every `β > β_c` by the same numerical iteration principle
   used for finite-height estimates. No endpoint estimate is asserted.
-* The next analytic step is the simultaneous selection of one common
-  parameter for a positive proportion of an X-ray superlevel family,
-  followed by the restricted-to-strong mixed-norm argument.
-  `Operators/XRay/Basic` and `GoodTimes` now provide joint line-time
-  measurability and small-slice removal retaining half the time measure,
-  including the zero-volume ambient-set case.
+* `Selection/CommonParameters` now finds one common parameter for a
+  polynomial fraction of the line-family volume. `Operators/XRay/Basic`
+  and `GoodTimes` provide joint line-time measurability and small-slice
+  removal retaining half the time measure, including the zero-volume case.
+  `Operators/XRay/Restricted` assembles the bound
+  `r^K |F| ≤ C M(F)^(2-β) |E|^β`, with `K > 2` and uniform constants.
+  `Localization` bounds intercepts uniformly for fixed support and slopes.
+  The next step is the double dyadic decomposition and the strong mixed-norm
+  estimate, allowing a small input-exponent loss.
 
 Essential fiber bounds must be used almost everywhere or justified by removing
 a null set of directions once. Projection images need not be Borel; use outer

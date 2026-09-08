@@ -57,8 +57,11 @@ sources:
     note: >-
       September 2026 notes. Joint line-time measurability and small-slice
       removal retaining half the good-time measure are now proved,
-      including the zero-volume case. Simultaneous parameter selection and
-      the restricted-to-strong mixed-norm argument remain incomplete.
+      including the zero-volume case. Common parameter selection now gives
+      a uniform restricted X-ray bound in terms of line-family volume and
+      essential parallel multiplicity. Uniform intercept localization is
+      also proved. The dyadic mixed-norm and strongification arguments
+      remain incomplete.
     license: unknown
   - title: Two bounds for the X-ray transform
     authors: [Richard Oberlin]
@@ -154,7 +157,9 @@ status:
     corner improvement, selectable schemes at every exponent strictly
     above the critical root, joint measurability of local X-ray line-time
     sets, small-slice removal retaining half the time measure including
-    zero-volume ambient sets, and
+    zero-volume ambient sets, common parameter selection retaining a
+    polynomial fraction of the line mass, the uniform restricted X-ray
+    bound, uniform rich-line intercept localization, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic
