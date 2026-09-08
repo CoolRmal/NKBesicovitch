@@ -52,6 +52,11 @@ source decomposition. The final theorems are not proved yet.
   the exact pointwise marginal identity at dual heights, and the pair-fiber
   projection bound. The latter is proved for every code value with outer
   measure, in a form that avoids division by the density threshold.
+* `Projection/FiberSelection`, `SimultaneousRefinement`, `PairSelection`:
+  finite simultaneous density cutoffs lose at most the sum of their individual
+  volume bounds. A half-mass budget retains half the pair mass. For positive
+  finite original mass, one code fiber retains half its density and satisfies
+  all the selected projection bounds simultaneously.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -84,9 +89,9 @@ Guth–Zahl and Katz–Rogers proofs and the Fourier terminal estimate. All thes
 inputs require proofs in Lean; none may be installed as axioms.
 
 For the projection estimate, the pair-incidence mass, low-density deletion,
-and code-fiber projection-bound steps are now proved. Fiber selection,
-the code-density upper bound using parallel multiplicity, pair improvement,
-and corner improvement are still open.
+code-fiber projection bound, and simultaneous fiber-selection steps are now
+proved. The code-density upper bound using parallel multiplicity, the resulting
+pair improvement, and corner improvement are still open.
 
 ## Verification conventions
 
@@ -105,6 +110,7 @@ It also passes for the exact two-slice projection bound.
 The pair-mass lower bound, dual-height code identity, and restricted
 double-projection density identity pass the same audit.
 The exact pointwise code marginal and pair-fiber projection bound also pass.
+The simultaneous code-fiber selection theorem passes the same audit.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
 Comparator has not been run, and this snapshot is not submission-ready.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.

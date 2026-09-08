@@ -25,6 +25,9 @@ import NKBesicovitch.Projection.CodeCoordinates
 import NKBesicovitch.Projection.CodeDensity
 import NKBesicovitch.Projection.CodeMarginal
 import NKBesicovitch.Projection.FiberProjection
+import NKBesicovitch.Projection.FiberSelection
+import NKBesicovitch.Projection.SimultaneousRefinement
+import NKBesicovitch.Projection.PairSelection
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta
