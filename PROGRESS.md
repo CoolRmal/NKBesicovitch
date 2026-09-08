@@ -137,6 +137,20 @@ source decomposition. The final theorems are not proved yet.
 * `Projection/CornerPreparation`: lifting a parent family and the refined
   child family to a Borel corner family of positive mass, preserving both
   restrictions and the quantitative mass lower bound.
+* `Projection/OuterThreshold`, `OuterStep`: the explicit positive half-mass
+  outer threshold and the corner-mass inequality obtained from code-image
+  bounds. The outer deletion budget is now discharged internally.
+* `Projection/MonomialBounds`, `ThresholdBounds`, `BalancedMassBounds`:
+  the real-power identities and inequalities converting balanced masses
+  and the inner-code size estimate into the required outer-threshold bound.
+* `Projection/CornerAmplification`, `NormalizedAmplification`: the complete
+  normalized numerical implication from the balanced-mass, retained-corner,
+  inner-image, and outer-projection inequalities to the finite-depth line
+  mass exponent. The favorable stopping term is discarded with its sign
+  justified, and the main exponent is exactly `cornerUpdate β`.
+* `Projection/CornerDepth`: a positive finite depth achieves every exponent
+  strictly above the ideal corner update. The geometric height pattern and
+  analytic inputs are still needed to apply this numerical choice.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -182,9 +196,12 @@ the input projection estimate are now proved with explicit hypotheses.
 The finite stopping selection, common-child construction, and the concrete
 child deletion budget are now proved, including their lift to positive
 corner mass. The remaining assembly must supply an admissible height tree
-and its root/terminal bounds, choose the outer-density threshold using the
-inner-code image bounds, and derive the final exponent amplification.
-Normalization, iteration, and quantitative height selection are still open.
+and its root/terminal bounds, select common constants for all its input
+projection estimates and Jacobians, and assemble the geometric hypotheses
+of the normalized numerical bound. The outer threshold, exponent
+amplification, and finite-depth choice are now proved. Geometric
+normalization, iteration of the estimates, and quantitative height selection
+are still open.
 
 ## Verification conventions
 
@@ -219,6 +236,9 @@ The bad-code deletion bound, simultaneous code pruning, retained code-image
 bound, concentrated-image refinement, and corner-threshold bound also pass.
 The finite stopping selection, child refinement with the concrete stopping
 parameters, and positive corner-family construction pass the same audit.
+The outer step with its internal threshold, normalized numerical
+amplification, and finite-depth choice also pass, as does the inverse-density
+power identity used to rewrite the inner-code image bound.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

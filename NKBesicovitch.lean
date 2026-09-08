@@ -77,6 +77,14 @@ import NKBesicovitch.Projection.CornerSelection
 import NKBesicovitch.Projection.CornerWitness
 import NKBesicovitch.Projection.CornerAlgebra
 import NKBesicovitch.Projection.CornerStep
+import NKBesicovitch.Projection.OuterThreshold
+import NKBesicovitch.Projection.OuterStep
+import NKBesicovitch.Projection.MonomialBounds
+import NKBesicovitch.Projection.ThresholdBounds
+import NKBesicovitch.Projection.BalancedMassBounds
+import NKBesicovitch.Projection.CornerAmplification
+import NKBesicovitch.Projection.NormalizedAmplification
+import NKBesicovitch.Projection.CornerDepth
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

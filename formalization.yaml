@@ -98,7 +98,9 @@ status:
     conditional uses of the input projection estimate on code fibers,
     finite stopping selection under explicit root and terminal bounds,
     the common child construction and concrete child deletion budget,
-    the resulting positive corner-family construction, and
+    the resulting positive corner-family construction, the internally
+    budgeted outer threshold, the normalized numerical exponent
+    amplification, the finite-depth choice, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic
