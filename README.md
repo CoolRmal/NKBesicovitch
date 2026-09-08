@@ -31,8 +31,8 @@ quantitative volume lower bound. The delta version is proved using compact
 disks, positive finite plate volumes, and Fatou's lemma with thresholds that
 may vary by direction. Strict-margin selection shows that the target range
 needs only projection estimates above the endpoint. The strong geometric
-X-ray bound for general inputs is now proved. The induction and
-four-dimensional seed estimates remain to be developed.
+X-ray bound for general inputs and the finite plate induction are now proved.
+The Fourier terminal argument and four-dimensional seed remain incomplete.
 
 The Grassmannian now has its natural probability measure, constructed from Haar
 measure on the orthogonal group. Lean verifies that it is independent of the
@@ -83,9 +83,12 @@ same deficit and only an extra factor `3^(n/p)`. The signed Fourier-slice
 identity, Schwartz regularity of line integrals, and exact averaged
 inverse-radius Fourier weight are now proved. `XRay/AveragedFourier` gives
 the joint `L²` bound with decay `R^(-1/2)` for a Fourier gap of radius `R`,
-with a finite constant. Interpolation, weighted bandlimited estimates,
-the rest of the Fourier terminal argument, and the separate `(5,2)` proof
-remain incomplete.
+with a finite constant. The smoothed `L²` and fixed-support `L∞` endpoints
+are now proved uniformly under normalized kernel dilation. Smooth amplitude
+decomposition also gives the output-tail bound needed for interpolation,
+without leaving the Schwartz domain. Integration of that tail bound,
+weighted bandlimited estimates, the rest of the Fourier terminal argument,
+and the separate `(5,2)` proof remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

@@ -5,6 +5,20 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Fourier/Convolution` proves the `L²` multiplier bound for Schwartz
+  convolution. `Dilation` proves that normalized kernel dilation preserves
+  the one-norm and rescales the Fourier transform by the reciprocal factor.
+  `XRay/ConvolutionBound` bounds signed smoothed line integrals uniformly by
+  support radius, input bound, and kernel mass. `SmoothedBound` combines
+  these into uniform `L²` and `L∞` endpoints for a dilated kernel with a
+  Fourier gap: the former gains `a^(-1/2)`, while the latter has no scale loss.
+* `Interpolation/SmoothAmplitude` splits a compactly supported Schwartz
+  input at every positive amplitude threshold into two Schwartz functions
+  with no increase in spatial support. `EndpointTail` combines this with
+  the endpoint bounds and Chebyshev to control output superlevel measure
+  by the squared input tail. The layer-cake integration giving the full
+  intermediate `Lᵖ` bound remains to be proved. This route keeps the endpoint
+  applications inside their proved Schwartz domain.
 * `XRay/FourierSlice` proves the signed Fourier-slice identity for integrable
   complex inputs. `SchwartzLine` proves continuity, Schwartz regularity,
   and fiberwise Plancherel for signed line integrals. `FourierFrame` places
@@ -593,6 +607,12 @@ Signed Fourier slicing, Schwartz regularity of line integrals, the exact
 rotated-hyperplane measure identity, averaged Plancherel, and the finite
 half-derivative bound pass the standard-axiom audit with no source warnings.
 The complete build succeeds with 3382 jobs and the same five intended holes.
+The smoothed endpoint bounds, exact Fourier scaling and one-norm preservation
+under kernel dilation, and the smooth-decomposition output-tail estimate
+pass the standard-axiom audit with no source warnings. The numerical
+critical-exponent bound also passes again. The complete build succeeds
+with 3389 jobs and the same five intended holes. All 264 library modules
+remain below the requested file-size limit; the largest has 160 lines.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

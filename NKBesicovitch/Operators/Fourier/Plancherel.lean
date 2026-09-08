@@ -34,4 +34,10 @@ theorem lintegral_enorm_sq_fourier (f : 𝓢(E, H)) :
       (by norm_num)) (ae_of_all _ fun x ↦ sq_nonneg _)] at h
   simpa only [ENNReal.ofReal_pow (norm_nonneg _), ofReal_norm] using h
 
+theorem eLpNorm_fourier_two (f : 𝓢(E, H)) :
+    eLpNorm (𝓕 f : 𝓢(E, H)) 2 volume = eLpNorm f 2 volume := by
+  simp only [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num : (2 : ℝ≥0∞) ≠ 0)
+    (by simp : (2 : ℝ≥0∞) ≠ ∞), ENNReal.toReal_ofNat, ENNReal.rpow_two]
+  rw [lintegral_enorm_sq_fourier]
+
 end NKBesicovitch

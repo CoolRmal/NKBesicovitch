@@ -31,6 +31,8 @@ import NKBesicovitch.Operators.PlateLocalizationMeasurability
 import NKBesicovitch.Operators.PlateLocalization
 import NKBesicovitch.Operators.BallLocalization
 import NKBesicovitch.Operators.Fourier.Plancherel
+import NKBesicovitch.Operators.Fourier.Convolution
+import NKBesicovitch.Operators.Fourier.Dilation
 import NKBesicovitch.Operators.MixedNorm.Basic
 import NKBesicovitch.Operators.MixedNorm.Fibers
 import NKBesicovitch.Operators.MixedNorm.Sums
@@ -46,6 +48,8 @@ import NKBesicovitch.Operators.Interpolation.BlockSummation
 import NKBesicovitch.Operators.Interpolation.InputDyadic
 import NKBesicovitch.Operators.Interpolation.NormalizedLevels
 import NKBesicovitch.Operators.Interpolation.InputSeries
+import NKBesicovitch.Operators.Interpolation.SmoothAmplitude
+import NKBesicovitch.Operators.Interpolation.EndpointTail
 import NKBesicovitch.Operators.XRay.Basic
 import NKBesicovitch.Operators.XRay.GoodTimes
 import NKBesicovitch.Operators.XRay.SelectedFamily
@@ -78,6 +82,8 @@ import NKBesicovitch.Operators.XRay.FourierSlice
 import NKBesicovitch.Operators.XRay.SchwartzLine
 import NKBesicovitch.Operators.XRay.FourierFrame
 import NKBesicovitch.Operators.XRay.AveragedFourier
+import NKBesicovitch.Operators.XRay.ConvolutionBound
+import NKBesicovitch.Operators.XRay.SmoothedBound
 import NKBesicovitch.Operators.XRay.Spherical
 import NKBesicovitch.Operators.XRay.SphericalBound
 import NKBesicovitch.Operators.XRay.Power
