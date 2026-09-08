@@ -105,6 +105,11 @@ import NKBesicovitch.Projection.TreeConstruction
 import NKBesicovitch.Projection.TimeTranslation
 import NKBesicovitch.Projection.PatternExistence
 import NKBesicovitch.Projection.CornerNormalizedImprovement
+import NKBesicovitch.Projection.Dilation
+import NKBesicovitch.Projection.Normalization
+import NKBesicovitch.Projection.CornerImprovement
+import NKBesicovitch.Projection.IterationBounds
+import NKBesicovitch.Projection.Main
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
 import NKBesicovitch.PositiveMeasure.Delta

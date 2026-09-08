@@ -185,6 +185,17 @@ source decomposition. The final theorems are not proved yet.
   parallel multiplicity is at most one and projection size is at least one.
   The output heights and constant are chosen before the line family. Tree
   existence, balanced companions, and stopping are discharged internally.
+* `Projection/Dilation`, `Normalization`, `CornerImprovement`: spatial
+  dilation scales line mass by `r^(2m)` and projections and essential
+  parallel multiplicity by `r^m`. Normalizing positive multiplicity and
+  handling zero mass separately restores the general estimate
+  `L ≤ C M^(2-β) N^β`. The full corner improvement is now proved.
+* `Projection/IterationBounds`, `Main`: the corner update is continuous
+  and strictly decreases every exponent above the critical root. An
+  infimum argument proves that every `β > projectionExponent` admits
+  a finite nonempty height set and a uniform projection estimate in
+  positive slope dimension. This includes exponents arbitrarily close
+  to `1.675130871` from above, without an endpoint assertion.
 * `PositiveMeasure/FromMaximal`: a uniform disk maximal estimate on open
   indicators gives `1/C ≤ volume E`, even without measurability of E.
 * `PositiveMeasure/Delta`: compact disks inside open sets admit positive
@@ -219,9 +230,10 @@ inputs require proofs in Lean; none may be installed as axioms.
 For the projection estimate, the pair-incidence mass, low-density deletion,
 code-fiber projection bound, and simultaneous fiber-selection steps are now
 proved, including the code-density upper bound using parallel multiplicity.
-The basic pair improvement and normalized corner improvement are proved.
-Restoring the general multiplicity factor and quantitative selection of the
-corner height patterns are still open.
+The basic pair improvement, full corner improvement, and existence of a
+finite-height estimate at every exponent strictly above the critical root
+are proved. Quantitative selection of the height patterns inside a
+prescribed positive-measure time set is still open.
 The exact corner identities, both fiber upper bounds, outer-density deletion,
 initial slice refinement, and measurable selection of companions with exactly
 prescribed fiber mass are now proved, as are the exact balanced pair and
@@ -233,11 +245,13 @@ child deletion budget are now proved, including their lift to positive
 corner mass. The finite-tree assembly is now complete: admissible heights
 and trees are constructed from the input projection estimate, common
 constants are chosen across all nodes, and the root, terminal, and finite
-stopping arguments provide the needed families. The resulting normalized
-corner improvement gives every strict exponent above the corner update.
-Spatial dilation must restore the general multiplicity factor before this
-can be iterated as a full projection estimate. Iteration and quantitative
-height selection are still open.
+stopping arguments provide the needed families. Spatial dilation restores
+the general multiplicity factor, and the approximation argument reaches
+every strict exponent above the critical root. The remaining projection
+work is quantitative height selection: Borel parameter families of
+polynomially controlled volume and estimate constants inside arbitrary
+positive-measure time sets. The current finite-height existence theorem
+does not supply that stronger selection rule.
 
 ## Verification conventions
 
@@ -279,6 +293,8 @@ The assembled stopping-node bound, root density threshold, and balanced
 stopping-data construction also pass the standard-axiom audit.
 The full normalized corner-improvement theorem and finite-tree construction
 pass the same audit, with no source warnings.
+The full corner improvement and the projection-estimate theorem at every
+strictly supercritical exponent pass the standard-axiom audit as well.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
