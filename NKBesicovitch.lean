@@ -12,6 +12,8 @@ import NKBesicovitch.Operators.Defs
 import NKBesicovitch.Operators.Disks
 import NKBesicovitch.Operators.Semicontinuity
 import NKBesicovitch.Operators.PlateMeasurability
+import NKBesicovitch.Operators.XRay.Basic
+import NKBesicovitch.Operators.XRay.GoodTimes
 import NKBesicovitch.Projection.Defs
 import NKBesicovitch.Projection.TwoSlice
 import NKBesicovitch.Projection.Parallel

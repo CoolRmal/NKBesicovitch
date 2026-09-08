@@ -151,6 +151,9 @@ All proof files for this input belong to `Projection/`:
 * The next analytic step is the simultaneous selection of one common
   parameter for a positive proportion of an X-ray superlevel family,
   followed by the restricted-to-strong mixed-norm argument.
+  `Operators/XRay/Basic` and `GoodTimes` now provide joint line-time
+  measurability and small-slice removal retaining half the time measure,
+  including the zero-volume ambient-set case.
 
 Essential fiber bounds must be used almost everywhere or justified by removing
 a null set of directions once. Projection images need not be Borel; use outer

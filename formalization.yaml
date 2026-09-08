@@ -54,7 +54,11 @@ sources:
   - title: From Projection Inequalities to Mixed-Norm Local X-Ray Estimates
     type: supplied proof notes
     relationship: formalizes
-    note: September 2026 notes; proof development has not yet reached this transfer.
+    note: >-
+      September 2026 notes. Joint line-time measurability and small-slice
+      removal retaining half the good-time measure are now proved,
+      including the zero-volume case. Simultaneous parameter selection and
+      the restricted-to-strong mixed-norm argument remain incomplete.
     license: unknown
   - title: Two bounds for the X-ray transform
     authors: [Richard Oberlin]
@@ -148,7 +152,9 @@ status:
     uniform full projection estimates for all selected parameters,
     volume-preserving reindexing into finite vectors, the selectable
     corner improvement, selectable schemes at every exponent strictly
-    above the critical root, and
+    above the critical root, joint measurability of local X-ray line-time
+    sets, small-slice removal retaining half the time measure including
+    zero-volume ambient sets, and
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound have Lean proofs.
     Two top-level proof gaps stand for substantial undeveloped analytic

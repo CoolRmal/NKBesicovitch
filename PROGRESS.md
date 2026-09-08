@@ -5,6 +5,14 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Operators/XRay/Basic`, `GoodTimes`: the local indicator transform equals
+  the measure of its jointly Borel line-time set. Removing spatial slices
+  larger than `2|E|/r` leaves at least `r/2` good times on every line with
+  transform at least `r`. The good-time sets are jointly Borel, their
+  projections lie in the required small spatial slices, and the theorem
+  includes ambient sets of volume zero without an extra positivity
+  assumption. The general nonnegative local transform is Borel for Borel
+  input functions.
 * `Projection/Selection/Main`: every exponent strictly above
   `projectionExponent ≈ 1.675130871` admits a selectable projection scheme
   in every positive slope dimension. The scheme works in every
@@ -272,11 +280,12 @@ There are two `sorry` occurrences in the proof development, in
 holes. These stand for large analytic developments, not two short lemmas.
 
 The projection estimate, including its quantitative selectable form, is now
-proved at every strict exponent above the critical root. The next step is
-its transfer to mixed-norm X-ray bounds. For a rich line family, remove the
-few times with excessively large spatial slices, use joint selection and
-Tonelli to find one common parameter for many lines, and apply the selectable
-projection estimate. This yields the restricted mixed-norm estimate.
+proved at every strict exponent above the critical root. The transfer to
+mixed-norm X-ray bounds has started: line-time measurability and the removal
+of excessively large spatial slices are proved, leaving at least half the
+good times on every rich line. Next use joint selection and Tonelli to find
+one common parameter for many lines and apply the selectable projection
+estimate. This yields the restricted mixed-norm estimate.
 Dyadic decomposition and strongification then give the actual X-ray bound,
 with the small input-exponent loss allowed by the strict dimension margin.
 
@@ -356,12 +365,14 @@ The common companion bounds, polynomial stopping threshold, full polynomial
 normalized tree estimate, and full estimate for every selected tree parameter
 also pass the standard-axiom audit with no source warnings. The refactored
 multiplicity-normalization theorem and existing strictly supercritical
-finite-height theorem pass again. The complete build succeeds with 2843
+finite-height theorem pass again. The complete build succeeds with 2845
 jobs and only the five intended challenge and final-theorem holes.
 The root-vector volume equivalence, assembled selectable corner improvement,
 and selectable projection theorem at every strictly supercritical exponent
 pass the standard-axiom audit with no source warnings. The finite-height
 theorem also passes after sharing the numerical iteration principle.
+The local indicator-transform identity and half-measure good-time theorem
+also pass this audit, including the zero-volume case, with no source warnings.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
