@@ -13,7 +13,6 @@ public import Mathlib.LinearAlgebra.FiniteDimensional.Basic
 
 The general positive-measure target uses the unique root `p_c ∈ (2,3)` of
 `p_c³ - 2p_c² - 2p_c + 2 = 0`. Its numerical bounds are a separate target below.
-The `(5,2)` positive-measure target lies outside the general dimension range.
 `NullMeasurableSet` means measurability in the completion of Lebesgue measure.
 The deliberate `sorry`s specify the challenge; they are not proofs of the claims.
 -/
@@ -44,14 +43,6 @@ theorem volume_pos_of_criticalExponent {n k : ℕ} (hk : 1 ≤ k) (hkn : k ≤ n
     {E : Set (EuclideanSpace ℝ (Fin n))} (hE : NullMeasurableSet E volume)
     (hB : IsBesicovitch k E) :
     0 < volume E := by
-  sorry
-
-/-- Every Lebesgue measurable `(5,2)`-Besicovitch set has positive measure.
-
-This is not implied by `volume_pos_of_criticalExponent`: for `k = 2`, that theorem
-requires `n < p_c + 2`, while `p_c + 2 < 4.482 < 5`. -/
-theorem volume_pos_five_two {E : Set (EuclideanSpace ℝ (Fin 5))} (hE : NullMeasurableSet E volume)
-    (hB : IsBesicovitch 2 E) : 0 < volume E := by
   sorry
 
 end NKBesicovitch

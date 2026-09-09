@@ -4,12 +4,11 @@ version: v0.4
 project:
   name: NKBesicovitch
   description: >-
-    Work in progress toward positive Lebesgue measure for (n,k)-Besicovitch
-    sets when p_c^(k-1)+k>n, and for (5,2), where p_c is the root in (2,3) of
-    p^3-2p^2-2p+2=0. The project specifies the full statements and develops
-    their geometric, arithmetic, and measure-theoretic foundations. The
-    general critical-exponent theorem is proved; the independent (5,2)
-    analytic seed remains incomplete.
+    Lean proofs of positive Lebesgue measure for (n,k)-Besicovitch sets when
+    p_c^(k-1)+k>n, where p_c is the unique root in (2,3) of
+    p^3-2p^2-2p+2=0. The general theorem and exact bounds
+    2.481<p_c<2.482 are proved with only the standard Lean axioms.
+    Final sandboxed Comparator and independent-kernel verification are pending.
   authors:
     - Yongxi Lin
   license: Apache-2.0
@@ -152,36 +151,12 @@ sources:
       uniform joint Lp bound. Smooth disk localization and passage to open
       indicators now complete the general positive-measure theorem.
     author_endorsement: not-contacted
-  - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
-    authors: [Larry Guth, Joshua Zahl]
-    id: arXiv:1701.07045
-    location: https://arxiv.org/abs/1701.07045
-    type: article
-    relationship: adapts
-    note: Corrected Proposition 2.1 is a planned proof input, not an axiom.
-    author_endorsement: not-contacted
-  - title: On the polynomial Wolff axioms
-    authors: [Nets Hawk Katz, Keith M. Rogers]
-    id: arXiv:1802.09094
-    location: https://arxiv.org/abs/1802.09094
-    type: article
-    relationship: adapts
-    note: Theorem 1.1 is a planned proof input, not an assumption on the target sets.
-    author_endorsement: not-contacted
-  - title: Positive measure for (5,2)-Besicovitch sets
-    type: supplied proof draft
-    relationship: formalizes
-    note: >-
-      September 2026 draft present in the local project research material.
-      The target is its positive-measure conclusion, using the p=4 operator
-      consequence; no priority claim is made.
-    license: unknown
 
 related_formalizations: []
 
 status:
   scope: >-
-    Partial formalization. The exact critical exponent,
+    Completed Lean proofs, with final external verification pending. The exact critical exponent,
     strict parameter margins, full-dimensional boundary case, normalized disk
     averages, canonical Grassmannian probability and its uniqueness,
     measurability of plate maximal functions on all Borel nonnegative inputs,
@@ -288,22 +263,14 @@ status:
     fixed-support Schwartz terminal bound, normalized positive disk bound,
     smooth globalization, dominated Schwartz approximation of open indicators,
     bounded disk convergence, and the general critical-exponent
-    positive-measure theorem have Lean proofs. The independent (5,2) operator
-    conversion is now proved using plate algebra, scaled dyadic input levels,
-    a superlevel cover, weighted layer-cake integration, geometric thresholds,
-    and monotone truncation. For every finite p > P > 0, the strong constant
-    depends on the weak coefficient A as A^(1/p). The thickness deficit is
-    preserved and the ambient estimate supplies the large-thickness case.
-    The (5,2) assembly now connects P=121/40, p=4, alpha=79/80 to the proved
-    terminal theorem, but still depends on the unproved geometric input.
-    The proved foundations also include
-    passage from uniform disk or delta-plate maximal estimates
-    on open indicators to a volume lower bound.
-    One proof gap in FiveTwo/RestrictedWeak.lean stands for the substantial
-    independent four-dimensional geometric estimate described in PLAN.md. Its count does not
-    measure the size of the remaining work. This snapshot is not ready for
-    Palomar submission.
-  sorry_count: 1
+    positive-measure theorem have Lean proofs. The proved foundations also
+    include passage from uniform disk or delta-plate maximal estimates on
+    open indicators to a volume lower bound. The proof library and Solution
+    contain no sorry declarations. The two deliberate Challenge placeholders
+    specify the tasks and are not counted as implementation gaps.
+    Final sandboxed Comparator and independent-kernel verification remain
+    pending before Palomar submission.
+  sorry_count: 0
   sorry_in_definitions: 0
   axioms: []
 
@@ -314,9 +281,10 @@ automation:
       framework: OpenAI Codex
       tool_setup: Lean language server, Mathlib search, Lean kernel, and Lake builds
       prompting_notes: >-
-        User requested both full positive-measure results, a minimal faithful
-        challenge, explicit proof gaps during development, source audits,
-        topic-based modules, and regular GitHub pushes.
+        User requested the general critical-exponent positive-measure theorem,
+        a minimal faithful challenge, exact numerical exponent bounds, source
+        audits, topic-based modules, and regular GitHub pushes. Work outside
+        this theorem's scope was removed at the user's request.
   spend_usd: not tracked
   notes: >-
     AI-generated Lean development directed by the project owner. Existing
@@ -328,8 +296,7 @@ fidelity:
     The statements include the elementary k=n boundary and require 1<=k<=n.
     The disk property uses closed radius-one disks and has no measurable-center
     selection hypothesis. Lebesgue measurability uses NullMeasurableSet.
-    The general target is proved as stated. The independent (5,2) target
-    remains incomplete and is not replaced by a conditional variant.
+    The general target and numerical exponent bounds are proved as stated.
     Helper analytic implications explicitly display their assumptions.
 
 review:
@@ -339,12 +306,12 @@ review:
     Source definitions and the exact exponent were checked against supplied
     notes and Oberlin's statement. Challenge imports only Mathlib. Comparator
     is configured to compare definitions, the numerical critical-exponent bounds,
-    and both positive-measure theorems, with no permission
-    for sorryAx. The general target and numerical bound pass the standard-axiom
+    and the general positive-measure theorem, with no permission for sorryAx.
+    The general target and numerical bound pass the standard-axiom
     audit. Comparator's macOS development mode accepted these two targets,
     compared fixed definition bodies, and replayed their exports in Lean.
     This run had no Linux sandbox and no independent kernel. Full verification
-    cannot pass while the (5,2) gap remains; see the verification report.
+    remains pending; see the verification report.
     The fixed definitions are not listed as editable definition holes.
 
 alignment:
@@ -355,13 +322,10 @@ alignment:
       module: Solution
       status: proved
       note: The full target is proved with only propext, Classical.choice, and Quot.sound.
-    - source: Supplied positive-measure (5,2) draft
-      lean: NKBesicovitch.volume_pos_five_two
+    - source: Defining cubic for the critical exponent
+      lean: NKBesicovitch.criticalExponent_bounds
       module: Solution
-      status: partial
-      note: >-
-        The full target is stated; the independent four-dimensional seed
-        remains open. The shared terminal step, disk localization, approximation,
-        and passage to positive measure are proved.
+      status: proved
+      note: The exact rational enclosure is 2.481 < criticalExponent < 2.482.
 
 acknowledgements: Mathlib and Lean contributors; authors of the cited mathematical sources.

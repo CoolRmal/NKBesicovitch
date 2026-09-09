@@ -12,9 +12,10 @@ This was a macOS **development** run using Comparator's documented
 `fake-landrun.sh` adapter. It did **not** provide Linux sandbox isolation and
 did **not** run an independent kernel. It is evidence of statement matching,
 axiom checking, and Lean kernel replay for these two targets; it is not the
-final security or Palomar verification gate. The `(5,2)` target remains
-unfinished, and the canonical `comparator.json` still requests all three
-targets with nanoda enabled.
+final security or Palomar verification gate. The current `comparator.json`
+requests these two targets with nanoda enabled. This report records the
+historical run at the source revision above; it is not a fresh verification
+of subsequent source edits.
 
 ## Fixed definitions
 
@@ -63,4 +64,4 @@ Your solution is okay!
 
 The log also explicitly records that the development adapter did not sandbox
 its build and export commands. Full Linux isolation, independent-kernel
-checking, and validation of all three targets remain required.
+checking, and verification of the current retained targets remain pending.

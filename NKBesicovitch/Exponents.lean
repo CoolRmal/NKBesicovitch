@@ -75,12 +75,6 @@ theorem criticalExponent_bounds :
     have hm := strictMonoOn_cubic_aux.monotoneOn (by norm_num) hp.1 h
     norm_num [hp.2] at hm
 
-/-- The general critical-exponent dimension condition excludes `(n,k) = (5,2)`. -/
-theorem five_two_not_in_criticalExponent_range :
-    ¬ (5 : ℝ) < criticalExponent ^ (2 - 1 : ℕ) + (2 : ℝ) := by
-  norm_num
-  linarith [criticalExponent_bounds.2]
-
 /-- The critical exponent is the unique root of this cubic between two and three. -/
 theorem criticalExponent_unique {p : ℝ} (hp : p ∈ Icc 2 3)
     (h : p ^ 3 - 2 * p ^ 2 - 2 * p + 2 = 0) : p = criticalExponent :=

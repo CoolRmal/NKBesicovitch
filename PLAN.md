@@ -1,8 +1,9 @@
 # Formalization plan
 
-The goal is to prove both requested positive-measure theorems, with no extra
-axioms and no `sorry` in their proof dependencies. This file records the initial
-decomposition, not a claim that the analytic steps have been verified in Lean.
+The general critical-exponent positive-measure theorem and its numerical
+exponent bounds are proved in Lean, with no custom axioms or `sorry` in their
+dependencies. This file records the proof structure and source conventions.
+Final sandboxed Comparator and independent-kernel verification remain pending.
 
 ## Statements and conventions
 
@@ -12,12 +13,11 @@ canonical Lebesgue volume. A set has the `(n,k)` disk property when, for every
 of `V` lies in the set. Measurability is stated using `NullMeasurableSet E volume`,
 which includes Lebesgue measurable sets beyond the Borel sets.
 
-The two targets are:
+The targets are:
 
 1. For `1 ≤ k ≤ n` and `(n : ℝ) < p_c ^ (k - 1) + k`, every Lebesgue measurable
    set with this disk property has positive volume.
-2. Every Lebesgue measurable set in dimension five with the two-disk property
-   has positive volume.
+2. The exact rational enclosure `2.481 < p_c < 2.482`.
 
 The endpoints `k = n` are included and will be proved directly. Requiring `k ≤ n`
 prevents vacuous quantification over nonexistent subspaces. Requiring `1 ≤ k`
@@ -51,15 +51,10 @@ currently empty. The research PDFs and drafts are accessible independently.
 | `oberlin_xray_to_nk_besicovitch_notes.pdf` | X-ray to plane-maximal induction and positive measure | Supplied derivation, to check against the papers |
 | Oberlin, *Two bounds for the X-ray transform*, Math. Z. 266 (2010), 623–644, DOI `10.1007/s00209-009-0589-5` | Theorem 3; mixed-norm conventions and recursion | Published source |
 | Oberlin, *Bounds for Kakeya-type maximal operators associated with k-planes*, arXiv:math/0512377 | Fourier terminal step and plane maximal recursion | Published source; distinguish full planes from local disks |
-| `output/pdf/positive-measure-five-two-proof.tex` | Four-dimensional seed, strongification, weighted Fourier step, global unit disks | Existing supplied draft; its cited inputs must also be proved in Lean |
-| Guth–Zahl, arXiv:1701.07045, corrected version | Proposition 2.1, exponent `3 + 1/40`, concentration dependence | Published input, not available as a Lean axiom |
-| Katz–Rogers, arXiv:1802.09094 | Theorem 1.1 verifies polynomial concentration for separated directions | Published input, not an additional set hypothesis |
 
 The existing prose audits support specific arguments but cannot discharge any
 Lean dependency. In particular, the new projection exponent is not attributed
-to Oberlin as an already published theorem. The `(5,2)` target uses only the
-`p = 4` consequence of its draft; stronger operator assertions in that draft
-are unnecessary for the requested result.
+to Oberlin as an already published theorem.
 
 ## Dependency decomposition and implementation order
 
@@ -313,38 +308,6 @@ by dominated positive Schwartz inputs. Bounded disk convergence and Fatou
 pass the global estimate to open indicators. `TerminalPositiveMeasure`
 applies outer regularity, and `Range` now proves the full general target.
 The complete dependency chain passes the standard-axiom audit.
-
-### 7. Independent `(5,2)` seed
-
-`FiveTwo/PolynomialConcentration.lean`: formalize the needed Katz–Rogers result.
-`FiveTwo/Shading.lean`: formalize corrected Guth–Zahl Proposition 2.1, including
-the required polynomial partitioning, grains, and two-ends ingredients. Search
-Mathlib before decomposing each source ingredient; none may be assumed.
-`FiveTwo/Maximal.lean`: separated-direction covering, equal-density measurable
-shadings, restricted weak estimate, and strongification at input exponent 4.
-Choose `ε = η = 1/160`, giving loss `α = 79/80 < 1` and threshold `121/40 < 4`.
-
-The operator conversion has started. `PlateAlgebra` proves constant preservation,
-monotonicity, homogeneity, and countable subadditivity. `ScaledLevels` gives a
-half-height constant plus doubling input superlevels, and `PlateLevels` turns
-this into a cover of maximal superlevels by summably allocated thresholds.
-`PlateWeakLevels` applies the restricted weak hypothesis on finite-measure
-support, with no pointwise finiteness assumption on the input.
-`ScaledLayerCake` proves the exact scaled input moment identity for finite-valued
-inputs. Next choose thresholds `a_j = c * 2^(-5j/4)` with
-`c = (1 - 2^(-1/4))/2`: the allocated output heights sum to one half, and the
-input fourth-moment series has ratio `2^(-7/32)` because
-`(121/40)*(5/4) - 4 = -7/32`. Integrate first for bounded inputs, then extend
-by monotone truncation. Finally cover the remaining thickness range using
-the elementary plate estimate. None of these steps discharges Guth–Zahl or
-Katz–Rogers; those geometric proofs remain explicit obligations.
-
-`FiveTwo/Main.lean`: apply the proved `HasPlateEstimate.volume_pos` terminal
-theorem to this seed. Its Fourier gain is `2^(-j/320)`; summation, smooth
-globalization, approximation, and outer regularity are already available.
-
-This is a substantial independent branch. Published theorem statements are
-proof obligations, never custom axioms or user-facing hypotheses.
 
 ## Verification and checkpoints
 
