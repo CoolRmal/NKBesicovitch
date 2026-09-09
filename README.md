@@ -97,9 +97,13 @@ The smooth low-frequency kernel and its annular differences are now constructed.
 Their finite dyadic sums telescope exactly, and the smoothed approximations
 converge uniformly to every Schwartz input, with Fourier error tending to zero
 in `L¹`. Polynomial weights preserve closed Fourier support, including on each
-X-ray fiber. Passing to integrals over entire unbounded planes, the bandlimited
-comparison with local plate averages, the rest of the terminal argument, and
-the separate `(5,2)` proof remain incomplete.
+X-ray fiber. Uniform polynomial spatial decay now gives an integrable bound on
+every full affine plane, so its signed integrals converge as well.
+`Grassmannian/NormalLiftCoordinates` identifies intrinsic plane volume with
+product volume, and `XRay/PlaneIntegral` proves signed Fubini in every rotated
+flag frame, including arbitrary translations. The bandlimited comparison with
+local plate averages, the rest of the terminal argument, and the separate
+`(5,2)` proof remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

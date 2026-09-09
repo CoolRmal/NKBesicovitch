@@ -133,9 +133,13 @@ sources:
       and support properties. Finite dyadic sums telescope, the Fourier
       errors converge in L1, and the approximations converge uniformly.
       Polynomial weights preserve closed Fourier support, including on
-      each transverse Schwartz fiber. Convergence through full-plane
-      integration, bandlimited comparison, signed full-plane flag Fubini,
-      and terminal assembly remain open.
+      each transverse Schwartz fiber. Uniform polynomial spatial decay
+      supplies an integrable majorant on every affine plane and proves
+      convergence through its full signed integral. Intrinsic orthogonal
+      product coordinates and Schwartz integrability prove signed full-plane
+      Fubini in every rotated flag frame, including arbitrary translations.
+      Bandlimited comparison with local plate averages and terminal assembly
+      remain open.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -259,7 +263,10 @@ status:
     preservation of closed Fourier support under polynomial weights,
     bandlimited weighted Schwartz fibers, construction of smooth cutoff
     and annular kernels, finite dyadic telescoping, Fourier-error convergence
-    in L1, and uniform convergence of the dyadic approximations
+    in L1, uniform convergence of the dyadic approximations,
+    uniform polynomial spatial decay under smoothing, convergence of full
+    signed affine-plane integrals, intrinsic product-volume coordinates on
+    lifted planes, and signed full-plane Fubini in rotated flag frames
     have Lean proofs.
     The proved foundations also include
     passage from uniform disk or delta-plate maximal estimates

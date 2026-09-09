@@ -233,11 +233,13 @@ All induction files belong to `Induction/`:
   difference, including the Fourier gap and outer frequency radius.
   `DyadicDecomposition` proves the exact finite telescoping identities.
   `DyadicConvergence` proves Fourier-error convergence in `L¹` and uniform
-  convergence of the smooth approximations. Passage through integration over
-  entire unbounded planes still needs a separate convergence argument.
-  Obtain uniform polynomial spatial decay of the approximations from a
-  weighted convolution estimate, then use dominated convergence on each
-  affine plane; uniform convergence alone does not justify this passage.
+  convergence of the smooth approximations. `ConvolutionDecay` now proves
+  polynomial spatial decay uniformly over all dilation scales at least one.
+  `PlaneConvergence` constructs an integrable majorant on every affine plane
+  and proves convergence of its full signed integrals by dominated convergence.
+  `Grassmannian/NormalLiftCoordinates` identifies lifted intrinsic plane
+  volume with product volume. `XRay/PlaneIntegral` proves signed full-plane
+  Fubini in every rotated flag frame, with arbitrary translations.
 * `Terminal`: polynomially weighted bandlimited fiber comparison, summable
   dyadic gain, and the local full-plane bound.
 * `Range`: choose all strict margins, iterate from zero-dimensional disks
@@ -277,9 +279,11 @@ annular kernels, the finite dyadic identities, Fourier-error convergence in
 `L¹`, and uniform convergence of the approximations are now proved.
 `Fourier/PolynomialSupport` proves that polynomial weights preserve closed
 Fourier support, and `XRay/Bandlimited` gives weighted Schwartz fibers with
-the original frequency radius. The remaining gap includes convergence through
-integrals over entire unbounded planes, bandlimited comparison with local
-plate averages, signed full-plane flag Fubini, and terminal assembly.
+the original frequency radius. Uniform spatial decay now justifies convergence
+through integrals over entire affine planes. Orthogonal product coordinates
+and Schwartz integrability also give signed full-plane flag Fubini, including
+all translations and rotations. The remaining gap includes bandlimited
+comparison with local plate averages and terminal assembly.
 
 ### 7. Independent `(5,2)` seed
 

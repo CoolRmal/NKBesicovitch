@@ -35,6 +35,15 @@ source decomposition. The final theorems are not proved yet.
   rapidly decaying one-norm term. `WeightedDecay` combines this with
   interpolation and support-restricted Holder to retain `a^(-1/p)` for
   every weight `(1 + ‖x‖²)^A`, finite `p ≥ 2`, and `a ≥ 1`.
+* `Fourier/ConvolutionDecay` proves spatial polynomial decay of the smooth
+  approximations uniformly over all dilation scales at least one.
+  `PlaneConvergence` supplies an integrable majorant on every affine plane
+  and proves convergence of the full signed plane integrals.
+  `Grassmannian/NormalLiftCoordinates` identifies intrinsic volume on lifted
+  planes with the product of lower-plane volume and arclength.
+  `XRay/PlaneIntegral` proves signed Fubini in all rotated flag frames and
+  for arbitrary translations. Schwartz integrability justifies the iterated
+  integrals before any absolute value is taken.
 * `XRay/LowFrequency` proves a joint `L¹`-to-`Lᵖ` bound for fixed smoothing
   on bounded support and the polynomially weighted `Lᵖ` bound for every
   finite `p ≥ 1`. No Fourier-gap assumption is used, so this supplies the
@@ -526,10 +535,13 @@ for all finite `p ≥ 2`, now also with polynomial transverse weights when
 `a ≥ 1`. Rapid tail control and the weighted fixed-kernel low-frequency
 estimate are proved. The smooth dyadic kernels, finite telescoping identities,
 uniform approximation, and preservation of Fourier support under polynomial
-weights are also proved. The remaining general-range work includes convergence
-through full-plane integration, bandlimited comparison with local plate
-averages, signed full-plane flag Fubini, and final assembly with the proved
-passage from uniform maximal bounds to positive measure.
+weights are also proved. Uniform polynomial spatial decay now justifies
+convergence through full-plane integration by an integrable majorant on each
+affine plane. Intrinsic product-volume coordinates and Schwartz integrability
+also prove signed full-plane Fubini in rotated flag frames. The remaining
+general-range work includes bandlimited comparison with local plate averages
+and final assembly with the proved passage from uniform maximal bounds to
+positive measure.
 
 The independent (5,2) branch still needs the corrected Guth–Zahl and
 Katz–Rogers proofs, its maximal estimate, and the Fourier terminal argument.
@@ -680,6 +692,13 @@ standard-axiom audit without source warnings. The full build succeeds with
 3409 jobs and the same five intended holes. All 283 library modules remain
 within the file-size limit, with a maximum of 160 lines. The metadata continues
 to validate against the upstream schema.
+Uniform polynomial spatial decay of smooth approximations, dominated
+convergence on every full affine plane, intrinsic orthogonal coordinates on
+lifted planes, and signed full-plane Fubini in rotated flag frames pass the
+standard-axiom audit without source warnings. The full build succeeds with
+3413 jobs and the same five intended holes. All 287 library modules satisfy
+the file-size limit; the largest remains 160 lines. Changed Lean files stay
+within 100 columns, and metadata validates against the upstream schema.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

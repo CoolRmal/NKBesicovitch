@@ -7,6 +7,7 @@ import NKBesicovitch.Grassmannian.Transitivity
 import NKBesicovitch.Grassmannian.Topology
 import NKBesicovitch.Grassmannian.Measure
 import NKBesicovitch.Grassmannian.NormalLift
+import NKBesicovitch.Grassmannian.NormalLiftCoordinates
 import NKBesicovitch.Grassmannian.FlagMeasure
 import NKBesicovitch.Geometry.Disks
 import NKBesicovitch.Geometry.Plates
@@ -38,6 +39,8 @@ import NKBesicovitch.Operators.Fourier.PolynomialSupport
 import NKBesicovitch.Operators.Fourier.FrequencyKernels
 import NKBesicovitch.Operators.Fourier.DyadicDecomposition
 import NKBesicovitch.Operators.Fourier.DyadicConvergence
+import NKBesicovitch.Operators.Fourier.ConvolutionDecay
+import NKBesicovitch.Operators.Fourier.PlaneConvergence
 import NKBesicovitch.Operators.MixedNorm.Basic
 import NKBesicovitch.Operators.MixedNorm.Fibers
 import NKBesicovitch.Operators.MixedNorm.Sums
@@ -89,6 +92,7 @@ import NKBesicovitch.Operators.XRay.Frame
 import NKBesicovitch.Operators.XRay.FourierSlice
 import NKBesicovitch.Operators.XRay.SchwartzLine
 import NKBesicovitch.Operators.XRay.FourierFrame
+import NKBesicovitch.Operators.XRay.PlaneIntegral
 import NKBesicovitch.Operators.XRay.AveragedFourier
 import NKBesicovitch.Operators.XRay.ConvolutionBound
 import NKBesicovitch.Operators.XRay.SmoothedBound

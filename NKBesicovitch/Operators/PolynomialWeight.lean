@@ -23,6 +23,25 @@ open scoped ENNReal
 
 namespace NKBesicovitch
 
+/-- Polynomial weights of a sum are bounded by the product of the two weights. -/
+theorem one_add_norm_sq_pow_add_le {E : Type*} [NormedAddCommGroup E] (x y : E) (A : ℕ) :
+    (1 + ‖x + y‖ ^ 2) ^ A ≤ 2 ^ A * (1 + ‖x‖ ^ 2) ^ A * (1 + ‖y‖ ^ 2) ^ A := by
+  have h : 1 + ‖x + y‖ ^ 2 ≤ 2 * (1 + ‖x‖ ^ 2) * (1 + ‖y‖ ^ 2) := by
+    have hn := norm_add_le x y
+    have hs := sq_le_sq₀ (norm_nonneg (x + y)) (by positivity) |>.mpr hn
+    nlinarith [sq_nonneg (‖x‖ - ‖y‖), mul_nonneg (sq_nonneg ‖x‖) (sq_nonneg ‖y‖)]
+  simpa only [mul_pow] using pow_le_pow_left₀ (by positivity) h A
+
+/-- Translating an inverse polynomial weight increases it by at most a polynomial factor. -/
+theorem inv_one_add_norm_sq_pow_add_le {E : Type*} [NormedAddCommGroup E] (x y : E) (A : ℕ) :
+    ((1 + ‖x + y‖ ^ 2) ^ A)⁻¹ ≤
+      (2 ^ A * (1 + ‖x‖ ^ 2) ^ A) * ((1 + ‖y‖ ^ 2) ^ A)⁻¹ := by
+  have h := one_add_norm_sq_pow_add_le (-x) (x + y) A
+  simp only [neg_add_cancel_left, norm_neg] at h
+  rw [← div_eq_mul_inv, ← one_div]
+  apply (div_le_div_iff₀ (by positivity) (by positivity)).mpr
+  simpa only [one_mul] using h
+
 /-- Inverse polynomial decay of degree above the dimension is in every finite `Lᵖ`, `p ≥ 1`. -/
 theorem memLp_inv_one_add_norm_pow {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     [FiniteDimensional ℝ E] [MeasurableSpace E] [BorelSpace E]
