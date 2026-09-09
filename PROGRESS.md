@@ -6,6 +6,12 @@ independent `(5,2)` theorem remains incomplete.
 
 ## Completed foundations
 
+* The `(5,2)` strongification step now has plate algebra, scaled input-level
+  decomposition, a summably allocated superlevel cover, a restricted weak
+  bound for arbitrary inputs on finite-measure support, and scaled layer-cake
+  identities. The latter explicitly require finite point values when using
+  `toReal`; the pointwise level decomposition handles infinity directly.
+  The geometric seed and the integration/summation finish remain unproved.
 * `Induction/Range.volume_pos_of_criticalExponent` is now proved in the full
   requested range, with only the three standard Lean axioms. `TerminalDisk`
   converts signed plane majorants to positive disk bounds with exact intrinsic
@@ -765,10 +771,21 @@ The exported `Solution` numerical bound and general theorem both report
 only `propext`, `Classical.choice`, and `Quot.sound` in Lean's axiom audit.
 The two Challenge definition bodies match their implementation text exactly.
 This is not a Comparator or independent-kernel verification claim.
+The subsequent restricted-weak conversion checkpoint passes the full build
+with 3450 jobs and the same four expected warnings. The conditional weak-level
+transfer and scaled layer-cake identities pass the standard-axiom audit with
+no source warnings. There are 324 library modules, still at most 160 lines
+each; new Lean files stay within 100 columns. Comparator configuration now
+keeps the two definitions fixed rather than treating them as editable holes.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
-Comparator has not been run, and this snapshot is not submission-ready.
+Comparator's macOS development run accepted the numerical bound and general
+positive-measure theorem, including fixed-definition comparison and Lean
+kernel replay. Its documented development adapter supplied no Linux sandbox,
+and nanoda was not run. The full all-target configuration remains unverified;
+this snapshot is not submission-ready. See
+`verification/critical-range-development.md` for pins, scope, and evidence.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.
 
 Existing untracked `tmp/` and `output/` contain supplied research material;

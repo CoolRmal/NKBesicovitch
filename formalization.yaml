@@ -288,7 +288,10 @@ status:
     fixed-support Schwartz terminal bound, normalized positive disk bound,
     smooth globalization, dominated Schwartz approximation of open indicators,
     bounded disk convergence, and the general critical-exponent
-    positive-measure theorem have Lean proofs.
+    positive-measure theorem have Lean proofs. The independent (5,2) operator
+    conversion now has plate algebra, scaled dyadic input levels, a summable
+    superlevel cover, restricted weak level bounds on finite-measure support,
+    and exact scaled layer-cake identities; strongification remains unfinished.
     The proved foundations also include
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound.
@@ -334,7 +337,11 @@ review:
     is configured to compare definitions, the numerical critical-exponent bounds,
     and both positive-measure theorems, with no permission
     for sorryAx. The general target and numerical bound pass the standard-axiom
-    audit; full verification cannot pass while the (5,2) gap remains.
+    audit. Comparator's macOS development mode accepted these two targets,
+    compared fixed definition bodies, and replayed their exports in Lean.
+    This run had no Linux sandbox and no independent kernel. Full verification
+    cannot pass while the (5,2) gap remains; see the verification report.
+    The fixed definitions are not listed as editable definition holes.
 
 alignment:
   namespace: NKBesicovitch

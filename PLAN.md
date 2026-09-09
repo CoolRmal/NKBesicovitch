@@ -323,6 +323,22 @@ Mathlib before decomposing each source ingredient; none may be assumed.
 `FiveTwo/Maximal.lean`: separated-direction covering, equal-density measurable
 shadings, restricted weak estimate, and strongification at input exponent 4.
 Choose `ε = η = 1/160`, giving loss `α = 79/80 < 1` and threshold `121/40 < 4`.
+
+The operator conversion has started. `PlateAlgebra` proves constant preservation,
+monotonicity, homogeneity, and countable subadditivity. `ScaledLevels` gives a
+half-height constant plus doubling input superlevels, and `PlateLevels` turns
+this into a cover of maximal superlevels by summably allocated thresholds.
+`PlateWeakLevels` applies the restricted weak hypothesis on finite-measure
+support, with no pointwise finiteness assumption on the input.
+`ScaledLayerCake` proves the exact scaled input moment identity for finite-valued
+inputs. Next choose thresholds `a_j = c * 2^(-5j/4)` with
+`c = (1 - 2^(-1/4))/2`: the allocated output heights sum to one half, and the
+input fourth-moment series has ratio `2^(-7/32)` because
+`(121/40)*(5/4) - 4 = -7/32`. Integrate first for bounded inputs, then extend
+by monotone truncation. Finally cover the remaining thickness range using
+the elementary plate estimate. None of these steps discharges Guth–Zahl or
+Katz–Rogers; those geometric proofs remain explicit obligations.
+
 `FiveTwo/Main.lean`: apply the proved `HasPlateEstimate.volume_pos` terminal
 theorem to this seed. Its Fourier gain is `2^(-j/320)`; summation, smooth
 globalization, approximation, and outer regularity are already available.

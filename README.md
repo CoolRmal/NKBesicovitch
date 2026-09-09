@@ -125,6 +125,13 @@ four-dimensional seed needed for `(5,2)` remains incomplete.
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
 
+The `(5,2)` operator conversion now has proved plate monotonicity, constant
+preservation, homogeneity, countable subadditivity, and a dyadic superlevel
+cover. `PlateWeakLevels` converts a restricted weak indicator estimate into
+a weighted input-level bound. `ScaledLayerCake` evaluates the scaled moments
+needed to integrate that bound. Strongification and the geometric seed remain
+unfinished.
+
 ## Building
 
 Requires [`elan`](https://github.com/leanprover/elan). The toolchain is pinned in
@@ -179,5 +186,9 @@ The numerical bound and general theorem pass the Lean axiom audit. The `(5,2)`
 theorem still depends on `sorryAx`, so the complete Comparator configuration
 cannot yet pass. Submission also requires independent kernel replay and a
 source-fidelity audit.
-The standard Palomar verifier currently uses Linux tooling; it has not been run
-on this macOS development machine.
+A [Comparator development run](verification/critical-range-development.md)
+accepted the two completed targets and replayed their exported proofs in Lean.
+It used the documented macOS development adapter without sandbox isolation or
+nanoda. The full Linux and independent-kernel verification remains pending.
+Fixed definition bodies are compared through the theorem dependencies; the
+configuration contains no editable definition holes.

@@ -38,6 +38,11 @@ import NKBesicovitch.Operators.PlateContinuousFamily
 import NKBesicovitch.Operators.PlateFamilyNorm
 import NKBesicovitch.Operators.PlateRotation
 import NKBesicovitch.Operators.PlatePower
+import NKBesicovitch.Operators.PlateAlgebra
+import NKBesicovitch.Operators.PlateLevels
+import NKBesicovitch.Operators.PlateWeakLevels
+import NKBesicovitch.Operators.Interpolation.ScaledLevels
+import NKBesicovitch.Operators.Interpolation.ScaledLayerCake
 import NKBesicovitch.Operators.PlateTranslation
 import NKBesicovitch.Operators.PlateLocalizationMeasurability
 import NKBesicovitch.Operators.PlateLocalization

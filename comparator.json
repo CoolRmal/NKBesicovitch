@@ -6,10 +6,6 @@
     "NKBesicovitch.volume_pos_of_criticalExponent",
     "NKBesicovitch.volume_pos_five_two"
   ],
-  "definition_names": [
-    "NKBesicovitch.IsBesicovitch",
-    "NKBesicovitch.criticalExponent"
-  ],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
   "enable_nanoda": true
 }
