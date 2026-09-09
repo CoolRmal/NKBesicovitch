@@ -289,14 +289,18 @@ status:
     smooth globalization, dominated Schwartz approximation of open indicators,
     bounded disk convergence, and the general critical-exponent
     positive-measure theorem have Lean proofs. The independent (5,2) operator
-    conversion now has plate algebra, scaled dyadic input levels, a summable
-    superlevel cover, restricted weak level bounds on finite-measure support,
-    and exact scaled layer-cake identities; strongification remains unfinished.
+    conversion is now proved using plate algebra, scaled dyadic input levels,
+    a superlevel cover, weighted layer-cake integration, geometric thresholds,
+    and monotone truncation. For every finite p > P > 0, the strong constant
+    depends on the weak coefficient A as A^(1/p). The thickness deficit is
+    preserved and the ambient estimate supplies the large-thickness case.
+    The (5,2) assembly now connects P=121/40, p=4, alpha=79/80 to the proved
+    terminal theorem, but still depends on the unproved geometric input.
     The proved foundations also include
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound.
-    One top-level proof gap stands for the substantial independent
-    four-dimensional analytic seed described in PLAN.md. Its count does not
+    One proof gap in FiveTwo/RestrictedWeak.lean stands for the substantial
+    independent four-dimensional geometric estimate described in PLAN.md. Its count does not
     measure the size of the remaining work. This snapshot is not ready for
     Palomar submission.
   sorry_count: 1

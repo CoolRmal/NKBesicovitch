@@ -39,10 +39,15 @@ import NKBesicovitch.Operators.PlateFamilyNorm
 import NKBesicovitch.Operators.PlateRotation
 import NKBesicovitch.Operators.PlatePower
 import NKBesicovitch.Operators.PlateAlgebra
+import NKBesicovitch.Operators.PlateTruncation
 import NKBesicovitch.Operators.PlateLevels
 import NKBesicovitch.Operators.PlateWeakLevels
+import NKBesicovitch.Operators.PlateWeakMoments
+import NKBesicovitch.Operators.PlateWeakStrong
 import NKBesicovitch.Operators.Interpolation.ScaledLevels
 import NKBesicovitch.Operators.Interpolation.ScaledLayerCake
+import NKBesicovitch.Operators.Interpolation.LevelMoments
+import NKBesicovitch.Operators.Interpolation.LevelWeights
 import NKBesicovitch.Operators.PlateTranslation
 import NKBesicovitch.Operators.PlateLocalizationMeasurability
 import NKBesicovitch.Operators.PlateLocalization
@@ -311,6 +316,8 @@ import NKBesicovitch.Induction.XRayStep
 import NKBesicovitch.Induction.DiagonalStep
 import NKBesicovitch.Induction.Estimates
 import NKBesicovitch.Induction.Seed
+import NKBesicovitch.Induction.SmallThickness
+import NKBesicovitch.Induction.RestrictedWeak
 import NKBesicovitch.Induction.XRayExponents
 import NKBesicovitch.Induction.Lift
 import NKBesicovitch.Induction.Iteration
@@ -322,3 +329,5 @@ import NKBesicovitch.Induction.TerminalDisk
 import NKBesicovitch.Induction.TerminalGlobal
 import NKBesicovitch.Induction.TerminalPositiveMeasure
 import NKBesicovitch.FiveTwo.Main
+import NKBesicovitch.FiveTwo.RestrictedWeak
+import NKBesicovitch.FiveTwo.Maximal

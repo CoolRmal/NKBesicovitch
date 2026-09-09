@@ -65,4 +65,11 @@ theorem plateMaximal_tsum_le {F : ℕ → EuclideanSpace ℝ (Fin n) → ℝ≥0
   exact ENNReal.tsum_le_tsum fun j ↦ le_iSup
     (fun a ↦ (∫⁻ x in plate δ V.val a, F j x) / volume (plate δ V.val a)) a
 
+theorem plateMaximal_iSup {F : ℕ → EuclideanSpace ℝ (Fin n) → ℝ≥0∞}
+    (hF : ∀ j, Measurable (F j)) (hm : Monotone F) (V : Grassmannian n k) :
+    plateMaximal δ (fun x ↦ ⨆ j, F j x) V = ⨆ j, plateMaximal δ (F j) V := by
+  unfold plateMaximal
+  simp_rw [lintegral_iSup hF hm, div_eq_mul_inv, ENNReal.iSup_mul]
+  exact iSup_comm
+
 end NKBesicovitch

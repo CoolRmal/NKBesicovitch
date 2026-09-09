@@ -6,12 +6,16 @@ independent `(5,2)` theorem remains incomplete.
 
 ## Completed foundations
 
-* The `(5,2)` strongification step now has plate algebra, scaled input-level
-  decomposition, a summably allocated superlevel cover, a restricted weak
-  bound for arbitrary inputs on finite-measure support, and scaled layer-cake
-  identities. The latter explicitly require finite point values when using
-  `toReal`; the pointwise level decomposition handles infinity directly.
-  The geometric seed and the integration/summation finish remain unproved.
+* The `(5,2)` strongification step is now proved. `LevelMoments` integrates
+  the weighted superlevel series; `LevelWeights` constructs positive geometric
+  thresholds whose allocation is one half and whose moment cost is finite.
+  `PlateTruncation` passes the bounded-input proof to arbitrary nonnegative
+  Borel inputs, including infinite values. `PlateWeakStrong` gives a finite
+  conversion constant at every finite `p > P > 0`, with coefficient `A^(1/p)`.
+  `Induction/RestrictedWeak` preserves the deficit and `SmallThickness` adds
+  the large-thickness estimate. The `(5,2)` assembly now uses `P = 121/40`,
+  `p = 4`, and `α = 79/80` with the completed terminal theorem. The geometric
+  restricted weak estimate remains unproved in `FiveTwo/RestrictedWeak`.
 * `Induction/Range.volume_pos_of_criticalExponent` is now proved in the full
   requested range, with only the three standard Lean axioms. `TerminalDisk`
   converts signed plane majorants to positive disk bounds with exact intrinsic
@@ -531,8 +535,10 @@ independent `(5,2)` theorem remains incomplete.
 ## Open proof frontier
 
 There is one `sorry` occurrence in the proof development, in
-`FiveTwo/Main.lean`, plus the three deliberate Challenge holes. It stands for
-a substantial independent analytic development, not a short final lemma.
+`FiveTwo/RestrictedWeak.lean`, plus the three deliberate Challenge holes. It
+requires the independent polynomial-concentration and shading development,
+direction packing, spatial localization, and fixed tube-to-plate rescaling.
+The restricted weak-to-strong conversion and terminal assembly are proved.
 The general critical-exponent target is now fully proved.
 
 The projection estimate, including its quantitative selectable form, is now
@@ -787,6 +793,16 @@ and nanoda was not run. The full all-target configuration remains unverified;
 this snapshot is not submission-ready. See
 `verification/critical-range-development.md` for pins, scope, and evidence.
 Metadata validates against the upstream `formalization.yaml` v0.4 schema.
+The completed restricted weak-to-strong conversion checkpoint passes the
+full build with 3459 jobs and four expected warnings: the geometric estimate
+in `FiveTwo/RestrictedWeak.lean` and three Challenge holes. All 333 library
+modules are imported by the root; the largest remains 160 lines. Changed
+Lean files fit within 100 columns. The weighted layer-cake theorem, geometric
+allocation, monotone plate truncation, strong operator conversion, and
+induction-bound conversion pass the standard-axiom audit without source
+warnings. The `(5,2)` target still correctly reports `sorryAx`; moving the
+remaining gap into an explicit geometric statement does not complete it.
+The numerical bound remains proved with only the standard axioms.
 
 Existing untracked `tmp/` and `output/` contain supplied research material;
 they were not added to the repository by these proof checkpoints.

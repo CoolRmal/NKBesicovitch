@@ -125,12 +125,16 @@ four-dimensional seed needed for `(5,2)` remains incomplete.
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
 
-The `(5,2)` operator conversion now has proved plate monotonicity, constant
-preservation, homogeneity, countable subadditivity, and a dyadic superlevel
-cover. `PlateWeakLevels` converts a restricted weak indicator estimate into
-a weighted input-level bound. `ScaledLayerCake` evaluates the scaled moments
-needed to integrate that bound. Strongification and the geometric seed remain
-unfinished.
+The `(5,2)` operator conversion is now proved. Dyadic superlevel decomposition,
+weighted layer-cake integration, and geometric thresholds give the strong
+estimate at every finite `p > P > 0`. Monotone truncation includes unbounded
+inputs and infinite values. `Induction/RestrictedWeak` preserves the deficit:
+a weak coefficient `A δ^(-α)` gives strong loss `δ^(-α/p)`, with large
+thicknesses supplied by the ambient estimate. `FiveTwo/Maximal` and
+`FiveTwo/Main` now connect the exponents `P = 121/40`, `p = 4`, `α = 79/80`
+to the completed terminal argument. The substantial geometric restricted weak
+estimate in `FiveTwo/RestrictedWeak.lean` remains unproved, so the independent
+positive-measure theorem is still incomplete.
 
 ## Building
 
