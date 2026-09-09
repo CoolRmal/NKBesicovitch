@@ -12,7 +12,7 @@ For integers `1 ≤ k ≤ n`, this project proves that every Lebesgue measurable
 set with this property has **positive volume** whenever
 
 $$
-  n < p_c^{\,k-1}+k.
+  n < p_c^{k-1}+k.
 $$
 
 Here $p_c$ is the unique root in $(2,3)$ of
