@@ -7,13 +7,17 @@ module
 
 public import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
 public import Mathlib.LinearAlgebra.FiniteDimensional.Basic
+public import Mathlib.Topology.MetricSpace.HausdorffDimension
 
 /-!
-# Positive measure for (n,k)-Besicovitch sets
+# Positive measure and Hausdorff dimension of (n,k)-Besicovitch sets
 
 The general positive-measure target uses the unique root `p_c ∈ (2,3)` of
 `p_c³ - 2p_c² - 2p_c + 2 = 0`. Its numerical bounds are a separate target below.
 `NullMeasurableSet` means measurability in the completion of Lebesgue measure.
+The Hausdorff-dimension target holds for every `1 ≤ k ≤ n`, without the
+positive-measure range restriction or any measurability assumption on the set.
+For Kakeya sets (`k = 1`), it reads `dimH E ≥ n - (n-1)/p_c`.
 The deliberate `sorry`s specify the challenge; they are not proofs of the claims.
 -/
 
@@ -43,6 +47,12 @@ theorem volume_pos_of_criticalExponent {n k : ℕ} (hk : 1 ≤ k) (hkn : k ≤ n
     {E : Set (EuclideanSpace ℝ (Fin n))} (hE : NullMeasurableSet E volume)
     (hB : IsBesicovitch k E) :
     0 < volume E := by
+  sorry
+
+/-- Every `(n,k)`-Besicovitch set has Hausdorff dimension at least `n - (n-k)/p_c^k`. -/
+theorem le_dimH_of_isBesicovitch {n k : ℕ} (hk : 1 ≤ k) (hkn : k ≤ n)
+    {E : Set (EuclideanSpace ℝ (Fin n))} (hB : IsBesicovitch k E) :
+    ENNReal.ofReal ((n : ℝ) - ((n : ℝ) - k) / criticalExponent ^ k) ≤ dimH E := by
   sorry
 
 end NKBesicovitch

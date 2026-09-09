@@ -1,7 +1,7 @@
 # Formalization plan
 
-The general critical-exponent positive-measure theorem and its numerical
-exponent bounds are proved in Lean, with no custom axioms or `sorry` in their
+The general critical-exponent positive-measure and Hausdorff-dimension theorems,
+and the numerical exponent bounds, are proved in Lean, with no custom axioms or `sorry` in their
 dependencies. This file records the proof structure and source conventions.
 Final sandboxed Comparator and independent-kernel verification remain pending.
 
@@ -18,6 +18,8 @@ The targets are:
 1. For `1 ≤ k ≤ n` and `(n : ℝ) < p_c ^ (k - 1) + k`, every Lebesgue measurable
    set with this disk property has positive volume.
 2. The exact rational enclosure `2.481 < p_c < 2.482`.
+3. For `1 ≤ k ≤ n`, every set with the disk property has Hausdorff dimension
+   at least `n - (n-k)/p_c^k`, without a measurability or boundedness hypothesis.
 
 The endpoints `k = n` are included and will be proved directly. Requiring `k ≤ n`
 prevents vacuous quantification over nonexistent subspaces. Requiring `1 ≤ k`
@@ -318,7 +320,7 @@ Commit and push completed checkpoints to the existing public GitHub repository.
 
 Development builds may contain explicitly tracked `sorry`s. Completion requires:
 
-* Both full targets proved with no `sorryAx` in their transitive dependencies.
+* All three targets proved with no `sorryAx` in their transitive dependencies.
 * Challenge audited for geometric meaning, exact constant, measurability,
   dimensions, and endpoint behavior, independently of Solution.
 * Comparator checks the theorem types and definition bodies with only
@@ -330,3 +332,33 @@ Development builds may contain explicitly tracked `sorry`s. Completion requires:
 
 The source-to-Lean table is refined as analytic leaves are stated. A planned
 module in this document is not an implemented API or a discharged dependency.
+# Hausdorff-dimension extension (proved)
+
+The new proved target is `le_dimH_of_isBesicovitch`, explicitly stated in
+`Challenge.lean`: every `(n,k)`-Besicovitch set with `1 ≤ k ≤ n` has
+Hausdorff dimension at least `n - (n-k)/criticalExponent^k`. No measurability
+or boundedness assumption on the set is needed for the covering argument.
+The independent positive-measure problem for `(5,2)` remains out of scope.
+
+For each strict exponent `s < n-α`, a zero Hausdorff measure assumption
+provides countable ball covers with arbitrarily small total `s`-cost.
+Group the balls into dyadic radius classes. Thicken each group by its scale.
+Intrinsic disk integration and orthogonal product coordinates bound the
+amount of the disk covered by each group by a constant times its plate
+maximal function. The global plate estimate bounds its direction-space
+norm by its covering cost to the power `1/p` times
+`δ^((n-s-α)/p)`. The positive exponent makes the sum over scales finite.
+Countable subadditivity along every disk and the triangle inequality in
+direction space then contradict an arbitrarily small covering cost.
+Thus `dimH E ≥ n-α`. Apply finite deficit iteration with
+`α=(n-k)/ρ^k` and let `ρ` approach `criticalExponent` from below.
+The full-dimensional case follows from its positive volume.
+
+Completed components: small Hausdorff ball covers; orthogonal disk-to-plate
+comparison; dyadic group volume and norm estimates; Hausdorff transfer;
+critical-exponent limit and public solution interface. All nine modules in
+`Hausdorff/` compile without placeholders. The full build passes, and both
+the reusable transfer and the final target use only standard Lean axioms.
+Comparator's macOS development run accepted all three targets, including
+fixed-definition comparison and fresh Lean kernel replay.
+Independent mathematical review and novelty assessment remain pending.

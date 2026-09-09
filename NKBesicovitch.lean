@@ -316,3 +316,12 @@ import NKBesicovitch.Induction.TerminalPlane
 import NKBesicovitch.Induction.TerminalDisk
 import NKBesicovitch.Induction.TerminalGlobal
 import NKBesicovitch.Induction.TerminalPositiveMeasure
+import NKBesicovitch.Hausdorff.Covers
+import NKBesicovitch.Hausdorff.OrthogonalPlates
+import NKBesicovitch.Hausdorff.DiskPlate
+import NKBesicovitch.Hausdorff.ScaleVolume
+import NKBesicovitch.Hausdorff.ScaleNorm
+import NKBesicovitch.Hausdorff.CoverNorm
+import NKBesicovitch.Hausdorff.DyadicCover
+import NKBesicovitch.Hausdorff.Transfer
+import NKBesicovitch.Hausdorff.Range

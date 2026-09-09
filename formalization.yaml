@@ -4,9 +4,10 @@ version: v0.4
 project:
   name: NKBesicovitch
   description: >-
-    Lean proofs of positive Lebesgue measure for (n,k)-Besicovitch sets when
+    Lean proofs of Hausdorff dimension at least n-(n-k)/p_c^k for all
+    (n,k)-Besicovitch sets with 1<=k<=n, and positive Lebesgue measure when
     p_c^(k-1)+k>n, where p_c is the unique root in (2,3) of
-    p^3-2p^2-2p+2=0. The general theorem and exact bounds
+    p^3-2p^2-2p+2=0. Both geometric theorems and the exact bounds
     2.481<p_c<2.482 are proved with only the standard Lean axioms.
     Final sandboxed Comparator and independent-kernel verification are pending.
   authors:
@@ -266,7 +267,13 @@ status:
     positive-measure theorem have Lean proofs. The proved foundations also
     include passage from uniform disk or delta-plate maximal estimates on
     open indicators to a volume lower bound. The proof library and Solution
-    contain no sorry declarations. The two deliberate Challenge placeholders
+    contain no sorry declarations. Small Hausdorff ball covers, orthogonal
+    cylinder comparison, scale volume and maximal norm bounds, summation
+    over dyadic radius classes, and the Hausdorff transfer are also proved.
+    The transfer gives dimension at least n-alpha from any finite diagonal
+    plate estimate with loss delta^(-alpha/p), p>=1. Finite deficit iteration
+    and continuity give n-(n-k)/p_c^k, with no boundedness or measurability
+    hypothesis on the set. The three deliberate Challenge placeholders
     specify the tasks and are not counted as implementation gaps.
     Final sandboxed Comparator and independent-kernel verification remain
     pending before Palomar submission.
@@ -283,8 +290,10 @@ automation:
       prompting_notes: >-
         User requested the general critical-exponent positive-measure theorem,
         a minimal faithful challenge, exact numerical exponent bounds, source
-        audits, topic-based modules, and regular GitHub pushes. Work outside
-        this theorem's scope was removed at the user's request.
+        audits, topic-based modules, and regular GitHub pushes. The user then
+        requested the Hausdorff-dimension consequence and its explicit
+        Challenge statement. Independent positive-measure work for (5,2)
+        remains removed at the user's request.
   spend_usd: not tracked
   notes: >-
     AI-generated Lean development directed by the project owner. Existing
@@ -296,7 +305,11 @@ fidelity:
     The statements include the elementary k=n boundary and require 1<=k<=n.
     The disk property uses closed radius-one disks and has no measurable-center
     selection hypothesis. Lebesgue measurability uses NullMeasurableSet.
-    The general target and numerical exponent bounds are proved as stated.
+    Both geometric targets and numerical exponent bounds are proved as stated.
+    Hausdorff dimension is Mathlib's dimH, valued in the extended nonnegative
+    reals; ENNReal.ofReal embeds the stated real lower bound. Its set has no
+    measurability or boundedness hypothesis, and the endpoint follows by
+    continuity from subcritical estimates, not an endpoint operator bound.
     Helper analytic implications explicitly display their assumptions.
 
 review:
@@ -306,12 +319,13 @@ review:
     Source definitions and the exact exponent were checked against supplied
     notes and Oberlin's statement. Challenge imports only Mathlib. Comparator
     is configured to compare definitions, the numerical critical-exponent bounds,
-    and the general positive-measure theorem, with no permission for sorryAx.
-    The general target and numerical bound pass the standard-axiom
-    audit. Comparator's macOS development mode accepted these two targets,
-    compared fixed definition bodies, and replayed their exports in Lean.
-    This run had no Linux sandbox and no independent kernel. Full verification
-    remains pending; see the verification report.
+    and both geometric theorems, with no permission for sorryAx.
+    All targets and the reusable Hausdorff transfer pass the standard-axiom
+    audit. A fresh Comparator macOS development run on 2026-09-09 accepted all
+    three current targets, compared fixed definition bodies, and replayed their
+    exports in Lean. This run had no Linux sandbox and no independent kernel.
+    Full verification remains pending; see verification/hausdorff-development.md.
+    Independent mathematical review and novelty assessment remain pending.
     The fixed definitions are not listed as editable definition holes.
 
 alignment:
@@ -327,5 +341,14 @@ alignment:
       module: Solution
       status: proved
       note: The exact rational enclosure is 2.481 < criticalExponent < 2.482.
+    - source: Proved plate induction and the countable Hausdorff covering argument
+      lean: NKBesicovitch.le_dimH_of_isBesicovitch
+      module: Solution
+      status: proved
+      note: >-
+        Hausdorff dimension is at least n-(n-k)/p_c^k for every 1<=k<=n.
+        The set need not be measurable or bounded. The proof uses only
+        propext, Classical.choice, and Quot.sound. Independent review and
+        novelty assessment remain pending.
 
 acknowledgements: Mathlib and Lean contributors; authors of the cited mathematical sources.

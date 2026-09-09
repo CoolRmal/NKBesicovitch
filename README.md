@@ -1,15 +1,30 @@
 # NKBesicovitch
 
-A Lean 4 formalization of a positive-measure result for **(n,k)-Besicovitch sets**,
+A Lean 4 formalization of Hausdorff-dimension and positive-measure bounds for
+**(n,k)-Besicovitch sets**,
 built on [mathlib](https://github.com/leanprover-community/mathlib4).
 
-## The result
+## The results
 
 An **(n,k)-Besicovitch set** contains a translate of the closed unit
 k-dimensional disk in every k-dimensional direction in Euclidean n-space.
 
-For integers `1 ≤ k ≤ n`, this project proves that every Lebesgue measurable
-set with this property has **positive volume** whenever
+For every `1 ≤ k ≤ n`, this project proves
+
+$$
+  \boxed{\dim_H E \ge n-\frac{n-k}{p_c^k}}.
+$$
+
+This Hausdorff-dimension bound requires no measurability or boundedness
+assumption on the set. For ordinary **Kakeya sets**, where `k = 1`, it gives
+
+$$
+  \dim_H E \ge n-\frac{n-1}{p_c}
+  \approx 0.596968283\,n+0.403031717.
+$$
+
+The project also proves **positive volume** for Lebesgue measurable sets
+whenever
 
 $$
   n < p_c^{k-1}+k.
@@ -27,25 +42,25 @@ $$
   \boxed{2.481 < p_c < 2.482}.
 $$
 
-The approximation is $p_c\approx2.481194304$. The theorem uses the exact
-root, so its statement does not depend on floating-point calculations.
+The approximation is $p_c\approx2.481194304$. Both theorems use the exact
+root, so their statements do not depend on floating-point calculations.
 
 ## Proof and verification status
 
-**The theorem and exponent bounds are proved in Lean.** Their dependencies
+**Both theorems and the exponent bounds are proved in Lean.** Their dependencies
 use only Lean's standard axioms: `propext`, `Classical.choice`, and `Quot.sound`.
 There are no `sorry`s in the proof library or `Solution.lean`.
 
-- **Challenge:** `Challenge.lean` contains minimal definitions and the two
-  theorem statements. Its two deliberate `sorry`s are the challenge placeholders.
-- **Solution:** `Solution.lean` exposes the general theorem and imports the
+- **Challenge:** `Challenge.lean` explicitly states all three targets. Its three
+  deliberate `sorry`s are challenge placeholders.
+- **Solution:** `Solution.lean` exposes both theorems and imports the
   completed proof of the exponent bounds.
-- **Comparator:** a development run checked both statements, fixed definitions,
-  permitted axioms, and replayed the proofs in Lean. Full Linux sandbox and
-  independent-kernel verification remain pending.
+- **Checks:** the full build and a Comparator development run pass for all
+  three targets, including statement comparison, axiom checks, and Lean kernel
+  replay. Full Linux sandbox and independent-kernel verification remain pending.
 
-See the [verification report](verification/critical-range-development.md) for
-the precise scope of that run. [formalization.yaml](formalization.yaml) records
+See the [Hausdorff verification report](verification/hausdorff-development.md)
+for the scope of these checks. [formalization.yaml](formalization.yaml) records
 provenance and review status; final Palomar verification is still pending.
 
 ## How the proof fits together
@@ -57,9 +72,12 @@ provenance and review status; final Palomar verification is still pending.
    for integration along lines.
 3. **Dimension induction.** Use the X-ray estimates to improve bounds for
    maximal averages over thickened disks.
-4. **Fourier argument.** Sum the frequency estimates when the dimension
+4. **Hausdorff dimension.** Group a countable ball cover by radius and sum
+   the maximal estimates. Every exponent below `n - α` has positive
+   Hausdorff measure when the plate estimate has deficit `α`.
+5. **Fourier argument.** Sum the frequency estimates when the dimension
    condition gives a strictly positive decay margin.
-5. **Positive measure.** Approximate open-set indicators and use outer
+6. **Positive measure.** Approximate open-set indicators and use outer
    regularity to reach Lebesgue measurable Besicovitch sets.
 
 The library also constructs the rotation-invariant probability measure on
@@ -88,6 +106,7 @@ the library, challenge, and solution.
 | [Projection/](NKBesicovitch/Projection/) | Projection estimates and measurable selection |
 | [Operators/](NKBesicovitch/Operators/) | X-ray, interpolation, and Fourier estimates |
 | [Induction/](NKBesicovitch/Induction/) | Dimension induction and assembly of the general theorem |
+| [Hausdorff/](NKBesicovitch/Hausdorff/) | Ball covers, maximal-estimate transfer, and the Hausdorff bound |
 | [PositiveMeasure/](NKBesicovitch/PositiveMeasure/) | Passage from analytic estimates to positive volume |
 | [PLAN.md](PLAN.md) | Detailed proof structure and source notes |
 | [PROGRESS.md](PROGRESS.md) | Implementation and verification details |
@@ -100,8 +119,12 @@ has positive volume for `2 ≤ k < n`. This project establishes the range above.
 The proof follows the X-ray and maximal-operator induction developed in
 Oberlin's [*Two bounds for the X-ray transform*](https://doi.org/10.1007/s00209-009-0589-5)
 and [*Bounds for Kakeya-type maximal operators associated with k-planes*](https://arxiv.org/abs/math/0512377).
-The sharper projection exponent comes from the September 2026 manuscript
-supplied by the project owner. This repository provides a Lean verification
-of that projection argument and its positive-measure consequence.
+The September 2026 manuscript supplied by the project owner develops a
+selectable continuous projection estimate at the exponent
+$\beta_c=p_c/(p_c-1)$. The same numerical exponent already occurs in
+[Katz–Tao's Minkowski bound](https://arxiv.org/abs/math/0102135).
+Here the selectable estimate feeds mixed-norm bounds and the Hausdorff
+and positive-measure consequences. Independent review of the claimed
+improvement over published Hausdorff bounds is still pending.
 
 Copyright 2026 Yongxi Lin. Released under the [Apache 2.0 license](LICENSE).

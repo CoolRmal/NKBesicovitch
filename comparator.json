@@ -3,7 +3,8 @@
   "solution_module": "Solution",
   "theorem_names": [
     "NKBesicovitch.criticalExponent_bounds",
-    "NKBesicovitch.volume_pos_of_criticalExponent"
+    "NKBesicovitch.volume_pos_of_criticalExponent",
+    "NKBesicovitch.le_dimH_of_isBesicovitch"
   ],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
   "enable_nanoda": true
