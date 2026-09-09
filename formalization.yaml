@@ -93,8 +93,8 @@ sources:
     type: article
     relationship: adapts
     note: >-
-      The finite plate induction is proved; the Fourier terminal step
-      remains incomplete. Flag
+      The finite plate induction and fixed-support Schwartz Fourier terminal
+      estimate are proved; disk localization and approximation remain open. Flag
       integration is now proved in orthogonal frame coordinates, with
       the canonical Grassmannian pushforward. Haar-distributed unit
       directions have normalized Euclidean surface measure. Geometric
@@ -142,8 +142,14 @@ sources:
       proved for all positive scales, directions, translations, and Schwartz
       inputs. Reproducing kernels, uniformly bounded positive plane-kernel
       mass, and averaging over translated plates supply the comparison with
-      weight condition 2A > k. Terminal assembly, smooth localization, and
-      passage to open indicators remain open.
+      weight condition 2A > k. Joint continuity and proper orbit descent
+      give measurable weighted plate majorants. Integrating the diagonal
+      plate estimate with weighted X-ray decay yields a^(-(1-alpha)/p).
+      Geometric summation, signed dyadic decomposition, and flag Fubini
+      now prove a measurable translation-uniform majorant for signed
+      affine-plane integrals of fixed-support Schwartz inputs, with a
+      uniform joint Lp bound. Smooth disk localization and passage to open
+      indicators remain open.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -272,8 +278,13 @@ status:
     signed affine-plane integrals, intrinsic product-volume coordinates on
     lifted planes, signed full-plane Fubini in rotated flag frames,
     bandlimited reproduction, uniformly bounded weighted plane-kernel mass,
-    kernel control by translated plate averages, and the full weighted
-    bandlimited plane comparison
+    kernel control by translated plate averages, the full weighted
+    bandlimited plane comparison, joint continuity of signed frame integrals,
+    lower semicontinuity of continuous plate families by proper orbit descent,
+    integration of diagonal plate bounds over an additional parameter,
+    the combined terminal frequency gain, geometric summation of measurable
+    majorants, signed dyadic affine-plane decomposition, and the assembled
+    fixed-support Schwartz terminal bound
     have Lean proofs.
     The proved foundations also include
     passage from uniform disk or delta-plate maximal estimates
@@ -331,6 +342,8 @@ alignment:
       lean: NKBesicovitch.volume_pos_five_two
       module: Solution
       status: partial
-      note: The full target is stated; the four-dimensional seed and Fourier argument remain open in Lean.
+      note: >-
+        The full target is stated; the four-dimensional seed, disk localization,
+        and approximation remain open. The shared Schwartz terminal estimate is proved.
 
 acknowledgements: Mathlib and Lean contributors; authors of the cited mathematical sources.

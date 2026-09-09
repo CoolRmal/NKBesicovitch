@@ -249,13 +249,17 @@ All induction files belong to `Induction/`:
   plate maximum times the kernel mass. The mass is independent of scale and
   bounded uniformly in direction and translation. The weight condition is
   exactly `2A > k`, and no compact-support hypothesis is imposed here.
-  Remaining steps: joint measurability of the plate majorants in the Haar
-  frame and lower-plane direction; integrate the global plate estimate and
-  the weighted X-ray bound to obtain `2^(-j(1-α)/p)`; sum the dyadic series;
-  use full-plane convergence and signed flag Fubini to bound smooth positive
-  disk inputs. These majorants can control the disk operator directly without
-  introducing an additional full-plane maximal operator. Finally localize the
-  smooth input and pass monotonically to finite-measure open indicators.
+  Joint continuity of signed X-ray integrals and proper descent of plate
+  maxima now give jointly Borel majorants in frame and lower-plane direction.
+  `TerminalDecay` integrates the global plate estimate and weighted X-ray
+  bound, obtaining `a^(-(1-α)/p)`. `TerminalSeries` sums all dyadic scales
+  and the low-frequency term. Signed dyadic decomposition and flag Fubini
+  yield `HasPlateEstimate.exists_affinePlane_majorant` in `TerminalPlane`, with a uniform joint
+  norm for Schwartz inputs supported in any fixed ball. Remaining steps:
+  use positivity to bound smooth disk inputs, localize them smoothly to
+  remove support dependence, and pass monotonically to finite-measure
+  open indicators. The measurable majorants control the disk operator
+  directly without introducing a full-plane maximal operator.
 * `Range`: choose all strict margins, iterate from zero-dimensional disks
   to `(k-1)`-planes, apply the Fourier lift, and assemble the first theorem.
 
@@ -298,8 +302,14 @@ through integrals over entire affine planes. Orthogonal product coordinates
 and Schwartz integrability also give signed full-plane flag Fubini, including
 all translations and rotations. The weighted bandlimited comparison with
 local plate averages is now proved by positive-kernel translation averaging.
-The remaining gap is terminal assembly, smooth localization, and passage to
-open indicators.
+Joint measurability, integration of the weighted frequency gain, geometric
+summation, and signed dyadic decomposition now assemble the Schwartz
+terminal bound with a fixed support radius. The remaining gap is its
+positive smooth disk consequence, smooth localization, and passage to open
+indicators. For localization, a fixed nonnegative smooth bump equal to one
+on the radius-two ball and supported in the radius-three ball can replace
+the hard cutoff in the existing moving-ball argument. Averaging its
+translates keeps each input Schwartz and removes dependence on support.
 
 ### 7. Independent `(5,2)` seed
 

@@ -47,4 +47,13 @@ theorem eLpNorm_prod_le_iterated (f : X × Y → ℝ≥0∞)
   simp only [enorm_eq_self, hpow]
   exact ENNReal.rpow_le_rpow (lintegral_prod_le (fun z ↦ f z ^ p.toReal)) (by positivity)
 
+/-- For a measurable nonnegative input, equal iterated exponents give the product norm. -/
+theorem eLpNorm_iterated_eq_prod [SFinite ν] {f : X × Y → ℝ≥0∞} (hf : Measurable f)
+    (hp : p ≠ 0) (hpfin : p ≠ ∞) :
+    eLpNorm (fun x ↦ eLpNorm (fun y ↦ f (x, y)) p ν) p μ = eLpNorm f p (μ.prod ν) := by
+  have hpos : 0 < p.toReal := ENNReal.toReal_pos hp hpfin
+  simp_rw [eLpNorm_eq_lintegral_rpow_enorm_toReal hp hpfin, enorm_eq_self,
+    ← ENNReal.rpow_mul, one_div_mul_cancel hpos.ne', ENNReal.rpow_one]
+  rw [lintegral_prod _ (hf.pow_const p.toReal).aemeasurable]
+
 end NKBesicovitch

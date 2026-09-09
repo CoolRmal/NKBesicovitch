@@ -32,7 +32,8 @@ disks, positive finite plate volumes, and Fatou's lemma with thresholds that
 may vary by direction. Strict-margin selection shows that the target range
 needs only projection estimates above the endpoint. The strong geometric
 X-ray bound for general inputs and the finite plate induction are now proved.
-The Fourier terminal argument and four-dimensional seed remain incomplete.
+The fixed-support Schwartz Fourier terminal estimate is now proved.
+Disk localization, approximation, and the four-dimensional seed remain incomplete.
 
 The Grassmannian now has its natural probability measure, constructed from Haar
 measure on the orthogonal group. Lean verifies that it is independent of the
@@ -106,8 +107,13 @@ proves the full comparison with local plate averages: if the Fourier support
 lies in the ball of radius `aR`, the full absolute integral on every translated
 `k`-plane is bounded by the thickness-`a⁻¹` plate maximum of
 `(1 + ‖x‖²)^A f`, for `2A > k`. The constant is independent of scale, plane,
-translation, and input. The remaining terminal assembly and the separate
-`(5,2)` proof are incomplete.
+translation, and input. `Induction/TerminalDecay` now integrates the plate
+and weighted X-ray estimates, giving `a^(-(1-α)/p)`. `TerminalSeries` sums
+the dyadic majorants when `α < 1`, with joint measurability proved.
+`TerminalPlane` assembles a measurable majorant for all signed affine-plane
+integrals of Schwartz inputs supported in a fixed ball, with a uniform
+`Lᵖ` bound. Smooth disk localization, passage to open indicators, and the
+separate four-dimensional seed needed for `(5,2)` remain incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
@@ -150,7 +156,8 @@ Theorem 3, relates this question to mixed-norm X-ray estimates. The supplied
 September 2026 projection manuscript proposes the exponent leading to the
 larger ratio above. Its projection estimate, quantitative selection, transfer
 to spherical X-ray estimates, and finite plate induction now have Lean proofs.
-The terminal argument for the requested positive-measure theorem remains open.
+The fixed-support Schwartz terminal estimate is proved; its passage to
+arbitrary Besicovitch sets remains open.
 The separate (5,2) route uses the corrected
 [Guth–Zahl estimate](https://arxiv.org/abs/1701.07045),
 [Katz–Rogers concentration theorem](https://arxiv.org/abs/1802.09094),

@@ -5,6 +5,21 @@ source decomposition. The final theorems are not proved yet.
 
 ## Completed foundations
 
+* `Induction/TerminalPlane` proves the assembled Fourier terminal bound for
+  Schwartz inputs supported in any fixed ball: every lower-dimensional
+  plate estimate with `α < 1` and finite `p ≥ 2` gives a measurable majorant
+  for all signed affine flag-plane integrals, uniform over translations,
+  whose joint norm is bounded by the input `Lᵖ` norm. `TerminalDecay`
+  combines the plate loss with weighted X-ray decay to give
+  `a^(-(1-α)/p)`. `TerminalSeries` sums the resulting geometric series,
+  including the low-frequency term. `XRay/FrameContinuity` proves joint
+  continuity by a uniform integrable line-parameter bound.
+  `PlateContinuousFamily` descends joint lower semicontinuity through the
+  proper orbit map; `PlateFamilyNorm` integrates diagonal bounds without
+  changing their constants. `Fourier/PlaneDecomposition` preserves signed
+  integration in the dyadic limit, and `XRay/DyadicMajorant` combines it
+  with signed flag Fubini and the bandlimited comparison. Smooth
+  localization and approximation by open indicators remain to be proved.
 * `Fourier/PolynomialSupport` proves that coordinate multiplication, and
   hence every weight `(1 + ‖x‖²)^A`, preserves closed Fourier support.
   The proof uses Mathlib's Fourier differentiation identity, support
@@ -20,8 +35,8 @@ source decomposition. The final theorems are not proved yet.
   kernels and their convolutions. `DyadicConvergence` proves eventual
   equality at each fixed Fourier frequency, convergence of the Fourier
   error in the one-norm, and uniform convergence of the approximations on
-  the whole ambient space. Convergence through unbounded plane integrals
-  is not inferred from uniform convergence and remains a separate obligation.
+  the whole ambient space. `PlaneConvergence` separately justifies passage
+  through unbounded plane integrals using an integrable spatial majorant.
 * `XRay/FrameDilation` gives exact line-integral scaling. `KernelDecay`
   separates integrable line-parameter decay from arbitrary transverse
   decay, uniformly over rotations. `KernelTranslation` and `KernelTail`
@@ -548,16 +563,17 @@ uniform approximation, and preservation of Fourier support under polynomial
 weights are also proved. Uniform polynomial spatial decay now justifies
 convergence through full-plane integration by an integrable majorant on each
 affine plane. Intrinsic product-volume coordinates and Schwartz integrability
-also prove signed full-plane Fubini in rotated flag frames. The remaining
-general-range work is now terminal assembly: the weighted bandlimited
-comparison with local plate averages has been proved, with constants uniform
-in scale, direction, translation, and input. It remains to integrate and sum
-the frequency bounds, localize smooth positive inputs, and pass to open
-indicators using the proved passage from uniform maximal bounds to positive
-measure.
+also prove signed full-plane Fubini in rotated flag frames. Joint measurability,
+integration of the frequency bounds, geometric summation, and signed dyadic
+decomposition now complete the fixed-support Schwartz terminal estimate.
+It remains to obtain the positive smooth disk bound, remove the support
+restriction by smooth localization, and pass to open indicators using the
+proved passage from uniform maximal bounds to positive measure.
 
 The independent (5,2) branch still needs the corrected Guth–Zahl and
-Katz–Rogers proofs, its maximal estimate, and the Fourier terminal argument.
+Katz–Rogers proofs and its maximal estimate. The shared Schwartz terminal
+estimate is now available; its disk localization and approximation steps
+remain necessary for this branch as well.
 All these inputs require proofs in Lean; none may be installed as axioms.
 The remaining work includes the final source-fidelity audit, Comparator and
 kernel verification, Palomar-ready metadata, and the requested README
@@ -719,6 +735,13 @@ source warnings. The full build succeeds with 3421 jobs and the same five
 intended holes. All 295 library modules satisfy the file-size limit, with a
 maximum of 160 lines. The new Lean files satisfy the 100-character line limit,
 and metadata validates against the upstream schema.
+Joint continuity of signed frame integrals, proper descent for continuous
+plate families, joint family norm bounds, the terminal frequency gain,
+the summed dyadic majorant, and the assembled signed affine-plane theorem
+pass the standard-axiom audit without source warnings. The full build
+succeeds with 3431 jobs and the same five intended holes. All 305 library
+modules stay within the file-size limit; the largest has 160 lines.
+The changed Lean files satisfy the 100-character line limit.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

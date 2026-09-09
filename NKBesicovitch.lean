@@ -25,6 +25,8 @@ import NKBesicovitch.Operators.Defs
 import NKBesicovitch.Operators.Disks
 import NKBesicovitch.Operators.Semicontinuity
 import NKBesicovitch.Operators.PlateMeasurability
+import NKBesicovitch.Operators.PlateContinuousFamily
+import NKBesicovitch.Operators.PlateFamilyNorm
 import NKBesicovitch.Operators.PlateRotation
 import NKBesicovitch.Operators.PlatePower
 import NKBesicovitch.Operators.PlateTranslation
@@ -43,6 +45,7 @@ import NKBesicovitch.Operators.Fourier.DyadicDecomposition
 import NKBesicovitch.Operators.Fourier.DyadicConvergence
 import NKBesicovitch.Operators.Fourier.ConvolutionDecay
 import NKBesicovitch.Operators.Fourier.PlaneConvergence
+import NKBesicovitch.Operators.Fourier.PlaneDecomposition
 import NKBesicovitch.Operators.Fourier.ReproducingKernel
 import NKBesicovitch.Operators.Fourier.PlaneKernel
 import NKBesicovitch.Operators.Fourier.PlaneKernelMass
@@ -100,7 +103,11 @@ import NKBesicovitch.Operators.XRay.Frame
 import NKBesicovitch.Operators.XRay.FourierSlice
 import NKBesicovitch.Operators.XRay.SchwartzLine
 import NKBesicovitch.Operators.XRay.FourierFrame
+import NKBesicovitch.Operators.XRay.FrameContinuity
 import NKBesicovitch.Operators.XRay.PlaneIntegral
+import NKBesicovitch.Operators.XRay.PlateMajorant
+import NKBesicovitch.Operators.XRay.PlaneMajorant
+import NKBesicovitch.Operators.XRay.DyadicMajorant
 import NKBesicovitch.Operators.XRay.AveragedFourier
 import NKBesicovitch.Operators.XRay.ConvolutionBound
 import NKBesicovitch.Operators.XRay.SmoothedBound
@@ -292,4 +299,7 @@ import NKBesicovitch.Induction.XRayExponents
 import NKBesicovitch.Induction.Lift
 import NKBesicovitch.Induction.Iteration
 import NKBesicovitch.Induction.Globalization
+import NKBesicovitch.Induction.TerminalDecay
+import NKBesicovitch.Induction.TerminalSeries
+import NKBesicovitch.Induction.TerminalPlane
 import NKBesicovitch.FiveTwo.Main
