@@ -32,6 +32,8 @@ import NKBesicovitch.Operators.PlateLocalizationMeasurability
 import NKBesicovitch.Operators.PlateLocalization
 import NKBesicovitch.Operators.BallLocalization
 import NKBesicovitch.Operators.PolynomialWeight
+import NKBesicovitch.Operators.TranslatedAverages
+import NKBesicovitch.Operators.PlateKernelBound
 import NKBesicovitch.Operators.Fourier.Plancherel
 import NKBesicovitch.Operators.Fourier.Convolution
 import NKBesicovitch.Operators.Fourier.Dilation
@@ -41,6 +43,12 @@ import NKBesicovitch.Operators.Fourier.DyadicDecomposition
 import NKBesicovitch.Operators.Fourier.DyadicConvergence
 import NKBesicovitch.Operators.Fourier.ConvolutionDecay
 import NKBesicovitch.Operators.Fourier.PlaneConvergence
+import NKBesicovitch.Operators.Fourier.ReproducingKernel
+import NKBesicovitch.Operators.Fourier.PlaneKernel
+import NKBesicovitch.Operators.Fourier.PlaneKernelMass
+import NKBesicovitch.Operators.Fourier.PlaneKernelBound
+import NKBesicovitch.Operators.Fourier.PlaneKernelPairing
+import NKBesicovitch.Operators.Fourier.BandlimitedPlane
 import NKBesicovitch.Operators.MixedNorm.Basic
 import NKBesicovitch.Operators.MixedNorm.Fibers
 import NKBesicovitch.Operators.MixedNorm.Sums

@@ -101,9 +101,13 @@ X-ray fiber. Uniform polynomial spatial decay now gives an integrable bound on
 every full affine plane, so its signed integrals converge as well.
 `Grassmannian/NormalLiftCoordinates` identifies intrinsic plane volume with
 product volume, and `XRay/PlaneIntegral` proves signed Fubini in every rotated
-flag frame, including arbitrary translations. The bandlimited comparison with
-local plate averages, the rest of the terminal argument, and the separate
-`(5,2)` proof remain incomplete.
+flag frame, including arbitrary translations. `Fourier/BandlimitedPlane` now
+proves the full comparison with local plate averages: if the Fourier support
+lies in the ball of radius `aR`, the full absolute integral on every translated
+`k`-plane is bounded by the thickness-`a⁻¹` plate maximum of
+`(1 + ‖x‖²)^A f`, for `2A > k`. The constant is independent of scale, plane,
+translation, and input. The remaining terminal assembly and the separate
+`(5,2)` proof are incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.

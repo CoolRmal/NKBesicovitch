@@ -35,6 +35,16 @@ source decomposition. The final theorems are not proved yet.
   rapidly decaying one-norm term. `WeightedDecay` combines this with
   interpolation and support-restricted Holder to retain `a^(-1/p)` for
   every weight `(1 + ‖x‖²)^A`, finite `p ≥ 2`, and `a ≥ 1`.
+* `Fourier/BandlimitedPlane` proves that the full absolute integral of a
+  bandlimited Schwartz function on any affine `k`-plane is bounded by the
+  thickness-`a⁻¹` plate maximum of its polynomially weighted absolute value,
+  when the Fourier radius is `aR` and `2A > k`. The constant is independent
+  of positive scale, direction, translation, and input. `ReproducingKernel`
+  proves exact reproduction and a positive polynomial convolution bound.
+  `PlaneKernel`, `PlaneKernelMass`, and `PlaneKernelPairing` establish the
+  weighted kernel, its uniform mass, and the Tonelli pairing identity.
+  `TranslatedAverages` and `PlateKernelBound` control that pairing by plate
+  averages, using bounded kernel variation under plate-sized shifts.
 * `Fourier/ConvolutionDecay` proves spatial polynomial decay of the smooth
   approximations uniformly over all dilation scales at least one.
   `PlaneConvergence` supplies an integrable majorant on every affine plane
@@ -539,9 +549,12 @@ weights are also proved. Uniform polynomial spatial decay now justifies
 convergence through full-plane integration by an integrable majorant on each
 affine plane. Intrinsic product-volume coordinates and Schwartz integrability
 also prove signed full-plane Fubini in rotated flag frames. The remaining
-general-range work includes bandlimited comparison with local plate averages
-and final assembly with the proved passage from uniform maximal bounds to
-positive measure.
+general-range work is now terminal assembly: the weighted bandlimited
+comparison with local plate averages has been proved, with constants uniform
+in scale, direction, translation, and input. It remains to integrate and sum
+the frequency bounds, localize smooth positive inputs, and pass to open
+indicators using the proved passage from uniform maximal bounds to positive
+measure.
 
 The independent (5,2) branch still needs the corrected Guth–Zahl and
 Katz–Rogers proofs, its maximal estimate, and the Fourier terminal argument.
@@ -699,6 +712,13 @@ standard-axiom audit without source warnings. The full build succeeds with
 3413 jobs and the same five intended holes. All 287 library modules satisfy
 the file-size limit; the largest remains 160 lines. Changed Lean files stay
 within 100 columns, and metadata validates against the upstream schema.
+Bandlimited reproduction, the positive convolution majorant, translated-average
+control, the weighted plane kernel and its uniform finite mass, and the full
+weighted bandlimited plane comparison pass the standard-axiom audit without
+source warnings. The full build succeeds with 3421 jobs and the same five
+intended holes. All 295 library modules satisfy the file-size limit, with a
+maximum of 160 lines. The new Lean files satisfy the 100-character line limit,
+and metadata validates against the upstream schema.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.

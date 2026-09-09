@@ -240,8 +240,22 @@ All induction files belong to `Induction/`:
   `Grassmannian/NormalLiftCoordinates` identifies lifted intrinsic plane
   volume with product volume. `XRay/PlaneIntegral` proves signed full-plane
   Fubini in every rotated flag frame, with arbitrary translations.
-* `Terminal`: polynomially weighted bandlimited fiber comparison, summable
-  dyadic gain, and the local full-plane bound.
+* `Terminal`: `Fourier/BandlimitedPlane` now proves the weighted bandlimited
+  comparison uniformly over all positive scales, directions, and translations.
+  It uses a reproducing kernel and a positive weighted plane kernel. Averaging
+  translated plates replaces the discrete covering in the supplied proof:
+  unit tangential shifts are absorbed by the plane weight, thickness-sized
+  shifts by the smoothing profile, and Tonelli controls the pairing by the
+  plate maximum times the kernel mass. The mass is independent of scale and
+  bounded uniformly in direction and translation. The weight condition is
+  exactly `2A > k`, and no compact-support hypothesis is imposed here.
+  Remaining steps: joint measurability of the plate majorants in the Haar
+  frame and lower-plane direction; integrate the global plate estimate and
+  the weighted X-ray bound to obtain `2^(-j(1-α)/p)`; sum the dyadic series;
+  use full-plane convergence and signed flag Fubini to bound smooth positive
+  disk inputs. These majorants can control the disk operator directly without
+  introducing an additional full-plane maximal operator. Finally localize the
+  smooth input and pass monotonically to finite-measure open indicators.
 * `Range`: choose all strict margins, iterate from zero-dimensional disks
   to `(k-1)`-planes, apply the Fourier lift, and assemble the first theorem.
 
@@ -282,8 +296,10 @@ Fourier support, and `XRay/Bandlimited` gives weighted Schwartz fibers with
 the original frequency radius. Uniform spatial decay now justifies convergence
 through integrals over entire affine planes. Orthogonal product coordinates
 and Schwartz integrability also give signed full-plane flag Fubini, including
-all translations and rotations. The remaining gap includes bandlimited
-comparison with local plate averages and terminal assembly.
+all translations and rotations. The weighted bandlimited comparison with
+local plate averages is now proved by positive-kernel translation averaging.
+The remaining gap is terminal assembly, smooth localization, and passage to
+open indicators.
 
 ### 7. Independent `(5,2)` seed
 
