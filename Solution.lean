@@ -12,9 +12,10 @@ public import NKBesicovitch.FiveTwo.Main
 /-!
 # Solution interface
 
-This module deliberately does not import Challenge. The implementation theorems
-still contain explicit proof gaps, so this is not yet a passing Comparator solution.
-The imported `criticalExponent_bounds` is already fully proved in `Exponents`.
+This module deliberately does not import Challenge. The critical-exponent bound
+and general positive-measure theorem are proved with only the standard axioms.
+The independent `(5,2)` theorem still contains a proof gap, so the complete
+interface is not yet a passing Comparator solution.
 -/
 
 public section

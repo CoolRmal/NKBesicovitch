@@ -279,8 +279,8 @@ range now supplies a deficit below one in dimension `n-1` at finite input
 exponent at least two. `Globalization` now extends every such local estimate
 to arbitrary Borel nonnegative inputs for `0 < δ ≤ 1`. Translation covariance,
 joint measurability of moving-ball maxima, and Tonelli give the explicit
-factor `3^(n/p)` without changing the deficit. `Range` uses this global
-estimate. The signed Fourier-slice identity and averaged Plancherel estimate
+factor `3^(n/p)` without changing the deficit. This global estimate feeds
+the terminal argument used by `Range`. The signed Fourier-slice identity and averaged Plancherel estimate
 are now proved, including a finite constant for the half-derivative gain.
 Both smoothed endpoints are uniform under normalized kernel dilation. Smooth
 amplitude splitting and weighted layer-cake integration now prove interpolation
@@ -304,12 +304,15 @@ all translations and rotations. The weighted bandlimited comparison with
 local plate averages is now proved by positive-kernel translation averaging.
 Joint measurability, integration of the weighted frequency gain, geometric
 summation, and signed dyadic decomposition now assemble the Schwartz
-terminal bound with a fixed support radius. The remaining gap is its
-positive smooth disk consequence, smooth localization, and passage to open
-indicators. For localization, a fixed nonnegative smooth bump equal to one
-on the radius-two ball and supported in the radius-three ball can replace
-the hard cutoff in the existing moving-ball argument. Averaging its
-translates keeps each input Schwartz and removes dependence on support.
+terminal bound with a fixed support radius. `TerminalDisk` now proves its
+positive disk consequence. A nonnegative smooth bump equal to one on the
+radius-two ball and supported in the radius-three ball gives localization
+within the Schwartz domain. Averaging translates removes dependence on
+support. `SmoothApproximation` approximates each open indicator pointwise
+by dominated positive Schwartz inputs. Bounded disk convergence and Fatou
+pass the global estimate to open indicators. `TerminalPositiveMeasure`
+applies outer regularity, and `Range` now proves the full general target.
+The complete dependency chain passes the standard-axiom audit.
 
 ### 7. Independent `(5,2)` seed
 
@@ -320,8 +323,9 @@ Mathlib before decomposing each source ingredient; none may be assumed.
 `FiveTwo/Maximal.lean`: separated-direction covering, equal-density measurable
 shadings, restricted weak estimate, and strongification at input exponent 4.
 Choose `ε = η = 1/160`, giving loss `α = 79/80 < 1` and threshold `121/40 < 4`.
-`FiveTwo/Main.lean`: terminal Fourier gain `2^(-j/320)`, sum over j, globalize to
-unit disks, then apply `PositiveMeasure/FromMaximal`.
+`FiveTwo/Main.lean`: apply the proved `HasPlateEstimate.volume_pos` terminal
+theorem to this seed. Its Fourier gain is `2^(-j/320)`; summation, smooth
+globalization, approximation, and outer regularity are already available.
 
 This is a substantial independent branch. Published theorem statements are
 proof obligations, never custom axioms or user-facing hypotheses.

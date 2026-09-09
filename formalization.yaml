@@ -7,8 +7,9 @@ project:
     Work in progress toward positive Lebesgue measure for (n,k)-Besicovitch
     sets when p_c^(k-1)+k>n, and for (5,2), where p_c is the root in (2,3) of
     p^3-2p^2-2p+2=0. The project specifies the full statements and develops
-    their geometric, arithmetic, and measure-theoretic foundations. The two
-    main analytic proofs remain incomplete.
+    their geometric, arithmetic, and measure-theoretic foundations. The
+    general critical-exponent theorem is proved; the independent (5,2)
+    analytic seed remains incomplete.
   authors:
     - Yongxi Lin
   license: Apache-2.0
@@ -93,8 +94,8 @@ sources:
     type: article
     relationship: adapts
     note: >-
-      The finite plate induction and fixed-support Schwartz Fourier terminal
-      estimate are proved; disk localization and approximation remain open. Flag
+      The finite plate induction, Fourier terminal estimate, smooth disk
+      localization, and open-indicator approximation are proved. Flag
       integration is now proved in orthogonal frame coordinates, with
       the canonical Grassmannian pushforward. Haar-distributed unit
       directions have normalized Euclidean surface measure. Geometric
@@ -149,7 +150,7 @@ sources:
       now prove a measurable translation-uniform majorant for signed
       affine-plane integrals of fixed-support Schwartz inputs, with a
       uniform joint Lp bound. Smooth disk localization and passage to open
-      indicators remain open.
+      indicators now complete the general positive-measure theorem.
     author_endorsement: not-contacted
   - title: Polynomial Wolff axioms and Kakeya-type estimates in R4
     authors: [Larry Guth, Joshua Zahl]
@@ -284,15 +285,18 @@ status:
     integration of diagonal plate bounds over an additional parameter,
     the combined terminal frequency gain, geometric summation of measurable
     majorants, signed dyadic affine-plane decomposition, and the assembled
-    fixed-support Schwartz terminal bound
-    have Lean proofs.
+    fixed-support Schwartz terminal bound, normalized positive disk bound,
+    smooth globalization, dominated Schwartz approximation of open indicators,
+    bounded disk convergence, and the general critical-exponent
+    positive-measure theorem have Lean proofs.
     The proved foundations also include
     passage from uniform disk or delta-plate maximal estimates
     on open indicators to a volume lower bound.
-    Two top-level proof gaps stand for substantial undeveloped analytic
-    dependencies described in PLAN.md. Their count does not measure the size
-    of the remaining work. This snapshot is not ready for Palomar submission.
-  sorry_count: 2
+    One top-level proof gap stands for the substantial independent
+    four-dimensional analytic seed described in PLAN.md. Its count does not
+    measure the size of the remaining work. This snapshot is not ready for
+    Palomar submission.
+  sorry_count: 1
   sorry_in_definitions: 0
   axioms: []
 
@@ -317,8 +321,9 @@ fidelity:
     The statements include the elementary k=n boundary and require 1<=k<=n.
     The disk property uses closed radius-one disks and has no measurable-center
     selection hypothesis. Lebesgue measurability uses NullMeasurableSet.
-    The advertised conclusions are incomplete, not replaced by conditional
-    variants. Helper analytic implications explicitly display their assumptions.
+    The general target is proved as stated. The independent (5,2) target
+    remains incomplete and is not replaced by a conditional variant.
+    Helper analytic implications explicitly display their assumptions.
 
 review:
   status: self-assessed, incomplete
@@ -328,7 +333,8 @@ review:
     notes and Oberlin's statement. Challenge imports only Mathlib. Comparator
     is configured to compare definitions, the numerical critical-exponent bounds,
     and both positive-measure theorems, with no permission
-    for sorryAx; full verification cannot pass while the proof gaps remain.
+    for sorryAx. The general target and numerical bound pass the standard-axiom
+    audit; full verification cannot pass while the (5,2) gap remains.
 
 alignment:
   namespace: NKBesicovitch
@@ -336,14 +342,15 @@ alignment:
     - source: Supplied projection estimate and Oberlin Theorem 3
       lean: NKBesicovitch.volume_pos_of_criticalExponent
       module: Solution
-      status: partial
-      note: The full target is stated; the proper-dimensional analytic case remains open in Lean.
+      status: proved
+      note: The full target is proved with only propext, Classical.choice, and Quot.sound.
     - source: Supplied positive-measure (5,2) draft
       lean: NKBesicovitch.volume_pos_five_two
       module: Solution
       status: partial
       note: >-
-        The full target is stated; the four-dimensional seed, disk localization,
-        and approximation remain open. The shared Schwartz terminal estimate is proved.
+        The full target is stated; the independent four-dimensional seed
+        remains open. The shared terminal step, disk localization, approximation,
+        and passage to positive measure are proved.
 
 acknowledgements: Mathlib and Lean contributors; authors of the cited mathematical sources.

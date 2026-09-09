@@ -6,6 +6,7 @@ import NKBesicovitch.Grassmannian.Action
 import NKBesicovitch.Grassmannian.Transitivity
 import NKBesicovitch.Grassmannian.Topology
 import NKBesicovitch.Grassmannian.Measure
+import NKBesicovitch.Grassmannian.Volume
 import NKBesicovitch.Grassmannian.NormalLift
 import NKBesicovitch.Grassmannian.NormalLiftCoordinates
 import NKBesicovitch.Grassmannian.FlagMeasure
@@ -23,6 +24,14 @@ import NKBesicovitch.Geometry.DirectionMeasure
 import NKBesicovitch.Geometry.DirectionCover
 import NKBesicovitch.Operators.Defs
 import NKBesicovitch.Operators.Disks
+import NKBesicovitch.Operators.DiskRotation
+import NKBesicovitch.Operators.DiskMeasurability
+import NKBesicovitch.Operators.DiskPlaneBound
+import NKBesicovitch.Operators.DiskFlagBound
+import NKBesicovitch.Operators.DiskLocalization
+import NKBesicovitch.Operators.SmoothLocalization
+import NKBesicovitch.Operators.DiskGlobalization
+import NKBesicovitch.Operators.DiskConvergence
 import NKBesicovitch.Operators.Semicontinuity
 import NKBesicovitch.Operators.PlateMeasurability
 import NKBesicovitch.Operators.PlateContinuousFamily
@@ -283,6 +292,8 @@ import NKBesicovitch.Projection.Selection.TreeScheme
 import NKBesicovitch.Projection.Selection.Main
 import NKBesicovitch.Projection.Iteration
 import NKBesicovitch.PositiveMeasure.FromMaximal
+import NKBesicovitch.PositiveMeasure.SmoothApproximation
+import NKBesicovitch.PositiveMeasure.FromSchwartz
 import NKBesicovitch.PositiveMeasure.Delta
 import NKBesicovitch.PositiveMeasure.PlateBound
 import NKBesicovitch.Induction.Range
@@ -302,4 +313,7 @@ import NKBesicovitch.Induction.Globalization
 import NKBesicovitch.Induction.TerminalDecay
 import NKBesicovitch.Induction.TerminalSeries
 import NKBesicovitch.Induction.TerminalPlane
+import NKBesicovitch.Induction.TerminalDisk
+import NKBesicovitch.Induction.TerminalGlobal
+import NKBesicovitch.Induction.TerminalPositiveMeasure
 import NKBesicovitch.FiveTwo.Main

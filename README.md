@@ -6,10 +6,11 @@ around the **(n,k)-Besicovitch conjecture**.
 
 ## Status
 
-Work in progress. Both requested theorems are stated in `Challenge.lean`, but
-their central analytic proofs are incomplete. A successful build currently
-includes two proof gaps, in addition to the three deliberate challenge holes.
-This is **not yet a verified proof or a Palomar submission**.
+The general critical-exponent positive-measure theorem is now proved in Lean,
+including its numerical bound. Its proof depends only on `propext`,
+`Classical.choice`, and `Quot.sound`. The independent `(5,2)` theorem remains
+incomplete, with one implementation proof gap and three deliberate challenge
+holes. The complete project is **not yet ready for Palomar submission**.
 
 The target range is
 
@@ -32,8 +33,9 @@ disks, positive finite plate volumes, and Fatou's lemma with thresholds that
 may vary by direction. Strict-margin selection shows that the target range
 needs only projection estimates above the endpoint. The strong geometric
 X-ray bound for general inputs and the finite plate induction are now proved.
-The fixed-support Schwartz Fourier terminal estimate is now proved.
-Disk localization, approximation, and the four-dimensional seed remain incomplete.
+The Fourier terminal estimate, smooth disk localization, approximation of
+open indicators, and outer regularity now complete the general theorem.
+The four-dimensional seed needed for `(5,2)` remains incomplete.
 
 The Grassmannian now has its natural probability measure, constructed from Haar
 measure on the orthogonal group. Lean verifies that it is independent of the
@@ -112,8 +114,13 @@ and weighted X-ray estimates, giving `a^(-(1-α)/p)`. `TerminalSeries` sums
 the dyadic majorants when `α < 1`, with joint measurability proved.
 `TerminalPlane` assembles a measurable majorant for all signed affine-plane
 integrals of Schwartz inputs supported in a fixed ball, with a uniform
-`Lᵖ` bound. Smooth disk localization, passage to open indicators, and the
-separate four-dimensional seed needed for `(5,2)` remain incomplete.
+`Lᵖ` bound. `TerminalDisk` transfers this to positive disk averages with their
+exact intrinsic volume normalization. `TerminalGlobal` removes the support
+restriction by smooth localization. Positive Schwartz functions dominated by
+each open indicator converge pointwise to it; disk convergence and Fatou
+pass the uniform bound to open sets. `TerminalPositiveMeasure` applies outer
+regularity, and `Induction/Range` completes the general target. The independent
+four-dimensional seed needed for `(5,2)` remains incomplete.
 
 See [PLAN.md](PLAN.md) for the source audit and detailed proof decomposition,
 and [formalization.yaml](formalization.yaml) for provenance and proof status.
@@ -156,8 +163,8 @@ Theorem 3, relates this question to mixed-norm X-ray estimates. The supplied
 September 2026 projection manuscript proposes the exponent leading to the
 larger ratio above. Its projection estimate, quantitative selection, transfer
 to spherical X-ray estimates, and finite plate induction now have Lean proofs.
-The fixed-support Schwartz terminal estimate is proved; its passage to
-arbitrary Besicovitch sets remains open.
+The Fourier terminal argument and its passage to Besicovitch sets are now
+proved, completing the general critical-exponent theorem.
 The separate (5,2) route uses the corrected
 [Guth–Zahl estimate](https://arxiv.org/abs/1701.07045),
 [Katz–Rogers concentration theorem](https://arxiv.org/abs/1802.09094),
@@ -168,7 +175,9 @@ No claim of research priority or completed formalization is made at this stage.
 
 The challenge and solution are separate Lake libraries; neither imports the
 other. Comparator permits only `propext`, `Quot.sound`, and `Classical.choice`.
-It must reject the current solution's `sorryAx` dependencies. The eventual
-submission also requires independent kernel replay and a source-fidelity audit.
+The numerical bound and general theorem pass the Lean axiom audit. The `(5,2)`
+theorem still depends on `sorryAx`, so the complete Comparator configuration
+cannot yet pass. Submission also requires independent kernel replay and a
+source-fidelity audit.
 The standard Palomar verifier currently uses Linux tooling; it has not been run
 on this macOS development machine.

@@ -8,15 +8,15 @@ module
 public import NKBesicovitch.Exponents
 public import NKBesicovitch.Geometry.Disks
 public import NKBesicovitch.Induction.Iteration
-public import NKBesicovitch.Induction.Globalization
+public import NKBesicovitch.Induction.TerminalPositiveMeasure
 
 /-!
 # The critical range
 
 The selectable projection estimate, its mixed-norm X-ray consequence, and
 the finite plate induction now supply a lower-dimensional deficit below one.
-The plate estimate is globalized without changing this deficit.
-The proper-dimensional case still requires the Fourier terminal argument.
+The Fourier terminal step gives a global disk estimate, whose extension
+to open indicators and outer regularity prove the positive-measure target.
 -/
 
 public section
@@ -35,7 +35,10 @@ theorem volume_pos_of_criticalExponent {n k : ℕ} (hk : 1 ≤ k) (hkn : k ≤ n
   · exact volume_pos_of_isBesicovitch_self hB
   · obtain ⟨α, p, hα, hα1, hp, hplate⟩ :=
       exists_hasPlateEstimate_deficit_lt_one hk hkn h
-    obtain ⟨C, hC⟩ := hplate.global_bound (by linarith)
-    sorry
+    obtain ⟨m, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (show n ≠ 0 by omega)
+    obtain ⟨j, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (show k ≠ 0 by omega)
+    simp only [Nat.succ_sub_one] at hplate
+    let : Nonempty (Fin m) := Fin.pos_iff_nonempty.mp (by omega)
+    exact hplate.volume_pos hα1 hp hB
 
 end NKBesicovitch.Induction

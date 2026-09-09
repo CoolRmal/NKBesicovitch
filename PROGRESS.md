@@ -1,10 +1,22 @@
 # Verified progress and remaining proof frontier
 
 This is an implementation ledger. `PLAN.md` retains the complete objective and
-source decomposition. The final theorems are not proved yet.
+source decomposition. The general critical-exponent theorem is proved; the
+independent `(5,2)` theorem remains incomplete.
 
 ## Completed foundations
 
+* `Induction/Range.volume_pos_of_criticalExponent` is now proved in the full
+  requested range, with only the three standard Lean axioms. `TerminalDisk`
+  converts signed plane majorants to positive disk bounds with exact intrinsic
+  volume normalization. `DiskMeasurability` proves joint lower semicontinuity
+  for disk families. Smooth localization yields a global Schwartz estimate
+  with norm factor `3^(n/p)`. `SmoothApproximation` constructs positive
+  Schwartz approximations dominated by each open indicator; bounded disk
+  convergence and Fatou pass the estimate to these indicators.
+  `PositiveMeasure/FromSchwartz` and `TerminalPositiveMeasure` complete the
+  outer-regularity argument. No measurability of the Besicovitch set is needed
+  by the terminal helper; the challenge retains the requested hypothesis.
 * `Induction/TerminalPlane` proves the assembled Fourier terminal bound for
   Schwartz inputs supported in any fixed ball: every lower-dimensional
   plate estimate with `α < 1` and finite `p ≥ 2` gives a measurable majorant
@@ -18,8 +30,8 @@ source decomposition. The final theorems are not proved yet.
   proper orbit map; `PlateFamilyNorm` integrates diagonal bounds without
   changing their constants. `Fourier/PlaneDecomposition` preserves signed
   integration in the dyadic limit, and `XRay/DyadicMajorant` combines it
-  with signed flag Fubini and the bandlimited comparison. Smooth
-  localization and approximation by open indicators remain to be proved.
+  with signed flag Fubini and the bandlimited comparison. Smooth localization
+  and approximation of open indicators now finish the positive-measure step.
 * `Fourier/PolynomialSupport` proves that coordinate multiplication, and
   hence every weight `(1 + ‖x‖²)^A`, preserves closed Fourier support.
   The proof uses Mathlib's Fourier differentiation identity, support
@@ -116,7 +128,7 @@ source decomposition. The final theorems are not proved yet.
   `PlateLocalizationMeasurability` proves joint measurability in a Haar frame
   and ball center. `PlateLocalization` averages the localized maxima, and
   `BallLocalization` proves the exact Tonelli identity for the input norms.
-  `Range` now obtains the global estimate before the Fourier terminal gap.
+  The global estimate enters the now-complete Fourier terminal proof in `Range`.
 * `Induction/Estimates` records a local diagonal estimate with deficit `α`:
   its thickness factor is `δ^(-α/p)`, with a finite constant uniform over
   inputs in each fixed ball. `Seed` proves deficit `n` at every `p ≥ 1`
@@ -130,7 +142,7 @@ source decomposition. The final theorems are not proved yet.
   `c/ρ^j`. Every proper-dimensional case in the requested strict range
   consequently has a lower-dimensional plate estimate with a positive
   deficit below one. `Range` now obtains this proved estimate before its
-  remaining Fourier terminal proof gap.
+  now-completed Fourier terminal argument.
 * `Operators/PlateMeasurability`: lower semicontinuity and Borel measurability
   now hold for every Borel nonnegative input, including infinite values.
   The moving open-plate indicator supplies the semicontinuity; the input
@@ -512,9 +524,10 @@ source decomposition. The final theorems are not proved yet.
 
 ## Open proof frontier
 
-There are two `sorry` occurrences in the proof development, in
-`Induction/Range.lean` and `FiveTwo/Main.lean`, plus the three deliberate Challenge
-holes. These stand for large analytic developments, not two short lemmas.
+There is one `sorry` occurrence in the proof development, in
+`FiveTwo/Main.lean`, plus the three deliberate Challenge holes. It stands for
+a substantial independent analytic development, not a short final lemma.
+The general critical-exponent target is now fully proved.
 
 The projection estimate, including its quantitative selectable form, is now
 proved at every strict exponent above the critical root. Joint good-time
@@ -566,14 +579,13 @@ affine plane. Intrinsic product-volume coordinates and Schwartz integrability
 also prove signed full-plane Fubini in rotated flag frames. Joint measurability,
 integration of the frequency bounds, geometric summation, and signed dyadic
 decomposition now complete the fixed-support Schwartz terminal estimate.
-It remains to obtain the positive smooth disk bound, remove the support
-restriction by smooth localization, and pass to open indicators using the
-proved passage from uniform maximal bounds to positive measure.
+The positive disk bound, smooth localization, and passage to open indicators
+are now proved. Outer regularity completes the general positive-measure theorem.
 
 The independent (5,2) branch still needs the corrected Guth–Zahl and
-Katz–Rogers proofs and its maximal estimate. The shared Schwartz terminal
-estimate is now available; its disk localization and approximation steps
-remain necessary for this branch as well.
+Katz–Rogers proofs and its maximal estimate. The shared terminal theorem,
+including disk localization, approximation, and positive measure, is now
+available for this branch.
 All these inputs require proofs in Lean; none may be installed as axioms.
 The remaining work includes the final source-fidelity audit, Comparator and
 kernel verification, Palomar-ready metadata, and the requested README
@@ -742,6 +754,17 @@ pass the standard-axiom audit without source warnings. The full build
 succeeds with 3431 jobs and the same five intended holes. All 305 library
 modules stay within the file-size limit; the largest has 160 lines.
 The changed Lean files satisfy the 100-character line limit.
+The positive Schwartz disk estimate, exact intrinsic volume normalization,
+joint lower semicontinuity, smooth localization, dominated approximation of
+open indicators, and bounded disk convergence now complete the general
+critical-exponent theorem. The full build succeeds with 3445 jobs and four
+expected warnings: one implementation gap in `FiveTwo/Main.lean`, plus the
+three deliberate Challenge holes. There are 319 library modules, with a
+maximum of 160 lines; all new Lean lines fit within 100 columns.
+The exported `Solution` numerical bound and general theorem both report
+only `propext`, `Classical.choice`, and `Quot.sound` in Lean's axiom audit.
+The two Challenge definition bodies match their implementation text exactly.
+This is not a Comparator or independent-kernel verification claim.
 `Challenge.lean` now includes the numerical bound as an explicit Comparator
 target. `Solution.lean` exports its complete proof from `Exponents.lean`.
 The Solution theorem for (5,2) correctly reports `sorryAx`.
