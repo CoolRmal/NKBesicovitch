@@ -5,10 +5,43 @@ project:
   name: NKBesicovitch
   description: >-
     Lean proofs of Hausdorff dimension at least n-(n-k)/p_c^k for all
-    (n,k)-Besicovitch sets with 1<=k<=n, and positive Lebesgue measure when
-    p_c^(k-1)+k>n, where p_c is the unique root in (2,3) of
-    p^3-2p^2-2p+2=0. Both geometric theorems and the exact bounds
-    2.481<p_c<2.482 are proved with only the standard Lean axioms.
+    (n,k)-Besicovitch sets with 1<=k<=n, and positive Lebesgue measure for
+    Lebesgue measurable such sets when p_c^(k-1)+k>n. Here a Besicovitch
+    set contains a translated unit k-disk in every k-dimensional direction,
+    and p_c is the unique root in (2,3) of p^3-2p^2-2p+2=0.
+
+    Building on Bourgain's arithmetic-combinatorial approach, Nets Hawk Katz
+    and Terence Tao's New bounds for Kakeya problems (2002; preprint 2001)
+    established the Minkowski-dimension bound 1+(n-1)/beta_c, where
+    beta_c=p_c/(p_c-1)=1.67513... satisfies beta_c^3-4*beta_c+2=0.
+    This is exactly n-(n-1)/p_c, so the numerical exponent itself is not new.
+    They also proved the distinct Hausdorff bound (2-sqrt(2))*(n-4)+3.
+    A Minkowski lower bound alone does not imply the same Hausdorff lower
+    bound: Hausdorff dimension is at most Minkowski dimension.
+
+    Richard Oberlin's subsequent X-ray work (2006 preprint; published 2010)
+    gave the Hausdorff bound n-(n-k)/(1+sqrt(2))^k and positive measure when
+    (1+sqrt(2))^(k-1)+k>n. Later polynomial-partitioning work by Hickman,
+    Rogers, and Zhang improved Kakeya bounds in many dimensions while
+    retaining the large-dimension leading coefficient 2-sqrt(2).
+
+    The claimed advance here is a continuous projection estimate with joint
+    measurable parameter selection, developed from the supplied September
+    2026 manuscript. Its mixed-norm X-ray and plate maximal consequences,
+    together with a countable-cover argument, give the Katz-Tao numerical
+    bound for Hausdorff dimension and replace 1+sqrt(2)=2.41421... by
+    p_c=2.48119... in Oberlin's displayed dimension and positive-measure
+    ranges. For k=1 the resulting Hausdorff bound is approximately
+    0.596968*n+0.403032, with a larger leading coefficient than
+    2-sqrt(2)=0.585786.... This is an improvement in sufficiently high
+    dimensions, not a claim to the best bound in every dimension.
+    The formalized hypotheses require only unit disks, and the Hausdorff
+    theorem requires neither measurability nor boundedness of the set.
+
+    Both geometric theorems and the exact bounds 2.481<p_c<2.482 are proved
+    with only the standard Lean axioms. The comparisons above identify
+    the improvement over the cited results; independent mathematical review
+    and confirmation of novelty against the full literature remain pending.
     Final sandboxed Comparator and independent-kernel verification are pending.
   authors:
     - Yongxi Lin
@@ -21,6 +54,34 @@ classification:
   msc2020: [42B25, 28A75]
 
 sources:
+  - title: New bounds for Kakeya problems
+    authors: [Nets Hawk Katz, Terence Tao]
+    id: arXiv:math/0102135
+    location: https://arxiv.org/abs/math/0102135
+    type: article
+    relationship: background
+    note: >-
+      Journal d'Analyse Mathematique 87 (2002), 231-263; preprint 2001.
+      Theorem 1.1 gives the Minkowski bound 1+(n-1)/beta_c and the
+      separate Hausdorff bound (2-sqrt(2))*(n-4)+3. Sections 3 and 4
+      develop the sums-differences and corner iterations underlying the
+      critical numerical exponent. The repository's claimed extension
+      concerns continuous selectable estimates and their Hausdorff and
+      positive-measure consequences, not discovery of this exponent.
+    author_endorsement: not-contacted
+  - title: Improved bounds for the Kakeya maximal conjecture in higher dimensions
+    authors: [Jonathan Hickman, Keith M. Rogers, Ruixiang Zhang]
+    id: arXiv:1908.05589
+    location: https://arxiv.org/abs/1908.05589
+    type: article
+    relationship: background
+    note: >-
+      Section 9.2 and Corollary 9.1 compare the resulting Hausdorff bounds
+      with Katz-Tao and improve the additive constant in infinitely many
+      dimensions. Their large-dimension leading coefficient remains
+      2-sqrt(2). This comparison does not assert that the repository gives
+      the strongest known bound in every dimension.
+    author_endorsement: not-contacted
   - title: The projection estimate near 1.675
     type: supplied manuscript
     relationship: formalizes
@@ -85,7 +146,13 @@ sources:
     location: https://doi.org/10.1007/s00209-009-0589-5
     type: article
     relationship: adapts
-    note: Theorem 3 is the intended mixed-norm-to-positive-measure reduction.
+    note: >-
+      Math. Z. 266 (2010), 623-644. Theorem 3 is the source for the
+      mixed-norm-to-positive-measure reduction. In the 2006 preprint,
+      https://arxiv.org/abs/math/0610942, Corollary 1.3 states Hausdorff
+      dimension at least n-(n-k)/(1+sqrt(2))^k and positive measure when
+      (1+sqrt(2))^(k-1)+k>n. That preprint defines (n,k) sets using
+      translates of entire k-planes; this repository uses unit k-disks.
     author_endorsement: not-contacted
   - title: Bounds for Kakeya-type maximal operators associated with k-planes
     authors: [Richard Oberlin]
