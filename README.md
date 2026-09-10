@@ -20,7 +20,7 @@ assumption on the set. For ordinary **Kakeya sets**, where `k = 1`, it gives
 
 $$
   \dim_H E \ge n-\frac{n-1}{p_c}
-  \approx 0.596968283\,n+0.403031717.
+  \approx 0.596968283 \cdot n+0.403031717.
 $$
 
 The project also proves **positive volume** for Lebesgue measurable sets
